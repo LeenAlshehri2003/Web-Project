@@ -8672,4 +8672,28 @@ input.main-search-input:-ms-input-placeholder {
   bottom: 65px;
   z-index: -1;
 }
+
+.rating-container {
+  display: inline-block;
+  position: relative;
+  font-size: 24px;
+  font-family: "Font Awesome 5 pro";
+}
+
+.stars {
+  position: relative;
+  display: inline-block;
+}
+
+.stars i {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.stars i.active {
+  color: gold;
+}
+
+
+
 /*# sourceMappingURL=main.css.map */
