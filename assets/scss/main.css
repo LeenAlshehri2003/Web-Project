@@ -8388,7 +8388,6 @@ input.main-search-input:-ms-input-placeholder {
 .plan .pr__body .price-list li::before {
   content: '\f00c';
   position: absolute;
-  font-family: 'Font Awesome 5 pro';
   font-size: 18px;
   left: 0;
   top: 0;
