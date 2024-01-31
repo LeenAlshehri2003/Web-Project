@@ -15,6 +15,7 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
     <link rel="stylesheet" href="path/to/font-awesome.min.css">
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
@@ -266,15 +267,29 @@
             <textarea name="commnent" id="commnent" cols="30" rows="10" placeholder="Write Your Review ..."></textarea>
         </div>
         
-        <div class="rating-container">
-            <span class="stars">
-              <i class="fa fa-star-o" data-rating="1"></i>
-              <i class="fa fa-star-o" data-rating="2"></i>
-              <i class="fa fa-star-o" data-rating="3"></i>
-              <i class="fa fa-star-o" data-rating="4"></i>
-              <i class="fa fa-star-o" data-rating="5"></i>
+        <div class="card">
+            <h1>Rating</h1>
+            <br />
+            <span onclick="gfg(1)"
+                  class="star">★
             </span>
-          </div>
+            <span onclick="gfg(2)"
+                  class="star">★
+            </span>
+            <span onclick="gfg(3)"
+                  class="star">★
+            </span>
+            <span onclick="gfg(4)"
+                  class="star">★
+            </span>
+            <span onclick="gfg(5)"
+                  class="star">★
+            </span>
+            <!-- <h3 id="output">
+                  Rating is: 0/5 
+              </h3>  -->
+        </div>
+        <script src="../assets/js/script.js"></script>
           
     </form>
     <a href= "../zoomy-education HTML Template/zoomy/index.html"  button class="theme_btn comment_btn">Submit Review</button> </a>
@@ -287,24 +302,7 @@
 
 
 
-
-
-<script>
-
-    const stars = document.querySelectorAll(".stars i");
-
-stars.forEach((star, index) => {
-  star.addEventListener("click", () => {
-    let rating = index + 1;
-
-    stars.forEach((star, index2) => {
-      index2 < rating ? star.classList.add("active") : star.classList.remove("active");
-    });
-  });
-});
-</script>
-
-
+<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="../assets/js/popper.min.js"></script>
