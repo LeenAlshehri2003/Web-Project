@@ -41,6 +41,19 @@
 /*  01. Theme default CSS
 /*----------------------------------------*/
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap");
+/*extra added css
+By Mashael:*/
+.confirm-page{
+  padding-top:100px;
+  padding-bottom:130px;
+}
+.confirm-logo{
+height:70px;
+}
+.confirm-msg{
+  padding-top:20px;
+  padding-bottom:35px;
+}
 /* 1. Theme default css */
 body {
   font-family: "Manrope", sans-serif;
@@ -115,7 +128,6 @@ h6 {
   font-weight: 700;
   text-transform: normal;
 }
-
 h1 a,
 h2 a,
 h3 a,
