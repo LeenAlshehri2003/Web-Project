@@ -23,9 +23,7 @@
         <link rel="stylesheet" href="../assets/css/slick.css">
         <link rel="stylesheet" href="../assets/css/spacing.css">
         <link rel="stylesheet" href="../assets/css/main.css">
-        <link rel="stylesheet" href="../assets/css/Filter English.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="../assets/js/Filter.js"></script>
       </head>
     
   <body>
@@ -190,7 +188,7 @@
             <div class="row">
                <div class="col-xl-12">
                     <div class="section-title text-center mb-50">
-                        <h5 id="English" class="bottom-line mb-25">Partner List</h5>
+                        <h5 class="bottom-line mb-25">Partner List</h5>
                         <h2>Explore our Native Speakers</h2>
                     </div>
                 </div> 
@@ -199,7 +197,7 @@
                 <div class="col-xl-12 text-center">
                     <div class="portfolio-menu mb-30">
                         <button class="gf_btn" data-filter='*'>All</button>
-                        <button class="gf_btn active" data-filter='.cat1'>English </button>
+                        <button class="gf_btn active" data-filter='.cat1'>English</button>
                         <button class="gf_btn" data-filter='.cat2'>Arabic</button>
                         <button class="gf_btn" data-filter='.cat3'>French</button>
                         <button class="gf_btn" data-filter='.cat4'>Spanish</button>
@@ -208,7 +206,16 @@
                     </div>
                 </div>
             </div>
-          
+            <style>
+        
+                .grid-item {
+                    display: none;
+                }
+        
+                .grid-item.cat1 {
+                    display: block; /* Show only cat1 elements by default */
+                }
+            </style>
         
             <div class="grid row">
                 <div class="col-lg-4 col-md-6 grid-item cat1">
@@ -332,29 +339,31 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 grid-item cat3">
-                <div class="z-gallery mb-30">
-                    <div class="z-gallery__thumb mb-20">
-                        <a href="course-details.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt=" width="50" height="50"></a>
-                        <div class="feedback-tag">4.2(146)</div>
-                        <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                    </div>
-                    <div class="z-gallery__content">
-                        <div class="course__tag mb-15">
-                            <span>French</span>
-                            <a class="f-right" href="Elisabeth Profile Page.html"><img src="../assets/img/Partners images/Elisabeth.jpg" alt="Native Speaker picture" width="85" height="85"></a>
-                        </div>
-                        <h4 class="sub-title mb-20"><a href="Elisabeth Profile Page.html">Elisabeth Jones</a></h4>
-                        <div class="course__meta">
-            
-                            <span>My goal is To give you the keys to gain confidence and fluency when you speak French.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            $('.gf_btn').click(function () {
+                // Remove the 'active' class from all buttons
+                $('.gf_btn').removeClass('active');
+                
+                // Add the 'active' class to the clicked button
+                $(this).addClass('active');
 
+                // Get the data-filter value from the clicked button
+                var filterValue = $(this).data('filter');
+
+                // Show only the elements with the selected category or show all if 'All' button is clicked
+                $('.grid-item').hide();
+                if (filterValue === '*') {
+                    $('.grid-item').show();
+                } else {
+                    $(filterValue).show();
+                }
+            });
+        });
+    </script>
        <!-- course-instructor start -->
        <section class="great-deal-area pt-150 pb-90 pt-md-100 pb-md-40 pt-xs-100 pb-xs-40">
         <div class="container">
