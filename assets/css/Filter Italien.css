@@ -1,0 +1,8 @@
+                .grid-item {
+                    display: none;
+                }
+        
+                .grid-item.cat5 {
+                    display: block; /* Show only cat1 elements by default */
+                }
+     
