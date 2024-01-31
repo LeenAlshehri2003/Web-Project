@@ -52,24 +52,19 @@
         }
         & .price-list {
             text-align: left;
+          
             & li {
-                color: $white;
-                font-size: 16px;
-                margin-bottom: 22px;
-                padding-left: 42px;
-                position: relative;
-                z-index: 1; 
-                &::before {
-                    content: '\f00c';
-                    position: absolute;
-                    font-family: 'Font Awesome 5 pro';
-                    font-size: 18px;
-                    left: 0;
-                    top: 0;
-                    z-index: 1;
-                }
+              color: $white;
+              font-size: 16px;
+              margin-bottom: 22px;
+              padding-left: 20px; /* Adjust as needed for bullet alignment */
+              position: relative;
+              z-index: 1;
+          
+              /* Remove the Font Awesome icon */
             }
-        } 
+          }
+        
     } 
 }
 
