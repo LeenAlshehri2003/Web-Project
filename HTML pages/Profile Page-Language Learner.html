@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8"
+    <meta charset="utf-8">
     <title>Profile Page Language Learner</title>
     <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
     <meta name="description" content="LinguaLink is a e-learnibg HTML website for language education ">
@@ -23,7 +23,8 @@
     <link rel="stylesheet" href="../assets/css/slick.css">
     <link rel="stylesheet" href="../assets/css/spacing.css">
     <link rel="stylesheet" href="../assets/css/main.css">
-    <link type="text/css"
+    <link type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
   </head>
   <body>
     <div id="preloader">
@@ -180,13 +181,37 @@
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img src="C:\Users\Leen\OneDrive - King Suad University\Documents\Web Project\Web-Project\assets\img\woman profile picture.jpg" alt="Language Learner profile picture" width="500" height="300">
+                        <img src="..\assets\img\woman profile picture.jpg" alt="Language Learner profile picture" width="500" height="300">
                 </div>
             </div>
             <hr>
-            <li><a href="Edit Language Learner Profile.html" class="theme_btn free_btn">Edit Profile</a></li>
+            <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
+            <li><a href="Edit Language Learner Profile.html" class="theme_btn free_btn">Edit </a></li>
+            &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+            <li><a href="#popup-box" class="theme_btn free_btn">Delete </a></li>
+            </div>
+            </div>
         </div>
       </div>
+      <div id="popup-box" class="modal">
+		<div class="content">
+            <br>
+			<p style="color: #000000;">
+				Are you sure you want to delete the Account
+            </p>
+            <br>
+			<b>
+                <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
+                   
+                    &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
+                    <li><a href="Delete Message-Language Learner Profile.html" class="theme_btn free_btn">Yes </a></li>
+                    </div>
+			</b>
+			<a href="#" class="box-close">
+				×
+			</a>
+		</div>
+	</div>
     </section>
     <!--instructor-details-area end-->
     </main>
@@ -283,5 +308,7 @@
     <script src="../assets/js/jquery.easypiechart.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/script2.js"></script>
+
     </body>
   </html>
