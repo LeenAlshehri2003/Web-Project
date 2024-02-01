@@ -4830,6 +4830,10 @@ input.main-search-input:-ms-input-placeholder {
   line-height: 32px;
 }
 
+.heart-icon.active {
+  color: hwb(221 11% 11%); /* Active/Favorite color */
+}
+
 .gallery-03 .z-gallery__content {
   padding: 0 30px 25px 30px;
 }
