@@ -120,47 +120,65 @@
     </header>
     <main>
       <!--page-title-area start-->
-       <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
-           <div class="container">
-               <div class="row align-items-end">
-                   <div class="col-lg-12">
-                       <div class="page-title-wrapper mb-50">
-                          <h1 class="page-title mb-25">View Requests</h1>
-                          <div class="breadcrumb-list">
-                             <ul class="breadcrumb">
-                                 <li><a href="Profile Page Native Speaker\index.html">Home - Pages -</a></li>
-                                 <li><a href="#">View Requests</a></li>
-                             </ul>
-                          </div>
-                     </div>
-                   </div>
-               </div>
-           </div>
-       </section>
- <!-- blog-area start -->
- <section class="blog-area">
-  <main class="confirm-page">
-    <div class="section-title">
-        <h1>All Requests</h1>
 
-        <div class="request-box">
-             <div class="request-details-header">
-                 <p>&#183;Request information&#183;</p>
-             </div>
- 
-             <div class="request-details-body">
-                 <!-- Dummy Request Details -->
-                 <p><strong>Learner Name:</strong> John Doe</p>
-                 <p><strong>Time till expired:</strong> xxx</p>
-                 <p><strong>Status:</strong> pending</p>
-             </div>
-              <div class="request-actions">
-                        <a href="request-details-Native.html" class="theme_btn free_btn">view details</a>
-                </div>
-             </div>
-         </div>
-     </div>
+ <!-- requests area start -->
+ <section class="blog-area">
+    <div class="section-title">
+        <h1 class="all-requests">All Requests</h1>
     </div>
+    <main class="requests-grid">
+        <!--one request-->
+        <div class="request-component">
+            <img class="profile-picture" src="../assets/img/icon/person-icon-original.svg">
+
+            <div class="request-details-body">
+                <p><strong>Learner Name:</strong> John Doe</p>
+                <p><strong>Time till expired:</strong> xxx</p>
+                <div class="status-grid">
+                <p><strong>Status:</strong> pending </p>
+                <img class="request-status-img" src="../assets/img/icon/pending-icon-original.svg">
+            </div>
+            </div>
+
+            <div class="request-actions">
+                       <a href="request-details-Native.html" class="theme_btn free_btn">view details</a>
+            </div>
+        </div>
+
+        <div class="request-component">
+            <img class="profile-picture" src="../assets/img/icon/person-icon-original.svg">
+            
+            <div class="request-details-body">
+                <p><strong>Learner Name:</strong> John Doe</p>
+                <p><strong>Time till expired:</strong> xxx</p>
+                <div class="status-grid">
+                <p><strong>Status:</strong> rejected </p>
+                <img class="request-status-img" src="../assets/img/icon/x-circle-icon-original.svg">
+            </div>
+            </div>
+
+            <div class="request-actions">
+                       <a href="request-details-Native.html" class="theme_btn free_btn">view details</a>
+            </div>
+        </div>        <div class="request-component">
+            <img class="profile-picture" src="../assets/img/icon/person-icon-original.svg">
+            
+            <div class="request-details-body">
+                <p><strong>Learner Name:</strong> John Doe</p>
+                <p><strong>Time till expired:</strong> xxx</p>
+                <div class="status-grid">
+                <p><strong>Status:</strong> accepted </p>
+                <img class="request-status-img" src="../assets/img/icon/check-circle-icon-original.svg">
+            </div>
+            </div>
+
+            <div class="request-actions">
+                       <a href="request-details-Native.html" class="theme_btn free_btn">view details</a>
+            </div>
+        </div>
+
+</main>
+   
 </section>
       <!--footer-area start-->
        <footer class="footer-area pt-70 pb-40">
