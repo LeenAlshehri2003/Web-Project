@@ -43,8 +43,8 @@
 /*extra added css
 By Mashael:*/
 .confirm-page{
-  padding-top:80px;
-  padding-bottom:130px;
+  padding-top:70px;
+  padding-bottom:100px;
 }
 .confirm-logo{
 height:70px;
@@ -53,7 +53,6 @@ height:70px;
   padding-top:20px;
   padding-bottom:35px;
 }
-
 .request-component {
   display: grid;
   grid-template-columns: 15% 57% 1fr; /* Adjust as needed */
@@ -66,15 +65,21 @@ height:70px;
   padding:8px 8px 8px 30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
-.profile-picture{
-  height:100px;
-  border-radius:50px;
+.center-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
 }
 .section-title .all-requests{
   margin-left:35px;
 }
-
 .requests-grid {
   margin-left: 80px;
   margin-top: 20px;
@@ -85,9 +90,16 @@ height:70px;
   background-color: rgb(242, 240, 240);
   border: 1px 1px rgba(0, 0, 0, 0.04);
   border-radius:5px;
-  margin: 20px 100px 5px 100px;
+  margin: 15px 170px 5px 170px;
   padding:25px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display:grid;
+  flex-direction: row;
+  align-items: center;
+}
+.decide-request {
+    display: grid;
+    grid-template-columns: 50% 50%; /* Adjust as needed */ 
 }
 .status-grid{
 display:flex;
@@ -98,17 +110,21 @@ align-items: center;
   margin-bottom:-3px;
   margin-left:8px;
 }
+.request-details-header{
+  display: grid;
+  justify-content: end;
+}
 .request-details-body{
   margin-left:30px;
+  margin-top:20px;
+  margin-bottom:30px;
 }
 .request-actions{
   display:inline-block;
 }
-.decide-request{
-  display:flex;
-}
+
 .acception-button{
-  margin:50px 50px 30px 50px;
+
 }
 .decide-later-underlined-link {
   text-decoration: underline;
@@ -2785,7 +2801,7 @@ input.main-search-input:-ms-input-placeholder {
   overflow: hidden;
   color: #ffffff;
   background: #FF723A;
-  font-size: 16px;
+  font-size: 15px;
   font-family: "Manrope", sans-serif;
   font-weight: 400;
   line-height: 1;
@@ -4828,6 +4844,10 @@ input.main-search-input:-ms-input-placeholder {
   top: 20px;
   right: 30px;
   line-height: 32px;
+}
+
+.heart-icon.active {
+  color: hwb(221 11% 11%); /* Active/Favorite color */
 }
 
 .gallery-03 .z-gallery__content {
@@ -8748,6 +8768,14 @@ input.main-search-input:-ms-input-placeholder {
 }
 
 
-
-
+/*addded by mashael*/
+.acception-button {
+  padding:20px 100px 20px 100px;
+  font-size: 24px;
+}
+.big-img{
+  height:200px;
+  width:200px;
+  border-radius: 20px;
+}
 /*# sourceMappingURL=main.css.map */
