@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../assets/css/spacing.css">
     <link rel="stylesheet" href="../assets/css/main.css">
     <link type="text/css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/Post-Request.css">
   </head>
   <body>
     <div id="preloader">
@@ -125,11 +127,11 @@
                <div class="row align-items-end">
                    <div class="col-lg-12">
                        <div class="page-title-wrapper mb-50">
-                          <h1 class="page-title mb-25">Language Partner-profile</h1>
+                          <h1 class="page-title mb-25">Edit Request</h1>
                           <div class="breadcrumb-list">
                              <ul class="breadcrumb">
                                  <li><a href="Profile Page Native Speaker\index.html">Home - Pages -</a></li>
-                                 <li><a href="#">Language Partner Profile</a></li>
+                                 <li><a href="#">Edit Request</a></li>
                              </ul>
                           </div>
                      </div>
@@ -139,301 +141,234 @@
        </section>
          <!--page-title-area end-->
          <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-<div class="row flex-lg-nowrap">
-  
-
-  <div class="col ">
-    <div class="row">
-      <div class="col mb-3">
-        <div class="card">
-          <div class="card-body">
-            <div class="e-profile">
-              <div class="row">
-                <div class="col-12 col-sm-auto mb-3">
-                  <img src="..\assets\img\Partners images\Mohammad.jpg" alt ="Profile Picture" style ="width: 140px;height: 140px;"
-                  class="img-fluid img-thumbnail img-circle">
-                </div>
-                </div>
-                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                  <div class="text-center text-sm-left mb-2 mb-sm-0">
-                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Mohammad Abdullah</h4>
-                    <div class="text-muted"><small>Last edited 3 month ago</small></div>
-                    <div class="mt-2">
-                      <input type ="file" id="fileInput" style="display:none"/>
-                      <button class="theme_btn free_btn" type="button" id="changePhoto">
-                        <i class="fa fa-fw fa-camera"></i>
-                        <span>Change Photo</span>
-                      </button>
-                      <script>
-                        document.getElementById('changePhoto').onclick=function(){
-                          document.getElementById('fileInput').click();};
-
-                      </script>
-                    </div>
-                  </div>
-                  <div class="text-center text-sm-right">
-                    <div class="text-muted"><small>Joined 10 Jan 2024</small></div>
-                  </div>
-                </div>
-              </div>
-              <ul class="nav nav-tabs">
-                <li class="nav-item"><a href="" class="active nav-link">Edit Profile</a></li>
-              </ul>
-              <div class="tab-content pt-3">
-                <div class="tab-pane active">
-                  <form class="form" novalidate="">
-                    <div class="row">
-                      <div class="col">
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>First Name</label>
-                              <input class="form-control" type="text" name="First name" placeholder="First Name" >
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Last Name</label>
-                              <input class="form-control" type="text" name="Last Name" placeholder="Last Name" >
-                            </div>
-                          </div>
-
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Phone Number</label>
-                              <input class="form-control" type="text" name="Phone Number" placeholder="Phone Number" >
-                            </div>
-                          </div>
-                            <div class="col">
-                            <div class="form-group">
-                              <label for ="Gender">Select Gender:<br></label>
-                            </div>
-                          <select id="Gender" name="Gender">
-                            <option selected> Male</option>
-                            <option>Female</option>
-                          </select>
-                            </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-12 col-sm-6 mb-3">
-                            <div class="form-group">
-                              <label>Email</label>
-                              <input class="form-control" type="text" placeholder="name@example.com">
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-group">
-                              <label for ="Age">Select Age:<br></label>
-                            </div>
-                              <input class="form-control" type="text" placeholder="25"style ="width:150px;">
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                          <div class="col md-6 mb-3">
-                            <label for ="City">City:<br></label>
-                          </div>
-                        </div>
-                        <input class="form-control" type="text" placeholder="Riyadh"  style ="width:150px;">
-                        
-                      </div>
-                    </div>
-                        <div class="row">
-                          <div class="col mb-3">
-                            <div class="form-group">
-                              <label>About</label>
-                              <textarea class="form-control" rows="5" placeholder="Languages and cultural knowldege"></textarea>
-                            </div>
-                          </div>
-                        </div>
-                    <div class="row">
-                      <div class="col-12 col-sm-6 mb-3">
-                        <div class="mb-2"><b>Change Password</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Current Password</label>
-                              <input class="form-control" type="password">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>New Password</label>
-                              <input class="form-control" type="password" >
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                        <div class="mb-2"><b>Keeping in Touch</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="custom-controls-stacked px-2">
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="Email Notifications" checked="">
-                                <label class="custom-control-label" for="Email Notifications">Email Notifications</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                                <label class="custom-control-label" for="notifications-news">Newsletter</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                                <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-12 col-md-3 mb-3">
-                        <a href="Sucess message language Partner.html" class="theme_btn free_btn">Save</a>
-                        </a>
-                      </div>
-                   
-                    <div class="col-12 col-md-3 mb-3">
-                    <button class="theme_btn free_btn" type="reset">Clear</button>
-                     
-                    </div>
-                  </form>
-
-                </div>
-              </div>
-            </div>
-          </div>
+         <div class="container">
+         <div class="row flex-lg-nowrap">
+           
+         
+           <div class="col ">
+             <div class="row">
+               <div class="col mb-3">
+                 <div class="card">
+                   <div class="card-body">
+                     <div class="e-profile">
+                         <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                         </div>
+                       </div>
+                       <ul class="nav nav-tabs">
+                         <li class="nav-item"><a href="" class="active nav-link">Edit Request</a></li>
+                       </ul>
+                       <div class="tab-content pt-3">
+                         <div class="tab-pane active">
+                           <form class="form" novalidate="">
+                             <div class="row">
+                               <div class="col">
+                                 <div class="row">
+                                   <div class="col">
+                                     <div class="form-group">
+                                      <label>Profiency Level</label><br>
+                                      <select name ="Profiency"> <option>Beginner</option>
+                                        <option>Intermediate</option>
+                                        <option>Advanced</option></select>
+                                     </div>
+                                   </div>
+         
+                                 </div>
+                                 <div class="row">
+                                   <div class="col-12 col-sm-6 mb-3">
+                                     <div class="form-group">
+                                      <div class="formbold-mb-3">
+                                        <label for="dob" class="formbold-form-label"> Session Date </label>
+                                        <input type="date" name="dob" id="dob" class="formbold-form-input" />
+                                      </div>
+                                
+                                     </div>
+                                   </div>
+                                   <div class="col">
+                                    <div class="form-group">
+                                      <label for ="Duration">Session Duration in Hours:<br></label>
+                                    </div>
+                                  <select id="Duration" name="Duration">
+                                    <option selected> 1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                   
+                                  </select>
+                                    </div>
+                                 </div>
+                                 
+                                 <div class="row">
+                                   <div class="col md-6 mb-3">
+                                     <label for ="Time">Session Start Time:<br></label>
+                                   </div>
+                                 </div>
+                                 <input class="form-control" type="text" placeholder="hh:mm"  style ="width:150px;">
+                                 <br>
+                               </div>
+                             </div>
+                             <div class="row">
+                               <div class="col-12 col-sm-6 mb-3">
+                                 <div class="mb-2"><b>Notes for Language Partner</b></div>
+                                <textarea  name="message"
+                                id="message"
+                                class="formbold-form-input" placeholder="Write any notes or special inquiries you have for thr language Partner"></textarea>
+                               </div>
+                               <div class="col-12 col-sm-5 offset-sm-1 mb-3">
+                                 <div class="mb-2"><b>Would you like to recieve status update notifications?</b></div>
+                                 <div class="row">
+                                   <div class="col">
+                                     <div class="custom-controls-stacked px-2">
+                                       <div class="custom-control custom-checkbox">
+                                         <input type="radio" class="custom-control-input" id="Status"  name= "Status" checked="">
+                                         <label class="custom-control-label" for="Email Notifications">Yes</label>
+                                       </div>
+                                       <div class="custom-control custom-checkbox">
+                                         <input type="radio" class="custom-control-input" id="Status" name= "Status" >
+                                         <label class="custom-control-label" for="notifications-news">No</label>
+                                       </div>
+                                     </div>
+                                   </div>
+                                 </div>
+                               </div>
+                             </div>
+                             <div class="row">
+                               <div class="col-12 col-md-3 mb-3">
+                                 <a href="Success Post Request.html" class="theme_btn free_btn">Post</a>
+                                 </a>
+                               </div>
+                            
+                             <div class="col-12 col-md-3 mb-3">
+                             <button class="theme_btn free_btn" type="reset" >Clear</button>
+                              
+                             </div>
+                           </form>
+         
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+         
+               <div class="col-12 col-md-3 mb-3">
+                 <div class="card mb-3">
+                   <div class="card-body">
+                     <div class="px-xl-3">
+                       <a href="View Requests- Learner.html" class="theme_btn free_btn" id="Back">
+                         <i class="fa fa-sign-out"></i> Back
+                       </a>
+                     </div>
+                   </div>
+                 </div>
+                 <div class="card">
+                   <div class="card-body">
+                     <h6 class="card-title font-weight-bold">Support</h6>
+                     <p class="card-text">Get fast, free help from our friendly assistants.</p>
+                     <li><a href="#" class="theme_btn free_btn">Contact us</a></li>
+                   </div>
+                 </div>
+               </div>
+             </div>
+         
+           </div>
+         </div>
+         </div>
         </div>
-      </div>
-
-      <div class="col-12 col-md-3 mb-3">
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="px-xl-3">
-              <button class="theme_btn free_btn">
-                <i class="fa fa-sign-out"></i>
-                <span>Logout</span>
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-body">
-            <h6 class="card-title font-weight-bold">Support</h6>
-            <p class="card-text">Get fast, free help from our friendly assistants.</p>
-            <button type="button" class="theme_btn free_btn">Contact Us</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
+        
     </main>
-    <!--footer-area start-->
-    <footer class="footer-area pt-70 pb-40">
-      <div class="container">
-          <div class="row mb-15">
-              <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.1s'>
-                  <div class="footer__widget mb-30">
-                      <div class="footer-log mb-20">
-                          <a href="../zoomy-education HTML Template/zoomy/index.html" class="logo">
-                              <img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="">
-                          </a>
-                      </div>
-                      <div class="social-media footer__social mt-30">
-                          <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
-                          <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                          <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                  <div class="footer__widget mb-30 pl-40 pl-md-0 pl-xs-0">
-                      <h6 class="widget-title mb-35">Contact us</h6>
-                      <ul class="fot-list">
-                          <li><a href="#">LinguaLink@gmail.com</a></li>
-                          <li><a href="#">+966 54 756 7906</a></li>
-                          <li><a href="#">Terms & Conditions</a></li>
-                          <li><a href="#">Privacy Policy</a></li>
-                          <li><a href="../zoomy-education HTML Template/zoomy/contact.html">Contacts</a></li>
-                          <li><a href="#">Our Careers</a></li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.5s'>
-                  <div class="footer__widget mb-25 pl-90 pl-md-0 pl-xs-0">
-                      <h6 class="widget-title mb-35">Quick Links</h6>
-                      <ul class="fot-list">
-                          <li><a href="../zoomy-education HTML Template/zoomy\about.html">About US</a></li>
-                          <li><a href="#">Explore Pages</a></li>
-                          <li><a href="#">Our Services</a></li>
-                          <li><a href="#">Destinations</a></li>
-                      </ul>
-                  </div>
-              </div>
-              <div class="col-xl-3 col-lg-6 col-md-6  wow fadeInUp2 animated" data-wow-delay='.7s'>
-                  <div class="footer__widget mb-30 pl-150 pl-lg-0 pl-md-0 pl-xs-0">
-                      <h6 class="widget-title mb-35">Features</h6>
-                      <ul class="fot-list mb-30">
-                          <li><a href="../zoomy-education HTML Template/zoomy/index.html">Home Page</a> </li>
-                          <li><a href="#">Testimonials</a></li>
-                          <li><a href="#">Help Center</a></li>
-                      </ul>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <div class="copy-right-area border-bot pt-40">
-          <div class="container">
-              <div class="row align-items-center">
-                  <div class="col-lg-12">
-                      <div class="copyright text-center">
-                          <h5>Copyright@ 2024 <a href="#">LinguaLink</a>. All Rights Reserved</h5>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </footer>
-  <!--footer-area end-->
+     <!--footer-area start-->
+     <footer class="footer-area pt-70 pb-40">
+        <div class="container">
+            <div class="row mb-15">
+                <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.1s'>
+                    <div class="footer__widget mb-30">
+                        <div class="footer-log mb-20">
+                            <a href="../zoomy-education HTML Template/zoomy/index.html" class="logo">
+                                <img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="">
+                            </a>
+                        </div>
+                        <div class="social-media footer__social mt-30">
+                            <a href="https://www.facebook.com/"><i class="fab fa-facebook-f"></i></a>
+                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com/"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
+                    <div class="footer__widget mb-30 pl-40 pl-md-0 pl-xs-0">
+                        <h6 class="widget-title mb-35">Contact us</h6>
+                        <ul class="fot-list">
+                            <li><a href="#">LinguaLink@gmail.com</a></li>
+                            <li><a href="#">+966 54 756 7906</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="../zoomy-education HTML Template/zoomy/contact.html">Contacts</a></li>
+                            <li><a href="#">Our Careers</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.5s'>
+                    <div class="footer__widget mb-25 pl-90 pl-md-0 pl-xs-0">
+                        <h6 class="widget-title mb-35">Quick Links</h6>
+                        <ul class="fot-list">
+                            <li><a href="../zoomy-education HTML Template/zoomy\about.html">About US</a></li>
+                            <li><a href="#">Explore Pages</a></li>
+                            <li><a href="#">Our Services</a></li>
+                            <li><a href="#">Destinations</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-6 col-md-6  wow fadeInUp2 animated" data-wow-delay='.7s'>
+                    <div class="footer__widget mb-30 pl-150 pl-lg-0 pl-md-0 pl-xs-0">
+                        <h6 class="widget-title mb-35">Features</h6>
+                        <ul class="fot-list mb-30">
+                            <li><a href="../zoomy-education HTML Template/zoomy/index.html">Home Page</a> </li>
+                            <li><a href="#">Testimonials</a></li>
+                            <li><a href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right-area border-bot pt-40">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="copyright text-center">
+                            <h5>Copyright@ 2024 <a href="#">LinguaLink</a>. All Rights Reserved</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--footer-area end-->
+  
+  
+  
+  
+  
+    <!-- JS here -->
+  
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+    <script src="../assets/js/metisMenu.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.js"></script>
+    <script src="../assets/js/ajax-form.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
+    <script src="../assets/js/waypoints.min.js"></script>
+    <script src="../assets/js/jquery.scrollUp.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../assets/js/jquery.easypiechart.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/script2.js"></script>
 
-
-
-
-
-  <!-- JS here -->
-
-  <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
-  <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-  <script src="../assets/js/popper.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/owl.carousel.min.js"></script>
-  <script src="../assets/js/isotope.pkgd.min.js"></script>
-  <script src="../assets/js/slick.min.js"></script>
-  <script src="../assets/js/metisMenu.min.js"></script>
-  <script src="../assets/js/jquery.nice-select.js"></script>
-  <script src="../assets/js/ajax-form.js"></script>
-  <script src="../assets/js/wow.min.js"></script>
-  <script src="../assets/js/jquery.counterup.min.js"></script>
-  <script src="../assets/js/waypoints.min.js"></script>
-  <script src="../assets/js/jquery.scrollUp.min.js"></script>
-  <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-  <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="../assets/js/jquery.easypiechart.js"></script>
-  <script src="../assets/js/plugins.js"></script>
-  <script src="../assets/js/main.js"></script>
-  </body>
-</html>
+    </body>
+  </html>
