@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Request details</title>
+        <title>Request Confirm message</title>
         <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
         <meta name="description" content="LinguaLink is a e-learnibg HTML website for language education ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +60,7 @@
                                                     <li><a href="Partnerlist%20French.html#Here"><span><img src="..\assets/img/icon/icon12.svg" alt=""></span> French</a></li>
                                                     <li><a href="Partnerlist%20Spanish.html#Here"><span><img src="..\assets/img/icon/icon12.svg" alt=""></span> Spanish</a></li>
                                                     <li><a href="Partnerlist%20Arabic.html#Here"><span><img src="..\assets/img/icon/icon12.svg" alt=""></span> Arabic</a></li>
-                                                    <li><a href="Partnerlist%20Italien.html#Here"><span><img src="..\assets/img/icon/icon12.svg" alt=""></span>Italien</a></li>
+                                                    <li><a href="Partnerlist%20Italien.html#Here"><span><img src="..r\assets/img/icon/icon12.svg" alt=""></span>Italien</a></li>
                                                     <li><a href="Partnerlist%20Japanese.html#Here"><span><img src="..\assets/img/icon/icon12.svg" alt=""></span> Japanese</a></li>
                                                     <li><a href="Partnerlist%20Chinese.html#Here"><span><img src="..\assets/img/icon/icon12.svg" alt=""></span> Chinese</a></li>
                                             </ul>
@@ -149,54 +149,18 @@
     <div class="body-overlay"></div>
     <!-- slide-bar end -->
 
-    <main>
-        <div class="section-title text-center mb-55">    
+    <main class="confirm-page">
+<!--confirmation msg-->
+<div class="section-title text-center mb-55">
+    <img alt="x mark icon" class="confirm-logo"src="../assets/img/icon/close-circle-icon-original.svg">
+    <h1>Request Rejected!</h1>
+    <h5 class="confirm-msg">The request has been successfully rejected.</h5>
+    <div>
+        <a href="View Requests - Native Speaker.html" class="theme_btn comment_btn">go back to view requests</a>
+    </div>
 
-            <div class="request-details-container">
-                     <div class="request-details-header">
-                        <a href="View Requests - Native Speaker.html" class="theme_btn comment_btn">return back</a>
-                     </div>
-
-                 <div class="center-containter">
-                    <h1>Request details</h1>
-                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/1e94ba96b6a1eeb313388dbf48b98774.jpeg">
-                 </div>
-     
-                 <div class="request-details-body">
-                     <!-- Dummy Request Details -->
-                     <p><strong>Status:</strong>pending</p>
-                     <p class="profile-link"><strong>Learner Name:</strong> Mohammed Abdullah</p>
-                     <p><strong>Language Goals:</strong> Improve fluency in English</p>
-                     <p><strong>Proficiency Level:</strong> Intermediate</p>
-                     <p><strong>Scheduled to be on:</strong> 02/12/2024 <strong>from</strong> 9:00 AM<strong> to </strong>10:00 AM</p>
-                     <p><strong>Session duration:</strong> 1 hr</p>
-
-
-                 </div>
-     
-                     <!-- Buttons for Accept, Reject, and Decide Later -->
-
-
-                     <form id="decisionForm">
-                        <div class="decide-request">
-                            <div>
-                                <input type="hidden" name="decision" id="acceptDecision" value="accept">
-                                <button type="button" class="theme_btn free_btn acception-button" onclick="submitForm('request-accepted-Native.html')">Accept</button>
-                            </div>
-                            <div>
-                                <input type="hidden" name="decision" id="rejectDecision" value="reject">
-                                <button type="button" class="theme_btn free_btn acception-button" onclick="submitForm('request-rejected-Native.html')">Reject</button>
-                            </div>
-                        </div>
-                    </form>
-
-
-
-                </div>
-             </div>
-         </div>
-        </div>
-    </main>
+</div>
+</main>
 
  <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
@@ -261,22 +225,6 @@
 
 
 <!-- JS here -->
-<script>
-    function submitForm(redirectPage) {
-        // Set the value of the hidden input based on the button clicked
-        var form = document.getElementById('decisionForm');
-        if (redirectPage === 'request-accepted-Native.html') {
-            form.action = 'request-accepted-Native.html';
-            document.getElementById('acceptDecision').value = 'accept';
-        } else if (redirectPage === 'request-rejected-Native.html') {
-            form.action = 'request-rejected-Native.html';
-            document.getElementById('rejectDecision').value = 'reject';
-        }
-
-        // Submit the form
-        form.submit();
-    }
-</script>
 
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>

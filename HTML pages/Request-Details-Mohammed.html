@@ -159,18 +159,39 @@
 
                  <div class="center-containter">
                     <h1>Request details</h1>
-                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/20231604-Emran-Gary_1878bb52185_large.jpeg" alt="user profile picture">
+                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/1e94ba96b6a1eeb313388dbf48b98774.jpeg">
                  </div>
      
                  <div class="request-details-body">
                      <!-- Dummy Request Details -->
-                     <p><strong>Status:</strong>rejected</p>
-                     <p class="profile-link"><strong>Learner Name:</strong> Abdulrahman Ali</p>
+                     <p><strong>Status:</strong>pending</p>
+                     <p class="profile-link"><strong>Learner Name:</strong> Mohammed Abdullah</p>
                      <p><strong>Language Goals:</strong> Improve fluency in English</p>
-                     <p><strong>Proficiency Level:</strong> Advanced</p>
-                     <p><strong>Scheduled to be on:</strong> 02/04/2024 <strong>from</strong> 10:00 AM<strong> to </strong>11:00 AM</p>
+                     <p><strong>Proficiency Level:</strong> Intermediate</p>
+                     <p><strong>Scheduled to be on:</strong> 02/12/2024 <strong>from</strong> 9:00 AM<strong> to </strong>10:00 AM</p>
                      <p><strong>Session duration:</strong> 1 hr</p>
+
+
                  </div>
+     
+                     <!-- Buttons for Accept, Reject, and Decide Later -->
+
+
+                     <form id="decisionForm">
+                        <div class="decide-request">
+                            <div>
+                                <input type="hidden" name="decision" id="acceptDecision" value="accept">
+                                <button type="button" class="theme_btn free_btn acception-button" onclick="submitForm('Conf-Message-Accepted.html')">Accept</button>
+                            </div>
+                            <div>
+                                <input type="hidden" name="decision" id="rejectDecision" value="reject">
+                                <button type="button" class="theme_btn free_btn acception-button" onclick="submitForm('Conf-Message-reject.html')">Reject</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+
                 </div>
              </div>
          </div>
@@ -244,11 +265,11 @@
     function submitForm(redirectPage) {
         // Set the value of the hidden input based on the button clicked
         var form = document.getElementById('decisionForm');
-        if (redirectPage === 'request-accepted-Native.html') {
-            form.action = 'request-accepted-Native.html';
+        if (redirectPage === 'Conf-Message-Accepted.html') {
+            form.action = 'Conf-Message-Accepted.html';
             document.getElementById('acceptDecision').value = 'accept';
-        } else if (redirectPage === 'request-rejected-Native.html') {
-            form.action = 'request-rejected-Native.html';
+        } else if (redirectPage === 'Conf-Message-reject.html') {
+            form.action = 'Conf-Message-reject.html';
             document.getElementById('rejectDecision').value = 'reject';
         }
 
