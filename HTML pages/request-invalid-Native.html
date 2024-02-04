@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Request Confirm message</title>
+        <title>Request details</title>
         <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
         <meta name="description" content="LinguaLink is a e-learnibg HTML website for language education ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -148,19 +148,55 @@
     </aside>
     <div class="body-overlay"></div>
     <!-- slide-bar end -->
+    <div id="alert-container"></div>
+    <main>
+        <div class="section-title text-center mb-55">    
 
-    <main class="confirm-page">
-<!--confirmation msg-->
-<div class="section-title text-center mb-55">
-    <img class="confirm-logo"src="../assets/img/icon/close-circle-icon-original.svg">
-    <h1>Request Rejected!</h1>
-    <h5 class="confirm-msg">The request has been successfully rejected.</h5>
-    <div>
-        <a href="View Requests - Native Speaker.html" class="theme_btn comment_btn">go to home page</a>
-    </div>
+            <div class="request-details-container">
+                     <div class="request-details-header">
+                        <a href="View Requests - Native Speaker.html" class="theme_btn comment_btn">return back</a>
+                     </div>
 
-</div>
-</main>
+                 <div class="center-containter">
+                    <h1>Request details</h1>
+                    <img class="profile-picture big-img" src="../assets/img/Reviewers/letter-h-pink-alphabet-glossy-png.png">
+                 </div>
+     
+                 <div class="request-details-body">
+                     <!-- Dummy Request Details -->
+                     <p><strong>Status:</strong>pending</p>
+                     <p class="profile-link"><strong>Learner Name:</strong> Halah Mohammed</p>
+                     <p><strong>Language Goals:</strong> Improve fluency in English</p>
+                     <p><strong>Proficiency Level:</strong> Beginner</p>
+                     <p><strong>Scheduled to be on:</strong> 02/23/2024 <strong>from</strong> 9:00 AM<strong> to </strong> 11:00 AM</p>
+                     <p><strong>Session duration:</strong> 2 hr </p>
+
+
+                 </div>
+     
+                     <!-- Buttons for Accept, Reject, and Decide Later -->
+
+
+                     <form id="decisionForm">
+                        <div class="decide-request">
+                            <div>
+                                <input type="hidden" name="decision" id="acceptDecision" value="accept">
+                                <button type="button" class="theme_btn free_btn acception-button" onclick="checkAndSubmit('request-accepted-Native.html')">Accept</button>
+                            </div>
+                            <div>
+                                <input type="hidden" name="decision" id="rejectDecision" value="reject">
+                                <button type="button" class="theme_btn free_btn acception-button" onclick="window.location.href='request-rejected-Native.html';">Reject</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+                </div>
+             </div>
+         </div>
+        </div>
+    </main>
 
  <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
@@ -225,6 +261,45 @@
 
 
 <!-- JS here -->
+<script>
+    function checkAndSubmit(redirectPage) {
+        var acceptDecision = document.getElementById('acceptDecision');
+
+        // Simulate a schedule conflict
+        var hasConflict = true; // Always set to true for testing purposes
+
+        if (hasConflict) {
+            displayAlert("Unable to accept the request due to conflict in schedule.", "alert-danger");
+            return;
+        }
+
+        acceptDecision.value = 'accept';
+
+        // Submit the form after checking for conflicts
+        document.getElementById('decisionForm').submit();
+    }
+
+    function displayAlert(message, alertClass) {
+        var alertContainer = document.getElementById('alert-container');
+        
+        // Create an alert element
+        var alertElement = document.createElement('div');
+        alertElement.className = 'alert ' + alertClass;
+        alertElement.textContent = message;
+
+        // Append the alert element to the container
+        alertContainer.innerHTML = ''; // Clear previous alerts
+        alertContainer.appendChild(alertElement);
+        
+        // Scroll to the top of the container to make the alert visible
+        alertContainer.scrollTop = 0;
+        
+        // Optionally, hide the alert after a few seconds (e.g., 3000 milliseconds)
+        setTimeout(function() {
+            alertContainer.innerHTML = ''; // Clear the alert after a delay
+        }, 5000);
+    }
+</script>
 
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
