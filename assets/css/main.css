@@ -48,6 +48,7 @@ By Mashael:*/
 }
 .confirm-logo{
 height:70px;
+margin-bottom:30px;
 }
 .confirm-msg{
   padding-top:20px;
@@ -111,8 +112,7 @@ align-items: center;
   margin-left:8px;
 }
 .request-details-header{
-  display: grid;
-  justify-content: end;
+  text-align: right;
 }
 .request-details-body{
   margin-left:30px;
@@ -122,19 +122,42 @@ align-items: center;
 .request-actions{
   display:inline-block;
 }
-
-.acception-button{
-
-}
-.decide-later-underlined-link {
+.profile-link {
   text-decoration: underline;
   color: grey; 
   cursor: pointer; 
+}
+.profile-link:hover{
+  font-weight: bold;
 }
 .request-box{
   background-color: #e75115;
   border-radius: 8px;
   margin:50px;
+}
+.decide-request .acception-button {
+  padding:20px 100px 20px 100px;
+  font-size: 24px;
+  border:none;
+}
+
+div .big-img{
+  margin-top:10px;
+  height:100px;
+  width:100px;
+  border-radius: 10px;
+}
+.alert {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
 }
 /* 1. Theme default css */
 body {
@@ -8768,14 +8791,4 @@ input.main-search-input:-ms-input-placeholder {
 }
 
 
-/*addded by mashael*/
-.acception-button {
-  padding:20px 100px 20px 100px;
-  font-size: 24px;
-}
-.big-img{
-  height:200px;
-  width:200px;
-  border-radius: 20px;
-}
 /*# sourceMappingURL=main.css.map */
