@@ -137,7 +137,7 @@
                         <div class="decide-request">
                             <div>
                                 <input type="hidden" name="decision" id="acceptDecision" value="accept">
-                                <button type="button" class="theme_btn free_btn acception-button" onclick="checkAndSubmit('Conf-Message-Accepted.html')">Accept</button>
+                                <button type="button" class="theme_btn free_btn acception-button" onclick="checkAndSubmit('Request-Details-Halah.html')">Accept</button>
                             </div>
                             <div>
                                 <input type="hidden" name="decision" id="rejectDecision" value="reject">
@@ -223,7 +223,7 @@
         var hasConflict = true; // Always set to true for testing purposes
 
         if (hasConflict) {
-            displayAlert("Unable to accept the request due to conflict in schedule.", "alert-danger");
+            displayAlert(" × Unable to accept the request due to conflict in schedule.", "alert-danger");
             return;
         }
 
@@ -236,6 +236,9 @@
     function displayAlert(message, alertClass) {
         var alertContainer = document.getElementById('alert-container');
         
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+
         // Create an alert element
         var alertElement = document.createElement('div');
         alertElement.className = 'alert ' + alertClass;
@@ -244,16 +247,10 @@
         // Append the alert element to the container
         alertContainer.innerHTML = ''; // Clear previous alerts
         alertContainer.appendChild(alertElement);
-        
-        // Scroll to the top of the container to make the alert visible
-        alertContainer.scrollTop = 0;
-        
-        // Optionally, hide the alert after a few seconds (e.g., 3000 milliseconds)
-        setTimeout(function() {
-            alertContainer.innerHTML = ''; // Clear the alert after a delay
-        }, 5000);
     }
 </script>
+
+
 
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
