@@ -86,6 +86,7 @@
     </header>
  <!-- requests area start -->
   <!--page-title-area start-->
+  <!--remove it
   <section class="page-title-area d-flex align-items-end"
   style="background-image: url(../assets/img/banner\ photo.jpg )">
   <div class="container">
@@ -105,14 +106,31 @@
       </div>
   </div>
 </section>
+-->
 </main>
 
 <!--page-title-area end-->
  <main>
+
     <section class="requests-grid">
-        <h1 class="all-requests">Learners Requests </h1>
+        <h1 class="ol-lg-12 text-center" style="margin-bottom: 20px;">Learners Requests </h1>
+        <div class="row">
+            <div class="text-center">
+                <div class="plan-tab mb-60">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link theme_btn active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pending Requests</button>
+                            <button class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Accepted Requests</button>
+                            <button class="nav-link theme_btn" id="nav-profile-tab1" data-bs-toggle="tab" data-bs-target="#nav-profile1" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Rejected Requests</button>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+
+
+
         <!--one pending valid request-->
-        <div class="request-component">
+        <div class="request-component pending" >
             <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/1e94ba96b6a1eeb313388dbf48b98774.jpeg">
 
             <div class="request-details-body">
@@ -130,7 +148,7 @@
         </div>
 
         <!--one pending invalid request-->
-        <div class="request-component">
+        <div class="request-component pending">
             <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/letter-h-pink-alphabet-glossy-png.png">
             <div class="request-details-body">
                 <p><strong>Learner Name:</strong> Halla Mohammad</p>
@@ -146,7 +164,7 @@
         </div>
 
         <!--one accepted request-->
-        <div class="request-component">
+        <div class="request-component accepted">
                     <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/Saudi man with mobile SEO.jpeg">
                     <div class="request-details-body">
                         <p><strong>Learner Name:</strong> Saleh Khalid </p>
@@ -163,7 +181,7 @@
         </div>
 
         <!--one rejected request-->
-        <div class="request-component">
+        <div class="request-component rejected">
             <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/20231604-Emran-Gary_1878bb52185_large.jpeg">
             <div class="request-details-body">
                 <p><strong>Learner Name:</strong> Abdulrahman Ali</p>
@@ -181,7 +199,7 @@
 
         <!--one expired request-->
                 <!--one pending invalid request-->
-                <div class="request-component">
+                <div class="request-component rejected">
                     <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/letter-s-logo-design-free-file-free-vector.jpeg">
                     <div class="request-details-body">
                         <p><strong>Learner Name:</strong> Salma Mohammad</p>
@@ -195,6 +213,9 @@
                                <a href="Request-Details-Salma.html" class="theme_btn free_btn">view details</a>
                     </div>
                 </div>
+
+
+
     </section>
    
 </main>
@@ -260,7 +281,39 @@
     <!--footer-area end-->
   
     <!-- JS here -->
-  
+    <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Function to show/hide request components based on filter
+            function filterRequests(status) {
+                $('.request-component').hide(); // Hide all request components initially
+                $('.request-component.' + status).show(); // Show components with matching status
+            }
+
+            // Initially, show all request components
+            filterRequests('pending');
+
+            // Handle filter button clicks
+            $('#nav-home-tab').click(function() {
+                filterRequests('pending');
+            });
+
+            $('#nav-profile-tab').click(function() {
+                filterRequests('accepted');
+            });
+
+            $('#nav-profile-tab1').click(function() {
+                filterRequests('rejected');
+            });
+        });
+    </script>
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+
+    
+      
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
