@@ -139,8 +139,10 @@
             <div class="e-profile">
               <div class="row">
                 <div class="col-12 col-sm-auto mb-3">
-                  <img src="../assets/img/woman profile picture.jpg" alt ="Profile Picture" style ="width: 140px;height: 140px;"
-                  class="img-fluid img-thumbnail img-circle">
+               
+                  <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile-image1" style="width: 100px; height: 100px;">
+                  <input id="profile-image-upload" class="hidden" type="file" onchange="previewFile()" >
+                   
                 </div>
                 </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
@@ -148,15 +150,10 @@
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Sama AbdulAziz</h4>
                     <div class="text-muted"><small>Last edited 2 month ago</small></div>
                     <div class="mt-2">
-                      <input type ="file" id="fileInput" style="display:none">
-                      <a href="#" class="theme_btn free_btn" id="changePhoto">
-                        <i class="fa fa-fw fa-camera"></i> Change Photo
-                      </a>
-                      <script>
-                        document.getElementById('changePhoto').onclick=function(){
-                          document.getElementById('fileInput').click();};
-
-                      </script>
+                    
+                      
+                      
+              
                     </div>
                   </div>
                   <div class="text-center text-sm-right">
@@ -175,14 +172,14 @@
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
-                              <label>First Name</label>
-                              <input class="form-control" type="text" name="First name" placeholder="Sama " >
+                              <label><strong>First Name</strong></label>
+                              <input class="form-control" type="text" id="FirstName" name="First name" placeholder="Enter First Name " >
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
-                              <label>Last Name</label>
-                              <input class="form-control" type="text" name="Last Name" placeholder="AbdulAziz" >
+                              <label><strong>Last Name</strong></label>
+                              <input class="form-control" type="text"  id="LastName" name="Last Name" placeholder="Enter Last Name" >
                             </div>
                           </div>
 
@@ -190,53 +187,25 @@
                         
                         <div class="row">
                           <div class="col md-6 mb-3">
-                            <label for ="City">City:<br></label>
+                            <label for ="City"><strong>City:</strong><br></label>
                           </div>
                         </div>
-                        <input class="form-control" type="text" placeholder="Riyadh"  style ="width:150px;">
+                        <input class="form-control" type="text" id="City" placeholder="Enter City"  style ="width:150px;">
                         <br>
                       </div>
                     </div>
                         <div class="row">
                           <div class="col mb-3">
                             <div class="form-group">
-                              <script>
-                                function getLocation() {
-                                    if (navigator.geolocation) {
-                                        navigator.geolocation.getCurrentPosition(showPosition, showError);
-                                    } else { 
-                                        alert("Geolocation is not supported by this browser.");
-                                    }
-                                }
                             
-                                function showPosition(position) {
-                                    document.getElementById('latitude').value = position.coords.latitude;
-                                    document.getElementById('longitude').value = position.coords.longitude;
-                                }
-                            
-                                function showError(error) {
-                                    switch(error.code) {
-                                        case error.PERMISSION_DENIED:
-                                            alert("User denied the request for Geolocation.");
-                                            break;
-                                        case error.POSITION_UNAVAILABLE:
-                                            alert("Location information is unavailable.");
-                                            break;
-                                        case error.TIMEOUT:
-                                            alert("The request to get user location timed out.");
-                                            break;
-                                        case error.UNKNOWN_ERROR:
-                                            alert("An unknown error occurred.");
-                                            break;
-                                    }
-                                }
-                            </script>
-                            
+                           
                             
                                 <input type="hidden" name="latitude" id="latitude" value="">
                                 <input type="hidden" name="longitude" id="longitude" value="">
                             
-                                <li onclick="getLocation()" class="theme_btn free_btn">Get Address</li>
+                                <li onclick="geoFindMe()"  id ="find-me" class="theme_btn free_btn">Get Address</li>
+                                <p id="status"></p>
+                               <a id="map-link" target="_blank"></a>
                             </div>
                           </div>
                         </div>
@@ -247,7 +216,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Current Password</label>
-                              <input class="form-control" type="password">
+                              <input class="form-control"  type="password">
                             </div>
                           </div>
                         </div>
@@ -263,7 +232,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password"></div>
+                              <input class="form-control" type="password" id="password"></div>
                           </div>
                         </div>
                       </div>
@@ -291,7 +260,7 @@
                     </div>
                     <div class="row">
                       <div class="col-12 col-md-3 mb-3">
-                        <button class="theme_btn free_btn" type="submit">Save</button>
+                        <button class="theme_btn free_btn" type="submit" onclick="updateProfile()">Save</button>
                         
                       </div>
                    
@@ -389,7 +358,9 @@
   
   
   <!-- JS here -->
-  
+  <script src="../assets/js/GeolocationFinder.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../assets/js/EditProfile.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>

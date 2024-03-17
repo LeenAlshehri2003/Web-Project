@@ -130,7 +130,6 @@
          <div class="container">
          <div class="row flex-lg-nowrap">         
            <div class="col ">
-            <form action="#popup-box">
              <div class="row">
                <div class="col mb-3">
                  <div class="card">
@@ -144,7 +143,7 @@
                        </ul>
                        <div class="tab-content pt-3">
                          <div class="tab-pane active">
-                           <form class="form" novalidate="">
+                           <form class="form" novalidate="" action="#popup-box" method="post">
                              <div class="row">
                                <div class="col">
                                  <div class="row">
@@ -183,14 +182,15 @@
                                     <div class="form-group">
                                       <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
-                                  <select id="Duration" name="Duration">
+                                   
+                                  <select id="Duration" name="Duration" >
                                     <option selected> 1</option>
                                     <option>2</option>
                                     <option>3</option>
                                   </select>
                                     </div>
                                  </div>
-                                 
+                                
                                  <div class="row">
                                    <div class="col md-6 mb-3">
                                      <label for ="Time">Session Start Time:<br></label>
@@ -198,6 +198,11 @@
                                  </div>
                                  <input class="form-control" type="text" placeholder="hh:mm"  style ="width:150px;">
                                  <br>
+                                 <div class="row">
+                                  <div class="col-12 col-md-3 mb-3">
+                                 <div id="totalCost"></div>
+                                  </div>
+                                 </div>
                                </div>
                              </div>
                              <div class="row">
@@ -213,12 +218,14 @@
                                        <div class="custom-control custom-checkbox">
                                          <input type="radio" class="custom-control-input" id="Status" name= "Status" >
                                          <label class="custom-control-label" for="notifications-news">No</label>
+                                        
                                        </div>
                                      </div>
                                    </div>
                                  </div>
                                </div>
                              </div>
+                             
                              <div class="row">
                                <div class="col-12 col-md-3 mb-3">
                                <button class="theme_btn free_btn" type="submit" style="background-color: green;" >Post</button>
@@ -228,7 +235,7 @@
                              <button class="theme_btn free_btn" type="reset"  >Clear</button>
                               
                              </div>
-                            
+                             
                            </form>
          
                          </div>
@@ -237,7 +244,7 @@
                    </div>
                  </div>
                </div>
-            </form>
+          
                <div id="popup-box" class="modal">
                 <div class="content">
                     <br>
@@ -341,7 +348,7 @@
   
   
   <!-- JS here -->
-  
+  <script src="../assets/js/RequestCalculations.js" ></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>

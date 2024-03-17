@@ -134,11 +134,11 @@
                         <h2>Learner Profile</h2>
                         <hr>
                         <ul class="profile-list mb-50">
-                             <li> First Name : <span>Sama </span></li>
-                             <li> Last Name : <span>AbdulAziz </span></li>
+                             <li> First Name : <span id="displayFirst" > </span></li>
+                             <li> Last Name : <span id="displayLast" > </span></li>
                              <li>Email : <span>sama@gmail.com</span></li>
-                             <li>City : <span>Riyadh </span></li>
-                             <li>Location <span>7272 aluqlah street , taawwun </span></li>
+                             <li>City : <span id="displayCity" > </span></li>
+                             <li>Location <span id="DisplayAddress"> </span></li>
                         </ul>
                         <ul class="work-progress">
                             <li>
@@ -167,7 +167,7 @@
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img src="..\assets\img\woman profile picture.jpg" alt="Language Learner profile picture" width="500" height="300">
+                        <img id="profilePicture" alt="Profile Picture" style="width: 100px; height: 100px;">
                 </div>
             </div>
             <hr>
@@ -266,7 +266,8 @@
     
     
     <!-- JS here -->
-    
+    <script src="../assets/js/LoadEditedInfo.js"></script>
+    <script src="../assets/js/EditProfile.js"></script>
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
