@@ -27,3 +27,79 @@ function calculateSessionTotal(hours, feePerHour) {
   // Return the total cost
   return totalCost;
 }
+
+
+const educatorLanguages = {
+  Partner1: ['English'],
+  Partner2: ['Spanish', 'Arabic'],
+  Partner3: ['English', 'Spanish'],
+  Partner4: ['English', 'Japanese'],
+  Partner5: ['French'],
+  Partner6: ['English', 'Italian'],
+  Partner7: ['Chinese']
+};
+
+function updateLanguages() {
+  const educatorSelect = document.getElementById('educatorSelect');
+  const languageSelect = document.getElementById('languageSelect');
+  const selectedEducator = educatorSelect.value;
+
+  languageSelect.innerHTML = '<option value="">Select a Language</option>';
+
+  if (selectedEducator && educatorLanguages[selectedEducator]) {
+      // Use a standard for loop instead of forEach
+      for (let i = 0; i < educatorLanguages[selectedEducator].length; i++) {
+          const language = educatorLanguages[selectedEducator][i];
+          const option = document.createElement('option');
+          option.value = language;
+          option.textContent = language;
+          languageSelect.appendChild(option);
+      }
+  }
+}
+
+document.getElementById('educatorSelect').addEventListener('change', updateLanguages);
+
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.querySelector(".form"); // Adjust if necessary to target your form specifically
+
+  form.addEventListener("submit", function(event) {
+      let isValid = true;
+      const selects = form.querySelectorAll("select");
+      const inputs = form.querySelectorAll("input[type='text'], input[type='date']");
+      
+      // Check select elements for a value
+      selects.forEach(function(select) {
+          if (!select.value) {
+              isValid = false;
+              // Optionally, highlight the field or show a message
+              select.style.borderColor = "red"; // Example of highlighting
+          } else {
+              select.style.borderColor = ""; // Reset if previously set
+          }
+      });
+
+      // Check input fields for a value
+      inputs.forEach(function(input) {
+          if (!input.value) {
+              isValid = false;
+              // Optionally, highlight the field or show a message
+              input.style.borderColor = "red"; // Example of highlighting
+          } else {
+              input.style.borderColor = ""; // Reset if previously set
+          }
+      });
+
+      // Check if radio buttons for status updates are checked
+      const statusUpdateYes = document.querySelector("input[type='radio'][name='Status'][id='Status']:checked");
+      if (!statusUpdateYes) {
+          isValid = false;
+          // Handle how you want to show that this selection is required
+      }
+
+      if (!isValid) {
+          event.preventDefault(); // Prevent form submission
+          alert("Please fill in all required fields.");
+      }
+  });
+});
