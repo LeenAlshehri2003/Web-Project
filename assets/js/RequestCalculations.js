@@ -40,7 +40,7 @@ const educatorLanguages = {
 };
 
 function updateLanguages() {
-  const educatorSelect = document.getElementById('educatorSelect');
+  const educatorSelect = document.getElementById('languagePartner');
   const languageSelect = document.getElementById('languageSelect');
   const selectedEducator = educatorSelect.value;
 
@@ -58,7 +58,7 @@ function updateLanguages() {
   }
 }
 
-document.getElementById('educatorSelect').addEventListener('change', updateLanguages);
+document.getElementById('languagePartner').addEventListener('change', updateLanguages);
 
 document.addEventListener("DOMContentLoaded", function() {
   const form = document.querySelector(".form"); // Adjust if necessary to target your form specifically

@@ -143,14 +143,15 @@
                        </ul>
                        <div class="tab-content pt-3">
                          <div class="tab-pane active">
-                           <form class="form" novalidate="" action="#popup-box" method="post">
+                           <form  id="postRequestForm" class="form" >
                              <div class="row">
                                <div class="col">
                                  <div class="row">
                                    <div class="col">
                                      <div class="form-group">
                                       <label>Profiency Level</label><br>
-                                      <select name ="Profiency"> <option>Beginner</option>
+                                      <select name="proficiencyLevel" id="proficiencyLevel">
+                                         <option>Beginner</option>
                                         <option>Intermediate</option>
                                         <option>Advanced</option></select>
                                      </div>
@@ -158,7 +159,7 @@
                                    <div class="col">
                                     <div class="form-group">
                                      <label>Language Partner</label><br>
-                                     <select id="educatorSelect">
+                                     <select name="languagePartner" id="languagePartner">
                                       <option value="Partner1">Adam Smith</option>
                                       <option value="Partner2">Mohammad Abdullah</option>
                                       <option value="Partner3">Alex Polidoro</option>
@@ -176,16 +177,16 @@
                                      <div class="form-group">
                                       <div class="formbold-mb-3">
                                         <label for="dob" > Session Date </label>
-                                        <input type="date" name="dob" id="dob" class="formbold-form-input" />
+                                        <input type="date" name="sessionDate" id="sessionDate" class="formbold-form-input" />
                                       </div>
                                 
                                      </div>
                                    </div>
                                    <div class="col">
                                     <div class="form-group">
-                                      <label for ="Duration">Language<br></label>
+                                      <label for ="languageSelect">Language<br></label>
                                     </div>
-                                    <select id="languageSelect">
+                                    <select id="languageSelect" >
                                       <option value="">Select a Language</option>
                                       <!-- Options will be added dynamically -->
                                     </select>
@@ -196,14 +197,14 @@
                                  <div class="row">
                                    <div class="col md-6 mb-3">
                                      <label for ="Time">Session Start Time:</label>
-                                     <input class="form-control" type="text" placeholder="hh:mm"  style ="width:150px;">
+                                     <input  type="time" name="sessionStartTime" id="sessionStartTime" class="form-control"  style ="width:150px;">
                                    </div>
                                    <div class="col">
                                     <div class="form-group">
                                       <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
                                    
-                                  <select id="Duration" name="Duration" >
+                                  <select  name="sessionDuration" id="sessionDuration">
                                     <option selected> 1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -241,7 +242,7 @@
                              
                              <div class="row">
                                <div class="col-12 col-md-3 mb-3">
-                               <button class="theme_btn free_btn" type="submit" style="background-color: green;" >Post</button>
+                               <button  value="Post Request" class="theme_btn free_btn" type="submit" style="background-color: green;" >Post</button>
                                  
                                </div>
                              <div class="col-12 col-md-3 mb-3">
@@ -361,9 +362,8 @@
   
   
   <!-- JS here -->
-  <script src="../assets/js/RequestCalculations.js" ></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
-  <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
@@ -374,13 +374,13 @@
   <script src="../assets/js/ajax-form.js"></script>
   <script src="../assets/js/wow.min.js"></script>
   <script src="../assets/js/jquery.counterup.min.js"></script>
-  <script src="../assets/js/waypoints.min.js"></script>
   <script src="../assets/js/jquery.scrollUp.min.js"></script>
   <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
   <script src="../assets/js/jquery.magnific-popup.min.js"></script>
   <script src="../assets/js/jquery.easypiechart.js"></script>
   <script src="../assets/js/plugins.js"></script>
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/PostRequest.js" ></script> 
   </body>
   
   </html>
