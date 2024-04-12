@@ -131,7 +131,7 @@
 <div class="container">
 <div class="row flex-lg-nowrap">
   <div class="col ">
-    <form>
+    <form action="../XAMPP/htdocs/WebProject/assets/php/edit_learner_profile.php" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -166,7 +166,6 @@
               </ul>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form class="form" novalidate="">
                     <div class="row">
                       <div class="col">
                         <div class="row">
@@ -190,7 +189,7 @@
                             <label for ="City"><strong>City:</strong><br></label>
                           </div>
                         </div>
-                        <input class="form-control" type="text" id="City" placeholder="Enter City"  style ="width:150px;">
+                        <input class="form-control" type="text" id="City" name= "City" placeholder="Enter City"  style ="width:150px;">
                         <br>
                       </div>
                     </div>
@@ -216,7 +215,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Current Password</label>
-                              <input class="form-control" id="CurrentPass" type="password">
+                              <input class="form-control" id="CurrentPass" name="CurrentPass" type="password">
                             </div>
                           </div>
                         </div>
@@ -224,7 +223,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>New Password</label>
-                              <input class="form-control" id="NewPass" type="password" >
+                              <input class="form-control" id="NewPass" name="NewPass" type="password" >
                             </div>
                           </div>
                         </div>
@@ -232,7 +231,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password" id="password"></div>
+                              <input class="form-control"name="ConfirmPass" type="password" id="password"></div>
                           </div>
                         </div>
                       </div>

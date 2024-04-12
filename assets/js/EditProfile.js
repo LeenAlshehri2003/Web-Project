@@ -1,111 +1,64 @@
 document.addEventListener("DOMContentLoaded", function() {
-  // Assuming your form has a class or unique identifier, if not, consider adding one
-  // For demonstration, using document.querySelector('form') directly
-  var form = document.querySelector('form');
+    // Bind the form submission event
+    const form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
 
-  form.onsubmit = function(event) {
-      // Prevent the default form submission
-      event.preventDefault();
-
-      // Perform your validation checks
-      if (updateProfile()) {
-          // If updateProfile() returns true (i.e., all fields are valid), redirect to the success page
-          window.location.href = 'Success Message-Language Learner.html';
-      } else {
-          // If validation fails, the function already handles displaying errors
-          // No action required here unless you want to provide additional feedback
-      }
-  };
+        if (validateForm()) {
+            form.submit(); // Submit the form if validation passes
+        }
+    });
 });
 
-function updateProfile() {
-  var First = document.getElementById("FirstName");
-  var Last = document.getElementById("LastName");
-  var City = document.getElementById("City");
-  var CurrentPass = document.getElementById("CurrentPass");
-  var NewPass = document.getElementById("NewPass");
-  var ConfirmPass = document.getElementById("password");
+function validateForm() {
+    let isValid = true; // Assume form is valid initially
 
-  var allFieldsFilled = true;
+    // List of all fields to validate
+    const fieldsToValidate = [document.getElementById("FirstName"), document.getElementById("LastName"), document.getElementById("City"), document.getElementById("CurrentPass"), document.getElementById("NewPass"), document.getElementById("password")];
+    const newPassword = document.getElementById("NewPass").value.trim();
+    const confirmPassword = document.getElementById("password").value.trim();
 
-  // Helper function for checking and styling fields
-  function checkAndStyleField(field) {
-      if (!field.value.trim()) {
-          field.style.border = '2px solid red';
-          allFieldsFilled = false;
-      } else {
-          field.style.border = '';
-      }
-  }
+    // Function to check and style each field
+    fieldsToValidate.forEach(field => {
+        if (!field.value.trim()) {
+            field.style.border = '2px solid red'; // Highlight empty fields
+            isValid = false;
+        } else {
+            field.style.border = ''; // Reset if filled
+        }
+    });
 
-  // Check and style individual fields
-  [First, Last, City, CurrentPass, NewPass, ConfirmPass].forEach(checkAndStyleField);
+    // Check if new passwords match, only if they are provided
+    if (newPassword && confirmPassword && newPassword !== confirmPassword) {
+        document.getElementById("NewPass").style.border = '2px solid red';
+        document.getElementById("password").style.border = '2px solid red';
+        alert('New Password and Confirm Password do not match. Please enter matching passwords.');
+        isValid = false; // Invalidate form due to mismatch
+    }
 
-  // Additional check for New Password and Confirm Password match
-  if (NewPass.value.trim() && ConfirmPass.value.trim() && NewPass.value !== ConfirmPass.value) {
-      NewPass.style.border = '2px solid red';
-      ConfirmPass.style.border = '2px solid red';
-      // Alert tied to the input box by highlighting them in red and showing an alert
-      alert('New Password and Confirm Password do not match. Please enter matching passwords.');
-      return false; // Return early since the passwords do not match
-  }
-
-  // Proceed if all fields are filled and passwords match
-  if (allFieldsFilled) {
-      // Process form data here, e.g., saving data to localStorage
-      localStorage.setItem('EditedFirst', First.value);
-      localStorage.setItem('EditedLast', Last.value);
-      localStorage.setItem('EditedCity', City.value);
-      localStorage.setItem('EditedCurrentPass', CurrentPass.value);
-      localStorage.setItem('EditedNewPass', NewPass.value);
-      // Assuming successful update
-      return true;
-  }
-
-  // If we reach here, it means not all fields were properly filled
-  return false;
+    // Return the overall form validity
+    return isValid;
 }
-function uploadAndPreviewImage() {
-  var file = document.getElementById('imageInput').files[0];
-  var reader = new FileReader();
-  
-  reader.onloadend = function() {
-      // Display the selected image as a preview
-      document.getElementById('profilePicPreview').src = reader.result;
-      
-      // Save the Base64 image data to localStorage for later retrieval
-      localStorage.setItem('profilePic', reader.result);
-  }
-  
-  if (file) {
-      // Read the image file as a Data URL (Base64 encoded)
-      reader.readAsDataURL(file);
-  } else {
-      document.getElementById('profilePicPreview').src = "";
-  }
-}
+
 function previewFile() {
-  var preview = document.getElementById('profile-image1');
-  var file    = document.querySelector('input[type=file]').files[0];
-  var reader  = new FileReader();
+    const preview = document.getElementById('profile-image1');
+    const file = document.querySelector('input[type=file]').files[0];
+    const reader = new FileReader();
 
-  reader.addEventListener("load", function () {
-    preview.src = reader.result;
-  }, false);
+    reader.onloadend = function() {
+        preview.src = reader.result; // Set the preview image source
+    };
 
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-  reader.onloadend = function () {
-    preview.src = reader.result;
-    // Save the Base64 image data to localStorage
-    localStorage.setItem('profilePic', reader.result);
-};
+    if (file) {
+        reader.readAsDataURL(file); // Convert image to Base64 URL
+    } else {
+        preview.src = ""; // Reset preview if no file is selected
+    }
 }
-                      $(function() {
-            $('#profile-image1').on('click', function() {
-                $('#profile-image-upload').click();
-            });
-        });
 
-      
+// Trigger file input when image is clicked
+$(function() {
+    $('#profile-image1').on('click', function() {
+        $('#profile-image-upload').click();
+    });
+});

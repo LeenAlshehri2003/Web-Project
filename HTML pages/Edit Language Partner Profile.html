@@ -117,33 +117,26 @@
 <div class="row flex-lg-nowrap">
 
   <div class="col ">
-    <form action="Sucess message language Partner.html">
+    <form action="../XAMPP/htdocs/WebProject/assets/php/edit_learner_profile.php" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">
           <div class="card-body">
             <div class="e-profile">
-              <div class="row">
-                <div class="col-12 col-sm-auto mb-3">
-                  <img src="..\assets\img\Partners images/Mohammad.jpg" alt ="Profile Picture" style ="width: 140px;height: 140px;"
-                  class="img-fluid img-thumbnail img-circle">
-                </div>
-                </div>
+              
+                <div class="row">
+                  <div class="col-12 col-sm-auto mb-3">
+                 
+                    <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile-image1" style="width: 100px; height: 100px;">
+                    <input id="profile-image-upload" class="hidden" type="file" onchange="previewFile()" >
+                     
+                  </div>
+                  </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
                     <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Mohammad Abdullah</h4>
                     <div class="text-muted"><small>Last edited 3 weeks ago</small></div>
-                    <div class="mt-2">
-                      <input type ="file" id="fileInput" style="display:none">
-                      <a href="#" class="theme_btn free_btn" id="changePhoto">
-                        <i class="fa fa-fw fa-camera"></i> Change Photo
-                      </a>
-                      <script>
-                        document.getElementById('changePhoto').onclick=function(){
-                          document.getElementById('fileInput').click();};
-
-                      </script>
-                    </div>
+                   
                   </div>
                   <div class="text-center text-sm-right">
                     <div class="text-muted"><small>Joined 31 Dec 2023</small></div>
@@ -195,7 +188,7 @@
                             <div class="form-group">
                               <label for ="Age">Select Age:<br></label>
                             </div>
-                              <input class="form-control" type="text" placeholder="25" style ="width:150px;">
+                              <input class="form-control" name="Age" type="text" placeholder="25" style ="width:150px;">
                             </div>
                         </div>
                         
@@ -204,7 +197,7 @@
                             <label for ="City">City:<br></label>
                           </div>
                         </div>
-                        <input class="form-control" type="text" placeholder="Riyadh"  style ="width:150px;">
+                        <input class="form-control" type="text"  name="City" placeholder="Riyadh"  style ="width:150px;">
                         
                       </div>
                     </div>
@@ -212,7 +205,7 @@
                           <div class="col mb-3">
                             <div class="form-group">
                               <label>About</label>
-                              <textarea class="form-control" rows="5" placeholder="Languages and cultural knowldege"></textarea>
+                              <textarea id="About" name="About" class="form-control" rows="5" placeholder="Languages and cultural knowldege"></textarea>
                             </div>
                           </div>
                         </div>
@@ -223,7 +216,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Current Password</label>
-                              <input class="form-control" type="password">
+                              <input class="form-control" type="password" id="CurrentPassPartner" name="CurrentPass">
                             </div>
                           </div>
                         </div>
@@ -231,7 +224,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>New Password</label>
-                              <input class="form-control" type="password" >
+                              <input class="form-control" type="password" id="NewPassPartner" name="NewPass" >
                             </div>
                           </div>
                         </div>
@@ -239,7 +232,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password"></div>
+                              <input class="form-control" type="password" id="ConfirmPassPartner" name="ConfirmPass"></div>
                           </div>
                         </div>
                       </div>
@@ -368,6 +361,7 @@
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/EditProfile_Partner.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>

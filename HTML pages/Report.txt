@@ -1,0 +1,9 @@
+
+ProcessID | Pr | AT | Burst | ST | ET | TT | WT | RT
+P1 | 1 | 0 | 2 | 0 | 2 | 2 | 0 | 0
+P2 | 1 | 1 | 3 | 2 | 5 | 4 | 1 | 1
+P3 | 1 | 2 | 4 | 5 | 9 | 7 | 3 | 3
+
+The Calculated Average Turnaround Time is: 4.333333333333333
+The Calculated Average Waiting Time is: 1.3333333333333333
+The Calculated Average Response Time is: 1.3333333333333333
