@@ -1,3 +1,4 @@
+<?php include 'load_learner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -134,40 +135,35 @@
                         <h2>Learner Profile</h2>
                         <hr>
                         <ul class="profile-list mb-50">
-                             <li> First Name : <span id="displayFirst" > </span></li>
-                             <li> Last Name : <span id="displayLast" > </span></li>
-                             <li>Email : <span>sama@gmail.com</span></li>
-                             <li>City : <span id="displayCity" > </span></li>
-                             <li>Location <span id="DisplayAddress"> </span></li>
+                        <li>First Name: <span><?php echo htmlspecialchars($learnerProfile['FirstName']); ?></span></li>
+                        <li>Last Name: <span><?php echo htmlspecialchars($learnerProfile['LastName']); ?></span></li>
+                        <li>Email: <span><?php echo htmlspecialchars($learnerProfile['Email']); ?></span></li>
+                        <li>City: <span><?php echo htmlspecialchars($learnerProfile['City']); ?></span></li>
+                        <li>Location: <span><?php echo htmlspecialchars($learnerProfile['Location']); ?></span></li>
                         </ul>
-                        <ul class="work-progress">
-                            <li>
-                                <h2>Courses</h2>
-                                <hr>
-                                <div class="chart1 mb-30" data-percent="70">
-                                     <div class="progress-content">
-                                         <h6>Spanish</h6>
-                                         <b>70%</b>
-                                     </div>
-                                 </div>
-                            </li>
-                            <li>
-                                <div class="chart1 mb-30" data-percent="90">
-                                     <div class="progress-content">
-                                         <h6>French</h6>
-                                         <b>90%</b>
-                                     </div>
-                                 </div>
-                            </li>
-                            
-                         </ul>
+                        <section>
+    <ul class="work-progress">
+        <li>
+            <h2>Courses</h2>
+            <hr>
+            <?php foreach ($learnerData['Languages'] as $language): ?>
+                    <div class="progress-content">
+                        <h6><?php echo htmlspecialchars($language['LanguageName']); ?></h6>
+                        <b><?php echo htmlspecialchars($language['ProficiencyLevel']) . '%'; ?></b>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </li>
+    </ul>
+</section>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-12">
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img id="profilePicture" alt="Profile Picture" style="width: 100px; height: 100px;">
+                        <img src="<?php echo htmlspecialchars('uploads/' . $learnerData['Photo']); ?>" alt="Profile Picture" style="width: 100px;">
+                         <!-- Ensure $learnerProfile['Photo'] contains the relative path to the image -->
                 </div>
             </div>
             <hr>
@@ -266,8 +262,6 @@
     
     
     <!-- JS here -->
-    <script src="../assets/js/LoadEditedInfo.js"></script>
-    <script src="../assets/js/EditProfile.js"></script>
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>

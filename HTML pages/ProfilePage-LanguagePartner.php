@@ -1,3 +1,4 @@
+<?php include 'load_partner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -123,14 +124,20 @@
                        <div class="instructor-profile">
                            <h2>Partner Profile</h2>
                            <ul class="profile-list mb-50">
-                                <li> First Name : <span>Mohammad </span></li>
-                                <li> Last Name : <span>Abdullah </span></li>
-                                <li>Age : <span> 35 </span></li>
-                                <li>Gender : <span>Male</span></li>
-                                <li>Email : <span>info@example.com</span></li>
-                                <li>Mobile Num: <span>+(966) 525-856-237</span></li>
-                                <li>City : <span>Riyadh </span></li>
-                                <li>Languages spoken: <span>Arabic , Spanish</span></li>
+                           <li>First Name: <span><?php echo htmlspecialchars($partnerProfile['FirstName']); ?></span></li>
+        <li>Last Name: <span><?php echo htmlspecialchars($partnerProfile['LastName']); ?></span></li>
+        <li>Age: <span><?php echo htmlspecialchars($partnerProfile['Age']); ?></span></li>
+        <li>Gender: <span><?php echo htmlspecialchars($partnerProfile['Gender']); ?></span></li>
+        <li>Email: <span><?php echo htmlspecialchars($partnerProfile['Email']); ?></span></li>
+        <li>Mobile Num: <span><?php echo htmlspecialchars($partnerProfile['Phone']); ?></span></li>
+        <li>City: <span><?php echo htmlspecialchars($partnerProfile['City']); ?></span></li>
+        <li>Languages Spoken
+        <ul>
+            <?php foreach ($partnerData['Languages'] as $language): ?>
+                <li><?php echo htmlspecialchars($language); ?></li>
+            <?php endforeach; ?>
+        </ul>
+            </li>
                               
                                 <li>
                                     <div class="social-media">
@@ -148,7 +155,8 @@
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img src="..\assets\img\Partners images\Mohammad.jpg" alt="Language Learner profile picture" width="500" height="300">
+                        <img src="<?php echo htmlspecialchars('uploads/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 500;">
+        <!-- Ensure $partnerProfile['Photo'] contains the relative path to the image -->
                 </div>
             </div>
                    <div class="col-xl-6 col-lg-12">
@@ -161,7 +169,8 @@
                                 <a href="#"><i class="fas fa-star"></i></a>
                                 <a href="#"><i class="fas fa-star"></i></a>
                             </div>
-                            <p class="mb-25">I am a native Arabic speaker , I lived in Spain during my twenties and had the opportunity to learn the language,I am an inthusiast about the Spanish culture </p>
+                        <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
+                        <p class="mb-25"><?php echo htmlspecialchars($partnerProfile['Bio']); ?></p>
                         </div>
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
