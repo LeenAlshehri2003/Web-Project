@@ -170,7 +170,7 @@
             <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
             <li><a href="Edit Language Learner Profile.html" class="theme_btn free_btn">Edit </a></li>
             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-            <li><a href="#popup-box" class="theme_btn free_btn" style="background-color: red;">Delete </a></li>
+            <li><button onclick="confirmDeletion(<?= $user_id ?>, 'learner'); class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
             </div>
             </div>
         </div>
@@ -266,6 +266,7 @@
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/DeleteProfile.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
     <script src="../assets/js/slick.min.js"></script>
