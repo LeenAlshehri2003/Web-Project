@@ -133,7 +133,7 @@
            
         
            <div class="col ">
-            <form action="Success Request Update.html">
+            <form id="editRequestForm">
              <div class="row">
                <div class="col mb-3">
                  <div class="card">
@@ -154,7 +154,7 @@
                                    <div class="col">
                                      <div class="form-group">
                                       <label>Profiency Level</label><br>
-                                      <select name ="Profiency"> <option>Beginner</option>
+                                      <select name ="ProficiencyLevel"> <option>Beginner</option>
                                         <option>Intermediate</option>
                                         <option>Advanced</option></select>
                                      </div>
@@ -166,7 +166,7 @@
                                      <div class="form-group">
                                       <div class="formbold-mb-3">
                                         <label for="dob" > Session Date </label>
-                                        <input type="date" name="dob" id="dob" class="formbold-form-input" >
+                                        <input type="date" name="SessionDate" id="dob" class="formbold-form-input" >
                                       </div>
                                 
                                      </div>
@@ -175,7 +175,7 @@
                                     <div class="form-group">
                                       <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
-                                  <select id="Duration" name="Duration">
+                                  <select id="SessionDuration" name="Duration">
                                     <option selected> 1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -189,7 +189,7 @@
                                      <label for ="Time">Session Start Time:<br></label>
                                    </div>
                                  </div>
-                                 <input class="form-control" type="text" placeholder="hh:mm"  style ="width:150px;">
+                                 <input class="form-control" name="SessionTime" type="text" placeholder="hh:mm"  style ="width:150px;">
                                  <br>
                                </div>
                              </div>
@@ -318,6 +318,9 @@
   
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+  <script src="../assets/js/popper.min.js"></script>
+  <script src="../assets/js/update_request.js"></script>
+  <script src="../assets/js/load-edit-request.js"></script>
   <script src="../assets/js/popper.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
