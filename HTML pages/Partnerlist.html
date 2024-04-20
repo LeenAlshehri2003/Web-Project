@@ -8,6 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="manifest" href="site.webmanifest">
+     
         <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
         
     
@@ -158,164 +159,41 @@
                 </div>
             </div>
             <div class="grid row">
-                <div class="col-lg-4 col-md-6 grid-item cat1">
-                    <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="Adam Profile Page.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt="" width="50" height="50"></a>
-                            <div class="feedback-tag">4.8(256)</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>English</span>
-                                <a class="f-right" href="Adam Profile Page.html"><img src="../assets/img/Partners images/Adam.jpg" width="85" height="85" alt="Partner picture"></a>
+                <?php
+                // Assuming you have a table named 'partners' in your database with columns: name, image_url, description, hourly_rate, languages
+                $sql = "SELECT * FROM partners";
+                $result = $conn->query($sql);
+            
+                if ($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                        ?>
+                        <div class="col-lg-4 col-md-6 grid-item <?php echo $row['languages']; ?>">
+                            <div class="z-gallery mb-30">
+                                <div class="z-gallery__thumb mb-20">
+                                    <a href="<?php echo $row['profile_link']; ?>"><img class="img-fluid" src="<?php echo $row['image_url']; ?>" alt=""></a>
+                                    <!-- You can dynamically generate other elements here based on the data retrieved from the database -->
+                                </div>
+                                <div class="z-gallery__content">
+                                    <div class="course__tag mb-15">
+                                        <span><?php echo $row['languages']; ?></span>
+                                        <!-- Other dynamic elements -->
+                                    </div>
+                                    <h4 class="sub-title mb-20"><a href="<?php echo $row['profile_link']; ?>"><?php echo $row['name']; ?></a></h4>
+                                    <div class="course__meta">
+                                        <span><?php echo $row['description']; ?></span>
+                                    </div>
+                                    <br>
+                                    <h6><?php echo $row['hourly_rate']; ?>$/hour</h6>
+                                </div>
                             </div>
-                            <h4 class="sub-title mb-20"><a href="Adam Profile Page.html">Adam Smith</a></h4>
-                            <div class="course__meta">
-                                <span>I have taught, coached, and edited for hundreds of non-native English users for 14 years, in four countries. Let me put this experience to work for you.</span>
-                            </div>
-                            <br>
-                            <h6>25$/hour</h6>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item cat2 cat4">
-                   <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="course-details.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt=""></a>
-                            <div class="feedback-tag">5(193)</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>Arabic</span>
-                                <span>Spanish</span>
-                                <a class="f-right" href="Mohammad Profile Page.html"><img src="../assets/img/Partners images/Mohammad.jpg" width="85" height="85" alt="Partner picture"></a>
-                            </div>
-                            <h4 class="sub-title mb-20"><a href="Mohammad Profile Page.html">Mohammad Abdullah</a></h4>
-                            <div class="course__meta">
-                               
-                                <span>I am a native Arabic speaker , I lived in Spain during my twenties and had the opportunity to learn the language,I am an inthusiast about the Spanish culture.</span>
-                            </div>
-                            <br>
-                            <h6>15$/hour</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item cat1 cat4 ">
-                    <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="course-details.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt="" width="50" height="50"></a>
-                            <div class="feedback-tag">3.9(303)</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>English</span>
-                                <span>Spanish</span>
-                                <a class="f-right" href="Alexa Profile Page.html"><img src="../assets/img/Partners images/Alexa.jpeg" alt="Partner picture" width="85" height="85" ></a>
-                            </div>
-                            <h4 class="sub-title mb-20"><a href="Alexa Profile Page.html">Alexa Polidoro</a></h4>
-                            <div class="course__meta">
-                                <span>Alexa Polidoro is a real French teacher with many years' experience of teaching French to adults and children at all levels.</span>
-                            </div>
-                            <br>
-                            <h6>20$/hour</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item cat1 cat5">
-                    <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="course-details.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" width="50" height="50" alt=""></a>
-                            <div class="feedback-tag">4.1(350)</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>English</span>
-                                <span>Italian</span>
-                                <a class="f-right" href="Stefano Profile Page.html"><img src="../assets/img/Partners images/Stefano.png" width="85" height="85" alt="Partner picture"></a>
-                            </div>
-                            <h4 class="sub-title mb-20"><a href="Stefano Profile Page.html">Stefano Roberto</a></h4>
-                            <div class="course__meta">
-                                <span>Ciao! My name is Stefano and I have been an online Italian teacher for 6 years helping hundreds of students become fluent in Italian and making their Italian dream come true.</span>
-                            </div>
-                            <br>
-                            <h6>20$/hour</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item cat1 cat6">
-                    <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="Noriko Profile Page.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt="" width="50" height="50"></a>
-                            <div class="feedback-tag">4.7(514)</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>English</span>
-                                <span>Japanese</span>
-                                <a class="f-right" href="Noriko Profile Page.html"><img src="../assets/img/Partners images/Noriko.jpg" alt="Partner picture" width="85" height="85"></a>
-                            </div>
-                            <h4 class="sub-title mb-20"><a href="Noriko Profile Page.html">Noriko Sakaia</a></h4>
-                            <div class="course__meta">
-                                <span>Hi, I'm Noriko, a fully qualified Japanese teacher and also the creator of the Japanese podcast LEARN JAPANESE WITH NORIKO.</span>
-                            </div>
-                            <br>
-                            <h6>10$/hour</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 grid-item cat3">
-                    <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="course-details.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt="" width="50" height="50"></a>
-                            <div class="feedback-tag">4.2(146)</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>French</span>
-                                <a class="f-right" href="Elisabeth Profile Page.html"><img src="../assets/img/Partners images/Elisabeth.jpg" alt="Partner picture" width="85" height="85"></a>
-                            </div>
-                            <h4 class="sub-title mb-20"><a href="Elisabeth Profile Page.html">Elisabeth Jones</a></h4>
-                            <div class="course__meta">
-                
-                                <span>My goal is To give you the keys to gain confidence and fluency when you speak French.</span>
-                            </div>
-                            <br>
-                            <h6>15$/hour</h6>
-                        </div>
-                    </div>
-                </div>
+                        <?php
+                    }
+                } else {
+                    echo "0 results";
+                }
+                ?>
             </div>
-           
-        </div>
-        <div class="col-lg-4 col-md-6 grid-item cat7">
-            <div class="z-gallery mb-30">
-                <div class="z-gallery__thumb mb-20">
-                    <a href="course-details.html"><img class="img-fluid" src="../assets/img/Partners images/white.jpg" alt="" width="50" height="50"></a>
-                    <div class="feedback-tag">5(250)</div>
-                    <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                </div>
-                <div class="z-gallery__content">
-                    <div class="course__tag mb-15">
-                        <span>Chinese</span>
-                        <a class="f-right" href="Andy Profile Page.html"><img src="../assets/img/Partners images/Andy.jpg" alt="Partner picture" width="85" height="85"></a>
-                    </div>
-                    <h4 class="sub-title mb-20"><a href="Andy Profile Page.html">Andy Kam</a></h4>
-                    <div class="course__meta">
-        
-                        <span> I am Andy, majored in teaching Chinese as a second language and have been teaching Chinese since 2009,With our unique Chinese learning tips and tricks, thousands of my students have learned Mandarin effectively & fast and passed HSK exams at all levels in months or even weeks instead of years.</span>
-                    </div>
-                    <br>
-                     <h6>10$/hour</h6>
-                </div>
-            </div>
-        </div>
-    
     </section>
  
     
@@ -406,6 +284,7 @@
   <script src="../assets/js/plugins.js"></script>
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/Heart.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
   </body>
 </html>
