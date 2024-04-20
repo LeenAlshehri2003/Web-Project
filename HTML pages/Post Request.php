@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -143,7 +144,7 @@
                        </ul>
                        <div class="tab-content pt-3">
                          <div class="tab-pane active">
-                           <form  id="postRequestForm" class="form" >
+                           <form  id="postRequestForm" method="post" action="../assets/php/createRequest.php" class="form" >
                              <div class="row">
                                <div class="col">
                                  <div class="row">
@@ -160,20 +161,12 @@
                                     <div class="form-group">
                                      <label>Language Partner</label><br>
                                      <select name="languagePartner" id="languagePartner">
-                                      <option value="Partner1">Adam Smith</option>
-                                      <option value="Partner2">Mohammad Abdullah</option>
-                                      <option value="Partner3">Alex Polidoro</option>
-                                      <option value="Partner4">Noriko Sakaia</option>
-                                      <option value="Partner5">Elizabeth Jones</option>
-                                      <option value="Partner6">Stefano Roberto</option>
-                                      <option value="Partner7">Andy Kam</option>
-                                    </select>
+                                     <?php include '../assets/php/RequestForm.php'; ?>
                                     </div>
                                   </div>
                                  </div>
-                                 <br>
-                                 <div class="row">
-                                   <div class="col-12 col-sm-6 mb-3">
+                                 <br><br>
+                                 <div class="col">
                                      <div class="form-group">
                                       <div class="formbold-mb-3">
                                         <label for="dob" > Session Date </label>
@@ -182,18 +175,17 @@
                                 
                                      </div>
                                    </div>
-                                   <div class="col">
+                                   <!-- <div class="col">
                                     <div class="form-group">
                                       <label for ="languageSelect">Language<br></label>
                                     </div>
-                                    <select id="languageSelect" >
+                                   <select id="languageSelect" >
                                       <option value="">Select a Language</option>
-                                      <!-- Options will be added dynamically -->
-                                    </select>
+                                      Options will be added dynamically 
+                                    </select> 
                                     
                                     </div>
-                                 </div>
-                                
+                                 </div> -->
                                  <div class="row">
                                    <div class="col md-6 mb-3">
                                      <label for ="Time">Session Start Time:</label>
@@ -365,6 +357,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>
+  <script src="../assets/js/PostRequest.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
   <script src="../assets/js/isotope.pkgd.min.js"></script>
