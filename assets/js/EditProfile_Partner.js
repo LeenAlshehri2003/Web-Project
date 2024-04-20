@@ -27,37 +27,43 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateForm() {
         let isValid = true;
         const formElements = [
-            { selector: "First name", message: "First name is required." },
-            { selector: "Last Name", message: "Last name is required." },
-            { selector: "Phone Number", message: "Phone number is required." },
-            { selector: "City", message: "City is required." },
-            { selector: "About", message: "About is required." },
-            { selector: "CurrentPass", message: "Current password is required." },
-            { selector: "NewPass", message: "New password is required." },
-            { selector: "ConfirmPass", message: "Confirm password is required." }
+            { selector: "First name" },
+            { selector: "Last Name" },
+            { selector: "Phone Number" },
+            { selector: "City" },
+            { selector: "About" },
+            { selector: "CurrentPass" },
+            { selector: "NewPass" },
+            { selector: "ConfirmPass" },
+            { selector: "Gender" }, // Assuming the Gender field is a dropdown that must not be empty
+          
         ];
-
+    
         formElements.forEach(elem => {
             const input = document.querySelector(`[name='${elem.selector}']`);
             const value = input ? input.value.trim() : '';
             if (!value) {
                 input.style.border = '2px solid red';
-                alert(elem.message);
                 isValid = false;
             } else {
                 input.style.border = '';
             }
         });
-
-        const newPass = document.querySelector("[name='NewPass']").value.trim();
-        const confirmPass = document.querySelector("[name='ConfirmPass']").value.trim();
-        if (newPass && confirmPass && newPass !== confirmPass) {
-            alert("New Password and Confirm Password do not match.");
+    
+        // Check if new passwords match, only if they are provided
+        const newPassword = document.querySelector("[name='NewPass']").value.trim();
+        const confirmPassword = document.querySelector("[name='ConfirmPass']").value.trim();
+        if (newPassword && confirmPassword && newPassword !== confirmPassword) {
             document.querySelector("[name='NewPass']").style.border = '2px solid red';
             document.querySelector("[name='ConfirmPass']").style.border = '2px solid red';
-            isValid = false;
+            alert('New Password and Confirm Password do not match. Please enter matching passwords.');
+            isValid = false; // Invalidate form due to mismatch
         }
-
+    
+        if (!isValid) {
+            alert("Please fill in all fields highlighted in red.");
+        }
+    
         return isValid;
     }
 });
