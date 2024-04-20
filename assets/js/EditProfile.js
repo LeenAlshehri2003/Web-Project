@@ -35,6 +35,9 @@ function validateForm() {
         alert('New Password and Confirm Password do not match. Please enter matching passwords.');
         isValid = false; // Invalidate form due to mismatch
     }
+    if (!isValid) {
+        alert("Please fill in all fields highlighted in red.");
+    }
 
     // Return the overall form validity
     return isValid;

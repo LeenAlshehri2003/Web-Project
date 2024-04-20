@@ -1,4 +1,4 @@
-<?php include 'load_learner_profile.php'; ?>
+<?php include '../assets/php/load_learner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>

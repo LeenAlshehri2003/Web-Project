@@ -1,4 +1,4 @@
-<?php include 'load_partner_profile.php'; ?>
+<?php include '../assets/php/load_partner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
