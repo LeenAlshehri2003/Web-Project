@@ -6,7 +6,7 @@ let stars =
 let output = 
 	document.getElementById("output");
 
-// Funtion to update rating
+// function to update rating
 function gfg(n) {
 	remove();
 	for (let i = 0; i < n; i++) {
@@ -18,6 +18,7 @@ function gfg(n) {
 		stars[i].className = "star " + cls;
 	}
 	output.innerText = "Rating is: " + n + "/5";
+	document.getElementById('rating').value = n;
 }
 
 // To remove the pre-applied styling
@@ -28,4 +29,23 @@ function remove() {
 		i++;
 	}
 }
+
+$(document).ready(function() {
+	$('#reviewsubmit').on('submit', function(e) {
+	  e.preventDefault();
+  
+	  $.ajax({
+		url: '../php/Partner_Review.php',
+		type: 'POST',
+		data: formData,
+		success: function(response) {
+		  alert('review submitted successfully.');
+		  // Optionally redirect or update the UI
+		},
+		error: function() {
+		  alert('Error submitting review.');
+		}
+	  });
+	});
+  });
 
