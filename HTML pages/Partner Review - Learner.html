@@ -137,14 +137,10 @@
         <!--plan-area start -->
         <section class="plan-area pt-150 pb-120 pt-md-100 pb-md-70 pt-xs-100 pb-xs-70">
             <div class="container">
-
                 <div class="row justify-content-center">
-
                     <div class="comments-form-area mb-45">
                         <h2>Leave your review!</h2>
-
-                        <form action="View sessions - Learner.html" class="row comments-form">
-                            
+                        <form action="../assets/php/Partner_Review.php" class="row comments-form" method="POST">
                             <div class="col-lg-12 mb-20">
                                 <textarea name="commnent" id="commnent" cols="30" rows="10"
                                     placeholder="Write Your Review ..."></textarea>
@@ -163,10 +159,11 @@
                                 <span onclick="gfg(5)" class="star">★
                                 </span>
                                 <br> <br>
+                                <input type="hidden" name="rating" id="rating" value="0">
                             </div>
                             
                             <div class="col-lg-12 mb-20">
-                            <button class="theme_btn comment_btn">Submit Review</button>
+                            <button class="theme_btn comment_btn" id="reviewsubmit">Submit Review</button>
                             </div>
                         </form>
                     </div>
@@ -234,8 +231,8 @@
     </div>
 </footer>
 <!--footer-area end-->
-
-<script src="../assets/js/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../assets/js/PartnerReview.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
