@@ -1,11 +1,50 @@
 document.addEventListener("DOMContentLoaded", function() {
+   
     // Make an AJAX request to fetch partner data from the PHP script
     fetchPartnersData();
+    var catButtons = document.querySelectorAll('.gf_btn');
+    catButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            // Remove the 'active' class from all buttons
+            catButtons.forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+            // Add the 'active' class to the clicked button
+            this.classList.add('active');
+
+            // Get the data-filter value from the clicked button
+            var filterValue = this.dataset.filter;
+
+            // Filter partners based on the selected category
+            filterPartners(filterValue);
+        });
+    });
 });
 
+
+$(document).ready(function () {
+    $('.gf_btn').click(function () {
+        // Remove the 'active' class from all buttons
+        $('.gf_btn').removeClass('active');
+        
+        // Add the 'active' class to the clicked button
+        $(this).addClass('active');
+
+        // Get the data-filter value from the clicked button
+        var filterValue = $(this).data('filter');
+
+        // Show only the elements with the selected category or show all if 'All' button is clicked
+        $('.grid-item').hide();
+        if (filterValue === '*') {
+            $('.grid-item').show();
+        } else {
+            $(filterValue).show();
+        }
+    });
+});
 function fetchPartnersData() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/partners.php", true);
+    xhr.open("GET", "http://localhost/Web-Project/assets/php/partners.php", true);
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
             if (xhr.status === 200) {
@@ -19,7 +58,6 @@ function fetchPartnersData() {
     };
     xhr.send();
 }
-
 function displayPartners(partners) {
     var partnersContainer = document.getElementById("partners-container");
 
@@ -27,29 +65,32 @@ function displayPartners(partners) {
         if (partners.length > 0) {
             partners.forEach(function(partner) {
                 var partnerDiv = document.createElement("div");
-                partnerDiv.classList.add("col-lg-4", "col-md-6", "grid-item", "cat1", "cat5"); // Add classes to match the styling
+                var languageIDs = partner.LanguageID.split(","); // Split the comma-separated list of language IDs
+                var languageClasses = getLanguageClasses(languageIDs); // Get language classes based on partner's language IDs
+                partnerDiv.classList.add("col-lg-4", "col-md-6", "grid-item", ...languageClasses); // Add language classes
                 partnerDiv.innerHTML = `
-                    <div class="z-gallery mb-30">
-                        <div class="z-gallery__thumb mb-20">
-                            <a href="#"><img class="img-fluid" src="${partner.image_url}" alt="" width="50" height="50"></a>
-                            <div class="feedback-tag">${partner.AverageRating}</div>
-                            <div class="heart-icon"><i class="fas fa-heart"></i></div>
-                        </div>
-                        <div class="z-gallery__content">
-                            <div class="course__tag mb-15">
-                                <span>English</span>
-                                <span>Italian</span>
-                                <a class="f-right" href="#"><img src="${partner.profile_picture}" width="85" height="85" alt="Partner picture"></a>
-                            </div>
-                            <h4 class="sub-title mb-20"><a href="#">${partner.FullName}</a></h4>
-                            <div class="course__meta">
-                                <span>${partner.Bio}</span>
-                            </div>
-                            <br>
-                            <h6>${partner.hourly_rate}$/hour</h6>
-                        </div>
+                <div class="z-gallery mb-30">
+                    <div class="z-gallery__thumb mb-20">
+                        <a href="#"><img class="img-fluid" src="${partner.Photo}" alt="" width="50" height="50"></a>
+                        <div class="feedback-tag">${partner.AverageRating}</div>
+                        <div class="heart-icon"><i class="fas fa-heart"></i></div>
                     </div>
-                `;
+                    <div class="z-gallery__content">
+                        <div class="course__tag mb-15">
+                            ${partner.Languages.split(', ').map(function(language) {
+                                return `<span>${language}</span>`;
+                            }).join('')}
+                            <a class="f-right" href="#"><img src="${partner.Photo}" width="85" height="85" alt="Partner picture"></a>
+                        </div>
+                        <h4 class="sub-title mb-20"><a href="../php/Upartner_profile.php?partnerId=${partner.PartnerID}">${partner.FullName}</a></h4>
+                        <div class="course__meta">
+                            <span>${partner.Bio}</span>
+                        </div>
+                        <br>
+                        <h6>${partner.SessionPrice}$/hour</h6>
+                    </div>
+                </div>
+            `;
                 partnersContainer.appendChild(partnerDiv);
             });
         } else {
@@ -58,4 +99,36 @@ function displayPartners(partners) {
     } else {
         console.error("Partners container not found.");
     }
+}
+function getLanguageClasses(languageIDs) {
+    var languageClasses = [];
+    languageIDs.forEach(function(languageID) {
+        switch (languageID) {
+            case "1":
+                languageClasses.push("cat1"); // English
+                break;
+            case "2":
+                languageClasses.push("cat2"); // Arabic
+                break;
+            case "3":
+                languageClasses.push("cat3"); // French
+                break;
+            case "4":
+                languageClasses.push("cat4"); // Spanish
+                break;
+            case "5":
+                languageClasses.push("cat5"); // Italian
+                break;
+            case "6":
+                languageClasses.push("cat6"); // Japanese
+                break;
+            case "7":
+                languageClasses.push("cat7"); // Chinese
+                break;
+            // Add more cases for other languages as needed
+            default:
+                break;
+        }
+    });
+    return languageClasses;
 }
