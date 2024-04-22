@@ -158,42 +158,13 @@
                     </div>
                 </div>
             </div>
-            <div class="grid row">
-                <?php
-                // Assuming you have a table named 'partners' in your database with columns: name, image_url, description, hourly_rate, languages
-                $sql = "SELECT * FROM partners";
-                $result = $conn->query($sql);
             
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        ?>
-                        <div class="col-lg-4 col-md-6 grid-item <?php echo $row['languages']; ?>">
-                            <div class="z-gallery mb-30">
-                                <div class="z-gallery__thumb mb-20">
-                                    <a href="<?php echo $row['profile_link']; ?>"><img class="img-fluid" src="<?php echo $row['image_url']; ?>" alt=""></a>
-                                    <!-- You can dynamically generate other elements here based on the data retrieved from the database -->
-                                </div>
-                                <div class="z-gallery__content">
-                                    <div class="course__tag mb-15">
-                                        <span><?php echo $row['languages']; ?></span>
-                                        <!-- Other dynamic elements -->
-                                    </div>
-                                    <h4 class="sub-title mb-20"><a href="<?php echo $row['profile_link']; ?>"><?php echo $row['name']; ?></a></h4>
-                                    <div class="course__meta">
-                                        <span><?php echo $row['description']; ?></span>
-                                    </div>
-                                    <br>
-                                    <h6><?php echo $row['hourly_rate']; ?>$/hour</h6>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    }
-                } else {
-                    echo "0 results";
-                }
-                ?>
+      
+            <div id="partners-container">
+    
             </div>
+           
+        
     </section>
  
     
@@ -285,6 +256,7 @@
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/Heart.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../assets/js/partners.js"></script>
 
   </body>
 </html>
