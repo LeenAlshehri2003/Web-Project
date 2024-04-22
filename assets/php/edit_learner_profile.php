@@ -7,7 +7,7 @@ if (!isset($_SESSION['learnerID'])) {
     // If the user is not logged in, redirect to the login page or show an appropriate message
     echo "Please log in to access this page.";
     exit; // Stop further execution of the script
-}
+} 
 
 require_once 'db.php'; // Database connection
 
