@@ -2,13 +2,13 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Profile Page Language Learner</title>
+    <title>View Requests</title>
     <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
     <meta name="description" content="LinguaLink is a e-learning HTML website for language education ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">   
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
     
 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -23,8 +23,7 @@
     <link rel="stylesheet" href="../assets/css/slick.css">
     <link rel="stylesheet" href="../assets/css/spacing.css">
     <link rel="stylesheet" href="../assets/css/main.css">
-   
-    <link rel="stylesheet" href="../assets/css/style.css">
+  
   </head>
   <body>
 
@@ -85,84 +84,56 @@
                     </div>
         </div> <!-- /.theme-main-menu -->
     </header>
+ <!-- requests area start -->
+  <!--page-title-area start-->
+  <!--remove it
+  <section class="page-title-area d-flex align-items-end"
+  style="background-image: url(../assets/img/banner\ photo.jpg )">
+  <div class="container">
+      <div class="row align-items-end">
+          <div class="col-lg-12">
+              <div class="page-title-wrapper mb-50">
+                  <h1 class="page-title mb-25">Manage Requests</h1>
+                  <div class="breadcrumb-list">
+                      <ul class="breadcrumb">
+                          <li><a href="HomePartner.html">Home - </a>
+                          </li>
+                          <li><a href="#">Manage requests</a></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+-->
+</main>
 
-    <main>
-      <!--page-title-area start-->
-       <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
-           <div class="container">
-               <div class="row align-items-end">
-                   <div class="col-lg-12">
-                       <div class="page-title-wrapper mb-50">
-                          <h1 class="page-title mb-25">Language Learner-profile</h1>
-                          <div class="breadcrumb-list">
-                             <ul class="breadcrumb">
-                                 <li><a href="HomePartner.html">Home -</a></li>
-                                 <li><a href="#">Language Learner Profile</a></li>
-                             </ul>
-                          </div>
-                     </div>
-                   </div>
-               </div>
-           </div>
-       </section>
-         <!--page-title-area end-->
+<!--page-title-area end-->
+ <main>
 
-       <!--Language learner-details-area start-->
-       <section class="Language Learner-details-area pt-145 pb-110 pt-md-95 pb-md-60 pt-xs-95 pb-xs-60">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-12">
-                    <div class="Learner-profile">
-                        <h2>Learner Profile</h2>
-                        <hr>
-                        <ul class="profile-list mb-50">
-                             <li> First Name : <span>Abdulrahman </span></li>
-                             <li> Last Name : <span>Ali </span></li>
-                             <li>Email : <span>Abdulrahman12@gmail.com</span></li>
-                             <li>City : <span>Riyadh </span></li>
-                             <li>Location <span>7272 aluqlah street , taawwun </span></li>
-                        </ul>
-                        <ul class="work-progress">
-                            <li>
-                                <h2>Courses</h2>
-                                <hr>
-                                <div class="chart1 mb-30" data-percent="70">
-                                     <div class="progress-content">
-                                         <h6>Spanish</h6>
-                                         <b>70%</b>
-                                     </div>
-                                 </div>
-                            </li>
-                            <li>
-                                <div class="chart1 mb-30" data-percent="90">
-                                     <div class="progress-content">
-                                         <h6>French</h6>
-                                         <b>90%</b>
-                                     </div>
-                                 </div>
-                            </li>
-                            
-                         </ul>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <div class="Learner-profile-Pic">
-                        <h2>Profile Picture</h2>
-                        <hr>
-                        <img src="../assets/img/Reviewers/20231604-Emran-Gary_1878bb52185_large.jpeg" alt="Language Learner profile picture" width="500" height="300">
+    <section class="requests-grid">
+        <h1 class="ol-lg-12 text-center" style="margin-bottom: 20px;">Learners Requests </h1>
+        <div class="row">
+            <div class="text-center">
+                <div class="plan-tab mb-60">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link theme_btn active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pending Requests</button>
+                            <button class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Accepted Requests</button>
+                            <button class="nav-link theme_btn" id="nav-profile-tab1" data-bs-toggle="tab" data-bs-target="#nav-profile1" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Rejected Requests</button>
+                        </div>
+                    </nav>
                 </div>
             </div>
-            <hr>
+            <!-- Include PHP code here to dynamically fetch and display requests -->
+            <?php include 'partner_view_requests.php'; ?>
 
-            </div>
-        </div>
-      
     </section>
-    <!--learner-details-area end-->
-    </main>
-
-     <!--footer-area start-->
-     <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
+   
+</main>
+      <!--footer-area start-->
+      <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
         <div class="footer-blur"></div>
         <div class="container">
             <div class="row mb-15">
@@ -221,12 +192,41 @@
         </div>
     </footer>
     <!--footer-area end-->
-    
-    
-    
-    
+  
     <!-- JS here -->
+    <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Function to show/hide request components based on filter
+            function filterRequests(status) {
+                $('.request-component').hide(); // Hide all request components initially
+                $('.request-component.' + status).show(); // Show components with matching status
+            }
+
+            // Initially, show all request components
+            filterRequests('pending');
+
+            // Handle filter button clicks
+            $('#nav-home-tab').click(function() {
+                filterRequests('pending');
+            });
+
+            $('#nav-profile-tab').click(function() {
+                filterRequests('accepted');
+            });
+
+            $('#nav-profile-tab1').click(function() {
+                filterRequests('rejected');
+            });
+        });
+    </script>
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+
     
+      
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
@@ -247,7 +247,4 @@
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
     </body>
-    
-    </html>
-    
-    
+  </html>

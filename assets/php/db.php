@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost";
+$servername = "localhost"; //host
 $username = "root"; // Default XAMPP username
 $password = ""; // Default XAMPP has no password
 $dbname = "webproject"; // Your database name
