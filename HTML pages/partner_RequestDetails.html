@@ -8,9 +8,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="manifest" href="site.webmanifest">
-        <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">    
+        <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">   
         
-    
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
         <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
         <link rel="stylesheet" href="../assets/css/animate.css">
@@ -103,34 +103,44 @@
     </div>
 </section>
   <!--page-title-area end-->
+    <div id="alert-container"></div>
     <main>
         <div class="section-title text-center mb-55">    
-
             <div class="request-details-container">
-                     <div class="request-details-header">
-                        <a href="View Requests - Partner.html" class="theme_btn comment_btn">return back</a>
-                     </div>
-
-                 <div class="center-containter">
-                    <h1>Request details</h1>
-                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/20231604-Emran-Gary_1878bb52185_large.jpeg">
-                 </div>
-     
-                 <div class="request-details-body">
-                     <!-- Dummy Request Details -->
-                     <p><strong>Status:</strong>rejected</p>
-                     <a href="AbdulrahmanLearner-Profile.html" class="profile-link">view learner profile</a>
-                     <p><strong>Learner Name:</strong> Abdulrahman Ali</p>
-                     <p><strong>Language Goals:</strong> Improve fluency in English</p>
-                     <p><strong>Proficiency Level:</strong> Advanced</p>
-                     <p><strong>Scheduled to be on:</strong> 02/04/2024 <strong>from</strong> 10:00 AM<strong> to </strong>11:00 AM</p>
-                     <p><strong>Session duration:</strong> 1 hr</p>
-                 </div>
-
+                <div class="request-details-header">
+                    <a href="View Requests - Partner.html" class="theme_btn comment_btn">return back</a>
                 </div>
 
-             </div>
+                <div class="center-containter">
+                    <h1>Request details</h1>
+                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/letter-h-pink-alphabet-glossy-png.png">
+                </div>
+    
+                <div class="request-details-body">
+                    <p><strong>Status:</strong> <span id="status"></span></p>
+                    <a href="HalahLearner-Profile.html" class="profile-link">view learner profile</a>
+                    <p><strong>Learner Name:</strong> <span id="learnerName"></span></p>
+                    <p><strong>Language Goals:</strong> <span id="languageGoals"></span></p>
+                    <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel"></span></p>
+                    <p><strong>Scheduled to be on:</strong> <span id="scheduledDate"></span> <strong>from</strong> <span id="startTime"></span> <strong>to</strong> <span id="endTime"></span></p>
+                    <p><strong>Session duration:</strong> <span id="sessionDuration"></span></p>
 
+                    <!-- Display accept and reject buttons based on request status -->
+                    <form id="decisionForm">
+                        <div class="decide-request">
+                            <div>
+                                <input type="hidden" name="decision" id="acceptDecision" value="accept">
+                                <button type="button" class="theme_btn free_btn acception-button accept-btn" style="background-color: green;">Accept</button>
+                            </div>
+                            <div>
+                                <input type="hidden" name="decision" id="rejectDecision" value="reject">
+                                <button type="button" class="theme_btn free_btn acception-button reject-btn" style="background-color: red;">Reject</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </main>
 
  <!--footer-area start-->
@@ -196,6 +206,63 @@
 
 
 <!-- JS here -->
+<script>
+    $(document).ready(function(){
+        // Fetch request details from PHP file
+        $.getJSON('request_details.php', {request_id: <?php echo $_GET['request_id']; ?>}, function(data){
+            // Update HTML elements with fetched data
+            $('#status').text(data.Status);
+            $('#learnerName').text(data.LearnerName);
+            $('#languageGoals').text(data.LanguageGoals);
+            $('#proficiencyLevel').text(data.ProficiencyLevel);
+            $('#scheduledDate').text(data.ScheduledDate);
+            $('#startTime').text(data.StartTime);
+            $('#endTime').text(data.EndTime);
+            $('#sessionDuration').text(data.SessionDuration);
+
+            // Hide accept and reject buttons if status is not 'pending'
+            if (data.Status !== 'pending') {
+                $('.accept-btn, .reject-btn').hide();
+            }
+        });
+    });
+</script>
+
+<script>
+    function checkAndSubmit(redirectPage) {
+        var acceptDecision = document.getElementById('acceptDecision');
+
+        // Simulate a schedule conflict
+        var hasConflict = true; // Always set to true for testing purposes
+
+        if (hasConflict) {
+            displayAlert(" × Unable to accept the request due to conflict in schedule.", "alert-danger");
+            return;
+        }
+
+        acceptDecision.value = 'accept';
+
+        // Submit the form after checking for conflicts
+        document.getElementById('decisionForm').submit();
+    }
+
+    function displayAlert(message, alertClass) {
+        var alertContainer = document.getElementById('alert-container');
+        
+        // Scroll to the top of the page
+        window.scrollTo(0, 0);
+
+        // Create an alert element
+        var alertElement = document.createElement('div');
+        alertElement.className = 'alert ' + alertClass;
+        alertElement.textContent = message;
+
+        // Append the alert element to the container
+        alertContainer.innerHTML = ''; // Clear previous alerts
+        alertContainer.appendChild(alertElement);
+    }
+</script>
+
 
 
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
