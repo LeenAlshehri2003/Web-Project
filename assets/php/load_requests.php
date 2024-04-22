@@ -13,11 +13,16 @@ $db = new Database();
 $conn = $db->getConnection(); // Get the database connection
 
 // SQL query to fetch all requests along with the partner's photo
+// Assuming that `PartnerID` in `languagerequests` corresponds to `UserID` in `users`
 $sql = "SELECT lr.*, u.Photo AS PartnerPhoto
         FROM languagerequests lr
-        JOIN users u ON lr.PartnerID = u.UserID";  // Joining with the users table to fetch the partner's photo
+        INNER JOIN users u ON lr.PartnerID = u.UserID
+        WHERE lr.LearnerID = ?";  // Filter requests for the logged-in learner
 
-$result = $conn->query($sql);
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("i", $userId); // Bind the learner ID to the parameter
+$stmt->execute();
+$result = $stmt->get_result();
 
 $requests = []; // Array to hold the fetched data
 
