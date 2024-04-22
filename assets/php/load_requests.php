@@ -3,11 +3,11 @@ require_once 'db.php';  // Ensure this points to your actual database connection
 session_start();
 
 // Ensure the user is logged in
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['learner_id'])) {
     exit('User not logged in.');  // Proper handling for not logged-in users
 }
 
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['learner_id'];
 
 $db = new Database();
 $conn = $db->getConnection(); // Get the database connection

@@ -148,20 +148,19 @@
               </ul>
               <div class="tab-content pt-3">
                 <div class="tab-pane active">
-                  <form class="form" novalidate="">
                     <div class="row">
                       <div class="col">
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
                               <label>First Name</label>
-                              <input class="form-control" type="text" name="First name" placeholder="First Name" >
+                              <input class="form-control" type="text" name="FirstName" placeholder="First Name" >
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Last Name</label>
-                              <input class="form-control" type="text" name="Last Name" placeholder="Last Name" >
+                              <input class="form-control" type="text" name="LastName" placeholder="Last Name" >
                             </div>
                           </div>
 
@@ -170,12 +169,12 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Phone Number</label>
-                              <input class="form-control" type="text" name="Phone Number" placeholder="Phone Number" >
+                              <input class="form-control" type="text" name="Phone" placeholder="Phone Number" >
                             </div>
                           </div>
                             <div class="col">
                             <div class="form-group">
-                              <label for ="Gender">Select Gender:<br></label>
+                              <label for ="Gender" >Select Gender:<br></label>
                             </div>
                           <select id="Gender" name="Gender">
                             <option selected> Male</option>
@@ -190,6 +189,39 @@
                             </div>
                               <input class="form-control" name="Age" type="text" placeholder="25" style ="width:150px;">
                             </div>
+                            <div class="col">
+                              <div class="form-group">
+                                  <label>Select Languages:</label>
+                                  <div>
+                                      <input type="checkbox" id="english" name="languages[]" value="1"> <!-- Assuming 1 is the ID for English -->
+                                      <label for="english">English</label>
+                                  </div>
+                                  <div>
+                                      <input type="checkbox" id="spanish" name="languages[]" value="2"> <!-- Assuming 2 is the ID for Spanish -->
+                                      <label for="spanish">Spanish</label>
+                                  </div>
+                                  <div>
+                                      <input type="checkbox" id="french" name="languages[]" value="3"> <!-- Assuming 3 is the ID for French -->
+                                      <label for="french">French</label>
+                                  </div>
+                                  <div>
+                                      <input type="checkbox" id="german" name="languages[]" value="4"> <!-- Assuming 4 is the ID for German -->
+                                      <label for="german">German</label>
+                                  </div>
+                                  <div>
+                                      <input type="checkbox" id="chinese" name="languages[]" value="5"> <!-- Assuming 5 is the ID for Chinese -->
+                                      <label for="chinese">Chinese</label>
+                                  </div>
+                                  <div>
+                                      <input type="checkbox" id="japanese" name="languages[]" value="6"> <!-- Assuming 6 is the ID for Japanese -->
+                                      <label for="japanese">Japanese</label>
+                                  </div>
+                                  <div>
+                                      <input type="checkbox" id="Italian" name="languages[]" value="7"> <!-- Assuming 7 is the ID for Russian -->
+                                      <label for="Italian">Italian</label>
+                                  </div>
+                              </div>
+                          </div>
                         </div>
                         
                         <div class="row">
@@ -205,7 +237,7 @@
                           <div class="col mb-3">
                             <div class="form-group">
                               <label>About</label>
-                              <textarea id="About" name="About" class="form-control" rows="5" placeholder="Languages and cultural knowldege"></textarea>
+                              <textarea id="Bio" name="Bio" class="form-control" rows="5" placeholder="Languages and cultural knowldege"></textarea>
                             </div>
                           </div>
                         </div>
@@ -260,7 +292,7 @@
                     </div>
                     <div class="row">
                       <div class="col-12 col-md-3 mb-3">
-                        <button  class="theme_btn free_btn"  type="submit">Save</button>
+                        <button  class="theme_btn free_btn"  type="submit" style="background-color: green;">Save</button>
                      
                       </div>
                    
