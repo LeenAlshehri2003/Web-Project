@@ -47,6 +47,20 @@ By Mashael:*/
   padding-top:70px;
   padding-bottom:100px;
 }
+.grid-item {
+  display: inline-block;
+  width: calc(33.33% - 20px); /* Adjust the width based on your layout */
+  margin-right: 20px;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+
+/* Clearfix to handle wrapping */
+.grid-item::after {
+  content: '';
+  display: block;
+  clear: both;
+}
 
 a:hover.hoverpartner{
    text-decoration: underline;

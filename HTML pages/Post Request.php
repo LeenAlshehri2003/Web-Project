@@ -125,170 +125,119 @@
                    </div>
                </div>
            </div>
-       </section>
-         <!--page-title-area end-->
-         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-         <div class="container">
-         <div class="row flex-lg-nowrap">         
-           <div class="col ">
-             <div class="row">
-               <div class="col mb-3">
-                 <div class="card">
-                   <div class="card-body">
-                     <div class="e-profile">
-                         <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
-                         </div>
-                       </div>
-                       <ul class="nav nav-tabs">
-                         <li class="nav-item"><a href="" class="active nav-link">Post Request</a></li>
-                       </ul>
-                       <div class="tab-content pt-3">
-                         <div class="tab-pane active">
-                           <form  id="postRequestForm" method="post" action="../assets/php/createRequest.php" class="form" >
-                             <div class="row">
-                               <div class="col">
-                                 <div class="row">
-                                   <div class="col">
-                                     <div class="form-group">
-                                      <label>Profiency Level</label><br>
+           </section>
+           <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row flex-lg-nowrap">
+
+  <div class="col ">
+  <form  id="postRequestForm" method="post" action="../assets/php/createRequest.php" class="form" >
+    <div class="row">
+      <div class="col mb-3">
+        <div class="card">
+          <div class="card-body">
+            <div class="e-profile">
+              </div>
+              <ul class="nav nav-tabs">
+              <li class="nav-item"><a href="" class="active nav-link">Post Request</a></li>
+              </ul>
+              <div class="tab-content pt-3">
+                <div class="tab-pane active">
+                    <div class="row">
+                      <div class="col">
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                            <label>Profiency Level</label><br>
                                       <select name="proficiencyLevel" id="proficiencyLevel">
                                          <option>Beginner</option>
                                         <option>Intermediate</option>
                                         <option>Advanced</option></select>
-                                     </div>
-                                   </div>
-                                   <div class="col">
-                                    <div class="form-group">
-                                     <label>Language Partner</label><br>
-                                     <select name="languagePartner" id="languagePartner">
-                                     <?php include '../assets/php/RequestForm.php'; ?>
-                                    </div>
-                                  </div>
-                                 </div>
-                                 <br><br>
-                                 <div class="col">
-                                     <div class="form-group">
-                                      <div class="formbold-mb-3">
-                                        <label for="dob" > Session Date </label>
-                                        <input type="date" name="sessionDate" id="sessionDate" class="formbold-form-input" />
-                                      </div>
-                                
-                                     </div>
-                                   </div>
-                                   <!-- <div class="col">
-                                    <div class="form-group">
-                                      <label for ="languageSelect">Language<br></label>
-                                    </div>
-                                   <select id="languageSelect" >
-                                      <option value="">Select a Language</option>
-                                      Options will be added dynamically 
-                                    </select> 
-                                    
-                                    </div>
-                                 </div> -->
-                                 <div class="row">
-                                   <div class="col md-6 mb-3">
-                                     <label for ="Time">Session Start Time:</label>
-                                     <input  type="time" name="sessionStartTime" id="sessionStartTime" class="form-control"  style ="width:150px;">
-                                   </div>
-                                   <div class="col">
-                                    <div class="form-group">
-                                      <label for ="Duration">Session Duration in Hours:<br></label>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                            <label>Language Partner</label><br>
+                                     <select name="languagePartner" id="languagePartner" onchange="fetchPrice()">
+                                     <?php include '../assets/php/RequestForm.php'; ?></select>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                            <label for="dob" > Session Date </label><br>
+                            <input type="date" name="sessionDate" id="sessionDate" class="formbold-form-input" style ="width:200px;"/>
+                            </div>
+                          </div>
+                            <div class="col">
+                            <div class="form-group">
+                            <label for ="Time">Session Start Time:</label>
+                             <input  type="time" name="sessionStartTime" id="sessionStartTime" class="form-control"  style ="width:150px;">
+                            </div>
+                        </div>
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                            <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
                                    
-                                  <select  name="sessionDuration" id="sessionDuration">
+                                  <select  name="sessionDuration" id="sessionDuration" onchange="fetchPrice()">
                                     <option selected> 1</option>
                                     <option>2</option>
                                     <option>3</option>
                                   </select>
-                                    </div>
-                                 </div>
-                                 <br>
-                                 <div class="row">
-                                  <div class="col-12 col-md-3 mb-3">
-                                 <div id="totalCost"></div>
-                                  </div>
-                                 </div>
-                               </div>
-                             </div>
-                             <div class="row">
-                              <div class="col md-6 mb-3">
-                                 <div class="mb-2"><b>Would you like to recieve status update notifications?</b></div>
-                                 <div class="row">
-                                   <div class="col">
-                                     <div class="custom-controls-stacked px-2">
-                                       <div class="custom-control custom-checkbox">
-                                         <input type="radio" class="custom-control-input" id="Status"  name= "Status" checked="">
-                                         <label class="custom-control-label" for="Email Notifications">Yes</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                         <input type="radio" class="custom-control-input" id="Status" name= "Status" >
-                                         <label class="custom-control-label" for="notifications-news">No</label>
-                                        
-                                       </div>
-                                     </div>
-                                   </div>
-                                 </div>
-                               </div>
-                             </div>
-                             
-                             <div class="row">
-                               <div class="col-12 col-md-3 mb-3">
-                               <button  value="Post Request" class="theme_btn free_btn" type="submit" style="background-color: green;" >Post</button>
-                                 
-                               </div>
-                             <div class="col-12 col-md-3 mb-3">
-                             <button class="theme_btn free_btn" type="reset"  >Clear</button>
-                              
-                             </div>
-                             
-                           </form>
-         
-                         </div>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-          
-               <div id="popup-box" class="modal">
-                <div class="content">
-                    <br>
-                    <p style="color: #000000;">
-                       Once your request is accepted , an email will be sent to you to proceed with payment.
-                    </p>
-                    <br>
-                    <b>
-                        <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
-                           
-                            &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
-                            <li><a href="Success Post Request.html" class="theme_btn free_btn">Continue </a></li>
+                                </div>
                             </div>
-                    </b>
-                    <a href="#" class="box-close">
-                        ×
-                    </a>
-                </div>
-            </div>
-               <div class="col-12 col-md-3 mb-3">
+                            
+                        </div>
+                        
+                        <div class="row">
+                          <div class="col md-6 mb-3">
+                          <div id="totalCost"></div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-12 col-md-3 mb-3">
+                        <button  class="theme_btn free_btn"  value="Post Request" type="submit" style="background-color: green;">Post</button>
+                     
+                      </div>
+                   
+                    <div class="col-12 col-md-3 mb-3">
+                    <button class="theme_btn free_btn" type="reset">Clear</button>
+                     
+                    </div>
                  
-                 <div class="card">
-                   <div class="card-body">
-                     <h6 class="card-title font-weight-bold">Support</h6>
-                     <p class="card-text">Get fast, free help from our friendly assistants.</p><br>
-                     <li><a href="mailto:LinguaLink@gmail.com?subject=Post Request" class="theme_btn free_btn">Help</a></li>
-                   </div>
-                 </div>
-               </div>
-             </div>
-             
-         
-           </div>
-         </div>
-         </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </form>
+      <div class="col-12 col-md-3 mb-3">
+        <div class="card mb-3">
         
+        <div class="card">
+          <div class="card-body">
+            <h6 class="card-title font-weight-bold">Support</h6>
+            <p class="card-text">Get fast, free help from our friendly assistants.</p><br>
+            <li><a href="mailto:LinguaLink@gmail.com?subject=Edit Profile" class="theme_btn free_btn">Help</a></li>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
     </main>
+        
      <!--footer-area start-->
      <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
       <div class="footer-blur"></div>
@@ -357,6 +306,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../assets/js/PostRequest.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
