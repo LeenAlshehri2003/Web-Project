@@ -1,8 +1,4 @@
 <?php
-/* to query
-1.connect local host
-2.connect to specififc db
-3.now can query */
 // Include database connection
 require_once 'db.php';
 session_start();
@@ -13,17 +9,20 @@ if (!isset($_SESSION['user_id'])) {
 }
 $userId = $_SESSION['user_id'];
 
+// Fetch requests from the database based on status
+$status = $_GET['status']; // Get the status parameter from the URL
+
 // Fetch requests from the database
 $db = new Database();
 $conn = $db->getConnection();
 
-// Example query to fetch requests
+// Example query to fetch requests based on status
 $sql = "SELECT lr.*, u.FirstName AS LearnerFirstName, u.LastName AS LearnerLastName
         FROM languagerequests lr
         JOIN learners l ON lr.LearnerID = l.LearnerID
-        JOIN users u ON l.LearnerID = u.UserID";
+        JOIN users u ON l.LearnerID = u.UserID
+        WHERE lr.Status = '$status'";
 $result = $conn->query($sql);
-
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
