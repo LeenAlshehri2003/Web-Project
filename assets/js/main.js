@@ -30,8 +30,11 @@
 		Mobile Menu
 	--------------------------------------*/
 
-	$('#mobile-menu-active').metisMenu();
-
+	$(document).ready(function() {
+		// Initialize metisMenu plugin
+		$('#mobile-menu-active').metisMenu();
+	});
+	
 	$('#mobile-menu-active .has-dropdown > a').on('click', function (e) {
 		e.preventDefault();
 	});
@@ -105,79 +108,81 @@
 
 
 	// mainSlider
-	function mainSlider() {
-		var BasicSlider = $('.slider-active');
-		BasicSlider.on('init', function (e, slick) {
-			var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
-			doAnimations($firstAnimatingElements);
-		});
-		BasicSlider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
-			var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
-			doAnimations($animatingElements);
-		});
-		BasicSlider.slick({
-			infinite: true,
-			autoplay: true,
-			autoplaySpeed: 3000,
-			dots: false,
-			fade: true,
-			speed: 1000,
-			arrows: false,
-			cssEase: 'linear',
-			prevArrow: '<button type="button" class="slick-prev"><i class="far fa-chevron-left"></i></button>',
-			nextArrow: '<button type="button" class="slick-next"><i class="far fa-chevron-right"></i></button>',
-			responsive: [
-				{
-					breakpoint: 850,
-					settings: { dots: false, arrows: false }
-				}
-			]
-		});
-
-		function doAnimations(elements) {
-			var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-			elements.each(function () {
-				var $this = $(this);
-				var $animationDelay = $this.data('delay');
-				var $animationType = 'animated ' + $this.data('animation');
-				$this.css({
-					'animation-delay': $animationDelay,
-					'-webkit-animation-delay': $animationDelay
-				});
-				$this.addClass($animationType).one(animationEndEvents, function () {
-					$this.removeClass($animationType);
-				});
+	$(document).ready(function() {
+		// mainSlider
+		function mainSlider() {
+			var BasicSlider = $('.slider-active');
+			BasicSlider.on('init', function (e, slick) {
+				var $firstAnimatingElements = $('.single-slider:first-child').find('[data-animation]');
+				doAnimations($firstAnimatingElements);
 			});
+			BasicSlider.on('beforeChange', function (e, slick, currentSlide, nextSlide) {
+				var $animatingElements = $('.single-slider[data-slick-index="' + nextSlide + '"]').find('[data-animation]');
+				doAnimations($animatingElements);
+			});
+			BasicSlider.slick({
+				infinite: true,
+				autoplay: true,
+				autoplaySpeed: 3000,
+				dots: false,
+				fade: true,
+				speed: 1000,
+				arrows: false,
+				cssEase: 'linear',
+				prevArrow: '<button type="button" class="slick-prev"><i class="far fa-chevron-left"></i></button>',
+				nextArrow: '<button type="button" class="slick-next"><i class="far fa-chevron-right"></i></button>',
+				responsive: [
+					{
+						breakpoint: 850,
+						settings: { dots: false, arrows: false }
+					}
+				]
+			});
+	
+			function doAnimations(elements) {
+				var animationEndEvents = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
+				elements.each(function () {
+					var $this = $(this);
+					var $animationDelay = $this.data('delay');
+					var $animationType = 'animated ' + $this.data('animation');
+					$this.css({
+						'animation-delay': $animationDelay,
+						'-webkit-animation-delay': $animationDelay
+					});
+					$this.addClass($animationType).one(animationEndEvents, function () {
+						$this.removeClass($animationType);
+					});
+				});
+			}
 		}
-	}
-	mainSlider();
-
-
-	// deal-active
-	$('.deal-active').owlCarousel({
-		loop: true,
-		margin: 30,
-		items: 3,
-		autoplay: true,
-		autoplaySpeed: 2000,
-		navText: ['<i class="fal fa-long-arrow-left"></i>', '<i class="fal fa-long-arrow-right"></i>'],
-		nav: true,
-		dots: false,
-		responsive: {
-			0: {
-				items: 1,
-				margin: 0,
-				nav: false
-			},
-			500: {
-				items: 2,
-			},
-			980: {
-				items: 3,
-			},
-		}
-	})
-
+		mainSlider();
+	
+		// deal-active
+		$('.deal-active').owlCarousel({
+			loop: true,
+			margin: 30,
+			items: 3,
+			autoplay: true,
+			autoplaySpeed: 2000,
+			navText: ['<i class="fal fa-long-arrow-left"></i>', '<i class="fal fa-long-arrow-right"></i>'],
+			nav: true,
+			dots: false,
+			responsive: {
+				0: {
+					items: 1,
+					margin: 0,
+					nav: false
+				},
+				500: {
+					items: 2,
+				},
+				980: {
+					items: 3,
+				},
+			}
+		});
+	});
+	
 
 	// instructor-active
 	$('.instructor-active').owlCarousel({
