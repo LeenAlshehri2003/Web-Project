@@ -158,7 +158,7 @@
                           <div class="col">
                             <div class="form-group">
                             <label>Language Partner</label><br>
-                                     <select name="languagePartner" id="languagePartner">
+                                     <select name="languagePartner" id="languagePartner" onchange="fetchPrice()">
                                      <?php include '../assets/php/RequestForm.php'; ?></select>
                             </div>
                           </div>
@@ -183,7 +183,7 @@
                             <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
                                    
-                                  <select  name="sessionDuration" id="sessionDuration">
+                                  <select  name="sessionDuration" id="sessionDuration" onchange="fetchPrice()">
                                     <option selected> 1</option>
                                     <option>2</option>
                                     <option>3</option>
@@ -306,6 +306,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../assets/js/PostRequest.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
