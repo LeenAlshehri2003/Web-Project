@@ -1,42 +1,27 @@
 <?php
-// Assuming you have established a database connection
-// Include your database connection script
+// Include the database connection
 require_once 'db.php';
 
-// Start the session
-session_start();
+// Check if request ID and status are provided in the URL
+if(isset($_GET['request_id']) && isset($_GET['status'])) {
+    // Sanitize the input to prevent SQL injection
+    $request_id = mysqli_real_escape_string($conn, $_GET['request_id']);
+    $status = mysqli_real_escape_string($conn, $_GET['status']);
 
-// Ensure the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    exit('User not logged in.'); // Proper handling for not logged-in users
-    echo "not logged in";
-}
+    // Update the status in the database
+    $updateSql = "UPDATE languagerequests SET Status = '$status' WHERE RequestID = '$request_id'";
+    $updateResult = $conn->query($updateSql);
 
-$userId = $_SESSION['user_id'];
-
-// Create a Database object
-$db = new Database();
-
-// Get the database connection
-$conn = $db->getConnection();
-/////////////////////////////////////////////////////
-// Handle accept and reject requests
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['decision'])) {
-    $decision = $_POST['decision'];
-    if ($decision === 'accept') {
-        // Update the status in the database to 'Accepted'
-        $query = "UPDATE languagerequests SET Status = 'Accepted' WHERE RequestID = ?";
-    } elseif ($decision === 'reject') {
-        // Update the status in the database to 'Rejected'
-        $query = "UPDATE languagerequests SET Status = 'Rejected' WHERE RequestID = ?";
+    // Check if the update was successful
+    if($updateResult) {
+        echo "Status updated successfully.";
+    } else {
+        echo "Error updating status: " . $conn->error;
     }
-
-    // Prepare and execute the query
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([$requestId]); // $requestId is the ID of the request you want to update
-
-    // Redirect to the requestslist page
-    header('Location: requestslist.php');
-    exit;
+} else {
+    echo "Invalid request. Request ID and status not provided.";
 }
+
+// Close the database connection
+$conn->close();
 ?>

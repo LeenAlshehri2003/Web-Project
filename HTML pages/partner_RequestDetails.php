@@ -86,7 +86,7 @@
     </header>
 
     <div id="alert-container"></div>
-    <div onload="loadRequestDetails()" id="request-details-container" >Testing</div>
+    <div onload="loadRequestDetails()" id="request-details-container" ></div>
 
  <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
@@ -174,7 +174,29 @@
         // Call loadRequestDetails function when the page loads
         window.onload = loadRequestDetails;
     </script>
+<script>
+    // Function to update request status
+    function updateStatus(newStatus) {
+        // Get the request ID from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var requestId = urlParams.get('request_id');
 
+        // Send AJAX request to update status
+        fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
+            .then(response => response.text())
+            .then(data => {
+                // Reload the page or perform any necessary actions upon successful status update
+                console.log(data);
+                // For example, you can reload the page after updating status
+                window.location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="../assets/js/popper.min.js"></script>
@@ -194,5 +216,6 @@
 <script src="../assets/js/jquery.easypiechart.js"></script>
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
+
 </body>
 </html>

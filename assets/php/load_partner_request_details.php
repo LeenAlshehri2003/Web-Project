@@ -8,7 +8,7 @@ if(isset($_GET['request_id'])) {
     $request_id = mysqli_real_escape_string($conn, $_GET['request_id']);
     
     // Prepare SQL statement to retrieve request details
-    $sql = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, l.LanguageName
+    $sql = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, l.LanguageName ,u.Photo AS ProfilePicture
             FROM languagerequests lr 
             JOIN users u ON lr.LearnerID = u.UserID 
             JOIN languages l ON lr.LanguageID = l.LanguageID 
@@ -41,7 +41,7 @@ if(isset($_GET['request_id'])) {
         
                             <div class="center-containter">
                                 <h1>Request details</h1>
-                                <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/letter-h-pink-alphabet-glossy-png.png">
+                                <img class="profile-picture big-img" alt="profile-picture" src="../assets/img/Partners images/' . $row['ProfilePicture'] . '">                            
                             </div>
             
                             <div class="request-details-body">
@@ -52,23 +52,15 @@ if(isset($_GET['request_id'])) {
                                 <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
                                 <p><strong>Scheduled to be on:</strong> <span id="scheduledDate">' . $row['PreferredSchedule'] . '</span> <strong>from</strong> <span id="startTime">' . $startTime . '</span> <strong>to</strong> <span id="endTime">' . $endTime . '</span></p>
                                 <p><strong>Session duration:</strong> <span id="sessionDuration">' . $row['SessionDuration'] . '</span></p>';
-        
-            // Display accept and reject buttons only if status is pending
-            if($row['Status'] == 'Pending') {
-                echo '<form id="decisionForm">
-                        <div class="decide-request">
-                            <div>
-                                <input type="hidden" name="decision" id="acceptDecision" onclick="checkAndSubmit(\'accept\')" value="accept">
-                                <button type="button" class="theme_btn free_btn acception-button accept-btn" style="background-color: green;">Accept</button>
-                            </div>
-                            <div>
-                                <input type="hidden" name="decision" id="rejectDecision" onclick="checkAndSubmit(\'reject\')" value="reject">
-                                <button type="button" class="theme_btn free_btn acception-button reject-btn" style="background-color: red;">Reject</button>
-                            </div>
-                        </div>
-                    </form>';
+
+            // Check if status is Pending, then show accept and reject buttons
+            if ($row['Status'] == 'Pending') {
+                echo '<div  class="decide-request">
+                <div><button onclick="updateStatus(\'Accepted\')" class="theme_btn free_btn acception-button accept-btn" style="background-color: green;" >Accept</button></div>
+                <div><button onclick="updateStatus(\'Rejected\')" class="theme_btn free_btn acception-button reject-btn" style="background-color: red;">Reject</button></div>
+                      </div>';
             }
-            
+
             echo '</div> <!-- Close request-details-body -->
                     </div> <!-- Close request-details-container -->
                 </div> <!-- Close section-title -->
