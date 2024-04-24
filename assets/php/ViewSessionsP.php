@@ -13,7 +13,7 @@ $db = new Database();
 $conn = $db->getConnection(); // Get the database connection
 
 // Retrieve sessions from the database
-$query = "SELECT LearnerID, ProficiencyLevel, duration, SessionDate, Status FROM sessions";
+$query = "SELECT LearnerID, ProficiencyLevel, duration, SessionDate, Status FROM sessions WHERE PartnerID = $userId";
 $result = mysqli_query($connection, $query);
 
 // Prepare an array to store the session data

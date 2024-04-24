@@ -14,7 +14,7 @@ $conn = $db->getConnection();
 // Retrieve form data
 $comment = $_POST['comment'];
 $rating = $_POST['rating'];
-$sessionID = $_GET['sessionID'];
+$sessionID = $_POST['sessionID'];
 
 // Prepare the SQL statement to insert the review
 $stmt = $conn->prepare("INSERT INTO reviews (SessionID, Rating, Comment) VALUES (?, ?, ?)");
