@@ -29,7 +29,7 @@ $(document).ready(function() {
                                                   '</ul>' +
                                               '</div>' +
                                               '<div class="pr__footer mt-50">';
-                                              if (session.Status === 'Completed' ) { sessionItem+= ' <a href="../HTML pages/Partner Review - Learner.html" class="theme_btn price_btn active">Rate Partner!</a>' } 
+                                              if (session.Status === 'Completed' ) { sessionItem += '<a href="../HTML%20pages/Partner%20Review%20-%20Learner.html?partnerId=' + session.SessionID + '" class="theme_btn price_btn active">Rate Partner!</a>'; } 
                                               sessionItem+=  '</div>' + '</div>' + '</div>';
 
                     if (session.Status === 'Scheduled' ) {
