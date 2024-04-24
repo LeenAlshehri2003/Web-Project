@@ -55,6 +55,7 @@ By Mashael:*/
   vertical-align: top;
 }
 
+
 /* Clearfix to handle wrapping */
 .grid-item::after {
   content: '';

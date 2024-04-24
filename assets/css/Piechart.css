@@ -1,0 +1,32 @@
+.pie-chart {
+    position: relative;
+    display: inline-block;
+    width: 100px; /* Adjust width as needed */
+    height: 100px; /* Adjust height as needed */
+}
+
+.pie-chart:before {
+    content: '';
+    position: absolute;
+    border: 2px solid #e75115; /* Orange */
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    clip: rect(0, 50px, 100px, 0); /* Adjust the clip to change the fill percentage */
+}
+
+.pie-chart.beginner:before {
+    background-color: #5415e7; /* Orange */
+}
+
+.pie-chart.intermediate:before {
+    background-color: #e75115; /* Orange */
+}
+
+.pie-chart.advanced:before {
+    background-color: #e75115; /* Orange */
+}
+
+.pie-chart.default:before {
+    background-color: #e75115; /* Orange */
+}
