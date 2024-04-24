@@ -12,9 +12,9 @@ if (!in_array($status, $statuses)) {
 }
 
 // Prepare SQL query to fetch requests based on status
-$query = "SELECT lr.*, CONCAT(l.FirstName, ' ', l.LastName) AS FullName, l.Photo AS ProfilePicture
+$query = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, u.Photo AS ProfilePicture, lr.SubmitDate
           FROM languagerequests lr
-          INNER JOIN users l ON lr.LearnerID = l.UserID
+          INNER JOIN users u ON lr.LearnerID = u.UserID
           WHERE lr.Status = ?";
 
 $stmt = $conn->prepare($query);
@@ -33,7 +33,20 @@ if ($result->num_rows > 0) {
             <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/<?php echo $row['ProfilePicture']; ?>">
             <div class="request-details-body">
                 <p><strong>Learner Name:</strong> <?php echo $row['FullName']; ?></p>
-                <p><strong>Time till request expires:</strong> 13h</p>
+                <?php if ($status === 'Pending') {
+                    // Calculate time till expiration
+                    $submitDate = strtotime($row['SubmitDate']);
+                    $currentTime = time();
+                    $expirationTime = $submitDate + 24 * 3600; // Calculate expiration time as 24 hours from submission time
+                    $timeDiff = $expirationTime - $currentTime;
+                    $hoursRemaining = max(round($timeDiff / 3600), 0); // Ensure the result is non-negative
+
+                    if ($hoursRemaining == 0) {
+                        echo "<p><strong>Time till request expires:</strong> Expired</p>";
+                    } else {
+                        echo "<p><strong>Time till request expires:</strong> $hoursRemaining hours</p>";
+                    }
+                } ?>
             </div>
         </div>
         <?php
