@@ -124,14 +124,14 @@
                        <div class="instructor-profile">
                            <h2>Partner Profile</h2>
                            <ul class="profile-list mb-50">
-                           <li>First Name: <span><?php echo htmlspecialchars($partnerProfile['FirstName']); ?></span></li>
-        <li>Last Name: <span><?php echo htmlspecialchars($partnerProfile['LastName']); ?></span></li>
-        <li>Age: <span><?php echo htmlspecialchars($partnerProfile['Age']); ?></span></li>
-        <li>Gender: <span><?php echo htmlspecialchars($partnerProfile['Gender']); ?></span></li>
-        <li>Email: <span><?php echo htmlspecialchars($partnerProfile['Email']); ?></span></li>
-        <li>Mobile Num: <span><?php echo htmlspecialchars($partnerProfile['Phone']); ?></span></li>
-        <li>City: <span><?php echo htmlspecialchars($partnerProfile['City']); ?></span></li>
-        <li>Languages Spoken
+                           <li>First Name: <span><?php echo htmlspecialchars($partnerData['FirstName']); ?></span></li>
+        <li>Last Name: <span><?php echo htmlspecialchars($partnerData['LastName']); ?></span></li>
+        <li>Age: <span><?php echo htmlspecialchars($partnerData['Age']); ?></span></li>
+        <li>Gender: <span><?php echo htmlspecialchars($partnerData['Gender']); ?></span></li>
+        <li>Email: <span><?php echo htmlspecialchars($partnerData['Email']); ?></span></li>
+        <li>Mobile Num: <span><?php echo htmlspecialchars($partnerData['Phone']); ?></span></li>
+        <li>City: <span><?php echo htmlspecialchars($partnerData['City']); ?></span></li>
+        <li>Languages Spoken:
         <ul>
             <?php foreach ($partnerData['Languages'] as $language): ?>
                 <li><?php echo htmlspecialchars($language); ?></li>
@@ -170,7 +170,7 @@
                                 <a href="#"><i class="fas fa-star"></i></a>
                             </div>
                         <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
-                        <p class="mb-25"><?php echo htmlspecialchars($partnerProfile['Bio']); ?></p>
+                        <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
                         </div>
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
