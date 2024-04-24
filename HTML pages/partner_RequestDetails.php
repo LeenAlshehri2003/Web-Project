@@ -1,15 +1,4 @@
-<?php
-    session_start();  // Start the session at the beginning of each PHP file
 
-    if (isset($_SESSION['learner_id'])) {
-        $learnerId = $_SESSION['learner_id'];  // Use $learnerId in your page logic
-        // Further code to handle logged in learner
-    } else {
-        // Redirect to login page if not logged in
-        header("Location: login.php");
-        exit();
-    }
-    ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -201,6 +190,10 @@
                 console.log(data);
                 // For example, you can reload the page after updating status
                 window.location.reload();
+                if(newStatus=='Accepted')
+                window.alert("Request has been accepted!");
+                if(newStatus=='Rejected')
+                window.alert("Request has been Rejected!");
             })
             .catch(error => {
                 console.error('Error:', error);
