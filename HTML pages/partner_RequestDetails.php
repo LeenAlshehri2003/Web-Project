@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,64 +85,9 @@
                     </div>
         </div> <!-- /.theme-main-menu -->
     </header>
- <!--page-title-area start-->
- <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
-    <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-12">
-                <div class="page-title-wrapper mb-50">
-                   <h1 class="page-title mb-25">Request Details</h1>
-                   <div class="breadcrumb-list">
-                      <ul class="breadcrumb">
-                          <li><a href="HomePartner.html">Home -</a></li>
-                          <li><a href="#"> Request Details</a></li>
-                      </ul>
-                   </div>
-              </div>
-            </div>
-        </div>
-    </div>
-</section>
-  <!--page-title-area end-->
+
     <div id="alert-container"></div>
-    <main>
-        <div class="section-title text-center mb-55">    
-            <div class="request-details-container">
-                <div class="request-details-header">
-                    <a href="View Requests - Partner.html" class="theme_btn comment_btn">return back</a>
-                </div>
-
-                <div class="center-containter">
-                    <h1>Request details</h1>
-                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/letter-h-pink-alphabet-glossy-png.png">
-                </div>
-    
-                <div class="request-details-body">
-                    <p><strong>Status:</strong> <span id="status"></span></p>
-                    <a href="HalahLearner-Profile.html" class="profile-link">view learner profile</a>
-                    <p><strong>Learner Name:</strong> <span id="learnerName"></span></p>
-                    <p><strong>Language Goals:</strong> <span id="languageGoals"></span></p>
-                    <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel"></span></p>
-                    <p><strong>Scheduled to be on:</strong> <span id="scheduledDate"></span> <strong>from</strong> <span id="startTime"></span> <strong>to</strong> <span id="endTime"></span></p>
-                    <p><strong>Session duration:</strong> <span id="sessionDuration"></span></p>
-
-                    <!-- Display accept and reject buttons based on request status -->
-                    <form id="decisionForm">
-                        <div class="decide-request">
-                            <div>
-                                <input type="hidden" name="decision" id="acceptDecision" value="accept">
-                                <button type="button" class="theme_btn free_btn acception-button accept-btn" style="background-color: green;">Accept</button>
-                            </div>
-                            <div>
-                                <input type="hidden" name="decision" id="rejectDecision" value="reject">
-                                <button type="button" class="theme_btn free_btn acception-button reject-btn" style="background-color: red;">Reject</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div onload="loadRequestDetails()" id="request-details-container" ></div>
 
  <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
@@ -206,65 +152,56 @@
 
 
 <!-- JS here -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    $(document).ready(function(){
-        // Fetch request details from PHP file
-        $.getJSON('request_details.php', {request_id: <?php echo $_GET['request_id']; ?>}, function(data){
-            // Update HTML elements with fetched data
-            $('#status').text(data.Status);
-            $('#learnerName').text(data.LearnerName);
-            $('#languageGoals').text(data.LanguageGoals);
-            $('#proficiencyLevel').text(data.ProficiencyLevel);
-            $('#scheduledDate').text(data.ScheduledDate);
-            $('#startTime').text(data.StartTime);
-            $('#endTime').text(data.EndTime);
-            $('#sessionDuration').text(data.SessionDuration);
+        // Function to load request details
+        function loadRequestDetails() {
+            // Get the request ID from the URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var requestId = urlParams.get('request_id');
 
-            // Hide accept and reject buttons if status is not 'pending'
-            if (data.Status !== 'pending') {
-                $('.accept-btn, .reject-btn').hide();
-            }
-        });
-    });
-</script>
-
-<script>
-    function checkAndSubmit(redirectPage) {
-        var acceptDecision = document.getElementById('acceptDecision');
-
-        // Simulate a schedule conflict
-        var hasConflict = true; // Always set to true for testing purposes
-
-        if (hasConflict) {
-            displayAlert(" × Unable to accept the request due to conflict in schedule.", "alert-danger");
-            return;
+            // Fetch the content of load.php
+            fetch('../assets/php/load_partner_request_details.php?request_id=' + requestId)
+                .then(response => response.text())
+                .then(data => {
+                    // Insert the content into the request-details-container
+                    document.getElementById('request-details-container').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
+        // Call loadRequestDetails function when the page loads
+        window.onload = loadRequestDetails;
+    </script>
+<script>
+    // Function to update request status
+    function updateStatus(newStatus) {
+        // Get the request ID from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var requestId = urlParams.get('request_id');
 
-        acceptDecision.value = 'accept';
-
-        // Submit the form after checking for conflicts
-        document.getElementById('decisionForm').submit();
-    }
-
-    function displayAlert(message, alertClass) {
-        var alertContainer = document.getElementById('alert-container');
-        
-        // Scroll to the top of the page
-        window.scrollTo(0, 0);
-
-        // Create an alert element
-        var alertElement = document.createElement('div');
-        alertElement.className = 'alert ' + alertClass;
-        alertElement.textContent = message;
-
-        // Append the alert element to the container
-        alertContainer.innerHTML = ''; // Clear previous alerts
-        alertContainer.appendChild(alertElement);
+        // Send AJAX request to update status
+        fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
+            .then(response => response.text())
+            .then(data => {
+                // Reload the page or perform any necessary actions upon successful status update
+                console.log(data);
+                // For example, you can reload the page after updating status
+                window.location.reload();
+                if(newStatus=='Accepted')
+                window.alert("Request has been accepted!");
+                if(newStatus=='Rejected')
+                window.alert("Request has been Rejected!");
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
 </script>
 
-
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="../assets/js/popper.min.js"></script>
@@ -284,5 +221,6 @@
 <script src="../assets/js/jquery.easypiechart.js"></script>
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
+
 </body>
 </html>
