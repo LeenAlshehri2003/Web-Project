@@ -190,6 +190,10 @@
                 console.log(data);
                 // For example, you can reload the page after updating status
                 window.location.reload();
+                if(newStatus=='Accepted')
+                window.alert("Request has been accepted!");
+                if(newStatus=='Rejected')
+                window.alert("Request has been Rejected!");
             })
             .catch(error => {
                 console.error('Error:', error);
