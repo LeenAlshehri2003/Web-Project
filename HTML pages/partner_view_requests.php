@@ -97,9 +97,9 @@
                 <div class="plan-tab mb-60">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button id="pendingBtn" onclick="loadRequests('pending')" class="nav-link theme_btn active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pending Requests</button>
-                            <button id="acceptedBtn" onclick="loadRequests('accepted')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Accepted Requests</button>
-                            <button id="rejectedBtn" onclick="loadRequests('rejected')" class="nav-link theme_btn" id="nav-profile-tab1" data-bs-toggle="tab" data-bs-target="#nav-profile1" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Rejected Requests</button>
+                            <button id="pendingBtn" onclick="loadRequests('Pending')" class="nav-link theme_btn active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Pending Requests</button>
+                            <button id="acceptedBtn" onclick="loadRequests('Accepted')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Accepted Requests</button>
+                            <button id="rejectedBtn" onclick="loadRequests('Rejected')" class="nav-link theme_btn" id="nav-profile-tab1" data-bs-toggle="tab" data-bs-target="#nav-profile1" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Rejected Requests</button>
                         </div>
                     </nav>
                 </div>
@@ -178,7 +178,7 @@
     $(document).ready(function() {
         // Function to fetch and display requests based on their status
         function loadRequests(status) {
-            $.get('../assets/php/load_view_requests.php?status=' + status, function(data) {
+            $.get('../assets/php/load_partner_view_requests.php?status=' + status, function(data) {
                 $('#requestsContainer').html(data); // Insert the fetched content into the HTML
             });
         }
@@ -196,18 +196,17 @@
         });
     
         $('#rejectedBtn').click(function() {
-            loadRequests('Pejected');
+            loadRequests('Rejected');
         });
     });
+    
     </script>
 
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
-
-    
-      
+  
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
