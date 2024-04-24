@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function previewFile() {
-        const file = fileInput.files[0];
+        var fileInput = document.getElementById('profile-image-upload');
+        var file = fileInput.files[0];
+        var profileImage = document.getElementById('profile-image1');
+    
         if (file) {
             const reader = new FileReader();
             reader.onloadend = function() {
@@ -24,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
             };
             reader.readAsDataURL(file);
         } else {
-            profileImage.src = ""; // Clear the preview
+            profileImage.src = "https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png"; // Default or placeholder image
         }
     }
 
@@ -40,6 +43,8 @@ document.addEventListener("DOMContentLoaded", function() {
             { selector: "NewPass" },
             { selector: "ConfirmPass" },
             { selector: "Gender" },
+            { selector: "SessionPrice" },
+
         ];
 
         formElements.forEach(elem => {
