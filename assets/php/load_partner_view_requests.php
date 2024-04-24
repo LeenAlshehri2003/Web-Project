@@ -69,7 +69,7 @@ if ($result->num_rows > 0) {
                     ?>
             </div>
             <div class="request-actions">
-                <a href="partner_RequestDetails.html?request_id=<?php echo $row['RequestID']; ?>" class="theme_btn free_btn">view details</a>
+                <a href="partner_RequestDetails.php?request_id=<?php echo $row['RequestID']; ?>" class="theme_btn free_btn">view details</a>
             </div>
         </div>
         <?php
