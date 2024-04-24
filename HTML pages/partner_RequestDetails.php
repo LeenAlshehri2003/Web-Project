@@ -6,7 +6,7 @@
         // Further code to handle logged in learner
     } else {
         // Redirect to login page if not logged in
-        header("Location: login.php");
+        header("Location: /Web-Project/assets/php/LoginPartner.php");
         exit();
     }
     ?>

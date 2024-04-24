@@ -1,4 +1,4 @@
-<?php
+  <?php
     session_start();  // Start the session at the beginning of each PHP file
 
     if (isset($_SESSION['learner_id'])) {
@@ -6,10 +6,11 @@
         // Further code to handle logged in learner
     } else {
         // Redirect to login page if not logged in
-        header("Location: login.php");
+        header("Location: /Web-Project/assets/php/LoginPartner.php");
         exit();
     }
     ?>
+    
 <!DOCTYPE html>
 <html>
   <head>
