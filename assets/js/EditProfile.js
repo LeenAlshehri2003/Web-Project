@@ -36,7 +36,15 @@ function validateForm() {
         isValid = false; // Invalidate form due to mismatch
     }
     if (!isValid) {
-        alert("Please fill in all fields highlighted in red.");
+        Swal.fire({
+            title: 'LinguaLink',
+            text: 'Please fill all required fields',
+            icon: 'info',
+            confirmButtonColor: '#FFA500',  
+            confirmButtonText: 'OK'
+            
+          });
+          event.preventDefault(); // Prevent form submission
     }
 
     // Return the overall form validity

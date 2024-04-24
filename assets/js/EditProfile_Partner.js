@@ -75,7 +75,15 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         if (!isValid) {
-            alert("Please fill all fields highlighted in red.");
+            Swal.fire({
+                title: 'LinguaLink',
+                text: 'Please fill all required fields',
+                icon: 'info',
+                confirmButtonColor: '#FFA500',  
+                confirmButtonText: 'OK'
+                
+              });
+              event.preventDefault(); // Prevent form submission
         }
 
         return isValid;
