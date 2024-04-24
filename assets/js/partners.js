@@ -1,28 +1,22 @@
-document.addEventListener("DOMContentLoaded", function() {
-   
+$(document).ready(function () {
+    // Add event listener to partner names
+    $(document).on('click', '.partner-link', function(event) {
+        event.preventDefault(); // Prevent default action (e.g., navigating to the href)
+
+        // Get the partner ID from the data attribute
+        var partnerID = $(this).data('partner-id');
+
+        // Construct the URL for the partner profile page
+        var profileURL = "http://localhost/Web-Project/HTML pages/Partner%20profile%20U.html?partnerId=" + partnerID;
+
+        // Redirect the user to the partner profile page
+        window.location.href = profileURL;
+    });
+
     // Make an AJAX request to fetch partner data from the PHP script
     fetchPartnersData();
-    var catButtons = document.querySelectorAll('.gf_btn');
-    catButtons.forEach(function(button) {
-        button.addEventListener('click', function() {
-            // Remove the 'active' class from all buttons
-            catButtons.forEach(function(btn) {
-                btn.classList.remove('active');
-            });
-            // Add the 'active' class to the clicked button
-            this.classList.add('active');
 
-            // Get the data-filter value from the clicked button
-            var filterValue = this.dataset.filter;
-
-            // Filter partners based on the selected category
-            filterPartners(filterValue);
-        });
-    });
-});
-
-
-$(document).ready(function () {
+    // Add event listener to category buttons
     $('.gf_btn').click(function () {
         // Remove the 'active' class from all buttons
         $('.gf_btn').removeClass('active');
@@ -42,6 +36,7 @@ $(document).ready(function () {
         }
     });
 });
+
 function fetchPartnersData() {
     var xhr = new XMLHttpRequest();
     xhr.open("GET", "http://localhost/Web-Project/assets/php/partners.php", true);
@@ -58,6 +53,7 @@ function fetchPartnersData() {
     };
     xhr.send();
 }
+
 function displayPartners(partners) {
     var partnersContainer = document.getElementById("partners-container");
 
@@ -82,7 +78,7 @@ function displayPartners(partners) {
                             }).join('')}
                             <a class="f-right" href="#"><img src="${partner.Photo}" width="85" height="85" alt="Partner picture"></a>
                         </div>
-                        <h4 class="sub-title mb-20"><a href="../php/Upartner_profile.php?partnerId=${partner.PartnerID}">${partner.FullName}</a></h4>
+                        <h4 class="sub-title mb-20"><a class="partner-link" data-partner-id="${partner.PartnerID}" href="#">${partner.FullName}</a></h4>
                         <div class="course__meta">
                             <span>${partner.Bio}</span>
                         </div>
@@ -100,6 +96,7 @@ function displayPartners(partners) {
         console.error("Partners container not found.");
     }
 }
+
 function getLanguageClasses(languageIDs) {
     var languageClasses = [];
     languageIDs.forEach(function(languageID) {
