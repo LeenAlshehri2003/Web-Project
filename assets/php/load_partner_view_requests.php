@@ -1,4 +1,7 @@
 <?php
+// Set the timezone to Riyadh
+date_default_timezone_set('Asia/Riyadh');
+
 // Include your database connection script
 require_once 'db.php';
 
@@ -30,23 +33,43 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         ?>
         <div class="request-component">
-            <img class="profile-picture" alt="profile-picture" src="../assets/img/Reviewers/<?php echo $row['ProfilePicture']; ?>">
+            <img class="profile-picture" alt="profile-picture" src="../assets/img/Partners images/<?php echo $row['ProfilePicture']; ?>">
             <div class="request-details-body">
+                <p><strong>RequestNo#</strong> <?php echo $row['RequestID']; ?></p>
                 <p><strong>Learner Name:</strong> <?php echo $row['FullName']; ?></p>
-                <?php if ($status === 'Pending') {
-                    // Calculate time till expiration
-                    $submitDate = strtotime($row['SubmitDate']);
-                    $currentTime = time();
-                    $expirationTime = $submitDate + 24 * 3600; // Calculate expiration time as 24 hours from submission time
-                    $timeDiff = $expirationTime - $currentTime;
-                    $hoursRemaining = max(round($timeDiff / 3600), 0); // Ensure the result is non-negative
+                <?php
+                    if ($status === 'Pending') {
+                        // Get the submit date and current date
+                        $submitDate = strtotime($row['SubmitDate']);
+                        // The time() function returns the current time in the number of seconds since the Unix Epoch (January 1 1970)
+                        $currentTime = time();
 
-                    if ($hoursRemaining == 0) {
-                        echo "<p><strong>Time till request expires:</strong> Expired</p>";
-                    } else {
-                        echo "<p><strong>Time till request expires:</strong> $hoursRemaining hours</p>";
+                        // Calculate the difference in hours
+                        $hoursDifference = floor(($currentTime - $submitDate) / 3600);
+
+                        // Check if 24 hours have passed since submission
+                        if ($hoursDifference >= 24) {
+                            // Update status to 'Rejected' in the database
+                            $requestID = $row['RequestID'];
+                            $updateQuery = "UPDATE languagerequests SET Status = 'Rejected' WHERE RequestID = ?";
+                            $updateStmt = $conn->prepare($updateQuery);
+                            $updateStmt->bind_param("i", $requestID);
+                            $updateStmt->execute();
+                            $updateStmt->close();
+                            
+                            echo "<p><strong>Time till request expires:</strong> Expired</p>";
+                        } else {
+                            // Calculate remaining time until the request expires
+                            $timeRemaining = strtotime('+24 hours', $submitDate) - $currentTime;
+                            $hoursRemaining = floor($timeRemaining / 3600);
+                            $minutesRemaining = floor(($timeRemaining % 3600) / 60);
+                            echo "<p><strong>Time till request expires:</strong> $hoursRemaining hours and $minutesRemaining minutes</p>";
+                        }
                     }
-                } ?>
+                    ?>
+            </div>
+            <div class="request-actions">
+                <a href="partner_RequestDetails.html?request_id=<?php echo $row['RequestID']; ?>" class="theme_btn free_btn">view details</a>
             </div>
         </div>
         <?php
@@ -54,7 +77,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "No requests found for status: $status";
 }
-
 // Close the prepared statement
 $stmt->close();
 ?>
