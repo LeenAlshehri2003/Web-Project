@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function previewFile() {
-        var fileInput = document.getElementById('profile-image-upload');
         var file = fileInput.files[0];
         var profileImage = document.getElementById('profile-image1');
     
@@ -31,6 +30,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function validatePassword(value) {
+        if (value === "") return ""; // Allow empty for initial load
+        if (value.length < 8) return "Password must be at least 8 characters long.";
+        // Checks for at least one special character from the specified set
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
+            return "Password must contain at least one special character such as !, @, #, $, %, ^, &, *, (, ), etc.";
+        }
+        return "";
+    }
+    
+
     function validateForm() {
         let isValid = true;
         const formElements = [
@@ -44,7 +54,6 @@ document.addEventListener("DOMContentLoaded", function() {
             { selector: "ConfirmPass" },
             { selector: "Gender" },
             { selector: "SessionPrice" },
-
         ];
 
         formElements.forEach(elem => {
@@ -58,24 +67,46 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
-         // Add validation for language checkboxes
-    const languageCheckboxes = document.querySelectorAll("[name='languages[]']");
-    const isLanguageSelected = Array.from(languageCheckboxes).some(checkbox => checkbox.checked);
-    if (!isLanguageSelected) {
-        // If no checkboxes are selected, mark as invalid and alert the user
-        languageCheckboxes.forEach(checkbox => checkbox.nextElementSibling.style.color = 'red');
-        alert('Please select at least one language.');
-        isValid = false;
-    } else {
-        languageCheckboxes.forEach(checkbox => checkbox.nextElementSibling.style.color = '');
-    }
+        const languageCheckboxes = document.querySelectorAll("[name='languages[]']");
+        const isLanguageSelected = Array.from(languageCheckboxes).some(checkbox => checkbox.checked);
+        if (!isLanguageSelected) {
+            languageCheckboxes.forEach(checkbox => checkbox.nextElementSibling.style.color = 'red');
+            Swal.fire({
+                title: 'LinguaLink',
+                text: 'Please select at least one language',
+                icon: 'info',
+                confirmButtonColor: '#FFA500',  
+                confirmButtonText: 'OK'
+            });
+            isValid = false;
+        } else {
+            languageCheckboxes.forEach(checkbox => checkbox.nextElementSibling.style.color = '');
+        }
 
         const newPassword = document.querySelector("[name='NewPass']").value.trim();
         const confirmPassword = document.querySelector("[name='ConfirmPass']").value.trim();
         if (newPassword && confirmPassword && newPassword !== confirmPassword) {
             document.querySelector("[name='NewPass']").style.border = '2px solid red';
             document.querySelector("[name='ConfirmPass']").style.border = '2px solid red';
-            alert('New Password and Confirm Password do not match.');
+            Swal.fire({
+                title: 'LinguaLink',
+                text: "new Password and Confirm Password do not match",
+                icon: 'info',
+                confirmButtonColor: '#FFA500',  
+                confirmButtonText: 'OK'
+            });
+            isValid = false;
+        }
+
+        const passwordInfo = validatePassword(document.querySelector("[id='NewPassPartner']").value.trim());
+        if (passwordInfo !== "") {
+            Swal.fire({
+                title: 'LinguaLink',
+                text: passwordInfo,
+                icon: 'info',
+                confirmButtonColor: '#FFA500',  
+                confirmButtonText: 'OK'
+            });
             isValid = false;
         }
 
@@ -86,9 +117,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 icon: 'info',
                 confirmButtonColor: '#FFA500',  
                 confirmButtonText: 'OK'
-                
-              });
-              event.preventDefault(); // Prevent form submission
+            });
+            e.preventDefault(); // Prevent form submission
         }
 
         return isValid;

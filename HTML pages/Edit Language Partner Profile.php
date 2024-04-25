@@ -1,3 +1,4 @@
+<?php include '../assets/php/edit_partner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>

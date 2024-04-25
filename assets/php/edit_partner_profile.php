@@ -3,12 +3,12 @@ session_start();
 require 'db.php';  // Ensure this path is correct for your database connection script
 
 // Redirect if not logged in
-if (!isset($_SESSION['partnerID'])) {
-    die('User must be logged in '); // Redirect to login page
-    exit;
-}
+//if (!isset($_SESSION['user_ID'])) {
+ //   die('User must be logged in '); // Redirect to login page
+ //   exit;
+//}
 
-$partnerID = $_SESSION['partnerID'];
+$partnerID = 1;
 
 // Initialize variables to store data
 $firstName = $lastName = $email = $city = $username = "";
@@ -64,40 +64,43 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 // Handle form submission to update data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-      // Process photo upload if a file is provided
-      if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-        $photo = $_FILES['photo'];
-        $validTypes = ['image/jpeg', 'image/png', 'image/gif'];
-        if (in_array($photo['type'], $validTypes) && $photo['size'] < 5000000) { // 5MB limit
-            $uploadDir = 'uploads/';
-            $uploadFile = $uploadDir . basename($photo['name']);
-            if (move_uploaded_file($photo['tmp_name'], $uploadFile)) {
-                $photoPath = $conn->real_escape_string($uploadFile);
-                $updatePhoto = $conn->prepare("UPDATE users SET Photo=? WHERE UserID=?");
-                $updatePhoto->bind_param("si", $photoPath, $partnerID);
-                $updatePhoto->execute();
-                $updatePhoto->close();
+    
+    // Initialize filename variable for cases where the user doesn't upload a new photo
+    $filename = '';
+      // Handle file upload
+      if (!empty($_FILES["profilePic"]["name"])) {
+        $targetDir = "uploads/";
+        $fileName = basename($_FILES["profilePic"]["name"]);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+        // Specify allowed file types
+        $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];
+        if (in_array(strtolower($fileType), $allowTypes)) {
+            // Upload file to the server
+            if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFilePath)) {
+                $filename = $fileName; // Use this filename for updating the DB record
             } else {
-                echo "There was an error uploading your file.";
+                echo "Sorry, there was an error uploading your file.";
             }
         } else {
-            echo "Invalid file type or file too large.";
+            echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
         }
+    }
     // Sanitize and assign new values from form
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
-    $email = $conn->real_escape_string($_POST['Email']);
     $city = $conn->real_escape_string($_POST['City']);
-    $username = $conn->real_escape_string($_POST['Username']);
     $age = intval($_POST['Age']);
     $gender = $conn->real_escape_string($_POST['Gender']);
     $phone = $conn->real_escape_string($_POST['Phone']);
     $bio = $conn->real_escape_string($_POST['Bio']);
+    $password = $conn->real_escape_string($_POST['NewPass']);
     $sessionPrice = floatval($_POST['SessionPrice']);
 
     // Update user details
-    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Email=?, City=?, username=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $email, $city, $username, $partnerID);
+    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?,Password=?, City=? WHERE UserID=?");
+    $updateUser->bind_param("ssssi", $firstName, $lastName, $password, $city, $partnerID);
     $updateUser->execute();
     $updateUser->close();
 
@@ -122,6 +125,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
     // Redirect to a success page
-   // header('Location: profile_updated_successfully.php');
+//header('Location: ..../HTML pages/ProfilePage-LanguagePartner.php');
    // exit;
-}
