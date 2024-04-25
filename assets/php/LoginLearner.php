@@ -1,43 +1,39 @@
 <?php
-require_once 'db.php';  // Ensure this points to your actual database connection script
-
 session_start();
-// Initialize database connection
-$db = new Database();
-$conn = $db->getConnection();
+require 'db.php';  // Ensure the path to your database connection script is correct
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
 
+    if (!empty($username) && !empty($password)) {
+        $stmt = $conn->prepare("SELECT UserID, Password FROM users
+        JOIN learners ON users.UserID = learners.LearnerID 
+                                WHERE users.Username = ?");
+        $stmt->bind_param('s', $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST['username']);
-    $password = trim($_POST['password']);
-
-    $conn = getDBConnection();  // Connect to the database
-
-    // Prepare SQL statement to fetch the user and learner details
-    $stmt = $conn->prepare("SELECT Users.UserID, Users.Password, Learners.LearnerID
-                            FROM Users
-                            JOIN Learners ON Users.UserID = Learners.LearnerID
-                            WHERE Users.Username = :username");
-    $stmt->bindParam(':username', $username);
-    $stmt->execute();
-
-    if ($stmt->rowCount() == 1) {
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (password_verify($password, $user['password'])) {
-            // Set session variables
-            $_SESSION['user_id'] = $user['UserID'];
-            $_SESSION['learner_id'] = $user['LearnerID'];  // Store the LearnerID in session
-
-            header("Location: HomeLearner.html");  // Redirect to the learner home page
-            exit();
+        if ($result->num_rows == 1) {
+            $user = $result->fetch_assoc();
+            if (password_verify($password, $user['Password'])) {
+                $_SESSION['user_id'] = $user['UserID'];
+                header("Location: HomeLearner.html");  // Redirect to home page on successful login
+                exit();
+            } else {
+                $_SESSION['login_error'] = "Invalid password. Please try again.";
+            }
         } else {
-            echo "Invalid password.";
+            $_SESSION['login_error'] = "No account found with this username.";
         }
+        $stmt->close();
     } else {
-        echo "No account found with that username.";
+        $_SESSION['login_error'] = "Please provide both username and password.";
     }
-} else {
-    echo "Please fill in the form to log in.";
+
+    header("Location: ../../HTML pages/SignInLearner.php"); // Redirect back to the sign-in page on failure
+    exit();
 }
+
+$conn->close();
 ?>

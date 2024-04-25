@@ -121,7 +121,194 @@
 
 
 
-    
+    <main>
+        <section class="contact-form-area pt-150 pb-120 pt-md-100 pt-xs-100 pb-md-70 pb-xs-70">
+            <div class="container" style="padding: 0%;">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-6">
+                        <div class="contact-form-wrapper text-center mb-30">
+                            <h2 class="mb-45">Welcome To LingualLink, Our Partner!</h2>
+                            <form id="signupForm" action="#" method="post" class="row gx-3 comments-form contact-form">
+                                <div class="col-lg-6 mb-30">
+                                    <label>First name:<br>
+                                        <input type="text" name="firstname" placeholder="Enter First Name here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Last name:<br>
+                                        <input type="text" name="lastname" placeholder="Enter Last Name here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Age:<br>
+                                        <input type="text" name="age" placeholder="Enter Age here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Gender:<br>
+                                        <select name="gender">
+                                            <option value="Male" selected>Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Email:<br>
+                                        <input type="email" name="email" placeholder="Enter Email here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Password:<br>
+                                        <input type="password" name="password" placeholder="************" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Phone Number:<br>
+                                        <input type="text" name="number" placeholder="Enter Number here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>City:<br>
+                                        <input type="text" name="city" placeholder="Enter City here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-12 mb-30">
+                                    <label>Upload Picture (optional):<br>
+                                        <input type="file" name="picture" accept="image/*">
+                                    </label>
+                                </div>
+                                <div class="col-lg-12 mb-30">
+                                    <label><strong>Enter Your Bio:</strong><br>
+                                        <textarea name="bio" rows="0" cols="40" required placeholder="Enter a short bio including languages spoken and cultural knowledge "></textarea>
+                                    </label>
+                                </div>
+                                
+                                <div class="col-lg-12">
+                                    <a id="linking">
+                                    <button  id="submitButton" type="submit" class="theme_btn message_btn mt-20" style="background-color: gray; color: white;">Sign Up</button></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        $(document).ready(function () {
+            // Validation functions for each type of input
+            function validateName(value) {
+                if (!value) return "This field cannot be empty.";
+                return /^[a-zA-Z ]+$/.test(value) ? "" : "Only letters and spaces allowed.";
+            }
+        
+            function validateAge(value) {
+                if (!value) return "This field cannot be empty.";
+                return /^\d+$/.test(value) && parseInt(value) >= 18 ? "" : "Age must be a valid number (18+).";
+            }
+        
+            function validateEmail(value) {
+                if (!value) return "This field cannot be empty.";
+                return /^\S+@\S+\.\S+$/.test(value) ? "" : "Invalid email format.";
+            }
+        
+            function validatePassword(value) {
+                if (!value) return "This field cannot be empty.";
+                return value.length >= 8 && /[!@#$%^&*(),.?":{}|<>]/.test(value) ? "" : "Password must be at least 8 characters long and include a special character.";
+            }
+        
+            function validatePhoneNumber(value) {
+                if (!value) return "This field cannot be empty.";
+                return /^\d{10}$/.test(value) ? "" : "Phone number must be 10 digits long.";
+            }
+        
+            // Track if the input has been interacted with
+            $('input').each(function() {
+                $(this).data('interacted', false);  // Initialize interaction data
+            });
+        
+            // Validate all inputs except for the optional photo
+            function validateInputs() {
+                let allValid = true;
+                let allEmpty = true; // Flag to track if all fields are empty
+                $('input:not([type="file"])').each(function() {
+                    const interacted = $(this).data('interacted'); // Check if the user has interacted with the input
+                    const name = $(this).attr('name');
+                    let validationFunction = function() { return ""; };
+                    switch(name) {
+                        case 'firstname':
+                        case 'lastname':
+                        case 'city':
+                            case'bio':
+                            validationFunction = validateName;
+                            break;
+                        case 'age':
+                            validationFunction = validateAge;
+                            break;
+                        case 'email':
+                            validationFunction = validateEmail;
+                            break;
+                        case 'password':
+                            validationFunction = validatePassword;
+                            break;
+                        case 'number':
+                            validationFunction = validatePhoneNumber;
+                            break;
+                    }
+        
+                    const value = $(this).val().trim(); // Trim whitespace from input value
+                    const validationResult = value ? validationFunction(value) : "This field cannot be empty."; // Validate non-empty fields
+                    if (interacted) { // Only show validation messages if the user has interacted with the input
+                        $(this).next('.info').text(validationResult);
+                        $(this).css('border-color', validationResult === "" ? 'grey' : 'red');
+                    }
+        
+                    if (validationResult !== "") {
+                        allValid = false;
+                    }
+                    if (value) {
+                        allEmpty = false;
+                    }
+                });
+        
+                // Update submit button state
+                const submitButton = $('#submitButton');
+                submitButton.prop('disabled', allEmpty || !allValid); // Disable button if all fields are empty or not all fields are valid
+                submitButton.css('background-color', (allEmpty || allValid) ? 'cornflowerblue' : 'grey'); // Set button color based on validity
+            }
+        
+            // Attach interaction flag and validation handlers
+            $('input').on('input', function() {
+                $(this).data('interacted', true); // Mark as interacted when the user types in the input
+                validateInputs(); // Validate inputs whenever they change
+            });
+        
+            // Handle form submission attempt
+            $('#signupForm').on('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+                $('input').data('interacted', true); // Mark all as interacted on submit attempt
+                validateInputs();
+                const isFormValid = !$('input').next('.info').text();
+                if (!isFormValid) {
+                    alert('Please fill all required fields correctly before submitting.');
+                } else {
+                    // Redirect to the learner's home page if the form is valid
+                    window.location.href = 'HomePartner.html';
+                }
+            });
+        });
+        </script>
+        
+
+
+
     
 
     <main>
@@ -199,25 +386,7 @@
               </div>
           </div>
       </section>
-       <!-- subscribe-area start -->
-       <section class="subscribe-area footer-bg border-bot pt-145 pb-50 pt-md-90 pt-xs-90">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <div class="subscribe-wrapper text-center mb-30">
-                            <h2>Subscribe our Newsletter & Get every updates.</h2>
-                           <div class="subscribe-form-box pos-rel">
-                                <form class="subscribe-form">
-                                    <input type="text" placeholder="Write Your E-mail">
-                                </form>
-                                <button class="sub_btn">Subscribe Now</button>
-                           </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-       </section>
-       <!-- subscribe-area end -->
+    
     </main>
 
 

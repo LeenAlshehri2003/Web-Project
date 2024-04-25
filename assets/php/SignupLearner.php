@@ -40,7 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = registerNewLearner($_POST);
     echo $result;
 
-    // Optionally, you can redirect to a login page or display the result on a new page
-    // header("Location: signInLearner.html");
+    header("Location: HomeLearner.html");k
 }
 ?>
