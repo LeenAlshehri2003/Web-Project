@@ -1,3 +1,14 @@
+<?php
+session_start();
+// Check if the user is not logged in
+if (!isset($_SESSION['user_id'])) {
+    //  store a message to display after redirecting
+    $_SESSION['error'] = "You must log in to view this page";
+    header("Location: SignInPartner.php"); // Redirect to the login page
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -151,27 +162,20 @@
        <!--slider-area end-->
 
        <script>
-    window.onload = function() {
-        // Check for session-based success message
-        <?php
-        session_start();
-        if (isset($_SESSION['registration_success'])): ?>
-            Swal.fire({
-                title: 'Success!',
-                text: '<?php echo addslashes($_SESSION['registration_success']); ?>',
-                icon: 'success',
-                confirmButtonText: 'Great!'
-            }).then((result) => {
-                if (result.value) {
-                    // Optional: Perform any follow-up action such as redirecting to another page
-                }
-            });
+        window.onload = function() {
             <?php
-            unset($_SESSION['registration_success']); // Clear the session variable to prevent re-display
-        endif;
-        ?>
-    };
-    </script>
+            if (isset($_SESSION['registration_success'])) {
+                echo "Swal.fire({
+                    title: 'Success!',
+                    text: '" . addslashes($_SESSION['registration_success']) . "',
+                    icon: 'success',
+                    confirmButtonText: 'Great!'
+                });";
+                unset($_SESSION['registration_success']);
+            }
+            ?>
+        };
+    </script> 
 
 
       

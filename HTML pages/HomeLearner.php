@@ -1,4 +1,13 @@
-<?php session_start(); ?>
+<?php
+session_start();
+// Check if the user is not logged in
+if (!isset($_SESSION['user_id'])) {
+    // store a message to display after redirecting
+    $_SESSION['error'] = "You must log in to view this page";
+    header("Location: SignInLearner.php"); // Redirect to the login page
+    exit();
+}
+?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">
