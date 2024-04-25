@@ -18,16 +18,19 @@ if (empty($proficiencyLevel) || empty($partnerID) || empty($languageID) || empty
 // Convert session date and time into a single datetime string for database insertion
 $sessionDateTime = $sessionDate . ' ' . $sessionStartTime;
 
-// Prepare the SQL statement
-$query = "INSERT INTO languagerequests (ProficiencyLevel, PartnerID, PreferredSchedule, LanguageID, SessionDuration) VALUES (?, ?, ?, ?, ?)";
+// Include the current date as SubmitDate
+$submitDate = date('Y-m-d H:i:s');
+
+// Prepare the SQL statement with SubmitDate
+$query = "INSERT INTO languagerequests (ProficiencyLevel, PartnerID, PreferredSchedule, LanguageID, SessionDuration, SubmitDate) VALUES (?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($query);
 if (!$stmt) {
     echo "Prepare failed: (" . $conn->errno . ") " . $conn->error;
     exit;
 }
 
-// Bind and execute the statement
-$stmt->bind_param("siisi", $proficiencyLevel, $partnerID, $sessionDateTime, $languageID, $sessionDuration);
+// Bind and execute the statement with the new submitDate parameter
+$stmt->bind_param("siisis", $proficiencyLevel, $partnerID, $sessionDateTime, $languageID, $sessionDuration, $submitDate);
 if ($stmt->execute()) {
     echo "Request posted successfully.";
 } else {

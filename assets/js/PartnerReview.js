@@ -30,22 +30,34 @@ function remove() {
 	}
 }
 
+
 $(document).ready(function() {
 	$('#reviewsubmit').on('submit', function(e) {
-	  e.preventDefault();
-  
-	  $.ajax({
-		url: '../php/Partner_Review.php',
-		type: 'POST',
-		data: formData,
-		success: function(response) {
-		  alert('review submitted successfully.');
-		  // Optionally redirect or update the UI
-		},
-		error: function() {
-		  alert('Error submitting review.');
+		e.preventDefault();
+		const formData = new FormData(this); // Get form data
+	
+		// Extract partner ID from the URL
+		const urlParams = new URLSearchParams(window.location.search);
+		const sessionId = urlParams.get('sessionId');
+	
+		if (sessionId) {
+			formData.append('sessionId', sessionId);
+	
+			$.ajax({
+				url: '../php/Partner_Review.php',
+				type: 'POST',
+				data: formData,
+				success: function(response) {
+					alert('Review submitted successfully.');
+					// Optionally redirect or update the UI
+				},
+				error: function() {
+					alert('Error submitting review.');
+				}
+			});
+		} else {
+			alert('Session ID not found in the URL.');
 		}
-	  });
 	});
   });
 

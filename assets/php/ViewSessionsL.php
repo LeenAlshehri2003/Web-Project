@@ -12,8 +12,8 @@ $userId = $_SESSION['user_id'];
 $db = new Database();
 $conn = $db->getConnection(); // Get the database connection
 
-// Retrieve sessions from the database
-$query = "SELECT PartnerID, duration, SessionDate, Status FROM sessions";
+// Retrieve sessions from the database *********************
+$query = "SELECT PartnerID, duration, SessionDate, SessionID, Status FROM sessions WHERE LearnerID = $userId";
 $result = mysqli_query($connection, $query);
 
 // Prepare an array to store the session data

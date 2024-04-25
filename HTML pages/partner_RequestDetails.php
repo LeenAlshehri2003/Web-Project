@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -86,44 +87,7 @@
     </header>
 
     <div id="alert-container"></div>
-    <main>
-        <div class="section-title text-center mb-55">    
-            <div class="request-details-container">
-                <div class="request-details-header">
-                    <a href="View Requests - Partner.html" class="theme_btn comment_btn">return back</a>
-                </div>
-
-                <div class="center-containter">
-                    <h1>Request details</h1>
-                    <img alt="user profile picture" class="profile-picture big-img" src="../assets/img/Reviewers/letter-h-pink-alphabet-glossy-png.png">
-                </div>
-    
-                <div class="request-details-body">
-                    <p><strong>Status:</strong> <span id="status"></span></p>
-                    <a href="" class="profile-link">view learner profile</a>
-                    <p><strong>Learner Name:</strong> <span id="learnerName"></span></p>
-                    <p><strong>Language Goals:</strong> <span id="languageGoals"></span></p>
-                    <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel"></span></p>
-                    <p><strong>Scheduled to be on:</strong> <span id="scheduledDate"></span> <strong>from</strong> <span id="startTime"></span> <strong>to</strong> <span id="endTime"></span></p>
-                    <p><strong>Session duration:</strong> <span id="sessionDuration"></span></p>
-
-                    <!-- Display accept and reject buttons based on request status -->
-                    <form id="decisionForm">
-                        <div class="decide-request">
-                            <div>
-                                <input type="hidden" name="decision" id="acceptDecision" onclick="checkAndSubmit('accept')" value="accept">
-                                <button type="button" class="theme_btn free_btn acception-button accept-btn" style="background-color: green;">Accept</button>
-                            </div>
-                            <div>
-                                <input type="hidden" name="decision" id="rejectDecision" onclick="checkAndSubmit('reject')" value="reject">
-                                <button type="button" class="theme_btn free_btn acception-button reject-btn" style="background-color: red;">Reject</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </main>
+    <div onload="loadRequestDetails()" id="request-details-container" ></div>
 
  <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
@@ -188,77 +152,56 @@
 
 
 <!-- JS here -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-// Assuming jQuery is included
-    $(document).ready(function() {
-        // Function to fetch request details
-        function fetchRequestDetails() {
-            $.ajax({
-                url: 'load_partner_request_details.php',
-                method: 'GET',
-                success: function(response) {
-                    var requestData = JSON.parse(response);
-                    $('#status').text(requestData.status);
-                    $('#learnerName').text(requestData.learnerName);
-                    $('#languageGoals').text(requestData.languageGoals);
-                    $('#proficiencyLevel').text(requestData.proficiencyLevel);
-                    $('#scheduledDate').text(requestData.scheduledDate);
-                    $('#startTime').text(requestData.startTime);
-                    $('#endTime').text(requestData.endTime);
-                    $('#sessionDuration').text(requestData.sessionDuration);
-    
-                    // Show accept/reject buttons only if the status is 'Pending'
-                    if (requestData.status === 'Pending') {
-                        $('.accept-btn, .reject-btn').show();
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching request details:', error);
-                    // Display error message to the user
-                    $('#alert-container').html('<div class="alert alert-danger" role="alert">Error fetching request details. Please try again later.</div>');
-                }
-            });
+        // Function to load request details
+        function loadRequestDetails() {
+            // Get the request ID from the URL
+            var urlParams = new URLSearchParams(window.location.search);
+            var requestId = urlParams.get('request_id');
+
+            // Fetch the content of load.php
+            fetch('../assets/php/load_partner_request_details.php?request_id=' + requestId)
+                .then(response => response.text())
+                .then(data => {
+                    // Insert the content into the request-details-container
+                    document.getElementById('request-details-container').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
-    
-        // Fetch request details when the page loads
-        fetchRequestDetails();
-    
-        // Function to handle accept button click
-        $('.accept-btn').click(function() {
-            $.ajax({
-                url: 'handle_request_partner.php',
-                method: 'POST',
-                data: $('#decisionForm').serialize(),
-                success: function(response) {
-                    window.location.href = 'requestslist.php';
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error accepting request:', error);
-                    // Display error message to the user
-                    $('#alert-container').html('<div class="alert alert-danger" role="alert">Error accepting request. Please try again later.</div>');
-                }
+        // Call loadRequestDetails function when the page loads
+        window.onload = loadRequestDetails;
+    </script>
+<script>
+    // Function to update request status
+    function updateStatus(newStatus) {
+        // Get the request ID from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var requestId = urlParams.get('request_id');
+
+        // Send AJAX request to update status
+        fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
+            .then(response => response.text())
+            .then(data => {
+                // Reload the page or perform any necessary actions upon successful status update
+                console.log(data);
+                // For example, you can reload the page after updating status
+                window.location.reload();
+                if(newStatus=='Accepted')
+                window.alert("Request has been accepted!");
+                if(newStatus=='Rejected')
+                window.alert("Request has been Rejected!");
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
-        });
-    
-        // Function to handle reject button click
-        $('.reject-btn').click(function() {
-            $.ajax({
-                url: 'handle_reject_request.php',
-                method: 'POST',
-                data: $('#decisionForm').serialize(),
-                success: function(response) {
-                    window.location.href = 'requestslist.php';
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error rejecting request:', error);
-                    // Display error message to the user
-                    $('#alert-container').html('<div class="alert alert-danger" role="alert">Error rejecting request. Please try again later.</div>');
-                }
-            });
-        });
-    });
-    
-</script>>
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="../assets/js/popper.min.js"></script>
@@ -278,5 +221,6 @@
 <script src="../assets/js/jquery.easypiechart.js"></script>
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
+
 </body>
 </html>

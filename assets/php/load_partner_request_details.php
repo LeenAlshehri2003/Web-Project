@@ -1,53 +1,80 @@
 <?php
-require_once 'db.php'; // Include your database connection script
+// Include the database connection
+require_once 'db.php';
 
-// Create a Database object and get the connection
-$db = new Database();
-$conn = $db->getConnection();
-
-// Check if connection is successful
-if (!$conn) {
-    // Handle connection error gracefully
-    die("Database connection failed: " . mysqli_connect_error());
-}
-
-// Initialize request ID
-$requestId = null;
-
-// Check if the request ID is provided in the URL
-if (isset($_GET['request_id'])) {
-    // Sanitize and validate the request ID
-    $requestId = filter_input(INPUT_GET, 'request_id', FILTER_VALIDATE_INT);
-}
-
-// Check if the request ID is valid
-if (!$requestId) {
-    // Display an error message if the request ID is missing or invalid
-    die("Invalid request ID.");
-}
-
-// Prepare and execute the SQL query to retrieve request details
-$query = "SELECT * FROM languagerequests WHERE RequestID = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $requestId); // Assuming RequestID is an integer
-$stmt->execute();
-
-// Fetch data
-$result = $stmt->get_result();
-
-// Check if any rows were found
-if ($result->num_rows > 0) {
-    // Fetch request details
-    $requestDetails = $result->fetch_assoc();
+// Check if request ID is provided in the URL
+if(isset($_GET['request_id'])) {
+    // Sanitize the input to prevent SQL injection
+    $request_id = mysqli_real_escape_string($conn, $_GET['request_id']);
     
-    // Convert to JSON and echo the response
-    echo json_encode($requestDetails);
+    // Prepare SQL statement to retrieve request details
+    $sql = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, l.LanguageName ,u.Photo AS ProfilePicture
+            FROM languagerequests lr 
+            JOIN users u ON lr.LearnerID = u.UserID 
+            JOIN languages l ON lr.LanguageID = l.LanguageID 
+            WHERE lr.RequestID = '$request_id'";
+    
+    // Execute the query
+    $result = $conn->query($sql);
+    
+    // Check if query was successful
+    if($result) {
+        // Check if any rows were returned
+        if($result->num_rows > 0) {
+            // Fetch the row as an associative array
+            $row = $result->fetch_assoc();
+            
+            // Calculate end time based on preferred schedule and session duration
+            $preferredSchedule = new DateTime($row['PreferredSchedule']);
+            $startTime = $preferredSchedule->format('H:i');
+            $endTime = clone $preferredSchedule;
+            $endTime->add(new DateInterval('PT' . $row['SessionDuration'] . 'H'));
+            $endTime = $endTime->format('H:i');
+
+            // Output the request details in the desired format
+            echo '<main>
+                    <div class="section-title text-center mb-55">    
+                        <div class="request-details-container">
+                            <div class="request-details-header">
+                                <a href="partner_view_requests.php" class="theme_btn comment_btn">return back</a>
+                            </div>
+        
+                            <div class="center-containter">
+                                <h1>Request details</h1>
+                                <img class="profile-picture big-img" alt="profile-picture" src="../assets/img/Partners images/' . $row['ProfilePicture'] . '">                            
+                            </div>
+            
+                            <div class="request-details-body">
+                                <p><strong>Status:</strong> <span id="status">' . $row['Status'] . '</span></p>
+                                <a href="" class="profile-link">view learner profile</a>
+                                <p><strong>Learner Name:</strong> <span id="learnerName">' . $row['FullName'] . '</span></p>
+                                <p><strong>Language Goals:</strong> <span id="languageGoals">Improve Fluency In ' . $row['LanguageName'] . '</span></p>
+                                <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
+                                <p><strong>Scheduled to be on:</strong> <span id="scheduledDate">' . $row['PreferredSchedule'] . '</span> <strong>from</strong> <span id="startTime">' . $startTime . '</span> <strong>to</strong> <span id="endTime">' . $endTime . '</span></p>
+                                <p><strong>Session duration:</strong> <span id="sessionDuration">' . $row['SessionDuration'] . '</span></p>';
+
+            // Check if status is Pending, then show accept and reject buttons
+            if ($row['Status'] == 'Pending') {
+                echo '<div  class="decide-request">
+                <div><button onclick="updateStatus(\'Accepted\')" class="theme_btn free_btn acception-button accept-btn" style="background-color: green;" >Accept</button></div>
+                <div><button onclick="updateStatus(\'Rejected\')" class="theme_btn free_btn acception-button reject-btn" style="background-color: red;">Reject</button></div>
+                      </div>';
+            }
+
+            echo '</div> <!-- Close request-details-body -->
+                    </div> <!-- Close request-details-container -->
+                </div> <!-- Close section-title -->
+            </main>'; // Close main
+        } else {
+            echo "No request found with ID: $request_id";
+        }
+    } else {
+        echo "Error executing query: " . $conn->error;
+    }
 } else {
-    // Display an error message if no matching request was found
-    echo json_encode(array('error' => 'Request not found.'));
+    echo "Request ID not provided in the URL";
 }
 
 // Close the database connection
-$stmt->close();
 $conn->close();
 ?>
