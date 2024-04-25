@@ -252,9 +252,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
 
     
 
-  
-
-    <script>
+ <script>
 $(document).ready(function () {
     // Validation functions for each type of input
     function validateName(value) {
@@ -262,10 +260,7 @@ $(document).ready(function () {
         return /^[a-zA-Z ]+$/.test(value) ? "" : "Only letters and spaces allowed.";
     }
 
-    function validateAge(value) {
-        if (!value) return "This field cannot be empty.";
-        return /^\d+$/.test(value) && parseInt(value) >= 18 ? "" : "Age must be a valid number (18+).";
-    }
+  
 
     function validateEmail(value) {
         if (!value) return "This field cannot be empty.";
@@ -276,12 +271,16 @@ $(document).ready(function () {
         if (!value) return "This field cannot be empty.";
         return value.length >= 8 && /[!@#$%^&*(),.?":{}|<>]/.test(value) ? "" : "Password must be at least 8 characters long and include a special character.";
     }
-
     function validatePhoneNumber(value) {
         if (!value) return "This field cannot be empty.";
         return /^\d{10}$/.test(value) ? "" : "Phone number must be 10 digits long.";
     }
+    function validateAge(value) {
+        if (!value) return "This field cannot be empty.";
+        return /^\d+$/.test(value) && parseInt(value) >= 18 ? "" : "Age must be a valid number (18+).";
+    }
 
+  
     // Validate all inputs except for the optional photo
     function validateInputs() {
         let allValid = true;
@@ -295,7 +294,7 @@ $(document).ready(function () {
                 case 'city':
                     validationFunction = validateName;
                     break;
-                case 'age':
+                    case 'age':
                     validationFunction = validateAge;
                     break;
                 case 'email':
@@ -307,6 +306,8 @@ $(document).ready(function () {
                 case 'number':
                     validationFunction = validatePhoneNumber;
                     break;
+             
+        
             }
 
             const validationResult = validationFunction($(this).val());
@@ -341,8 +342,9 @@ $(document).ready(function () {
 });
 </script>
 
+        
 
-
+   
 
 
 
