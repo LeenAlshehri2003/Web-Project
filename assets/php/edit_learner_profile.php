@@ -1,44 +1,58 @@
 <?php
-// Start the session
 session_start();
+require 'db.php'; // Ensure this path is correct for your database connection script
 
-// Check if the user is logged in
-if (!isset($_SESSION['learnerID'])) {
-    // If the user is not logged in, redirect to the login page or show an appropriate message
-    echo "Please log in to access this page.";
-    exit; // Stop further execution of the script
-} 
+// Redirect if not logged in
+//if (!isset($_SESSION['UserID'])) {
+     //   die('User must be logged in '); // Redirect to login page
+   // header('Location: ../../HTML pages/SignInLearner.php');
+  //  exit;
+//}
 
-require_once 'db.php'; // Database connection
+$learnerID = 3; // Assuming the user's ID is stored in the session under 'UserID'
 
-// Set the content type to HTML
-header('Content-Type: text/html; charset=utf-8');
+// Initialize variables to store learner data
+$firstName = $lastName = $city = $currentPass = $photo = $location = "";
 
-// Assuming the learner's ID is stored in a session variable after login
-$learnerID = $_SESSION['learnerID'];
+// Retrieve existing learner information
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $learnerQuery = $conn->prepare("
+        SELECT u.FirstName, u.LastName, u.City, u.Password, u.Photo
+        FROM users u
+        INNER JOIN learners l ON u.UserID = l.LearnerID
+        WHERE u.UserID = ?");
+    $learnerQuery->bind_param("i", $learnerID);
+    $learnerQuery->execute();
+    $learnerResult = $learnerQuery->get_result();
+    if ($learnerRow = $learnerResult->fetch_assoc()) {
+        $firstName = $learnerRow['FirstName'];
+        $lastName = $learnerRow['LastName'];
+        $city = $learnerRow['City'];
+        $currentPass = $learnerRow['Password'];
+        $photo = $learnerRow['Photo'];
+    }
+    $learnerQuery->close();
+}
 
+// Handle form submission to update learner data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve and sanitize input data
-    $firstName = $conn->real_escape_string(filter_var($_POST['FirstName'], FILTER_SANITIZE_STRING));
-    $lastName = $conn->real_escape_string(filter_var($_POST['LastName'], FILTER_SANITIZE_STRING));
-    $city = $conn->real_escape_string(filter_var($_POST['City'], FILTER_SANITIZE_STRING));
+    $firstName = $conn->real_escape_string($_POST['FirstName']);
+    $lastName = $conn->real_escape_string($_POST['LastName']);
+    $city = $conn->real_escape_string($_POST['City']);
+    $NewPass = $conn->real_escape_string($_POST['NewPass']); // Assume hashing occurs later
+    $location = $conn->real_escape_string($_POST['Location']); // Sanitize the new location input
 
-    // Initialize filename variable for cases where the user doesn't upload a new photo
-    $filename = '';
-
-    // Handle file upload
-    if (!empty($_FILES["profilePic"]["name"])) {
+    // Handle photo upload
+    if (!empty($_FILES['photo']['name'])) {
         $targetDir = "uploads/";
-        $fileName = basename($_FILES["profilePic"]["name"]);
+        $fileName = basename($_FILES['photo']['name']);
         $targetFilePath = $targetDir . $fileName;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-        // Specify allowed file types
-        $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
         if (in_array(strtolower($fileType), $allowTypes)) {
-            // Upload file to the server
-            if (move_uploaded_file($_FILES["profilePic"]["tmp_name"], $targetFilePath)) {
-                $filename = $fileName; // Use this filename for updating the DB record
+            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
+                $photo = $fileName; // Successfully uploaded the new photo
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
@@ -47,29 +61,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Update the database
-    $sql = "UPDATE Learners SET FirstName = ?, LastName = ?, City = ?" . (!empty($filename) ? ", Photo = '$filename'" : "") . " WHERE LearnerID = ?";
-    
-    if ($stmt = $conn->prepare($sql)) {
-        // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("sssi", $firstName, $lastName, $city, $learnerID);
+    // Update user details
+    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
+    $updateUser->bind_param("sssssi", $firstName, $lastName, $NewPass, $city, $photo, $learnerID);
+    $updateUser->execute();
+    $updateUser->close();
 
-        // Execute the statement
-        if ($stmt->execute()) {
-            echo "Profile updated successfully.";
-            // Redirect to profile page or display success message
-        } else {
-            echo "Error: " . $stmt->error;
-        }
-        $stmt->close();
-    } else {
-        echo "Error preparing statement: " . $conn->error;
-    }
-} else {
-    // Form not submitted
-    echo "<p>Please fill in your profile information.</p>";
-    // Display the form here or ensure the user knows how to access it
+    
+    // Update location in learners table
+    $updateLearner = $conn->prepare("UPDATE learners SET Location=? WHERE LearnerID=?");
+    $updateLearner->bind_param("si", $location, $learnerID);
+    $updateLearner->execute();
+    $updateLearner->close();
+
+    // Redirect to a success page or perform additional actions
+    //header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
+    exit;
 }
 
-$conn->close();
 ?>
