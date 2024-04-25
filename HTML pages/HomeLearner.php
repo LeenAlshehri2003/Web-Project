@@ -100,7 +100,7 @@
                             <div class="right-nav d-flex align-items-center justify-content-end">
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
-                                        <li><a href="LandingPageSO.html" class="theme_btn free_btn">Sign Out</a></li>
+                                        <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
                                         <li><a class="sign-in ml-20" href="Profile Page-Language Learner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
