@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['login_error'] = "Invalid password. Please try again.";
             }
         } else {
-            $_SESSION['login_error'] = "No account found with this username.";
+            $_SESSION['login_error'] = "No account was found with these credentials.";
         }
         $stmt->close();
     } else {

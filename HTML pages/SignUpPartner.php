@@ -8,15 +8,13 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Sign up learner</title>
+        <title>sign up partner</title>
         <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
         <meta name="description" content="LinguaLink is a e-learning HTML website for language education ">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <link rel="manifest" href="site.webmanifest">
         <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
         
     
         <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
@@ -34,7 +32,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
         <link rel="stylesheet" href="../assets/css/Filter Japanese.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="../assets/js/Filter.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
       </head>
     
@@ -47,7 +45,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
         </div>
     </div>
     <!-- preloader end  -->
- <header>
+     <header>
         <div id="theme-menu-two" class="main-header-area main-head-three pl-100 pr-100 pt-20 pb-15">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -115,15 +113,30 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
 
 
 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <main>
         <section class="contact-form-area pt-150 pb-120 pt-md-100 pt-xs-100 pb-md-70 pb-xs-70">
             <div class="container" style="padding: 0%;">
                 <div class="row justify-content-center align-items-center">
                     <div class="col-lg-6">
                         <div class="contact-form-wrapper text-center mb-30">
-                            <h2 class="mb-45">Welcome To LingualLink, Our Learner!</h2>
-                            <form id="signupForm" action="../assets/php/regLearner.php" method="post" class="row gx-3 comments-form contact-form">
+                            <h2 class="mb-45">Welcome To LingualLink, Our Partner!</h2>
+                            <form id="signupForm" action="../assets/php/regPartner.php" method="post" class="row gx-3 comments-form contact-form">
                                 <div class="col-lg-6 mb-30">
                                     <label>First name:*<br>
                                         <input type="text" name="firstname" placeholder="Enter First Name here" required>
@@ -142,7 +155,20 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
-                              
+                                <div class="col-lg-6 mb-30">
+                                    <label>Age:*<br>
+                                        <input type="text" name="age" placeholder="Enter Age here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Gender:*<br>
+                                        <select name="gender">
+                                            <option value="Male" selected>Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </label>
+                                </div>
                                 <div class="col-lg-6 mb-30">
                                     <label>Email:*<br>
                                         <input type="email" name="email" placeholder="Enter Email here" required>
@@ -150,12 +176,17 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                     </label>
                                 </div>
                                 <div class="col-lg-6 mb-30">
-                                    <label>Password:*<br>
+                                    <label>Password:<br>
                                         <input type="password" name="password" placeholder="************" required>
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
-                             
+                                <div class="col-lg-6 mb-30">
+                                    <label>Phone Number:*<br>
+                                        <input type="text" name="number" placeholder="Enter Number here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
                                 <div class="col-lg-6 mb-30">
                                     <label>City:*<br>
                                         <input type="text" name="city" placeholder="Enter City here" required>
@@ -167,45 +198,12 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                         <input type="file" name="picture" accept="image/*">
                                     </label>
                                 </div>
-                                <script>
-                                    function getLocation() {
-                                        if (navigator.geolocation) {
-                                            navigator.geolocation.getCurrentPosition(showPosition, showError);
-                                        } else { 
-                                            alert("Geolocation is not supported by this browser.");
-                                        }
-                                    }
+                                <div class="col-lg-12 mb-30">
+                                    <label><strong>Enter Your Bio:*</strong><br>
+                                        <textarea name="bio" rows="0" cols="40" required placeholder="Enter a short bio including languages spoken and cultural knowledge "></textarea>
+                                    </label>
+                                </div>
                                 
-                                    function showPosition(position) {
-                                        document.getElementById('latitude').value = position.coords.latitude;
-                                        document.getElementById('longitude').value = position.coords.longitude;
-                                    }
-                                
-                                    function showError(error) {
-                                        switch(error.code) {
-                                            case error.PERMISSION_DENIED:
-                                                alert("User denied the request for Geolocation.");
-                                                break;
-                                            case error.POSITION_UNAVAILABLE:
-                                                alert("Location information is unavailable.");
-                                                break;
-                                            case error.TIMEOUT:
-                                                alert("The request to get user location timed out.");
-                                                break;
-                                            case error.UNKNOWN_ERROR:
-                                                alert("An unknown error occurred.");
-                                                break;
-                                        }
-                                    }
-                                </script>
-                                
-                                
-                                    <input type="hidden" name="latitude" id="latitude" value="">
-                                    <input type="hidden" name="longitude" id="longitude" value="">
-                                
-                                    <button class="theme_btn message_btn mt-20"  type="submit" style="color: orange; background-color:white; padding: 1px; " onclick="getLocation()">Click here to get your accurate Location easily</button>
-                                
-                                    <br>
                                 <div class="col-lg-12">
                                     <a id="linking">
                                     <button  id="submitButton" type="submit" class="theme_btn message_btn mt-20" style="background-color: cornflowerblue; color: white;">Sign Up</button></a>
@@ -217,6 +215,8 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
             </div>
         </section>
     </main>
+
+
     
     <script>
     window.onload = function() {
@@ -238,12 +238,22 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                 confirmButtonText: 'Great!'
             }).then((result) => {
                 if (result.value) {
-                    window.location.href = 'HomeLearner.php';
+                    window.location.href = 'HomePartner.php';
                 }
             });
         }
     };
     </script>
+ 
+
+        
+        
+        
+
+    
+
+  
+
     <script>
 $(document).ready(function () {
     // Validation functions for each type of input
@@ -252,7 +262,10 @@ $(document).ready(function () {
         return /^[a-zA-Z ]+$/.test(value) ? "" : "Only letters and spaces allowed.";
     }
 
-  
+    function validateAge(value) {
+        if (!value) return "This field cannot be empty.";
+        return /^\d+$/.test(value) && parseInt(value) >= 18 ? "" : "Age must be a valid number (18+).";
+    }
 
     function validateEmail(value) {
         if (!value) return "This field cannot be empty.";
@@ -264,7 +277,11 @@ $(document).ready(function () {
         return value.length >= 8 && /[!@#$%^&*(),.?":{}|<>]/.test(value) ? "" : "Password must be at least 8 characters long and include a special character.";
     }
 
-  
+    function validatePhoneNumber(value) {
+        if (!value) return "This field cannot be empty.";
+        return /^\d{10}$/.test(value) ? "" : "Phone number must be 10 digits long.";
+    }
+
     // Validate all inputs except for the optional photo
     function validateInputs() {
         let allValid = true;
@@ -278,14 +295,18 @@ $(document).ready(function () {
                 case 'city':
                     validationFunction = validateName;
                     break;
-             
+                case 'age':
+                    validationFunction = validateAge;
+                    break;
                 case 'email':
                     validationFunction = validateEmail;
                     break;
                 case 'password':
                     validationFunction = validatePassword;
                     break;
-               
+                case 'number':
+                    validationFunction = validatePhoneNumber;
+                    break;
             }
 
             const validationResult = validationFunction($(this).val());
@@ -319,18 +340,6 @@ $(document).ready(function () {
     });
 });
 </script>
-
-        
-        
-        
-        
-
-
-
-
-   
-   
-   
 
 
 
