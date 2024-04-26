@@ -1,3 +1,4 @@
+<?php include '../assets/php/edit_partner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -117,7 +118,7 @@
 <div class="row flex-lg-nowrap">
 
   <div class="col ">
-    <form action="../assets/php/edit_learner_profile.php" method="post" enctype="multipart/form-data">
+    <form action="../assets/php/edit_partner_profile.php" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -127,8 +128,9 @@
                 <div class="row">
                   <div class="col-12 col-sm-auto mb-3">
                  
-                    <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile-image1" style="width: 100px; height: 100px;">
-                    <input id="profile-image-upload" class="hidden" type="file" onchange="previewFile()" >
+                    
+    <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile-image1" style="width: 100px; height: 100px;">
+    <input type="file" id="profile-image-upload" name="photo" class="hidden" onchange="previewFile()">
                      
                   </div>
                   </div>
@@ -154,13 +156,13 @@
                           <div class="col">
                             <div class="form-group">
                               <label>First Name</label>
-                              <input class="form-control" type="text" name="FirstName" placeholder="First Name" >
+                              <input class="form-control" type="text" name="FirstName" placeholder="First Name" value="<?php echo htmlspecialchars($firstName); ?>" >
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label>Last Name</label>
-                              <input class="form-control" type="text" name="LastName" placeholder="Last Name" >
+                              <input class="form-control" type="text" name="LastName" placeholder="Last Name"  value="<?php echo htmlspecialchars($lastName); ?>" >
                             </div>
                           </div>
 
@@ -169,7 +171,7 @@
                           <div class="col">
                             <div class="form-group">
                               <label>Phone Number</label>
-                              <input class="form-control" type="text" name="Phone" placeholder="Phone Number" >
+                              <input class="form-control" type="text" name="Phone" placeholder="Phone Number" value="<?php echo htmlspecialchars($phone); ?>" >
                             </div>
                           </div>
                             <div class="col">
@@ -187,7 +189,7 @@
                             <div class="form-group">
                               <label for ="Age" >Select Age:<br></label>
                             </div>
-                              <input class="form-control" name="Age" type="text" placeholder="25" style ="width:150px;">
+                              <input class="form-control" name="Age" type="text" placeholder="25" style ="width:150px;" value="<?php echo htmlspecialchars($age); ?>">
                             </div>
                             <div class="col">
                               <div class="form-group">
@@ -229,7 +231,7 @@
                             <label for ="City">City:<br></label>
                           </div>
                         </div>
-                        <input class="form-control" type="text"  name="City" placeholder="Riyadh"  style ="width:150px;">
+                        <input class="form-control" type="text"  name="City" placeholder="Riyadh"  style ="width:150px;" value="<?php echo htmlspecialchars($city); ?>">
                         
                       </div>
                     </div>
@@ -237,7 +239,13 @@
                           <div class="col mb-3">
                             <div class="form-group">
                               <label>About</label>
-                              <textarea id="Bio" name="Bio" class="form-control" rows="5" placeholder="Languages and cultural knowldege"></textarea>
+                              <textarea id="Bio" name="Bio" class="form-control" rows="5" placeholder="Languages and cultural knowldege"><?php echo htmlspecialchars($bio); ?></textarea>
+                            </div>
+                          </div>
+                          <div class="col mb-3">
+                            <div class="form-group">
+                              <label>Session Price in SAR</label>
+                              <input id="SessionPrice" name="SessionPrice" class="form-control" value="<?php echo htmlspecialchars($sessionPrice); ?>" ></input>
                             </div>
                           </div>
                         </div>
@@ -265,27 +273,6 @@
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
                               <input class="form-control" type="password" id="ConfirmPassPartner" name="ConfirmPass"></div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                        <div class="mb-2"><b>Keeping in Touch</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="custom-controls-stacked px-2">
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="EmailNotifications" checked="">
-                                <label class="custom-control-label" for="EmailNotifications">Email Notifications</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                                <label class="custom-control-label" for="notifications-news">Newsletter</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                                <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
-                              </div>
-                            </div>
                           </div>
                         </div>
                       </div>

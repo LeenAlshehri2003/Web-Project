@@ -9,21 +9,19 @@ $proficiencyLevel = $_POST['ProficiencyLevel'];
 $sessionDate = $_POST['SessionDate'];
 $sessionDuration = $_POST['SessionDuration'];
 $sessionTime = $_POST['SessionTime']; // Ensure this maps to your table column correctly
-$status = $_POST['Status']; // Ensure this field is in the form and sent by the client
 
 // Convert session time and date into a single datetime format if necessary
 $preferredSchedule = date('Y-m-d H:i:s', strtotime("$sessionDate $sessionTime"));
 
-// SQL to update the record
+// SQL to update the record without changing the Status
 $sql = "UPDATE languagerequests SET 
         ProficiencyLevel = ?, 
         PreferredSchedule = ?, 
-        SessionDuration = ?, 
-        Status = ?
+        SessionDuration = ?
         WHERE RequestID = ?";
 
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("ssisi", $proficiencyLevel, $preferredSchedule, $sessionDuration, $status, $requestId);
+$stmt->bind_param("ssii", $proficiencyLevel, $preferredSchedule, $sessionDuration, $requestId);
 $result = $stmt->execute();
 
 if ($result) {

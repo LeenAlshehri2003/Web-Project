@@ -12,7 +12,7 @@ if (isset($_GET['profile_id'], $_GET['profile_type'])) {
     $stmt->execute();
 
     if ($stmt->affected_rows > 0) {
-        echo "<script>alert('Profile deleted successfully.'); window.location.href = '/main_page.php';</script>";
+        echo "<script>alert('Profile deleted successfully.'); window.location.href = '../../HTML pages/SignInLearner.php';</script>";
     } else {
         // Determine the profile page based on the type of profile
         $errorRedirectPage = ($profile_type === 'learner') ? '../HTML pages/ProfilePage-LanguageLearner.php' : '../HTML pages/ProfilePage-LanguagePartner.php';

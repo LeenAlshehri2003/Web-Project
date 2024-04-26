@@ -1,3 +1,5 @@
+
+<?php include '../assets/php/edit_learner_profile.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -131,7 +133,7 @@
 <div class="container">
 <div class="row flex-lg-nowrap">
   <div class="col ">
-    <form action="../XAMPP/htdocs/WebProject/assets/php/edit_learner_profile.php" method="post" enctype="multipart/form-data">
+    <form action="../assets/php/edit_learner_profile.php" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -141,14 +143,13 @@
                 <div class="col-12 col-sm-auto mb-3">
                
                   <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile-image1" style="width: 100px; height: 100px;">
-                  <input id="profile-image-upload" class="hidden" type="file" onchange="previewFile()" >
+                  <input id="profile-image-upload" class="hidden"  name="photo" type="file" onchange="previewFile()" >
                    
                 </div>
                 </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
-                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Sama AbdulAziz</h4>
-                    <div class="text-muted"><small>Last edited 2 month ago</small></div>
+                  
                     <div class="mt-2">
                     
                       
@@ -172,13 +173,13 @@
                           <div class="col">
                             <div class="form-group">
                               <label><strong>First Name</strong></label>
-                              <input class="form-control" type="text" id="FirstName" name="First name" placeholder="Enter First Name " >
+                              <input class="form-control" type="text" id="FirstName" name="FirstName" value="<?php echo htmlspecialchars($firstName); ?>" >
                             </div>
                           </div>
                           <div class="col">
                             <div class="form-group">
                               <label><strong>Last Name</strong></label>
-                              <input class="form-control" type="text"  id="LastName" name="Last Name" placeholder="Enter Last Name" >
+                              <input class="form-control" type="text"  id="LastName" name="LastName"  value="<?php echo htmlspecialchars($lastName); ?>" >
                             </div>
                           </div>
 
@@ -189,7 +190,7 @@
                             <label for ="City"><strong>City:</strong><br></label>
                           </div>
                         </div>
-                        <input class="form-control" type="text" id="City" name= "City" placeholder="Enter City"  style ="width:150px;">
+                        <input class="form-control" type="text" id="City" name= "City"  style ="width:150px;" value="<?php echo htmlspecialchars($city); ?>">
                         <br>
                       </div>
                     </div>
@@ -199,12 +200,12 @@
                             
                            
                             
-                                <input type="hidden" name="latitude" id="latitude" value="">
-                                <input type="hidden" name="longitude" id="longitude" value="">
-                            
+                        
                                 <li onclick="geoFindMe()"  id ="find-me" class="theme_btn free_btn">Get Address</li>
+                                <input type="hidden" id="latitude" name="latitude" value="">
+                                 <input type="hidden" id="longitude" name="longitude"  value="">
                                 <p id="status"></p>
-                               <a id="map-link" target="_blank"></a>
+                               <a id="map-link" target="_blank" ></a>
                             </div>
                           </div>
                         </div>
@@ -235,31 +236,10 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                        <div class="mb-2"><b>Keeping in Touch</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="custom-controls-stacked px-2">
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="EmailNotifications" checked="">
-                                <label class="custom-control-label" for="EmailNotifications">Email Notifications</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                                <label class="custom-control-label" for="notifications-news">Newsletter</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                                <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+</div>
                     <div class="row">
                       <div class="col-12 col-md-3 mb-3">
-                        <button class="theme_btn free_btn" type="submit" >Save</button>
+                        <button class="theme_btn free_btn" type="submit" style="background-color: green;" >Save</button>
                         
                       </div>
                    
@@ -357,10 +337,10 @@
   
   
   <!-- JS here -->
-  <script src="../assets/js/GeolocationFinder.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../assets/js/EditProfile.js"></script>
+  <script src="../assets/js/GeolocationFinder.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>

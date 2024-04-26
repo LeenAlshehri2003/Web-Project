@@ -135,11 +135,11 @@
                         <h2>Learner Profile</h2>
                         <hr>
                         <ul class="profile-list mb-50">
-                        <li>First Name: <span><?php echo htmlspecialchars($learnerProfile['FirstName']); ?></span></li>
-                        <li>Last Name: <span><?php echo htmlspecialchars($learnerProfile['LastName']); ?></span></li>
-                        <li>Email: <span><?php echo htmlspecialchars($learnerProfile['Email']); ?></span></li>
-                        <li>City: <span><?php echo htmlspecialchars($learnerProfile['City']); ?></span></li>
-                        <li>Location: <span><?php echo htmlspecialchars($learnerProfile['Location']); ?></span></li>
+                        <li>First Name: <span><?php echo htmlspecialchars($learnerData['FirstName']); ?></span></li>
+                        <li>Last Name: <span><?php echo htmlspecialchars($learnerData['LastName']); ?></span></li>
+                        <li>Email: <span><?php echo htmlspecialchars($learnerData['Email']); ?></span></li>
+                        <li>City: <span><?php echo htmlspecialchars($learnerData['City']); ?></span></li>
+                        <li>Location: <span><?php echo htmlspecialchars($learnerData['Location']); ?></span></li>
                         </ul>
                         <section>
     <ul class="work-progress">
@@ -162,15 +162,15 @@
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img src="<?php echo htmlspecialchars('uploads/' . $learnerData['Photo']); ?>" alt="Profile Picture" style="width: 100px;">
+                        <img src="<?php echo htmlspecialchars('../assets/img/' . $learnerData['Photo']); ?>" alt="Profile Picture" style="width: 300px; height: 250px;" >
                          <!-- Ensure $learnerProfile['Photo'] contains the relative path to the image -->
                 </div>
             </div>
             <hr>
             <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
-            <li><a href="Edit Language Learner Profile.html" class="theme_btn free_btn">Edit </a></li>
+            <li><a href="Edit Language Learner Profile.php" class="theme_btn free_btn">Edit </a></li>
             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-            <li><button onclick="confirmDeletion(<?= $user_id ?>, 'learner'); class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
+            <li><button onclick="confirmDeletion(<?= $userId ?>, 'learner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
             </div>
             </div>
         </div>

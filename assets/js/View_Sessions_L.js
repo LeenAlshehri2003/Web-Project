@@ -1,3 +1,4 @@
+/*
 $(document).ready(function() {
     // Load the sessions
     loadSessions();
@@ -45,3 +46,4 @@ $(document).ready(function() {
         });
     }
 });
+*/

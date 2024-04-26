@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-      url: 'load_requests.php', // Ensure this points to your actual PHP script location
+      url: '/Web-Project/assets/php/load_requests.php', // Ensure this points to your actual PHP script location
       type: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -18,7 +18,7 @@ $(document).ready(function() {
                               <div>Session Time: ${item.SessionTime}</div>
                               <div>Duration: ${item.Duration} min</div>
                               <div>Proficiency Level: ${item.ProficiencyLevel}</div>
-                              ${item.Status === 'Open' ? `
+                              ${item.Status === 'Pending' ? `
                                   <div class="info-container" style="display: flex; align-items: center; justify-content: space-between">
                                       <a href="EditRequest.html?requestId=${item.RequestID}" class="theme_btn">Edit</a>
                                       <button class="theme_btn" onclick="deleteRequest(${item.RequestID})">Delete</button>
@@ -26,11 +26,11 @@ $(document).ready(function() {
                           </div>
                       </div>
                   </div>`;
-              if (item.Status === 'Open') {
+              if (item.Status === 'Pending') {
                   $('#nav-home').append(content); // Assuming 'Open' requests go in the 'Pending' tab
               } else if (item.Status === 'Accepted') {
                   $('#nav-profile').append(content); // Assuming 'Accepted' requests go in the 'Accepted' tab
-              } else if (item.Status === 'Cancelled') {
+              } else if (item.Status === 'Rejected') {
                   $('#nav-profile1').append(content); // Assuming 'Cancelled' requests go in the 'Rejected' tab
               }
           });
@@ -45,7 +45,7 @@ $(document).ready(function() {
 function deleteRequest(requestId) {
   if (confirm('Are you sure you want to delete this request?')) {
       $.ajax({
-          url: 'delete_request.php', // Server-side script to handle deletion
+          url: '../php/delete_request.php', // Server-side script to handle deletion
           type: 'POST',
           data: { id: requestId },
           success: function(response) {
