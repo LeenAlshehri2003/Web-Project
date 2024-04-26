@@ -38,11 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 // Handle form submission to update learner data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve geolocation data from the form
-$latitude = isset($_POST['latitude']) ? $conn->real_escape_string($_POST['latitude']) : null;
-$longitude = isset($_POST['longitude']) ? $conn->real_escape_string($_POST['longitude']) : null;
+$latitude = $conn->real_escape_string($_POST['latitude']);
+$longitude = $conn->real_escape_string($_POST['longitude']);
 
 // You might want to save these as a single field in the database
-$location = $latitude . ', ' . $longitude;
+$location = $latitude ;
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);
@@ -51,7 +51,7 @@ $location = $latitude . ', ' . $longitude;
 
     // Handle photo upload
     if (!empty($_FILES['photo']['name'])) {
-        $targetDir = "uploads/";
+        $targetDir = "../img/";
         $fileName = basename($_FILES['photo']['name']);
         $targetFilePath = $targetDir . $fileName;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);

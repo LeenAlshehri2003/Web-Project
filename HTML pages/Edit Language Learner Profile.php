@@ -200,9 +200,10 @@
                             
                            
                             
-                            <input type="hidden" id="latitude" name="latitude">
-                           <input type="hidden" id="longitude" name="longitude">
+                        
                                 <li onclick="geoFindMe()"  id ="find-me" class="theme_btn free_btn">Get Address</li>
+                                <input type="hidden" id="latitude" name="latitude">
+                                 <input type="hidden" id="longitude" name="longitude">
                                 <p id="status"></p>
                                <a id="map-link" target="_blank" ></a>
                             </div>
@@ -235,31 +236,10 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                        <div class="mb-2"><b>Keeping in Touch</b></div>
-                        <div class="row">
-                          <div class="col">
-                            <div class="custom-controls-stacked px-2">
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="EmailNotifications" checked="">
-                                <label class="custom-control-label" for="EmailNotifications">Email Notifications</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-news" checked="">
-                                <label class="custom-control-label" for="notifications-news">Newsletter</label>
-                              </div>
-                              <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="notifications-offers" checked="">
-                                <label class="custom-control-label" for="notifications-offers">Personal Offers</label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+</div>
                     <div class="row">
                       <div class="col-12 col-md-3 mb-3">
-                        <button class="theme_btn free_btn" type="submit" >Save</button>
+                        <button class="theme_btn free_btn" type="submit" style="background-color: green;" >Save</button>
                         
                       </div>
                    
@@ -357,10 +337,10 @@
   
   
   <!-- JS here -->
-  <script src="../assets/js/GeolocationFinder.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../assets/js/EditProfile.js"></script>
+  <script src="../assets/js/GeolocationFinder.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>

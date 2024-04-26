@@ -155,8 +155,8 @@
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img src="<?php echo htmlspecialchars('uploads/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 500;">
-        <!-- Ensure $partnerProfile['Photo'] contains the relative path to the image -->
+                        <img src="<?php echo htmlspecialchars('../assets/img/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 300px; height: 250px;" >
+      
                 </div>
             </div>
                    <div class="col-xl-6 col-lg-12">
