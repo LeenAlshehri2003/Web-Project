@@ -8,7 +8,7 @@ if(isset($_GET['request_id'])) {
     $request_id = mysqli_real_escape_string($conn, $_GET['request_id']);
     
     // Prepare SQL statement to retrieve request details
-    $sql = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, l.LanguageName ,u.Photo AS ProfilePicture
+    $sql = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, l.LanguageName ,u.Photo AS ProfilePicture, u.UserID AS LearnerID
             FROM languagerequests lr 
             JOIN users u ON lr.LearnerID = u.UserID 
             JOIN languages l ON lr.LanguageID = l.LanguageID 
@@ -57,7 +57,7 @@ if(isset($_GET['request_id'])) {
                     
                                     <div class="request-details-body">
                                         <p><strong>Status:</strong> <span id="status">' . $row['Status'] . '</span></p>
-                                        <a href="" class="profile-link">view learner profile</a>
+                                        <a href="Plearner_profile.php?learner_id=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
                                         <p><strong>Learner Name:</strong> <span id="learnerName">' . $row['FullName'] . '</span></p>
                                         <p><strong>Language Goals:</strong> <span id="languageGoals">Improve Fluency In ' . $row['LanguageName'] . '</span></p>
                                         <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
@@ -88,7 +88,7 @@ if(isset($_GET['request_id'])) {
                     
                                     <div class="request-details-body">
                                         <p><strong>Status:</strong> <span id="status">' . $row['Status'] . '</span></p>
-                                        <a href="" class="profile-link">view learner profile</a>
+                                        <a href="Plearner_profile.php?learner_id=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
                                         <p><strong>Learner Name:</strong> <span id="learnerName">' . $row['FullName'] . '</span></p>
                                         <p><strong>Language Goals:</strong> <span id="languageGoals">Improve Fluency In ' . $row['LanguageName'] . '</span></p>
                                         <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
@@ -120,7 +120,7 @@ if(isset($_GET['request_id'])) {
                 
                                 <div class="request-details-body">
                                     <p><strong>Status:</strong> <span id="status">' . $row['Status'] . '</span></p>
-                                    <a href="" class="profile-link">view learner profile</a>
+                                    <a href="../assets/php/Plearner_profile.php?learner_id=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
                                     <p><strong>Learner Name:</strong> <span id="learnerName">' . $row['FullName'] . '</span></p>
                                     <p><strong>Language Goals:</strong> <span id="languageGoals">Improve Fluency In ' . $row['LanguageName'] . '</span></p>
                                     <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
