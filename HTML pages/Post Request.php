@@ -198,7 +198,7 @@
                           <div id="totalCost"></div>
                           </div>
                         </div>
-                        <input   name="Status" id="Status" type="hidden" value="Open">
+                        <input   name="Status" id="Status" type="hidden" value="Pending">
                       </div>
                     </div>
                     <div class="row">
