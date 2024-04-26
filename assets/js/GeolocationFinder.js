@@ -1,20 +1,18 @@
 function geoFindMe() {
   const status = document.querySelector("#status");
-  const mapLink = document.querySelector("#map-link");
-
-  mapLink.href = "";
-  mapLink.textContent = "";
+  // Add selectors for the hidden form inputs
+  const latInput = document.querySelector("#latitude");
+  const lonInput = document.querySelector("#longitude");
 
   function success(position) {
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
 
-    status.textContent = "";
-    mapLink.href = `https://www.openstreetmap.org/#map=18/${latitude}/${longitude}`;
-    mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-    var address = mapLink.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
-    // Save the geolocation data in localStorage
-    localStorage.setItem('address', address);
+    // Update the hidden form inputs
+    latInput.value = latitude;
+    lonInput.value = longitude;
+
+    status.textContent = `Latitude: ${latitude} °, Longitude: ${longitude} °`;
   }
 
   function error() {

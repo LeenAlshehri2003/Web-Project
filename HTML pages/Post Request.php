@@ -131,7 +131,7 @@
 <div class="row flex-lg-nowrap">
 
   <div class="col ">
-  <form  id="postRequestForm" method="post" action="../assets/php/createRequest.php" class="form" >
+  <form  id="postRequestForm" method="post" action="../assets/php/createRequest.php" class="form" enctype="multipart/form-data" >
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -198,7 +198,7 @@
                           <div id="totalCost"></div>
                           </div>
                         </div>
-                        
+                        <input   name="Status" id="Status" type="hidden" value="Open">
                       </div>
                     </div>
                     <div class="row">
@@ -323,7 +323,7 @@
   <script src="../assets/js/jquery.easypiechart.js"></script>
   <script src="../assets/js/plugins.js"></script>
   <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/PostRequest.js" ></script> 
+ 
   </body>
   
   </html>

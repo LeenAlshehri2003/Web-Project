@@ -200,9 +200,8 @@
                             
                            
                             
-                                <input type="hidden" name="latitude" id="latitude" value="" name="Location">
-                                <input type="hidden" name="longitude" id="longitude" value="">
-                            
+                            <input type="hidden" id="latitude" name="latitude">
+                           <input type="hidden" id="longitude" name="longitude">
                                 <li onclick="geoFindMe()"  id ="find-me" class="theme_btn free_btn">Get Address</li>
                                 <p id="status"></p>
                                <a id="map-link" target="_blank" ></a>

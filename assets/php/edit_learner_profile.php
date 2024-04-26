@@ -12,7 +12,8 @@ require 'db.php'; // Ensure this path is correct for your database connection sc
 $learnerID = 3; // Assuming the user's ID is stored in the session under 'UserID'
 
 // Initialize variables to store learner data
-$firstName = $lastName = $city = $currentPass = $photo = $location = "";
+$firstName = $lastName = $city = $currentPass = $photo =  "";
+
 
 // Retrieve existing learner information
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
@@ -36,11 +37,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
 // Handle form submission to update learner data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Retrieve geolocation data from the form
+$latitude = isset($_POST['latitude']) ? $conn->real_escape_string($_POST['latitude']) : null;
+$longitude = isset($_POST['longitude']) ? $conn->real_escape_string($_POST['longitude']) : null;
+
+// You might want to save these as a single field in the database
+$location = $latitude . ', ' . $longitude;
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);
     $NewPass = $conn->real_escape_string($_POST['NewPass']); // Assume hashing occurs later
-    $location = $conn->real_escape_string($_POST['Location']); // Sanitize the new location input
+    
 
     // Handle photo upload
     if (!empty($_FILES['photo']['name'])) {
