@@ -1,3 +1,4 @@
+<?php include '../assets/php/ViewSessionsL.php'; ?>
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -151,6 +152,8 @@
                                 <ul class="breadcrumb">
                                     <li><a href="HomeLearner.html">Home - </a></li>
                                     <li><a href="#">View Sessions</a></li>
+
+
                                 </ul>
                             </div>
                         </div>
@@ -189,24 +192,81 @@
                 </div>
             </div>
             <!-- Current sessions -->
+            <!-- HTML template -->
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                    <div class="row" id="current-sessions-l">
-                        <!-- Current sessions dynamically here -->
+                    <div class="row" id="current-sessions-p">
+                        <!-- Render current sessions dynamically -->
+                        <?php foreach ($sessions as $session): ?>
+                        <?php if ($session['Status'] === 'Scheduled'): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="plan text-center mb-30">
+                                <div class="pr__header mb-3">
+                                    <img src="../assets/img/icon/writing.svg" alt="writing icon" class="pr-icon">
+                                </div>
+                                <div class="pr__body">
+                                    <ul class="price-list">
+                                        <li>Partner:
+                                            <?php echo htmlspecialchars( $session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                        </li>
+                                        <li>Language:
+                                            <?php echo htmlspecialchars($session['LanguageName']); ?>
+                                        </li>
+                                        <li>Day and time:
+                                            <?php echo htmlspecialchars($session['SessionDate']); ?>
+                                        </li>
+                                        <li>Duration:
+                                            <?php echo htmlspecialchars($session['Duration']); ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pr__footer mt-50">
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-            </div>
-            <!-- Previous sessions -->
-            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                <div class="row" id="previous-sessions-l">
-                    <!-- previous sessions dynamically here -->
-
+                <!-- Previous sessions -->
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row" id="previous-sessions-p">
+                        <!-- Render previous sessions dynamically -->
+                        <?php foreach ($sessions as $session): ?>
+                        <?php if ($session['Status'] !== 'Scheduled'): ?>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="plan text-center mb-30">
+                                <div class="pr__header mb-3">
+                                    <img src="../assets/img/icon/writing.svg" alt="writing icon" class="pr-icon">
+                                </div>
+                                <div class="pr__body">
+                                    <ul class="price-list">
+                                    <li>Partner:
+                                            <?php echo htmlspecialchars( $session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                        </li>
+                                        <li>Language:
+                                            <?php echo htmlspecialchars($session['LanguageName']); ?>
+                                        </li>
+                                        <li>Day and time:
+                                            <?php echo htmlspecialchars($session['SessionDate']); ?>
+                                        </li>
+                                        <li>Duration:
+                                            <?php echo htmlspecialchars($session['Duration']); ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="pr__footer mt-50">
+                                </div>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>
         </div>
     </section>
-
 
     <!--footer-area start-->
     <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
