@@ -42,7 +42,7 @@ $latitude = $conn->real_escape_string($_POST['latitude']);
 $longitude = $conn->real_escape_string($_POST['longitude']);
 
 // You might want to save these as a single field in the database
-$location = $latitude ;
+   $location = $latitude ;
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);
@@ -82,7 +82,7 @@ $location = $latitude ;
     $updateLearner->close();
 
     // Redirect to a success page or perform additional actions
-    //header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
+    header('Location: ../../HTML pages/ProfilePage-LanguageLearner.php');
     exit;
 }
 

@@ -1,8 +1,8 @@
 function geoFindMe() {
   const status = document.querySelector("#status");
   // Add selectors for the hidden form inputs
-  const latInput = document.querySelector("#latitude");
-  const lonInput = document.querySelector("#longitude");
+  const latInput = document.querySelector('[name="latitude"]');
+ const lonInput = document.querySelector('[name="longitude"]');
 
   function success(position) {
     const latitude = position.coords.latitude;

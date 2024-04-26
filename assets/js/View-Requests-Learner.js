@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-      url: '../php/load_requests.php', // Ensure this points to your actual PHP script location
+      url: '/Web-Project/assets/php/load_requests.php', // Ensure this points to your actual PHP script location
       type: 'GET',
       dataType: 'json',
       success: function(data) {
