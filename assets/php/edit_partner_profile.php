@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filename = '';
     // Handle file upload
 if (!empty($_FILES["photo"]["name"])) {
-    $targetDir = "uploads/";
+    $targetDir = "../img/Partners images/";
     $fileName = basename($_FILES["photo"]["name"]);
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);

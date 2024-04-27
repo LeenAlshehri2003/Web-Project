@@ -1,6 +1,6 @@
 $(document).ready(function() {
   $.ajax({
-      url: '/Web-Project/assets/php/load_requests.php', // Ensure this points to your actual PHP script location
+      url:  "http://localhost/Web-Project/assets/php/load_requests.php", 
       type: 'GET',
       dataType: 'json',
       success: function(data) {
@@ -45,7 +45,7 @@ $(document).ready(function() {
 function deleteRequest(requestId) {
   if (confirm('Are you sure you want to delete this request?')) {
       $.ajax({
-          url: '../php/delete_request.php', // Server-side script to handle deletion
+          url: "http://localhost/Web-Project/assets/php/delete_request.php", // Server-side script to handle deletion
           type: 'POST',
           data: { id: requestId },
           success: function(response) {
