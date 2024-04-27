@@ -18,7 +18,7 @@ $firstName = $lastName = $city = $currentPass = $photo =  "";
 // Retrieve existing learner information
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $learnerQuery = $conn->prepare("
-        SELECT u.FirstName, u.LastName, u.City, u.Password, u.Photo
+        SELECT u.FirstName, u.LastName, u.City, u.Password, u.Photo, l.Location
         FROM users u
         INNER JOIN learners l ON u.UserID = l.LearnerID
         WHERE u.UserID = ?");
@@ -31,18 +31,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $city = $learnerRow['City'];
         $currentPass = $learnerRow['Password'];
         $photo = $learnerRow['Photo'];
+        $location = $learnerRow['Location'];  // Added line to retrieve location
     }
     $learnerQuery->close();
 }
-
 // Handle form submission to update learner data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve geolocation data from the form
-$latitude = $conn->real_escape_string($_POST['latitude']);
-$longitude = $conn->real_escape_string($_POST['longitude']);
+
 
 // You might want to save these as a single field in the database
-   $location = $latitude ;
+   $location =  $conn->real_escape_string($_POST['FirstName']);
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);

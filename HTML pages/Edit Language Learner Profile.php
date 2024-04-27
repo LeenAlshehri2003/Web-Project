@@ -197,15 +197,9 @@
                         <div class="row">
                           <div class="col mb-3">
                             <div class="form-group">
-                            
-                           
-                            
-                        
-                                <li onclick="geoFindMe()"  id ="find-me" class="theme_btn free_btn">Get Address</li>
-                                <input type="hidden" id="latitude" name="latitude" value="">
-                                 <input type="hidden" id="longitude" name="longitude"  value="">
-                                <p id="status"></p>
-                               <a id="map-link" target="_blank" ></a>
+                            <label for ="Location"><strong>Location:</strong><br></label>
+                          <input type="text" class="form-control" id="Location" name="Location"  style ="width:150px;" value="<?php echo htmlspecialchars($location); ?>">
+                              
                             </div>
                           </div>
                         </div>

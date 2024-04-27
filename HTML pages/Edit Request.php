@@ -134,7 +134,7 @@
            
         
            <div class="col ">
-            <form  action="../assets/php/update_request.php" method="post" enctype="multipart/form-data">
+            <form  id="editRequestForm" action="../assets/php/update_request.php" method="post" enctype="multipart/form-data">
              <div class="row">
                <div class="col mb-3">
                  <div class="card">
@@ -308,6 +308,8 @@
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../assets/js/Validate_Edited_Request.js"></script>
   <script src="../assets/js/popper.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
