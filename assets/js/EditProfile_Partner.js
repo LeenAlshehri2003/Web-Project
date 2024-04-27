@@ -30,97 +30,75 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function validatePassword(value) {
-        if (value === "") return ""; // Allow empty for initial load
-        if (value.length < 8) return "Password must be at least 8 characters long.";
-        // Checks for at least one special character from the specified set
-        if (!/[!@#$%^&*(),.?":{}|<>]/.test(value)) {
-            return "Password must contain at least one special character such as !, @, #, $, %, ^, &, *, (, ), etc.";
-        }
-        return "";
-    }
-    
-
     function validateForm() {
         let isValid = true;
-        const formElements = [
-            { selector: "FirstName" },
-            { selector: "LastName" },
-            { selector: "Phone" },
-            { selector: "City" },
-            { selector: "Bio" },
-            { selector: "CurrentPass" },
-            { selector: "NewPass" },
-            { selector: "ConfirmPass" },
-            { selector: "Gender" },
-            { selector: "SessionPrice" },
+    
+        // Define the elements to validate
+        const elementsToValidate = [
+            {  name: "FirstName" },
+            {  name: "LastName" },
+            { name: "Phone" },
+            {  name: "City" },
+            { id: "Bio", name: "Bio" },
+            {  name: "Age" },
+            { id: "CurrentPassPartner", name: "CurrentPass" },
+            { id: "NewPassPartner", name: "NewPass" },
+            { id: "ConfirmPassPartner", name: "ConfirmPass" },
+            { id: "Gender", name: "Gender" },
+            { id: "SessionPrice", name: "Session Price" }
         ];
-
-        formElements.forEach(elem => {
-            const input = document.querySelector(`[name='${elem.selector}']`);
+    
+        // Check if all required fields are filled and valid
+        elementsToValidate.forEach(elem => {
+            const input = document.getElementById(elem.name);
             if (!input || input.value.trim() === '') {
-                if (input) input.style.border = '2px solid red';
-                console.log(elem.selector + " is invalid.");
+                input.style.border = '2px solid red';
+                console.log(elem.name + " is invalid.");
                 isValid = false;
             } else {
                 input.style.border = '';
             }
         });
-
+    
+        // Validate language checkboxes
         const languageCheckboxes = document.querySelectorAll("[name='languages[]']");
         const isLanguageSelected = Array.from(languageCheckboxes).some(checkbox => checkbox.checked);
         if (!isLanguageSelected) {
             languageCheckboxes.forEach(checkbox => checkbox.nextElementSibling.style.color = 'red');
-            Swal.fire({
-                title: 'LinguaLink',
-                text: 'Please select at least one language',
-                icon: 'info',
-                confirmButtonColor: '#FFA500',  
-                confirmButtonText: 'OK'
-            });
+            alert('Please select at least one language.');
             isValid = false;
         } else {
             languageCheckboxes.forEach(checkbox => checkbox.nextElementSibling.style.color = '');
         }
-
-        const newPassword = document.querySelector("[name='NewPass']").value.trim();
-        const confirmPassword = document.querySelector("[name='ConfirmPass']").value.trim();
+    
+        // Validate new and confirm password fields
+        const newPassword = document.getElementById("NewPassPartner").value.trim();
+        const confirmPassword = document.getElementById("ConfirmPass").value.trim();
         if (newPassword && confirmPassword && newPassword !== confirmPassword) {
-            document.querySelector("[name='NewPass']").style.border = '2px solid red';
-            document.querySelector("[name='ConfirmPass']").style.border = '2px solid red';
-            Swal.fire({
-                title: 'LinguaLink',
-                text: "new Password and Confirm Password do not match",
-                icon: 'info',
-                confirmButtonColor: '#FFA500',  
-                confirmButtonText: 'OK'
-            });
+            document.getElementById("NewPassPartner").style.border = '2px solid red';
+            document.getElementById("ConfirmPass").style.border = '2px solid red';
+            alert('New Password and Confirm Password do not match.');
             isValid = false;
         }
-
-        const passwordInfo = validatePassword(document.querySelector("[id='NewPassPartner']").value.trim());
-        if (passwordInfo !== "") {
-            Swal.fire({
-                title: 'LinguaLink',
-                text: passwordInfo,
-                icon: 'info',
-                confirmButtonColor: '#FFA500',  
-                confirmButtonText: 'OK'
-            });
+    
+        // Validate new password requirements
+        const passwordErrorMessage = validatePassword(newPassword);
+        if (passwordErrorMessage !== "") {
+            alert(passwordErrorMessage);
+            document.getElementById("NewPassPartner").style.border = '2px solid red';
             isValid = false;
         }
-
-        if (!isValid) {
-            Swal.fire({
-                title: 'LinguaLink',
-                text: 'Please fill all required fields',
-                icon: 'info',
-                confirmButtonColor: '#FFA500',  
-                confirmButtonText: 'OK'
-            });
-            e.preventDefault(); // Prevent form submission
-        }
-
+    
         return isValid;
+    }
+    
+    function validatePassword(password) {
+        if (password.length < 8) {
+            return "Password must be at least 8 characters long.";
+        }
+        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+            return "Password must contain at least one special character.";
+        }
+        return "";
     }
 });

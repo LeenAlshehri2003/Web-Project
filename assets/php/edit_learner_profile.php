@@ -42,11 +42,12 @@ $latitude = $conn->real_escape_string($_POST['latitude']);
 $longitude = $conn->real_escape_string($_POST['longitude']);
 
 // You might want to save these as a single field in the database
-$location = $latitude ;
+   $location = $latitude ;
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);
     $NewPass = $conn->real_escape_string($_POST['NewPass']); // Assume hashing occurs later
+    $hashedPassword = password_hash($NewPass, PASSWORD_DEFAULT);
     
 
     // Handle photo upload
@@ -70,7 +71,7 @@ $location = $latitude ;
 
     // Update user details
     $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $NewPass, $city, $photo, $learnerID);
+    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $photo, $learnerID);
     $updateUser->execute();
     $updateUser->close();
 
@@ -82,7 +83,7 @@ $location = $latitude ;
     $updateLearner->close();
 
     // Redirect to a success page or perform additional actions
-    //header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
+    header('Location: ../../HTML pages/ProfilePage-LanguageLearner.php');
     exit;
 }
 

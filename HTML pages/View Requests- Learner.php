@@ -1,3 +1,4 @@
+<?php require '../assets/php/load_requests.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -152,26 +153,88 @@
         </div>
         <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-          <div class="row">
-                <!--Here will be Pending requests-->
-          </div>
-        </div>
-        <div class="tab-pane fade" id="nav-profile1" role="tabpanel" aria-labelledby="nav-profile-tab1">
-            <div class="row">
-        <!--Here will be accepted requests-->
-            </div>
-        </div>
+                    <div class="row">
+                        <?php foreach ($requests as $item): ?>
+                            <?php if ($item['Status'] === 'Pending'): ?>
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="z-blogs mb-30">
+                                        <div class="z-blogs__thumb mb-30">
+                                            <a href="Profile_Page.html">
+                                                <img src="<?= htmlspecialchars('../assets/img/Partners images/' . $item['PartnerPhoto']) ?>" alt="Profile picture" width="420" height="320">
+                                            </a>
+                                        </div>
+                                        <div class="z-blogs__content">
+                                        <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
+                                            <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
+                                            <div>Session Date: <?= htmlspecialchars($item['PreferredDate'], ENT_QUOTES, 'UTF-8') ?></div>
+                                            <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
+                                            <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
+                                            <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
+                                            <div class="info-container" style="display: flex; align-items: center; justify-content: space-between">
+                                                <a href="Edit Request.php?requestId=<?= htmlspecialchars($item['RequestID']) ?>" class="theme_btn">Edit</a>
+                                                <a href="../assets/php/delete_request.php?requestId=<?= htmlspecialchars($item['RequestID']) ?>" class="theme_btn" style="background-color: red;" onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+    <div class="row">
+        <?php foreach ($requests as $item): ?>
+            <?php if ($item['Status'] === 'Accepted'): ?>
+                <div class="col-lg-4 col-md-6">
+                    <div class="z-blogs mb-30">
+                        <div class="z-blogs__thumb mb-30">
+                            <a href="Profile_Page.html">
+                            <img src="<?= htmlspecialchars('../assets/img/Partners images/' . $item['PartnerPhoto']) ?>" alt="Profile picture" width="420" height="320">
+                            </a>
+                        </div>
+                        <div class="z-blogs__content">
+                        <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
+                            <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
+                            <div>Session Date: <?= htmlspecialchars($item['SessionDate']) ?></div>
+                            <div>Session Time: <?= htmlspecialchars($item['SessionTime']) ?></div>
+                            <div>Duration: <?= htmlspecialchars($item['Duration']) ?> min</div>
+                            <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
+                            <!-- Potentially other actions specific to accepted requests -->
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
 
-           <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-            <div class="row">
-     <!--Here will be rejected requests-->
-    
-          </div>
-        
-      </div>
-  </div>
-  </div>
-  <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+<div class="tab-pane fade" id="nav-profile1" role="tabpanel" aria-labelledby="nav-profile-tab1">
+    <div class="row">
+        <?php foreach ($requests as $item): ?>
+            <?php if ($item['Status'] === 'Rejected'): ?>
+                <div class="col-lg-4 col-md-6">
+                    <div class="z-blogs mb-30">
+                        <div class="z-blogs__thumb mb-30">
+                            <a href="Profile_Page.html">
+                                <img src="<?= htmlspecialchars($item['PartnerPhoto']) ?>" alt="Partner picture" width="420" height="320">
+                            </a>
+                        </div>
+                        <div class="z-blogs__content">
+                            <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
+                            <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
+                            <div>Session Date: <?= htmlspecialchars($item['SessionDate']) ?></div>
+                            <div>Session Time: <?= htmlspecialchars($item['SessionTime']) ?></div>
+                            <div>Duration: <?= htmlspecialchars($item['Duration']) ?> min</div>
+                            <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
+                            <!-- Messages or actions for rejected requests -->
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php endforeach; ?>
+    </div>
+</div>
+  <div style="display: flex; justify-content: center; align-items: center;">
   <li><a href="Post Request.php" class="theme_btn free_btn">Post Request </a></li>
 </div>
 </div>
@@ -246,7 +309,6 @@
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
-    <script src="../assets/js/View-Requests-Learner.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>

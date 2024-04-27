@@ -134,7 +134,7 @@
         <li>Languages Spoken:
         <ul>
             <?php foreach ($partnerData['Languages'] as $language): ?>
-                <li><?php echo htmlspecialchars($language); ?></li>
+                <li style='display:block;'><?php echo htmlspecialchars($language); ?></li>
             <?php endforeach; ?>
         </ul>
             </li>
@@ -155,7 +155,7 @@
                     <div class="Learner-profile-Pic">
                         <h2>Profile Picture</h2>
                         <hr>
-                        <img src="<?php echo htmlspecialchars('../assets/img/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 300px; height: 250px;" >
+                        <img src="<?php echo htmlspecialchars('../assets/img/Partners images/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 500px; height:400px;" >
       
                 </div>
             </div>
@@ -177,30 +177,11 @@
                             <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt=""> 193+ Students</span></h5>
                             <li><a href="../HTML pages/View Reviews and Rates - Partner.html" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                            <li><a href="Edit Language Partner Profile.html" class="theme_btn free_btn">Edit </a></li>
+                            <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><button onclick="confirmDeletion(<?= $user_id ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>  
                        </div>
-                       <div id="popup-box" class="modal">
-                        <div class="content">
-                            <br>
-                            <p style="color: #000000;">
-                                Are you sure you want to delete the Account
-                            </p>
-                            <br>
-                            <b>
-                                <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
-                                   
-                                    &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; &nbsp;  &nbsp;  &nbsp;
-                                    <div style="display: flex; justify-content: center;">
-                                    <li><a href="Delete Message-Language Partner.html" class="theme_btn free_btn">Yes </a></li>
-                                   </div>
-                                    </div>
-                            </b>
-                            <a href="#" class="box-close">
-                                ×
-                            </a>
-                        </div>
+                      
                     </div>
                </div>
            </div>

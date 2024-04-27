@@ -4,40 +4,38 @@ session_start();
 
 // Ensure the user is logged in
 //if (!isset($_SESSION['learner_id'])) {
-  //  exit('User not logged in.');  // Proper handling for not logged-in users
+//    exit('User not logged in.');  // Proper handling for not logged-in users
 //}
 
 $userId = 3;
 
-$db = new Database();
-$conn = $db->getConnection(); // Get the database connection
-
-// SQL query to fetch all requests along with the partner's photo
-// Assuming that `PartnerID` in `languagerequests` corresponds to `UserID` in `users`
-$sql = "SELECT lr.*, u.Photo AS PartnerPhoto
+// Assuming $conn is already an established database connection
+$sql = "SELECT lr.*, u.Photo AS PartnerPhoto, l.LanguageName
         FROM languagerequests lr
         INNER JOIN users u ON lr.PartnerID = u.UserID
-        WHERE lr.LearnerID = ?";  // Filter requests for the logged-in learner
-
+        INNER JOIN languages l ON lr.LanguageID = l.LanguageID
+        WHERE lr.LearnerID = ?";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $userId); // Bind the learner ID to the parameter
+$stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$requests = []; // Array to hold the fetched data
-
+$requests = [];
 if ($result->num_rows > 0) {
-    // Fetch each row and add it to the 'requests' array
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
+        // Split the PreferredSchedule into date and time
+        $scheduleDateTime = new DateTime($row['PreferredSchedule']);
+        $row['PreferredDate'] = $scheduleDateTime->format('Y-m-d');
+        $row['PreferredTime'] = $scheduleDateTime->format('H:i:s');
+
+        // Now $row includes PreferredDate and PreferredTime separately
         $requests[] = $row;
     }
-} else {
-    echo "0 results"; // No data found
 }
 
-// Output the array in JSON format
-echo json_encode($requests);
-
-// Close the database connection if it's not done within your Database class
+// Close your database connection if needed
 $conn->close();
+
+// Now you return $requests to be used directly in HTML
+return $requests;
 ?>

@@ -1,14 +1,11 @@
 <?php
 include_once('db.php'); // Ensure this points to your database connection script
 
-// Initialize database connection
-$db = new Database();
-$conn = $db->getConnection();
+// Check if the request ID is present and the request method is GET
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['requestId'])) {
+    $requestId = intval($_GET['requestId']); // Convert to integer to avoid SQL injection
 
-// Check if the request ID is present
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-    $requestId = intval($_POST['id']); // Convert to integer to avoid SQL injection
-
+    // Assuming $conn is your established mysqli connection
     // Prepare SQL statement to delete the request
     $sql = "DELETE FROM languagerequests WHERE RequestID = ?";
 
@@ -18,20 +15,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
 
         // Execute the statement
         if ($stmt->execute()) {
-            echo json_encode(array("status" => "success", "message" => "Request deleted successfully"));
+            // Redirect to the requests view page
+            header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?");
+            exit();
         } else {
-            echo json_encode(array("status" => "error", "message" => "Error deleting request"));
+            // Handle the error case, potentially logging it and showing an error message or page
+           // header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?status=error");
+            exit();
         }
 
         // Close statement
         $stmt->close();
     } else {
-        echo json_encode(array("status" => "error", "message" => "Error preparing SQL statement"));
+        // Handle preparation error
+       // header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?status=preperror");
+        exit();
     }
 } else {
-    echo json_encode(array("status" => "error", "message" => "Invalid request method or missing ID"));
+    // Redirect back if the request method is not correct or the ID is not set
+   // header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?status=invalid");
+    exit();
 }
 
-// Close database connection
-$conn->close();
+// Assume that $conn is closed elsewhere if you're using persistent connections
 ?>

@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: SignInPartner.php"); // Redirect them to the login page if not logged in
+        exit();
+    }
+?>
 
 <!DOCTYPE html>
 <html>
@@ -152,6 +159,7 @@
 
 
 <!-- JS here -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>

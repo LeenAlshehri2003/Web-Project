@@ -1,3 +1,4 @@
+<?php include '../assets/php/fetch_request.php'; ?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -133,7 +134,7 @@
            
         
            <div class="col ">
-            <form id="editRequestForm">
+            <form  action="../assets/php/update_request.php" method="post" enctype="multipart/form-data">
              <div class="row">
                <div class="col mb-3">
                  <div class="card">
@@ -153,9 +154,9 @@
                                    <div class="col">
                                      <div class="form-group">
                                       <label>Profiency Level</label><br>
-                                      <select name ="ProficiencyLevel"> <option>Beginner</option>
-                                        <option>Intermediate</option>
-                                        <option>Advanced</option></select>
+                                      <select name ="ProficiencyLevel" > <option <?= $requestDetails['ProficiencyLevel'] == 'Beginner' ? 'selected' : '' ?>>Beginner</option>
+                                        <option <?= $requestDetails['ProficiencyLevel'] == 'Intermediate' ? 'selected' : '' ?>>Intermediate</option>
+                                        <option <?= $requestDetails['ProficiencyLevel'] == 'Advanced' ? 'selected' : '' ?>>Advanced</option></select>
                                      </div>
                                    </div>
          
@@ -165,7 +166,7 @@
                                      <div class="form-group">
                                       <div class="formbold-mb-3">
                                         <label for="dob" > Session Date </label>
-                                        <input type="date" name="SessionDate" id="dob" class="formbold-form-input" >
+                                        <input type="date" name="SessionDate" id="dob" class="formbold-form-input"  >
                                       </div>
                                 
                                      </div>
@@ -174,10 +175,10 @@
                                     <div class="form-group">
                                       <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
-                                  <select id="SessionDuration" name="Duration">
-                                    <option selected> 1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                  <select id="SessionDuration" name="SessionDuration">
+                                    <option selected  value="1" <?= $requestDetails['SessionDuration'] == '1' ? 'selected' : '' ?>> 1</option>
+                                    <option  value="2" <?= $requestDetails['SessionDuration'] == '2' ? 'selected' : '' ?>>2</option>
+                                    <option value="3" <?= $requestDetails['SessionDuration'] == '3' ? 'selected' : '' ?>>3</option>
                                    
                                   </select>
                                     </div>
@@ -188,31 +189,19 @@
                                      <label for ="Time">Session Start Time:<br></label>
                                    </div>
                                  </div>
-                                 <input class="form-control" name="SessionTime" type="text" placeholder="hh:mm"  style ="width:150px;">
+                                 <input class="form-control" name="SessionTime"  type="time" placeholder="hh:mm"  style ="width:150px;">
                                  <br>
                                </div>
                              </div>
                              <div class="row">
                                
-                               <div class="col-12 col-sm-5 offset-sm-1 mb-3">
-                                 <div class="mb-2"><b>Would you like to recieve status update notifications?</b></div>
-                                 <div class="row">
-                                   <div class="col">
-                                     <div class="custom-controls-stacked px-2">
-                                       <div class="custom-control custom-checkbox">
-                                         <input type="radio" class="custom-control-input" id="Status1"  name= "Status" checked="">
-                                         <label class="custom-control-label" for="Status1">Yes</label>
-                                       </div>
-                                       <div class="custom-control custom-checkbox">
-                                         <input type="radio" class="custom-control-input" id="Status2" name= "Status" >
-                                         <label class="custom-control-label" for="Status2">No</label>
-                                       </div>
-                                     </div>
-                                   </div>
-                                 </div>
-                               </div>
-                             </div>
-                             <input type="hidden" name="RequestID" value="">
+                             <div class="row">
+                          <div class="col md-6 mb-3">
+                          <div id="totalCost"></div>
+                          </div>
+                        </div>
+</div>
+                             <input type="hidden" name="RequestID" value=""  <?= $requestDetails['RequestID']?>>
                              <div class="row">
                                <div class="col-12 col-md-3 mb-3">
                                  <button class="theme_btn free_btn" type="submit" style="background-color: green;">Post</a>
@@ -319,8 +308,6 @@
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>
-  <script src="../assets/js/update_request.js"></script>
-  <script src="../assets/js/load-edit-request.js"></script>
   <script src="../assets/js/popper.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>

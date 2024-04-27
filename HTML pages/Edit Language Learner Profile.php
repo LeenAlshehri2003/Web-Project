@@ -202,8 +202,8 @@
                             
                         
                                 <li onclick="geoFindMe()"  id ="find-me" class="theme_btn free_btn">Get Address</li>
-                                <input type="hidden" id="latitude" name="latitude">
-                                 <input type="hidden" id="longitude" name="longitude">
+                                <input type="hidden" id="latitude" name="latitude" value="">
+                                 <input type="hidden" id="longitude" name="longitude"  value="">
                                 <p id="status"></p>
                                <a id="map-link" target="_blank" ></a>
                             </div>
@@ -339,7 +339,7 @@
   <!-- JS here -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script src="../assets/js/EditProfile.js"></script>
+  <script src="../assets/js/EditProfile_Learner.js"></script>
   <script src="../assets/js/GeolocationFinder.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>

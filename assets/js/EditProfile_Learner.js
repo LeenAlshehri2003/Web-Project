@@ -19,36 +19,44 @@ function validateForm() {
     const confirmPassword = document.getElementById("password").value.trim();
 
     // Function to check and style each field
-    fieldsToValidate.forEach(field => {
-        if (!field.value.trim()) {
-            field.style.border = '2px solid red'; // Highlight empty fields
-            isValid = false;
-        } else {
-            field.style.border = ''; // Reset if filled
-        }
+fieldsToValidate.forEach(field => {
+    if (!field.value.trim()) {
+        field.style.border = '2px solid red'; // Highlight empty fields
+        isValid = false;
+    } else {
+        field.style.border = ''; // Reset if filled
+    }
+});
+
+// Password length and special character validation
+if (newPassword && (newPassword.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(newPassword))) {
+    document.getElementById("NewPass").style.border = '2px solid red';
+    alert('Password must be at least 8 characters long and include at least one special character.');
+    isValid = false;
+}
+
+// Check if new passwords match
+if (newPassword && confirmPassword && newPassword !== confirmPassword) {
+    document.getElementById("NewPass").style.border = '2px solid red';
+    document.getElementById("password").style.border = '2px solid red';
+    alert('New Password and Confirm Password do not match. Please enter matching passwords.');
+    isValid = false;
+}
+
+// Use SweetAlert to inform user of form validity issues if there are any
+if (!isValid) {
+    Swal.fire({
+        title: 'LinguaLink',
+        text: 'Please check the form for errors.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
     });
+    event.preventDefault(); // Prevent form submission
+}
 
-    // Check if new passwords match, only if they are provided
-    if (newPassword && confirmPassword && newPassword !== confirmPassword) {
-        document.getElementById("NewPass").style.border = '2px solid red';
-        document.getElementById("password").style.border = '2px solid red';
-        alert('New Password and Confirm Password do not match. Please enter matching passwords.');
-        isValid = false; // Invalidate form due to mismatch
-    }
-    if (!isValid) {
-        Swal.fire({
-            title: 'LinguaLink',
-            text: 'Please fill all required fields',
-            icon: 'info',
-            confirmButtonColor: '#FFA500',  
-            confirmButtonText: 'OK'
-            
-          });
-          event.preventDefault(); // Prevent form submission
-    }
-
-    // Return the overall form validity
-    return isValid;
+// Return the overall form validity
+return isValid;
 }
 
 function previewFile() {
