@@ -3,12 +3,18 @@
 header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allow GET, POST, and OPTIONS requests
 header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization"); // Allow specified headers
-
+session_start();
 require_once 'db.php';  // Ensure this points to your actual database connection script
 
 // Initialize an array to store partner data
 $partnerData = [];
 
+// Redirect if not logged in
+//if (!isset($_SESSION['UserID'])) {
+     //   die('User must be logged in '); // Redirect to login page
+   // header('Location: ../../HTML pages/SignInLearner.php');
+  //  exit;
+//}
 // Check if a partner ID is provided in the request
 if (isset($_GET['partnerId']) && is_numeric($_GET['partnerId'])) {
     $partnerID = (int)$_GET['partnerId']; 
