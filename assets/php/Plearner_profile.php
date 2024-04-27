@@ -1,10 +1,18 @@
 <?php
+session_start();
 // Enable CORS (Cross-Origin Resource Sharing)
 header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allow GET, POST, and OPTIONS requests
 header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization"); // Allow specified headers
 
 require_once 'db.php';  // Ensure this points to your actual database connection script
+
+// Redirect if not logged in
+//if (!isset($_SESSION['UserID'])) {
+     //   die('User must be logged in '); // Redirect to login page
+   // header('Location: ../../HTML pages/SignInLearner.php');
+  //  exit;
+//}
 
 // Initialize an array to store learner data
 $learnerData = [];

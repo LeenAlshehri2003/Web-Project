@@ -64,7 +64,7 @@ function displayLearnerData(learnerData) {
                                     backgroundColor = '#e75115';
                                     break;
                                 case 'Intermediate':
-                                    backgroundColor = '#f7b500';
+                                    backgroundColor = '#0000FF';
                                     break;
                                 case 'Advanced':
                                     backgroundColor = '#0dbf73';
@@ -74,10 +74,10 @@ function displayLearnerData(learnerData) {
                             }
                             return `
                             <li>
-                                <div class="pie-chart" style="background-color: ${backgroundColor};">
+                                <div class="pie-chart" >
                                     <div class="progress-content">
                                         <h6>${lang}</h6>
-                                        <b>${level}</b>
+                                        <b style="color: ${backgroundColor};">${level}</b>     
                                     </div>
                                 </div>
                             </li>`;
