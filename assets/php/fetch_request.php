@@ -1,23 +1,28 @@
 <?php
-include_once('db.php'); // Database connection file
-$db = new Database();
-$conn = $db->getConnection();
+// Ensure db.php points to your database connection script
+include_once('db.php'); 
 
-// Get request ID from AJAX call
-$requestId = isset($_GET['id']) ? intval($_GET['id']) : 0;
+// Check if the request ID is passed as a GET parameter
+if (isset($_GET['requestId'])) {
+    $requestId = intval($_GET['requestId']); // Convert to integer to prevent SQL injection
 
-if ($requestId > 0) {
+    // Assuming $conn is your established mysqli connection
+    // Prepare SQL statement to fetch the request
     $sql = "SELECT * FROM languagerequests WHERE RequestID = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("i", $requestId);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $requestData = $result->fetch_assoc();
-    echo json_encode($requestData);
-    $stmt->close();
-} else {
-    echo json_encode(['error' => 'Invalid request ID']);
-}
+    if ($stmt = $conn->prepare($sql)) {
+        $stmt->bind_param("i", $requestId); // Bind the integer as the parameter
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $requestDetails = $result->fetch_assoc();
 
-$conn->close();
-?>
+        // Close statement
+        $stmt->close();
+    } else {
+        // Handle error
+        $requestDetails = null; // Ensure this variable is always set even if the query fails
+    }
+    $conn->close();
+} else {
+    // Redirect or handle the error if the requestId is not provided
+    $requestDetails = null; // Set to null or redirect
+}

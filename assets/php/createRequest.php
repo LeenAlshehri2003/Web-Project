@@ -44,7 +44,7 @@ if (!$stmt) {
 // Bind and execute the statement with the new submitDate parameter
 $stmt->bind_param("sisiissi", $proficiencyLevel, $partnerID, $sessionDateTime, $languageID, $sessionDuration, $submitDate, $status, $learnerID);
 if ($stmt->execute()) {
-    echo "Request posted successfully.";
+    header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?");
 } else {
     echo "Error posting request: " . $stmt->error;
 }

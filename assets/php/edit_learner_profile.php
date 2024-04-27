@@ -47,6 +47,7 @@ $longitude = $conn->real_escape_string($_POST['longitude']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);
     $NewPass = $conn->real_escape_string($_POST['NewPass']); // Assume hashing occurs later
+    $hashedPassword = password_hash($NewPass, PASSWORD_DEFAULT);
     
 
     // Handle photo upload
@@ -70,7 +71,7 @@ $longitude = $conn->real_escape_string($_POST['longitude']);
 
     // Update user details
     $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $NewPass, $city, $photo, $learnerID);
+    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $photo, $learnerID);
     $updateUser->execute();
     $updateUser->close();
 

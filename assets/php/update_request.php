@@ -1,7 +1,9 @@
 <?php
 include_once('db.php');
-$db = new Database();
-$conn = $db->getConnection();
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
 // Get data from form submission
 $requestId = $_POST['RequestID']; // Ensure you are sending this from your form
@@ -25,7 +27,7 @@ $stmt->bind_param("ssii", $proficiencyLevel, $preferredSchedule, $sessionDuratio
 $result = $stmt->execute();
 
 if ($result) {
-    echo json_encode(['status' => 'success', 'message' => 'Request updated successfully']);
+    header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?");
 } else {
     echo json_encode(['status' => 'error', 'message' => 'Failed to update request']);
 }

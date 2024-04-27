@@ -103,10 +103,11 @@ if (!empty($_FILES["photo"]["name"])) {
     $bio = $conn->real_escape_string($_POST['Bio']);
     $password = $conn->real_escape_string($_POST['NewPass']);
     $sessionPrice = floatval($_POST['SessionPrice']);
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Update user details
     $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $password, $city, $filename, $partnerID);
+    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $filename, $partnerID);
     $updateUser->execute();
     $updateUser->close();
 
