@@ -162,48 +162,19 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
+                                <div class="col-lg-6 mb-30">
+                                    <label>Location (Address):<br>
+                                        <input type="text" name="location" placeholder="Enter Your Address here" required>
+                                        <div class="info" style="color: red;"></div>
+                                    </label>
+                                </div>
                                 <div class="col-lg-12 mb-30">
                                     <label>Upload Picture (optional):<br>
                                         <input type="file" name="picture" accept="image/*">
                                     </label>
                                 </div>
-                                <script>
-                                    function getLocation() {
-                                        if (navigator.geolocation) {
-                                            navigator.geolocation.getCurrentPosition(showPosition, showError);
-                                        } else { 
-                                            alert("Geolocation is not supported by this browser.");
-                                        }
-                                    }
-                                
-                                    function showPosition(position) {
-                                        document.getElementById('latitude').value = position.coords.latitude;
-                                        document.getElementById('longitude').value = position.coords.longitude;
-                                    }
-                                
-                                    function showError(error) {
-                                        switch(error.code) {
-                                            case error.PERMISSION_DENIED:
-                                                alert("User denied the request for Geolocation.");
-                                                break;
-                                            case error.POSITION_UNAVAILABLE:
-                                                alert("Location information is unavailable.");
-                                                break;
-                                            case error.TIMEOUT:
-                                                alert("The request to get user location timed out.");
-                                                break;
-                                            case error.UNKNOWN_ERROR:
-                                                alert("An unknown error occurred.");
-                                                break;
-                                        }
-                                    }
-                                </script>
                                 
                                 
-                                    <input type="hidden" name="latitude" id="latitude" value="">
-                                    <input type="hidden" name="longitude" id="longitude" value="">
-                                
-                                    <button class="theme_btn message_btn mt-20"  type="submit" style="color: orange; background-color:white; padding: 1px; " onclick="getLocation()">Click here to get your accurate Location easily</button>
                                 
                                     <br>
                                 <div class="col-lg-12">
