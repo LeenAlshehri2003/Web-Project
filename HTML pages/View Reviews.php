@@ -1,3 +1,5 @@
+<?php include '../assets/php/fetchReviews.php'; ?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -133,15 +135,46 @@
             </div>
         </section>
     </main>
-
+    <?php
+// Sort the comments array based on the 'CreatedAt' value in descending order
+usort($comments, function($a, $b) {
+    return strtotime($b['CreatedAt']) - strtotime($a['CreatedAt']);
+});
+?>
     <section class="blog-details-area pt-150 pb-105 pt-md-100 pb-md-55 pt-xs-100 pb-xs-55">
         <div class="container">
             <h1 class="page-title mb-25">Rates and Reviews</h1>
             <div class="comments-area">
                 <ul class="latest-commmnet">
-                   
                     <!-- render it dynamically-->
+                    <?php foreach ($comments as $comment): ?>                        
+                    <li>
+                        <div class="single-comments">
+                            <div class="comments__author">
+                                <img src="<?php echo htmlspecialchars('../assets/img/' . $comment['Photo']); ?>"
+                                    alt="Reviewer's personal image">
+                            </div>
+                            <div class="comments__text">
+                                <h4 class="sub-title mb-10" style="color:white;" >
+                                   .
+                                    <span
+                                        class="float-start date-text"><?php echo htmlspecialchars($comment['CreatedAt']); ?></span>
+                                    <span class="float-end date-text star-icon mb-20">
+                                        <?php
+                                        // Add star rating HTML dynamically based on the rating value
+                                        for ($j = 1; $j <= $comment['Rating']; $j++) {
+                                            echo '<a href="#"><i class="fas fa-star"></i></a>';
+                                        }
+                                        ?>
+                                    </span>
+                                    <div class="sub-title mb-10" style="text-align: left;" > <?php echo htmlspecialchars($comment['FirstName']) . ' ' . htmlspecialchars($comment['LastName']); ?> </div>
+                                </h4>
+                                <p style="text-align: left; color:black;"><?php echo htmlspecialchars($comment['Comment']); ?></p>
+                            </div>
+                        </div><br>
+                    </li>
 
+                        <?php endforeach; ?>
                 </ul>
             </div>
 
@@ -218,11 +251,13 @@
     <!--footer-area end-->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-    $(document).ready(function() {
-        fetchReviews();
-    });
-</script>
+    <script>
+        $(document).ready(function () {
+            fetchReviews();
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <script src="fetch_reviews.js"></script>
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
@@ -245,6 +280,29 @@
     <script src="../assets/js/jquery.easypiechart.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+
+    <script>
+        /*
+    $(document).ready(function() {
+      // Create an object with the form data
+      const urlParams = new URLSearchParams(window.location.search);
+  const partnerId = urlParams.get('partnerId');
+
+      // Send the data to the PHP script using AJAX
+      $.ajax({
+        type: "POST",
+        url: "../assets/php/fetchReviews.php",
+        data: partnerId,
+        success: function(response) {
+          // Handle the response from the PHP script
+          console.log(response);
+        }
+      });
+    });*/
+    </script>
+
+
+
 </body>
 
 </html>
