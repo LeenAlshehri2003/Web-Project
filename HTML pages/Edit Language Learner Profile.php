@@ -133,7 +133,7 @@
 <div class="container">
 <div class="row flex-lg-nowrap">
   <div class="col ">
-    <form action="../assets/php/edit_learner_profile.php" method="post" enctype="multipart/form-data">
+    <form action="../assets/php/edit_learner_profile.php"  method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -156,9 +156,6 @@
                       
               
                     </div>
-                  </div>
-                  <div class="text-center text-sm-right">
-                    <div class="text-muted"><small>Joined 10 Sep 2023</small></div>
                   </div>
                 </div>
               </div>

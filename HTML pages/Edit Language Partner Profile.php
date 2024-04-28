@@ -118,7 +118,7 @@
 <div class="row flex-lg-nowrap">
 
   <div class="col ">
-    <form action="../assets/php/edit_partner_profile.php" method="post" enctype="multipart/form-data">
+    <form action="../assets/php/edit_partner_profile.php"  id="PartnerForm" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">

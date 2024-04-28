@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 // You might want to save these as a single field in the database
-   $location =  $conn->real_escape_string($_POST['FirstName']);
+   $location =  $conn->real_escape_string($_POST['Location']);
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);

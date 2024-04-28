@@ -201,7 +201,8 @@
                           </div>
                         </div>
 </div>
-                             <input type="hidden" name="RequestID" value=""  <?= $requestDetails['RequestID']?>>
+                           <input type="hidden" name="RequestID" value="<?= $requestDetails['RequestID'] ?? '' ?>">
+    
                              <div class="row">
                                <div class="col-12 col-md-3 mb-3">
                                  <button class="theme_btn free_btn" type="submit" style="background-color: green;">Post</a>
