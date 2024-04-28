@@ -1,4 +1,4 @@
-function fetchReviews() {
+/*function fetchReviews() {
     // Fetch the language partner ID from the URL (assuming it's passed as a query parameter)
     var urlParams = new URLSearchParams(window.location.search);
     var languagePartnerId = urlParams.get('partnerId');
@@ -45,4 +45,4 @@ function fetchReviews() {
             console.log('Error fetching reviews.');
         }
     });
-}
+}*/
