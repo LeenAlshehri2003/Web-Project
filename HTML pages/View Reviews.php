@@ -251,11 +251,6 @@ usort($comments, function($a, $b) {
     <!--footer-area end-->
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            fetchReviews();
-        });
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script src="fetch_reviews.js"></script>
@@ -281,25 +276,7 @@ usort($comments, function($a, $b) {
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
 
-    <script>
-        /*
-    $(document).ready(function() {
-      // Create an object with the form data
-      const urlParams = new URLSearchParams(window.location.search);
-  const partnerId = urlParams.get('partnerId');
-
-      // Send the data to the PHP script using AJAX
-      $.ajax({
-        type: "POST",
-        url: "../assets/php/fetchReviews.php",
-        data: partnerId,
-        success: function(response) {
-          // Handle the response from the PHP script
-          console.log(response);
-        }
-      });
-    });*/
-    </script>
+    
 
 
 
