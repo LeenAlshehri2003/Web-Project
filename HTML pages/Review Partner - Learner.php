@@ -2,8 +2,9 @@
 <?php require '../assets/php/Review_Partner.php'?>
 <?php
 session_start();
-$error_message = isset($_SESSION['login_error']) ? $_SESSION['login_error'] : '';
-unset($_SESSION['login_error']);  // Clear the error message from session
+$errorMessage = isset($_SESSION['submission_error']) ? $_SESSION['submission_error'] : null;
+$successMessage = isset($_SESSION['submission_success']) ? $_SESSION['submission_success'] : null;
+unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear the session variables
 ?>
 
 <!DOCTYPE html>
@@ -148,7 +149,7 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                 <div class="row justify-content-center">
                     <div class="comments-form-area mb-45">
                         <h2>Leave your review!</h2>
-                        <form action="../assets/php/Review_Partner.php" class="row comments-form" method="POST">
+                        <form action="../assets/php/Review_Partner.php" class="row comments-form" method="POST" >
                             <div class="col-lg-12 mb-20">
                                 <textarea name="comment" id="comment" cols="30" rows="10"
                                     placeholder="Write Your Review ..."></textarea>
@@ -173,6 +174,7 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                                <input type="hidden" name="sessionID" id="sessionID" value="0">
 
                             </div>
+                            <input type="hidden" name="successMessage" value="<?php echo $successMessage; ?>">
                             
                             <div class="col-lg-12 mb-20">
                             <button class="theme_btn comment_btn" id="reviewsubmit">Submit Review</button>
@@ -265,6 +267,7 @@ unset($_SESSION['login_error']);  // Clear the error message from session
 <script src="../assets/js/jquery.easypiechart.js"></script>
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script> let stars = document.getElementsByClassName("star");
 
@@ -295,41 +298,15 @@ function gfg(n) {
 $(document).ready(function() {
   // Extract request ID from URL
   const urlParams = new URLSearchParams(window.location.search);
-  const sessionID = urlParams.get('sessionID');
+  const sessionID = urlParams.get('sessionId');
   document.getElementById('sessionID').value = sessionID;
 
 
 })
 </script>
 
-<script>
-    window.onload = function() {
-        // Check for error message
-        $errorMessage= "Failed to submit the review. Please try again." ;
-        if ("<?php echo $errorMessage; ?>") {
-            Swal.fire({
-                title: 'Error!',
-                text: '<?php echo addslashes($errorMessage); ?>',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
-        // Check for success message
-        $successMessage= "Review submitted successfully!";
-        if ("<?php echo $successMessage; ?>") {
-            Swal.fire({
-                title: 'Success!',
-                text: '<?php echo addslashes($successMessage); ?>',
-                icon: 'success',
-                confirmButtonText: 'Great!'
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = 'View sessions - Learner.php';
-                }
-            });
-        }
-    };
-    </script>
+
+
 
 </body>
 

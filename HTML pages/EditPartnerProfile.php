@@ -136,7 +136,7 @@
                   </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
-                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Mohammad Abdullah</h4>
+                  
                     
                    
                   </div>
@@ -376,6 +376,71 @@
   
   
     <!-- JS here -->
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('PartnerForm');
+
+    form.addEventListener("submit", function(event) {
+      let isValid = true;
+      const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+      const inputs = form.querySelectorAll('input[type=text], input[type=password], textarea');
+
+      // Check if all fields are filled
+      inputs.forEach(input => {
+        if (input.value.trim() === '') {
+          alert('Please fill out all fields.');
+          input.style.border = '2px solid red';
+          isValid = false;
+        } else {
+          input.style.border = '';
+        }
+      });
+
+      // Check password requirements
+      const password = document.getElementById('NewPassPartner').value;
+      const confirmPassword = document.getElementById('ConfirmPassPartner').value;
+      if (password.length < 8 || !specialCharRegex.test(password)) {
+        alert('Password must be at least 8 characters long and include at least one special character.');
+        document.getElementById('NewPassPartner').style.border = '2px solid red';
+        isValid = false;
+      } else {
+        document.getElementById('NewPassPartner').style.border = '';
+      }
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        alert('The passwords do not match. Please enter matching passwords.');
+        document.getElementById('NewPassPartner').style.border = '2px solid red';
+        document.getElementById('ConfirmPassPartner').style.border = '2px solid red';
+        isValid = false;
+      } else {
+        document.getElementById('ConfirmPassPartner').style.border = '';
+      }
+
+      // Validate language checkboxes
+      const languageCheckboxes = document.querySelectorAll("[name='languages[]']");
+      const isLanguageSelected = Array.from(languageCheckboxes).some(checkbox => checkbox.checked);
+      if (!isLanguageSelected) {
+        languageCheckboxes.forEach(checkbox => {
+          const label = checkbox.nextElementSibling;
+          if (label) label.style.color = 'red';
+        });
+        alert('Please select at least one language.');
+        isValid = false;
+      } else {
+        languageCheckboxes.forEach(checkbox => {
+          const label = checkbox.nextElementSibling;
+          if (label) label.style.color = '';
+        });
+      }
+
+      // Prevent form submission if validation fails
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
   
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>

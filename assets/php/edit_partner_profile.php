@@ -132,5 +132,5 @@ if (!empty($_FILES["photo"]["name"])) {
 }
 
     // Redirect to a success page
-//header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
+header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
 ?>
