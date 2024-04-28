@@ -1,3 +1,11 @@
+
+<?php require '../assets/php/Review_Partner.php'?>
+<?php
+session_start();
+$error_message = isset($_SESSION['login_error']) ? $_SESSION['login_error'] : '';
+unset($_SESSION['login_error']);  // Clear the error message from session
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -140,9 +148,9 @@
                 <div class="row justify-content-center">
                     <div class="comments-form-area mb-45">
                         <h2>Leave your review!</h2>
-                        <form action="../assets/php/Partner_Review.php" class="row comments-form" method="POST">
+                        <form action="../assets/php/Review_Partner.php" class="row comments-form" method="POST">
                             <div class="col-lg-12 mb-20">
-                                <textarea name="commnent" id="commnent" cols="30" rows="10"
+                                <textarea name="comment" id="comment" cols="30" rows="10"
                                     placeholder="Write Your Review ..."></textarea>
                             </div>
 
@@ -159,7 +167,11 @@
                                 <span onclick="gfg(5)" class="star">★
                                 </span>
                                 <br> <br>
+                                
                                 <input type="hidden" name="rating" id="rating" value="0">
+                                
+                               <input type="hidden" name="sessionID" id="sessionID" value="0">
+
                             </div>
                             
                             <div class="col-lg-12 mb-20">
@@ -253,6 +265,72 @@
 <script src="../assets/js/jquery.easypiechart.js"></script>
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
+
+<script> let stars = document.getElementsByClassName("star");
+
+// function to update rating
+function gfg(n) {
+	remove();
+	for (let i = 0; i < n; i++) {
+		if (n == 1) cls = "one";
+		else if (n == 2) cls = "two";
+		else if (n == 3) cls = "three";
+		else if (n == 4) cls = "four";
+		else if (n == 5) cls = "five";
+		stars[i].className = "star " + cls;
+	}
+	document.getElementById('rating').value = n;
+
+
+    function remove() {
+	let i = 0;
+	while (i < 5) {
+		stars[i].className = "star";
+		i++;
+	}
+}
+}</script>
+
+<script>
+$(document).ready(function() {
+  // Extract request ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const sessionID = urlParams.get('sessionID');
+  document.getElementById('sessionID').value = sessionID;
+
+
+})
+</script>
+
+<script>
+    window.onload = function() {
+        // Check for error message
+        $errorMessage= "Failed to submit the review. Please try again." ;
+        if ("<?php echo $errorMessage; ?>") {
+            Swal.fire({
+                title: 'Error!',
+                text: '<?php echo addslashes($errorMessage); ?>',
+                icon: 'error',
+                confirmButtonText: 'OK'
+            });
+        }
+        // Check for success message
+        $successMessage= "Review submitted successfully!";
+        if ("<?php echo $successMessage; ?>") {
+            Swal.fire({
+                title: 'Success!',
+                text: '<?php echo addslashes($successMessage); ?>',
+                icon: 'success',
+                confirmButtonText: 'Great!'
+            }).then((result) => {
+                if (result.value) {
+                    window.location.href = 'View sessions - Learner.php';
+                }
+            });
+        }
+    };
+    </script>
+
 </body>
 
 
