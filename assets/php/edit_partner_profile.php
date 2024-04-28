@@ -76,7 +76,7 @@ if (!empty($_FILES["photo"]["name"])) {
     $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
     // Specify allowed file types
-    $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];
+    $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];   
     if (in_array(strtolower($fileType), $allowTypes)) {
         // Upload file to the server
         if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath)) {

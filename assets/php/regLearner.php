@@ -10,6 +10,25 @@ function registerNewLearner($formData, $conn) {
     $password = $formData['password'];  // Password will be hashed
     $city = htmlspecialchars(trim($formData['city']));
 
+     // Handle photo upload
+     if (!empty($_FILES['photo']['name'])) {
+        $targetDir = "../img/";
+        $fileName = basename($_FILES['photo']['name']);
+        $targetFilePath = $targetDir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array(strtolower($fileType), $allowTypes)) {
+            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
+                $photo = $fileName; // Successfully uploaded the new photo
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
+        }
+    }
+
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");
     $stmt->bind_param('ss', $username, $email);
@@ -22,8 +41,8 @@ function registerNewLearner($formData, $conn) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Insert into Users table
-    $stmt = $conn->prepare("INSERT INTO Users (username, FirstName, LastName, Email, Password, City) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city);
+    $stmt = $conn->prepare("INSERT INTO Users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $photo);
     if (!$stmt->execute()) {
         return "Error creating user account: " . $stmt->error;
     }
