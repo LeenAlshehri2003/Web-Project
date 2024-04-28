@@ -141,9 +141,9 @@ usort($comments, function($a, $b) {
     return strtotime($b['CreatedAt']) - strtotime($a['CreatedAt']);
 });
 ?>
-    <section class="blog-details-area pt-150 pb-105 pt-md-100 pb-md-55 pt-xs-100 pb-xs-55">
+    <section class="blog-details-area pt-50 pb-105 pt-md-50 pb-md-55 pt-xs-100 pb-xs-55">
         <div class="container">
-            <h1 class="page-title mb-25">Rates and Reviews</h1>
+            <h2 class="page-title mb-25" style="color: saddlebrown; ">Learners' Reviews!</h2>
             <div class="comments-area">
                 <ul class="latest-commmnet">
                     <!-- render it dynamically-->
