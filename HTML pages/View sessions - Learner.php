@@ -1,4 +1,5 @@
 <?php include '../assets/php/ViewSessionsL.php'; ?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -253,9 +254,7 @@
                                         <li>Duration:
                                             <?php echo htmlspecialchars($session['Duration']); ?>
                                         </li>
-                                         <a href="../HTML pages/Review Partner - Learner.php?sessionId=' + <?php echo $session['SessionID']; ?> + '" class="theme_btn price_btn active">Rate Partner!</a>
-                                    </ul>
-                                </div>
+                                        <a href="../HTML pages/Review Partner - Learner.php?sessionId=<?php echo $session['SessionID']; ?>" class="theme_btn price_btn active">Rate Partner!</a>                                </div>
                                 <div class="pr__footer mt-50">
                                 </div>
                             </div>

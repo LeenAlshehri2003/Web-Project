@@ -15,8 +15,8 @@ $stmt = $conn->prepare("SELECT s.Duration, s.SessionDate, s.Status, s.SessionID,
     FROM sessions s
     JOIN users u ON s.PartnerID = u.UserID
     JOIN languages l ON s.LanguageID = l.LanguageID
-    WHERE s.LearnerID = ?");
-$stmt->bind_param("i", $userId);
+    /*WHERE s.LearnerID = ?*/");
+//$stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 
