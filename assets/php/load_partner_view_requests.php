@@ -14,14 +14,18 @@ if (!in_array($status, $statuses)) {
     die("Invalid status.");
 }
 
-// Prepare SQL query to fetch requests based on status
+// Retrieve the user_id from the session
+session_start();
+$user_id = $_SESSION['user_id'] ?? '';
+
+// Prepare SQL query to fetch requests based on status and partner ID
 $query = "SELECT lr.*, CONCAT(u.FirstName, ' ', u.LastName) AS FullName, u.Photo AS ProfilePicture, lr.SubmitDate
           FROM languagerequests lr
           INNER JOIN users u ON lr.LearnerID = u.UserID
-          WHERE lr.Status = ?";
+          WHERE lr.Status = ? AND lr.PartnerID = ?";
 
 $stmt = $conn->prepare($query);
-$stmt->bind_param("s", $status);
+$stmt->bind_param("si", $status, $user_id);
 $stmt->execute();
 
 // Fetch data
