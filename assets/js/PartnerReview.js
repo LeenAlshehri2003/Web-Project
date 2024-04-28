@@ -1,6 +1,6 @@
 // script.js
 
-// To access the stars
+/* To access the stars
 let stars = 
 	document.getElementsByClassName("star");
 let output = 
@@ -30,7 +30,7 @@ function remove() {
 	}
 }
 
-
+/*
 $(document).ready(function() {
 	$('#reviewsubmit').on('submit', function(e) {
 		e.preventDefault();
@@ -61,3 +61,4 @@ $(document).ready(function() {
 	});
   });
 
+*/
