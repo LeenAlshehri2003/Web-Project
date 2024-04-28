@@ -174,6 +174,7 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                <input type="hidden" name="sessionID" id="sessionID" value="0">
 
                             </div>
+                            <input type="hidden" name="successMessage" value="<?php echo $successMessage; ?>">
                             
                             <div class="col-lg-12 mb-20">
                             <button class="theme_btn comment_btn" id="reviewsubmit">Submit Review</button>
@@ -306,32 +307,6 @@ $(document).ready(function() {
 
 
 
-    <script>
-      window.onload = function()  {
-        // Check for error message
-        if ("<?php echo $errorMessage; ?>") {
-            Swal.fire({
-                title: 'Error!',
-                text: '<?php echo addslashes($errorMessage); ?>',
-                icon: 'error',
-                confirmButtonText: 'OK'
-            });
-        }
-        // Check for success message
-        if ("<?php echo $successMessage; ?>") {
-            Swal.fire({
-                title: 'Success!',
-                text: '<?php echo addslashes($successMessage); ?>',
-                icon: 'success',
-                confirmButtonText: 'Great!'
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = 'View sessions - Learner.php';
-                }
-            });
-        }
-    };
-    </script>
 
 </body>
 

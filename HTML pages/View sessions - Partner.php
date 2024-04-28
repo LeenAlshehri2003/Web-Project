@@ -180,7 +180,7 @@
                                         <li>proficiency Level:
                                             <?php echo htmlspecialchars($session['ProficiencyLevel']); ?>
                                         </li>
-                                        <li>Day and time:
+                                        <li>Date and time:
                                             <?php echo htmlspecialchars($session['SessionDate']); ?>
                                         </li>
                                         <li>Duration:
@@ -218,7 +218,7 @@
                                         <li>proficiency Level:
                                             <?php echo htmlspecialchars($session['ProficiencyLevel']); ?>
                                         </li>
-                                        <li>Day and time:
+                                        <li>Date and time:
                                             <?php echo htmlspecialchars($session['SessionDate']); ?>
                                         </li>
                                         <li>Duration:

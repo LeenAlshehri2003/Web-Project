@@ -36,22 +36,16 @@ function submitReview($formData, $conn) {
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $result = submitReview($_POST, $conn);
-
-
-
     if ($result === true) {
-        $_SESSION['submission_success'] = "Review submitted successfully!";  // Set session variable
-        header("Location: ../../HTML pages/View sessions - Learner.php");  
+        $_SESSION['submission_success'] = "Review submitted successfully!";
+        header("Location: ../../HTML pages/View sessions - Learner.php");
         exit();
     } else {
-        $_SESSION['submission_error'] = $result ; //Failed to submit the review. Please try again.
-        header("Location: ../../HTML pages/View sessions - Learner.php");  
+        $_SESSION['submission_error'] = $result;
+        header("Location: ../../HTML pages/View sessions - Learner.php");
         exit();
     }
-
-   
 }
 
 
