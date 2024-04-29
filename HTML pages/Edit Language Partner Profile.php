@@ -265,6 +265,7 @@
                             <div class="form-group">
                               <label>New Password</label>
                               <input class="form-control" type="password" id="NewPassPartner" name="NewPass" >
+                              <span id="passwordHint" style="display:none; color: red;">Minimum 8 characters with 1 special character</span>
                             </div>
                           </div>
                         </div>
@@ -273,6 +274,7 @@
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
                               <input class="form-control" type="password" id="ConfirmPassPartner" name="ConfirmPass"></div>
+                              <span id="confirmPasswordHint" style="display:none; color: red;">Repeat the password</span>
                           </div>
                         </div>
                       </div>
@@ -379,6 +381,25 @@
     <script>
   document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById('PartnerForm');
+      // Get password fields and hint elements
+  const newPasswordField = document.getElementById('NewPassPartner');
+  const confirmPasswordField = document.getElementById('ConfirmPassPartner');
+  const passwordHint = document.getElementById('passwordHint');
+  const confirmPasswordHint = document.getElementById('confirmPasswordHint');
+
+  // Event listeners for password fields to show and hide hints
+  newPasswordField.addEventListener("focus", function() {
+    passwordHint.style.display = "inline";
+  });
+  newPasswordField.addEventListener("blur", function() {
+    passwordHint.style.display = "none";
+  });
+  confirmPasswordField.addEventListener("focus", function() {
+    confirmPasswordHint.style.display = "inline";
+  });
+  confirmPasswordField.addEventListener("blur", function() {
+    confirmPasswordHint.style.display = "none";
+  });
 
     form.addEventListener("submit", function(event) {
       let isValid = true;
@@ -400,7 +421,13 @@
       const password = document.getElementById('NewPassPartner').value;
       const confirmPassword = document.getElementById('ConfirmPassPartner').value;
       if (password.length < 8 || !specialCharRegex.test(password)) {
-        alert('Password must be at least 8 characters long and include at least one special character.');
+        Swal.fire({
+        title: 'LinguaLink',
+        text: 'Password must be at least 8 characters and contains one special character.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
         document.getElementById('NewPassPartner').style.border = '2px solid red';
         document.getElementById('ConfirmPassPartner').style.border = '2px solid red';
         isValid = false;
@@ -411,7 +438,13 @@
 
       // Check if passwords match
       if (password !== confirmPassword) {
-        alert('The passwords do not match. Please enter matching passwords.');
+        Swal.fire({
+        title: 'LinguaLink',
+        text: 'Paswwords do not match , please enter matching passwords.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
         document.getElementById('NewPassPartner').style.border = '2px solid red';
         document.getElementById('ConfirmPassPartner').style.border = '2px solid red';
         isValid = false;
@@ -427,7 +460,13 @@
           const label = checkbox.nextElementSibling;
           if (label) label.style.color = 'red';
         });
-        alert('Please select at least one language.');
+        Swal.fire({
+        title: 'LinguaLink',
+        text: 'Please Select at least one language.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
         isValid = false;
       } else {
         languageCheckboxes.forEach(checkbox => {
