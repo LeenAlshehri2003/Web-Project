@@ -3,10 +3,10 @@ session_start();
 require 'db.php'; // Ensure this path is correct for your database connection script
 
 // Redirect if not logged in
-//if (!isset($_SESSION['UserID'])) {
- //   header('Location: ../../HTML pages/SignInLearner.php');
- //   exit;
-//}
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../HTML pages/SignInLearner.php');
+    exit;
+}
 
 $requestID = isset($_GET['RequestID']) ? $_GET['RequestID'] : null; // Assuming you pass the request ID as a GET parameter
 

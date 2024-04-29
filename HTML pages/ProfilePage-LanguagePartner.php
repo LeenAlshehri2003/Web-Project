@@ -175,7 +175,7 @@
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
                             <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt=""> 193+ Students</span></h5>
-                            <li><a href="../HTML pages/View Reviews and Rates - Partner.html" class="theme_btn free_btn">Rates and Reviews</a></li>
+                            <li><a href="View Reviews.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;

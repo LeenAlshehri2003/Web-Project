@@ -1,6 +1,11 @@
 <?php
 // Ensure db.php points to your database connection script
 include_once('db.php'); 
+// Redirect if not logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../../HTML pages/SignInLearner.php');
+    exit;
+}
 
 // Check if the request ID is passed as a GET parameter
 if (isset($_GET['requestId'])) {

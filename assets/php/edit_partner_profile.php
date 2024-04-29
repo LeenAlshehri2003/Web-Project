@@ -3,13 +3,13 @@ session_start();
 require 'db.php';  // Ensure this path is correct for your database connection script
 
 // Redirect if not logged in
-//if (!isset($_SESSION['user_ID'])) {
- //   die('User must be logged in '); // Redirect to login page
-// header('Location: ../../HTML pages/SignInLearner.php');
- //   exit;
-//}
+if (!isset($_SESSION['user_id'])) {
+    die('User must be logged in '); // Redirect to login page
+ header('Location: ../../HTML pages/SignInPartner.php');
+    exit;
+}
 
-$partnerID = 1;
+$partnerID = $_SESSION['user_ID'];
 
 // Initialize variables to store data
 $firstName = $lastName = $email = $city = $username = "";
@@ -129,8 +129,11 @@ if (!empty($_FILES["photo"]["name"])) {
         $insertLanguage->execute();
     }
     $insertLanguage->close();
+      // Redirect to a success page
+      header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
+      exit;
 }
 
-    // Redirect to a success page
-//header('Location: ../../HTML pages/ProfilePage-LanguagePartner.php');
+  
+
 ?>
