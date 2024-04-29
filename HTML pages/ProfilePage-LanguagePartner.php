@@ -177,7 +177,7 @@
                             <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt=""> 193+ Students</span></h5>
                             <li><a href="../HTML pages/View Reviews and Rates - Partner.html" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                            <li><a href="EditPartnerProfile.php" class="theme_btn free_btn">Edit </a></li>
+                            <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><button onclick="confirmDeletion(<?= $user_id ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>  
                        </div>

@@ -39,7 +39,7 @@
           <div class="container-fluid">
               <div class="row align-items-center">
                       <div class="col-xl-2 col-lg-2 col-5">
-                          <div class="logo"><a href="HomePartner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                          <div class="logo"><a href=""><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
                       </div>
                       <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                           <nav class="main-menu navbar navbar-expand-lg justify-content-center">
@@ -50,10 +50,10 @@
                                           <li class="nav-item dropdown">
                                               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                               <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                  <li><a class="dropdown-item" href="View Reviews and Rates - Partner.html">View my ratings</a></li>
-                                                  <li><a class="dropdown-item" href="View Requests - Partner.html">Manage requests</a></li>
-                                                  <li><a class="dropdown-item" href="View sessions - Partner.html">View sessions </a></li>
-                                                  <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
+                                                  <li><a class="dropdown-item" href="">View my ratings</a></li>
+                                                  <li><a class="dropdown-item" href="">Manage requests</a></li>
+                                                  <li><a class="dropdown-item" href="">View sessions </a></li>
+                                                  <li><a class="dropdown-item" href="">FAQ</a></li>
                                               </ul>
                                           </li>
                                          
@@ -77,7 +77,7 @@
                               <div class="right-btn mr-25 mr-xs-15">
                                   <ul class="d-flex align-items-center">
                                       <li><a href="LandingPageSO.html" class="theme_btn free_btn">Sign Out</a></li>
-                                      <li><a class="sign-in ml-20" href="Profile Page-Language Partner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                      <li><a class="sign-in ml-20" href=""><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                   </ul>
                               </div>
                               <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
@@ -402,9 +402,11 @@
       if (password.length < 8 || !specialCharRegex.test(password)) {
         alert('Password must be at least 8 characters long and include at least one special character.');
         document.getElementById('NewPassPartner').style.border = '2px solid red';
+        document.getElementById('ConfirmPassPartner').style.border = '2px solid red';
         isValid = false;
       } else {
         document.getElementById('NewPassPartner').style.border = '';
+        document.getElementById('ConfirmPassPartner').style.border = '';
       }
 
       // Check if passwords match
@@ -441,7 +443,6 @@
     });
   });
 </script>
-  
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
