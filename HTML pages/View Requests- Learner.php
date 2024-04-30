@@ -170,6 +170,7 @@
                                             <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
                                             <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
                                             <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
+                                            <div>Session Price: <?= htmlspecialchars($item['SessionPrice']) ?> SAR</div>
                                             <div class="info-container" style="display: flex; align-items: center; justify-content: space-between">
                                                 <a href="Edit Request.php?requestId=<?= htmlspecialchars($item['RequestID']) ?>" class="theme_btn">Edit</a>
                                                 <a href="../assets/php/delete_request.php?requestId=<?= htmlspecialchars($item['RequestID']) ?>" class="theme_btn" style="background-color: red;" onclick="return confirm('Are you sure you want to delete this request?')">Delete</a>
@@ -199,7 +200,8 @@
                             <div>Session Time: <?= htmlspecialchars($item['SessionTime']) ?></div>
                             <div>Duration: <?= htmlspecialchars($item['Duration']) ?> min</div>
                             <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
-                            <!-- Potentially other actions specific to accepted requests -->
+                            <div>Session Price: <?= htmlspecialchars($item['SessionPrice']) ?> SAR</div>
+                           
                         </div>
                     </div>
                 </div>

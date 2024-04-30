@@ -4,7 +4,7 @@ require 'db.php';  // Ensure this path is correct for your database connection s
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
-    die('User must be logged in '); // Redirect to login page
+   die('User must be logged in '); // Redirect to login page
  header('Location: ../../HTML pages/SignInPartner.php');
     exit;
 }
@@ -90,8 +90,7 @@ if (!empty($_FILES["photo"]["name"])) {
         $filename = ''; // Set to empty if the file type is not allowed
     }
 } else {
-    // If no file is selected, keep the current profile picture
-    // You can fetch the current profile picture filename from the database if needed
+    $filename = "DefaultProfilePic.jpg";
 }
     // Sanitize and assign new values from form
     $firstName = $conn->real_escape_string($_POST['FirstName']);

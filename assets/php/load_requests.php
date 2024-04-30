@@ -11,10 +11,11 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 // Assuming $conn is already an established database connection
-$sql = "SELECT lr.*, u.Photo AS PartnerPhoto, l.LanguageName
+$sql = "SELECT lr.*, u.Photo AS PartnerPhoto, l.LanguageName, p.SessionPrice
         FROM languagerequests lr
         INNER JOIN users u ON lr.PartnerID = u.UserID
         INNER JOIN languages l ON lr.LanguageID = l.LanguageID
+        INNER JOIN partners p ON lr.PartnerID = p.PartnerID
         WHERE lr.LearnerID = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $userId);
@@ -29,7 +30,11 @@ if ($result->num_rows > 0) {
         $row['PreferredDate'] = $scheduleDateTime->format('Y-m-d');
         $row['PreferredTime'] = $scheduleDateTime->format('H:i:s');
 
-        // Now $row includes PreferredDate and PreferredTime separately
+        // Calculate session price
+        $sessionPrice = $row['SessionPrice'] * $row['SessionDuration'];
+        $row['SessionPrice'] = $sessionPrice;
+
+        // Now $row includes PreferredDate, PreferredTime, and SessionPrice
         $requests[] = $row;
     }
 }
