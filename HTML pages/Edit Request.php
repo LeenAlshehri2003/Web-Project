@@ -92,7 +92,7 @@
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
                                         <li><a href="../assets/php/Signout.php" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="Profile Page-Language Learner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguageLearner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
@@ -118,8 +118,8 @@
                           <h1 class="page-title mb-25">Edit Request</h1>
                           <div class="breadcrumb-list">
                              <ul class="breadcrumb">
-                                 <li><a href="HomeLearner.html">Home - </a></li>
-                                 <li><a href="View Requests- Learner.html">Edit Request</a></li>
+                                 <li><a href="HomeLearner.php">Home - </a></li>
+                                 <li><a href="View Requests- Learner.php">Edit Request</a></li>
                              </ul>
                           </div>
                      </div>
