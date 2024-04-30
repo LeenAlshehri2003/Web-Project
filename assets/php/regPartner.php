@@ -1,3 +1,5 @@
+
+
 <?php
 session_start();
 require 'db.php';  // Ensure this path is correct to your database connection file
@@ -13,6 +15,16 @@ function registerNewPartner($formData, $conn) {
     $age = intval($formData['age']);
     $gender = htmlspecialchars($formData['gender']);
     $phone = htmlspecialchars($formData['number']);
+    $profilePic = '../a';  // Default profile picture if none provided
+
+    // Check if a picture was uploaded and process it
+    if (!empty($_FILES['picture']['name'])) {
+        $target_dir = "../uploads/";  // Directory where files will be saved
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+        if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+            $profilePic = $target_file;  // Set the actual path of the uploaded file
+        }
+    }
 
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");
@@ -25,9 +37,9 @@ function registerNewPartner($formData, $conn) {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert into Users table
-    $stmt = $conn->prepare("INSERT INTO users (username, FirstName, LastName, Email, Password, City) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('ssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city);
+    // Insert into Users table with the profile picture path
+    $stmt = $conn->prepare("INSERT INTO users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $profilePic);
     if (!$stmt->execute()) {
         return "Error creating user account: " . $stmt->error;
     }
@@ -52,7 +64,7 @@ function registerNewPartner($formData, $conn) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = registerNewPartner($_POST, $conn);
     if ($result === true) {
-        $_SESSION['registration_success'] = "Signup successful!";  // Set session variable for success message
+        $_SESSION['registration_success'] = "Signup successful!";
         header("Location: ../../HTML pages/HomePartner.php");  // Redirect to home page of the partner
         exit();
     } else {
@@ -63,5 +75,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $conn->close();
-
 ?>
+
