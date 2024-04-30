@@ -3,7 +3,25 @@ document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector('form');
     form.addEventListener('submit', function(event) {
         event.preventDefault(); // Prevent the default form submission
-
+        const newPasswordField = document.getElementById('NewPass');
+        const confirmPasswordField = document.getElementById('password');
+        const passwordHint = document.getElementById('passwordHint');
+        const confirmPasswordHint = document.getElementById('confirmPasswordHint');
+      
+        // Event listeners for password fields to show and hide hints
+        newPasswordField.addEventListener("focus", function() {
+          passwordHint.style.display = "inline";
+        });
+        newPasswordField.addEventListener("blur", function() {
+          passwordHint.style.display = "none";
+        });
+        confirmPasswordField.addEventListener("focus", function() {
+          confirmPasswordHint.style.display = "inline";
+        });
+        confirmPasswordField.addEventListener("blur", function() {
+          confirmPasswordHint.style.display = "none";
+        });
+      
         if (validateForm()) {
             form.submit(); // Submit the form if validation passes
         }

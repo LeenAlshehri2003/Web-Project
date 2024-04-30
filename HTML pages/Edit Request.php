@@ -175,7 +175,7 @@
                                     <div class="form-group">
                                       <label for ="Duration">Session Duration in Hours:<br></label>
                                     </div>
-                                  <select id="SessionDuration" name="SessionDuration">
+                                  <select id="SessionDuration" name="SessionDuration" >
                                     <option selected  value="1" <?= $requestDetails['SessionDuration'] == '1' ? 'selected' : '' ?>> 1</option>
                                     <option  value="2" <?= $requestDetails['SessionDuration'] == '2' ? 'selected' : '' ?>>2</option>
                                     <option value="3" <?= $requestDetails['SessionDuration'] == '3' ? 'selected' : '' ?>>3</option>
@@ -305,6 +305,8 @@
   
   
   <!-- JS here -->
+  <script>
+    
   
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
