@@ -51,9 +51,9 @@
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="View Reviews and Rates - Partner.html">View my ratings</a></li>
-                                                    <li><a class="dropdown-item" href="View Requests - Partner.html">Manage requests</a></li>
-                                                    <li><a class="dropdown-item" href="View sessions - Partner.html">View sessions </a></li>
+                                                    <li><a class="dropdown-item" href="View Reviews.php?user_id=<?php echo $user_id; ?>">View my ratings</a></li>
+                                                    <li><a class="dropdown-item" href="partner_view_requests.php">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="View sessions - Partner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
                                                 </ul>
                                             </li>
@@ -77,8 +77,8 @@
                             <div class="right-nav d-flex align-items-center justify-content-end">
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
-                                        <li><a href="LandingPageSO.html" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="Profile Page-Language Partner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                        <li><a href="../assets/php/Signout.php" class="theme_btn free_btn">Sign Out</a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguagePartner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
@@ -106,7 +106,8 @@
                          <h1 class="page-title mb-25">Partner-profile</h1>
                          <div class="breadcrumb-list">
                             <ul class="breadcrumb">
-                                <li><a href="Profile Page Native Speaker\index.html">Home - </a></li>
+                            <li><a href="HomePartner.php">Home - </a></li>
+                            
                                 <li><a href="#">Partner Profile</a></li>
                             </ul>
                          </div>
@@ -175,7 +176,7 @@
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
                             <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt=""> 193+ Students</span></h5>
-                            <li><a href="../HTML pages/View Reviews and Rates - Partner.html" class="theme_btn free_btn">Rates and Reviews</a></li>
+                            <li><a href="View Reviews.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
@@ -209,7 +210,7 @@
                                  <img src="../assets/img/icon/phone-operator.svg" alt="">
                              </div>
                              <h3>Do you want to teach here?</h3>
-                             <a href="SignUpPartner.html" class="theme_btn border_btn">Register as Partner</a>
+                             <a href="SignUpPartner.php" class="theme_btn border_btn">Register as Partner</a>
                          </div>
                      </div>
                      <div class="col-xl-6 col-lg-6 col-md-6">
@@ -218,7 +219,7 @@
                                  <img src="../assets/img/icon/graduate.svg" alt="">
                              </div>
                              <h3>Do you want to learn here?</h3>
-                             <a href="SignUpLearner.html" class="theme_btn border_btn active">Register as Learner</a>
+                             <a href="SignUpLearner.php" class="theme_btn border_btn active">Register as Learner</a>
                          </div>
                      </div>
                  </div>

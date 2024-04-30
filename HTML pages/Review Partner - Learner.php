@@ -1,3 +1,12 @@
+
+<?php require '../assets/php/Review_Partner.php'?>
+<?php
+session_start();
+$errorMessage = isset($_SESSION['submission_error']) ? $_SESSION['submission_error'] : null;
+$successMessage = isset($_SESSION['submission_success']) ? $_SESSION['submission_success'] : null;
+unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear the session variables
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -140,9 +149,9 @@
                 <div class="row justify-content-center">
                     <div class="comments-form-area mb-45">
                         <h2>Leave your review!</h2>
-                        <form action="../assets/php/Partner_Review.php" class="row comments-form" method="POST">
+                        <form action="../assets/php/Review_Partner.php" class="row comments-form" method="POST" >
                             <div class="col-lg-12 mb-20">
-                                <textarea name="commnent" id="commnent" cols="30" rows="10"
+                                <textarea name="comment" id="comment" cols="30" rows="10"
                                     placeholder="Write Your Review ..."></textarea>
                             </div>
 
@@ -159,8 +168,13 @@
                                 <span onclick="gfg(5)" class="star">★
                                 </span>
                                 <br> <br>
+                                
                                 <input type="hidden" name="rating" id="rating" value="0">
+                                
+                               <input type="hidden" name="sessionID" id="sessionID" value="0">
+
                             </div>
+                            <input type="hidden" name="successMessage" value="<?php echo $successMessage; ?>">
                             
                             <div class="col-lg-12 mb-20">
                             <button class="theme_btn comment_btn" id="reviewsubmit">Submit Review</button>
@@ -253,6 +267,47 @@
 <script src="../assets/js/jquery.easypiechart.js"></script>
 <script src="../assets/js/plugins.js"></script>
 <script src="../assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script> let stars = document.getElementsByClassName("star");
+
+// function to update rating
+function gfg(n) {
+	remove();
+	for (let i = 0; i < n; i++) {
+		if (n == 1) cls = "one";
+		else if (n == 2) cls = "two";
+		else if (n == 3) cls = "three";
+		else if (n == 4) cls = "four";
+		else if (n == 5) cls = "five";
+		stars[i].className = "star " + cls;
+	}
+	document.getElementById('rating').value = n;
+
+
+    function remove() {
+	let i = 0;
+	while (i < 5) {
+		stars[i].className = "star";
+		i++;
+	}
+}
+}</script>
+
+<script>
+$(document).ready(function() {
+  // Extract request ID from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const sessionID = urlParams.get('sessionId');
+  document.getElementById('sessionID').value = sessionID;
+
+
+})
+</script>
+
+
+
+
 </body>
 
 

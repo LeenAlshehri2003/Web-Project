@@ -1,4 +1,10 @@
 <?php include '../assets/php/ViewSessionsL.php'; ?>
+<?php
+$errorMessage = isset($_SESSION['submission_error']) ? $_SESSION['submission_error'] : null;
+$successMessage = isset($_SESSION['submission_success']) ? $_SESSION['submission_success'] : null;
+unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear the session variables
+?>
+
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
@@ -212,7 +218,7 @@
                                         <li>Language:
                                             <?php echo htmlspecialchars($session['LanguageName']); ?>
                                         </li>
-                                        <li>Day and time:
+                                        <li>Date and time:
                                             <?php echo htmlspecialchars($session['SessionDate']); ?>
                                         </li>
                                         <li>Duration:
@@ -247,14 +253,13 @@
                                         <li>Language:
                                             <?php echo htmlspecialchars($session['LanguageName']); ?>
                                         </li>
-                                        <li>Day and time:
+                                        <li>Date and time:
                                             <?php echo htmlspecialchars($session['SessionDate']); ?>
                                         </li>
                                         <li>Duration:
                                             <?php echo htmlspecialchars($session['Duration']); ?>
                                         </li>
-                                    </ul>
-                                </div>
+                                        <a href="../HTML pages/Review Partner - Learner.php?sessionId=<?php echo $session['SessionID']; ?>" class="theme_btn price_btn active">Rate Partner!</a>                                </div>
                                 <div class="pr__footer mt-50">
                                 </div>
                             </div>
@@ -352,6 +357,37 @@
     <script src="../assets/js/jquery.easypiechart.js"></script>
     <script src="../assets/js/plugins.js"></script>
     <script src="../assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+    <script>
+window.onload = function() {
+    // Check for error message
+    if ("<?php echo $errorMessage; ?>") {
+        Swal.fire({
+            title: 'Error!',
+            text: '<?php echo addslashes($errorMessage); ?>',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    }
+    // Check for success message
+    if ("<?php echo $successMessage; ?>") {
+        Swal.fire({
+            title: 'Success!',
+            text: '<?php echo addslashes($successMessage); ?>',
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then((result) => {
+            if (result.value) {
+                document.getElementById('successForm').submit();
+            }
+        });
+    }
+};
+</script>
+
 </body>
 
 </html>

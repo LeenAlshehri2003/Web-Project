@@ -3,13 +3,13 @@ session_start();
 require 'db.php'; // Ensure this path is correct for your database connection script
 
 // Redirect if not logged in
-//if (!isset($_SESSION['UserID'])) {
-     //   die('User must be logged in '); // Redirect to login page
-   // header('Location: ../../HTML pages/SignInLearner.php');
-  //  exit;
-//}
+if (!isset($_SESSION['user_id'])) {
+     /  die('User must be logged in '); // Redirect to login page
+    header('Location: ../../HTML pages/SignInLearner.php');
+    exit;
+}
 
-$learnerID = 3; // Assuming the user's ID is stored in the session under 'UserID'
+$learnerID = $_SESSION['user_id']; // Assuming the user's ID is stored in the session under 'UserID'
 
 // Initialize variables to store learner data
 $firstName = $lastName = $city = $currentPass = $photo =  "";
@@ -18,7 +18,7 @@ $firstName = $lastName = $city = $currentPass = $photo =  "";
 // Retrieve existing learner information
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $learnerQuery = $conn->prepare("
-        SELECT u.FirstName, u.LastName, u.City, u.Password, u.Photo
+        SELECT u.FirstName, u.LastName, u.City, u.Password, u.Photo, l.Location
         FROM users u
         INNER JOIN learners l ON u.UserID = l.LearnerID
         WHERE u.UserID = ?");
@@ -31,18 +31,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $city = $learnerRow['City'];
         $currentPass = $learnerRow['Password'];
         $photo = $learnerRow['Photo'];
+        $location = $learnerRow['Location'];  // Added line to retrieve location
     }
     $learnerQuery->close();
 }
-
 // Handle form submission to update learner data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve geolocation data from the form
-$latitude = $conn->real_escape_string($_POST['latitude']);
-$longitude = $conn->real_escape_string($_POST['longitude']);
+
 
 // You might want to save these as a single field in the database
-   $location = $latitude ;
+   $location =  $conn->real_escape_string($_POST['Location']);
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);

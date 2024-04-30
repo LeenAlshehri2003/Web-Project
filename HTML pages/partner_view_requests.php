@@ -1,5 +1,7 @@
-<?php
+<?php 
     session_start();
+    //dummy user to test
+    $_SESSION['user_id'] = 0;
     if (!isset($_SESSION['user_id'])) {
         header("Location: SignInPartner.php"); // Redirect them to the login page if not logged in
         exit();

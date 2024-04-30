@@ -195,7 +195,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                 </div>
                                 <div class="col-lg-12 mb-30">
                                     <label>Upload Picture (optional):<br>
-                                        <input type="file" name="picture" accept="image/*">
+                                        <input type="file" name="photo">
                                     </label>
                                 </div>
                                 <div class="col-lg-12 mb-30">

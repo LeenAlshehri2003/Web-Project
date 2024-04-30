@@ -35,63 +35,62 @@
     </div>
     <!-- preloader end  -->
     <header>
-      <div id="theme-menu-two" class="main-header-area main-head-three pl-100 pr-100 pt-20 pb-15">
-          <div class="container-fluid">
-              <div class="row align-items-center">
-                      <div class="col-xl-2 col-lg-2 col-5">
-                          <div class="logo"><a href="HomePartner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
-                      </div>
-                      <div class="col-xl-7 col-lg-8 d-none d-lg-block">
-                          <nav class="main-menu navbar navbar-expand-lg justify-content-center">
-                              <div class="nav-container">
-                                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                      <ul class="navbar-nav">
-                                          
-                                          <li class="nav-item dropdown">
-                                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-                                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                  <li><a class="dropdown-item" href="View Reviews and Rates - Partner.html">View my ratings</a></li>
-                                                  <li><a class="dropdown-item" href="View Requests - Partner.html">Manage requests</a></li>
-                                                  <li><a class="dropdown-item" href="View sessions - Partner.html">View sessions </a></li>
-                                                  <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
-                                              </ul>
-                                          </li>
+        <div id="theme-menu-two" class="main-header-area main-head-three pl-100 pr-100 pt-20 pb-15">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                        <div class="col-xl-2 col-lg-2 col-5">
+                            <div class="logo"><a href="HomePartner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8 d-none d-lg-block">
+                            <nav class="main-menu navbar navbar-expand-lg justify-content-center">
+                                <div class="nav-container">
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                                    <li><a class="dropdown-item" href="View Reviews.php?user_id=<?php echo $user_id; ?>">View my ratings</a></li>
+                                                    <li><a class="dropdown-item" href="partner_view_requests.php">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="View sessions - Partner.php">View sessions </a></li>
+                                                    <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
+                                                </ul>
+                                            </li>
+                                           
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to Know More?</a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                           
+                                                    <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
+                                                </ul>
+                                            </li>
                                          
-                                          <li class="nav-item dropdown">
-                                              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to Know More?</a>
-                                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                         
-                                                  <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
-                                              </ul>
-                                          </li>
-                                       
-                                          <li class="nav-item">
-                                          <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5" role="button"  aria-expanded="false">Contact Us!</a></li>
-                                      </ul>
-                                  </div>
-                              </div>
-                          </nav>
-                      </div>
-                      <div class="col-xl-3 col-lg-2 col-7">
-                          <div class="right-nav d-flex align-items-center justify-content-end">
-                              <div class="right-btn mr-25 mr-xs-15">
-                                  <ul class="d-flex align-items-center">
-                                      <li><a href="LandingPageSO.html" class="theme_btn free_btn">Sign Out</a></li>
-                                      <li><a class="sign-in ml-20" href="Profile Page-Language Partner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
-                                  </ul>
-                              </div>
-                              <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
-                                  <a href="javascript:void(0);">
-                                      <i class="far fa-bars"></i>
-                                  </a>
-                              </div>
-                          </div>
-                          </div>
-                      </div>
-                  </div>
-          </div>
-       <!-- /.theme-main-menu -->
-  </header>
+                                            <li class="nav-item">
+                                            <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5" role="button"  aria-expanded="false">Contact Us!</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-xl-3 col-lg-2 col-7">
+                            <div class="right-nav d-flex align-items-center justify-content-end">
+                                <div class="right-btn mr-25 mr-xs-15">
+                                    <ul class="d-flex align-items-center">
+                                        <li><a href="../assets/php/Signout.php" class="theme_btn free_btn">Sign Out</a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguagePartner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                    </ul>
+                                </div>
+                                <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
+                                    <a href="javascript:void(0);">
+                                        <i class="far fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+         <!-- /.theme-main-menu -->
+    </header>
 
     <main>
       <!--page-title-area start-->
@@ -103,7 +102,7 @@
                           <h1 class="page-title mb-25">Language Partner-profile</h1>
                           <div class="breadcrumb-list">
                              <ul class="breadcrumb">
-                                 <li><a href="HomePartner.html">Home - </a></li>
+                                 <li><a href="HomePartner.php">Home - </a></li>
                                  <li><a href="#">Language Partner Profile</a></li>
                              </ul>
                           </div>
@@ -118,7 +117,7 @@
 <div class="row flex-lg-nowrap">
 
   <div class="col ">
-    <form action="../assets/php/edit_partner_profile.php" method="post" enctype="multipart/form-data">
+    <form action="../assets/php/edit_partner_profile.php"  id="PartnerForm" method="post" enctype="multipart/form-data">
     <div class="row">
       <div class="col mb-3">
         <div class="card">
@@ -136,7 +135,7 @@
                   </div>
                 <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
                   <div class="text-center text-sm-left mb-2 mb-sm-0">
-                    <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">Mohammad Abdullah</h4>
+                  
                     
                    
                   </div>
@@ -265,6 +264,7 @@
                             <div class="form-group">
                               <label>New Password</label>
                               <input class="form-control" type="password" id="NewPassPartner" name="NewPass" >
+                              <span id="passwordHint" style="display:none; color: red;">Minimum 8 characters with 1 special character</span>
                             </div>
                           </div>
                         </div>
@@ -273,6 +273,7 @@
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
                               <input class="form-control" type="password" id="ConfirmPassPartner" name="ConfirmPass"></div>
+                              <span id="confirmPasswordHint" style="display:none; color: red;">Repeat the password</span>
                           </div>
                         </div>
                       </div>
@@ -376,7 +377,110 @@
   
   
     <!-- JS here -->
-  
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById('PartnerForm');
+      // Get password fields and hint elements
+  const newPasswordField = document.getElementById('NewPassPartner');
+  const confirmPasswordField = document.getElementById('ConfirmPassPartner');
+  const passwordHint = document.getElementById('passwordHint');
+  const confirmPasswordHint = document.getElementById('confirmPasswordHint');
+
+  // Event listeners for password fields to show and hide hints
+  newPasswordField.addEventListener("focus", function() {
+    passwordHint.style.display = "inline";
+  });
+  newPasswordField.addEventListener("blur", function() {
+    passwordHint.style.display = "none";
+  });
+  confirmPasswordField.addEventListener("focus", function() {
+    confirmPasswordHint.style.display = "inline";
+  });
+  confirmPasswordField.addEventListener("blur", function() {
+    confirmPasswordHint.style.display = "none";
+  });
+
+    form.addEventListener("submit", function(event) {
+      let isValid = true;
+      const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+      const inputs = form.querySelectorAll('input[type=text], input[type=password], textarea');
+
+      // Check if all fields are filled
+      inputs.forEach(input => {
+        if (input.value.trim() === '') {
+          alert('Please fill out all fields.');
+          input.style.border = '2px solid red';
+          isValid = false;
+        } else {
+          input.style.border = '';
+        }
+      });
+
+      // Check password requirements
+      const password = document.getElementById('NewPassPartner').value;
+      const confirmPassword = document.getElementById('ConfirmPassPartner').value;
+      if (password.length < 8 || !specialCharRegex.test(password)) {
+        Swal.fire({
+        title: 'LinguaLink',
+        text: 'Password must be at least 8 characters and contains one special character.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
+        document.getElementById('NewPassPartner').style.border = '2px solid red';
+        document.getElementById('ConfirmPassPartner').style.border = '2px solid red';
+        isValid = false;
+      } else {
+        document.getElementById('NewPassPartner').style.border = '';
+        document.getElementById('ConfirmPassPartner').style.border = '';
+      }
+
+      // Check if passwords match
+      if (password !== confirmPassword) {
+        Swal.fire({
+        title: 'LinguaLink',
+        text: 'Paswwords do not match , please enter matching passwords.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
+        document.getElementById('NewPassPartner').style.border = '2px solid red';
+        document.getElementById('ConfirmPassPartner').style.border = '2px solid red';
+        isValid = false;
+      } else {
+        document.getElementById('ConfirmPassPartner').style.border = '';
+      }
+
+      // Validate language checkboxes
+      const languageCheckboxes = document.querySelectorAll("[name='languages[]']");
+      const isLanguageSelected = Array.from(languageCheckboxes).some(checkbox => checkbox.checked);
+      if (!isLanguageSelected) {
+        languageCheckboxes.forEach(checkbox => {
+          const label = checkbox.nextElementSibling;
+          if (label) label.style.color = 'red';
+        });
+        Swal.fire({
+        title: 'LinguaLink',
+        text: 'Please Select at least one language.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
+        isValid = false;
+      } else {
+        languageCheckboxes.forEach(checkbox => {
+          const label = checkbox.nextElementSibling;
+          if (label) label.style.color = '';
+        });
+      }
+
+      // Prevent form submission if validation fails
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+  });
+</script>
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>

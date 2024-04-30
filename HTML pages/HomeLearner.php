@@ -85,7 +85,7 @@ if (!isset($_SESSION['user_id'])) {
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
                                                     <li><a class="dropdown-item" href="Partnerlist English.html">View partners List</a></li>
                                                     <li><a class="dropdown-item" href="View Requests- Learner.html">Manage requests</a></li>
-                                                    <li><a class="dropdown-item" href="View sessions - Learner.html">View sessions </a></li>
+                                                    <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
                                                 </ul>
                                             </li>
