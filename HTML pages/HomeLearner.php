@@ -18,11 +18,8 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
     <meta name="description" content="LinguaLink is a e-learnibg HTML website for language education ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
-    
-
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">

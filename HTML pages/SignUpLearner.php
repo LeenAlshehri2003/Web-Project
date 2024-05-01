@@ -159,7 +159,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                              
                                 <div class="col-lg-6 mb-30">
                                     <label>City:*<br>
-                                        <input type="text" name="city" placeholder="Enter City here" required>
+                                        <input style="color:grey"type="text" name="city" placeholder="Enter City here" required>
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
