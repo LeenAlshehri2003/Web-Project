@@ -38,7 +38,7 @@ function displayLearnerData(learnerData) {
         learnerProfile.innerHTML = `
         <div class="row">
             <div class="col-xl-12 col-lg-12">
-                <img class="img-fluid" src="${learnerData.Photo}" alt="Learner profile picture" width="300" height="300">
+                <img class="img-fluid" src="../assets/img/${learnerData.Photo}" alt="Learner profile picture" width="300" height="300">
             </div>
             <div class="col-xl-6 col-lg-12">
                 <div class="profile">

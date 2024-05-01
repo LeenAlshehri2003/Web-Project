@@ -1,7 +1,7 @@
 <?php
 include 'db.php'; // Ensures the database connection is included
 
-$learnerID = 3;
+$learnerID = $_SESSION['user_id'];
 
 $proficiencyLevel = $_POST['proficiencyLevel'] ?? '';
 $selectedOption = $_POST['languagePartner'] ?? ''; // This will contain "PartnerID-LanguageID"

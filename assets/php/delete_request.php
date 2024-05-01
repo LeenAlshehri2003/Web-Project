@@ -1,10 +1,7 @@
 <?php
 include_once('db.php'); // Ensure this points to your database connection script
 // Ensure the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    exit('User not logged in.');
-    header('Location: ../../HTML pages/SignInLearner.php');  // Proper handling for not logged-in users
-}
+
 
 // Check if the request ID is present and the request method is GET
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['requestId'])) {
