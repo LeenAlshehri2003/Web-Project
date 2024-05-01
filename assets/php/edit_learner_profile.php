@@ -4,12 +4,12 @@ require 'db.php'; // Ensure this path is correct for your database connection sc
 
 // Redirect if not logged in
 if (!isset($_SESSION['user_id'])) {
-     /  die('User must be logged in '); // Redirect to login page
+      die('User must be logged in '); // Redirect to login page
     header('Location: ../../HTML pages/SignInLearner.php');
     exit;
 }
 
-$learnerID = $_SESSION['user_id']; // Assuming the user's ID is stored in the session under 'UserID'
+$learnerID =$_SESSION['user_id']; // Assuming the user's ID is stored in the session under 'UserID'
 
 // Initialize variables to store learner data
 $firstName = $lastName = $city = $currentPass = $photo =  "";
@@ -66,6 +66,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
         }
+    } else{
+
+        $photo = "DefaultProfilePic.jpg";
     }
 
     // Update user details
