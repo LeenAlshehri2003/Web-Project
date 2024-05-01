@@ -1,7 +1,7 @@
 <?php 
 if (!isset($_SESSION['user_id'])) {
-     header('Location:SignInLearner.php');
-     exit;
+    header('Location:SignInLearner.php');
+    exit;
  }?>
 <!DOCTYPE html>
 <html>
