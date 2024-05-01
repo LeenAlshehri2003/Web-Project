@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id'];
-       //for testing echo "Session User ID: " . $userID;
+       echo "Session User ID: " . $userID;
     } else {
         header("Location: SignInPartner.php"); // Redirect them to the login page if not logged in
         exit();
@@ -194,27 +194,49 @@
         var requestId = urlParams.get('request_id');
 
         // Send AJAX request to update status
-        fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
-            .then(response => response.text())
-            .then(data => {
-                // Reload the page or perform any necessary actions upon successful status update
-                console.log(data);
-                // For example, you can reload the page after updating status
+// Send AJAX request to update status
+fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
+    .then(response => response.text())
+    .then(data => {
+        // Log the server response for debugging
+        console.log(data);
+
+        // Decide what to do based on the new status
+        if (newStatus == 'Accepted') {
+            Swal.fire({
+                title: 'LinguaLink',
+                text: 'Request has been Accepted!',
+                icon: 'success',
+                confirmButtonColor: '#008000',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                // Reload the page after user clicks 'OK'
                 window.location.reload();
-                if(newStatus=='Accepted')
-                window.alert("Request has been accepted!");
-                if(newStatus=='Rejected')
-                window.alert("Request has been Rejected!");
-            })
-            .catch(error => {
-                console.error('Error:', error);
             });
+        } else if (newStatus == 'Rejected') {
+            Swal.fire({
+                title: 'LinguaLink',
+                text: 'Request has been Rejected!',
+                icon: 'error',
+                confirmButtonColor: '#FFA500',
+                confirmButtonText: 'OK'
+            }).then(() => {
+                // Reload the page after user clicks 'OK'
+                window.location.reload();
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
     }
 </script>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="../assets/js/popper.min.js"></script>
 <script src="../assets/js/bootstrap.min.js"></script>
 <script src="../assets/js/owl.carousel.min.js"></script>
