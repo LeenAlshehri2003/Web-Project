@@ -46,7 +46,7 @@ function displayPartnerData(partnerData) {
         partnerProfile.innerHTML = `
         <div class="row">
         <div class="col-xl-12 col-lg-12">
-            <img class="img-fluid" src="${partnerData.Photo}" alt="Partner profile picture" width="300" height="300">
+            <img class="img-fluid" src="../assets/img/Partners images/${partner.Photo}" alt="Partner profile picture" width="300" height="300">
         </div>
         <div class="col-xl-6 col-lg-12">
             <div class="instructor-profile">
