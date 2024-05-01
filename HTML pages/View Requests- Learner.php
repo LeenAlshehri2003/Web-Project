@@ -2,7 +2,7 @@
  
 if (!isset($_SESSION['user_id'])) {
      header('Location:SignInLearner.php');
-     exit;
+    exit;
  } ?>
 <!DOCTYPE html>
 <html>
