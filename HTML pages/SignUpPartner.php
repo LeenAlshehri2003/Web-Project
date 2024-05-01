@@ -263,7 +263,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
 
                                 <div>
                                 <input type="checkbox" id="chinese" name="languages[]" value="7" style="width: 20px; height: 20px; vertical-align: middle;">
-                                <label for="chinese" style="vertical-align: middle;">Japanese</label>
+                                <label for="chinese" style="vertical-align: middle;">Chinese</label>
                                 </div>
                                 
 </span> 
