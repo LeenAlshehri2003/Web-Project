@@ -52,99 +52,74 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
         <div id="theme-menu-two" class="main-header-area main-head-three pl-100 pr-100 pt-20 pb-15">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                    <div class="col-xl-2 col-lg-2 col-5">
-                        <div class="logo"><a href="HomeLearner.html"><img
-                                    src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
-                    </div>
-                    <div class="col-xl-7 col-lg-8 d-none d-lg-block">
-                        <nav class="main-menu navbar navbar-expand-lg justify-content-center">
-                            <div class="nav-container">
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav">
-                                        <li class="nav-item dropdown mega-menu">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                All Languages
-                                            </a>
-                                            <ul class="dropdown-menu submenu mega-menu__sub-menu-box"
-                                                aria-labelledby="navbarDropdown">
-                                                <li><a href="Partnerlist%20English.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg"
-                                                                alt="English"></span> English</a></li>
-                                                <li><a href="Partnerlist%20French.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg" alt="French"></span>
-                                                        French</a></li>
-                                                <li><a href="Partnerlist%20Spanish.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg"
-                                                                alt="Spanish"></span> Spanish</a></li>
-                                                <li><a href="Partnerlist%20Arabic.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg" alt="Arabic"></span>
-                                                        Arabic</a></li>
-                                                <li><a href="Partnerlist%20Italien.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg"
-                                                                alt="Italien"></span>Italien</a></li>
-                                                <li><a href="Partnerlist%20Japanese.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg"
-                                                                alt="Japanese"></span> Japanese</a></li>
-                                                <li><a href="Partnerlist%20Chinese.html#here"><span><img
-                                                                src="../assets/img/icon/icon12.svg"
-                                                                alt="Chinese"></span> Chinese</a></li>
+                        <div class="col-xl-2 col-lg-2 col-5">
+                            <div class="logo"><a href="HomeLearner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                        </div>
+                        <div class="col-xl-7 col-lg-8 d-none d-lg-block">
+                            <nav class="main-menu navbar navbar-expand-lg justify-content-center">
+                                <div class="nav-container">
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item dropdown mega-menu">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                All Languages 
+                                                </a>
+                                                <ul class="dropdown-menu submenu mega-menu__sub-menu-box" aria-labelledby="navbarDropdown">
+                                                    <li><a href="Partnerlist%20English.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
+                                                    <li><a href="Partnerlist%20French.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
+                                                    <li><a href="Partnerlist%20Spanish.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
+                                                    <li><a href="Partnerlist%20Arabic.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
+                                                    <li><a href="Partnerlist%20Italien.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
+                                                    <li><a href="Partnerlist%20Japanese.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
+                                                    <li><a href="Partnerlist%20Chinese.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
                                             </ul>
-                                        </li>
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3"
-                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                <li><a class="dropdown-item" href="Partnerlist.html">View partners
-                                                        List</a></li>
-                                                <li><a class="dropdown-item" href="View Requests- Learner.html">Manage
-                                                        requests</a></li>
-                                                <li><a class="dropdown-item" href="View sessions - Learner.html">View
-                                                        sessions </a></li>
-                                                <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3"
-                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to
-                                                Know More?</a>
-                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-
-                                                <li><a class="dropdown-item" href="faqHomeLearner.htmll">FAQ</a></li>
-                                            </ul>
-                                        </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5"
-                                                role="button" aria-expanded="false">Contact Us!</a>
-                                        </li>
+                                            </li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                                    <li><a class="dropdown-item" href="Partnerlist English.html">View partners List</a></li>
+                                                    <li><a class="dropdown-item" href="View Requests- Learner.php">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
+                                                    <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
+                                                </ul>
+                                            </li>
+                                           
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to Know More?</a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                           
+                                                    <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
+                                                </ul>
+                                            </li>
+                                         
+                                            <li class="nav-item">
+                                            <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5" role="button"  aria-expanded="false">Contact Us!</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="col-xl-3 col-lg-2 col-7">
+                            <div class="right-nav d-flex align-items-center justify-content-end">
+                                <div class="right-btn mr-25 mr-xs-15">
+                                    <ul class="d-flex align-items-center">
+                                        <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguageLearner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
+                                <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
+                                    <a href="javascript:void(0);">
+                                        <i class="far fa-bars"></i>
+                                    </a>
+                                </div>
                             </div>
-                        </nav>
-                    </div>
-                    <div class="col-xl-3 col-lg-2 col-7">
-                        <div class="right-nav d-flex align-items-center justify-content-end">
-                            <div class="right-btn mr-25 mr-xs-15">
-                                <ul class="d-flex align-items-center">
-                                    <li><a href="LandingPageSO.html" class="theme_btn free_btn">Sign Out</a></li>
-                                    <li><a class="sign-in ml-20" href="Profile Page-Language Learner.html"><img
-                                                src="../assets/img/icon/user.svg" alt="user icon"></a></li>
-                                </ul>
-                            </div>
-                            <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
-                                <a href="javascript:void(0);">
-                                    <i class="far fa-bars"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
-                </div>
             </div>
-        </div>
-        <!-- /.theme-main-menu -->
+        </div> <!-- /.theme-main-menu -->
     </header>
+
     <main>
         <!--page-title-area start-->
         <section class="page-title-area d-flex align-items-end"

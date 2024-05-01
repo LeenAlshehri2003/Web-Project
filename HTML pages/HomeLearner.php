@@ -18,11 +18,8 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
     <meta name="description" content="LinguaLink is a e-learnibg HTML website for language education ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
-    
-
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="../assets/css/animate.css">
@@ -110,7 +107,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
                                         <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="Profile Page-Language Learner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguageLearner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="hamburger-menu d-md-inline-block d-lg-none text-right">

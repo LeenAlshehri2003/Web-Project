@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'db.php';  // Ensure this path is correct to your database connection file
+require 'db.php';  // Ensure this path is correct to your database connection script
 
 function registerNewLearner($formData, $conn) {
     $username = htmlspecialchars(trim($formData['username']));
@@ -9,19 +9,27 @@ function registerNewLearner($formData, $conn) {
     $email = filter_var($formData['email'], FILTER_SANITIZE_EMAIL);
     $password = $formData['password'];  // Password will be hashed
     $city = htmlspecialchars(trim($formData['city']));
+    $location = htmlspecialchars(trim($formData['location']));  // Ensure this input is collected from the form
     $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
-    $profilePic = $defaultPic;  // Use default if no picture is uploaded
 
-     // Handle photo upload
-     $userImage = $_FILES['photo'];
-     $imageName = $userImage['name'];
-     if ($imageName == "")
-         $imageName = "DefaultProfilePic.jpg";
-     
-         $fileTmpName = $userImage['tmp_name'];
-         $fileNewName = "../img/".$imageName;
-         $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
-     
+    // Handle photo upload
+    $profilePic = $defaultPic;  // Use default if no picture is uploaded
+    if (!empty($_FILES['photo']['name'])) {
+        $target_dir = "../img/";
+        $fileName = basename($_FILES['photo']['name']);
+        $targetFilePath = $target_dir . $fileName;
+        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array(strtolower($fileType), $allowTypes)) {
+            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
+                $profilePic = $targetFilePath; // Successfully uploaded the new photo
+            } else {
+                echo "Sorry, there was an error uploading your file.";
+            }
+        } else {
+            echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
+        }
+    }
 
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");
@@ -36,7 +44,7 @@ function registerNewLearner($formData, $conn) {
 
     // Insert into Users table
     $stmt = $conn->prepare("INSERT INTO Users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $imageName);
+    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $profilePic);
     if (!$stmt->execute()) {
         return "Error creating user account: " . $stmt->error;
     }
@@ -45,8 +53,8 @@ function registerNewLearner($formData, $conn) {
     $userId = $conn->insert_id;
 
     // Insert into Learners table
-    $stmt = $conn->prepare("INSERT INTO Learners (LearnerID) VALUES (?)");
-    $stmt->bind_param('i', $userId);
+    $stmt = $conn->prepare("INSERT INTO Learners (LearnerID, Location) VALUES (?, ?)");
+    $stmt->bind_param('is', $userId, $location);
     if (!$stmt->execute()) {
         return "Error registering learner: " . $stmt->error;
     }

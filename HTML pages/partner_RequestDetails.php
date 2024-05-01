@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id'];
-       //for testing echo "Session User ID: " . $userID;
+       echo "Session User ID: " . $userID;
     } else {
         header("Location: SignInPartner.php"); // Redirect them to the login page if not logged in
         exit();

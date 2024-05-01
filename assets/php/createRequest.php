@@ -1,5 +1,6 @@
 <?php
 include 'db.php'; // Ensures the database connection is included
+session_start();
 
 $learnerID = $_SESSION['user_id'];
 
@@ -44,7 +45,7 @@ if (!$stmt) {
 // Bind and execute the statement with the new submitDate parameter
 $stmt->bind_param("sisiissi", $proficiencyLevel, $partnerID, $sessionDateTime, $languageID, $sessionDuration, $submitDate, $status, $learnerID);
 if ($stmt->execute()) {
-    header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php?");
+    header("Location: http://localhost/Web-Project/HTML pages/View Requests- Learner.php");
 } else {
     echo "Error posting request: " . $stmt->error;
 }

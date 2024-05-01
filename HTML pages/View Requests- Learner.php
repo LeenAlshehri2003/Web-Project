@@ -1,5 +1,4 @@
 <?php require '../assets/php/load_requests.php';
- 
 if (!isset($_SESSION['user_id'])) {
      header('Location:SignInLearner.php');
     exit;
@@ -201,9 +200,9 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="z-blogs__content">
                         <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
                             <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
-                            <div>Session Date: <?= htmlspecialchars($item['SessionDate']) ?></div>
-                            <div>Session Time: <?= htmlspecialchars($item['SessionTime']) ?></div>
-                            <div>Duration: <?= htmlspecialchars($item['Duration']) ?> min</div>
+                            <div>Session Date: <?= htmlspecialchars($item['PreferredDate'], ENT_QUOTES, 'UTF-8') ?></div>
+                            <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
+                            <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
                             <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
                             <div>Session Price: <?= htmlspecialchars($item['SessionPrice']) ?> SAR</div>
                            
@@ -223,15 +222,15 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="z-blogs mb-30">
                         <div class="z-blogs__thumb mb-30">
                             <a href="Profile_Page.html">
-                                <img src="<?= htmlspecialchars($item['PartnerPhoto']) ?>" alt="Partner picture" width="420" height="320">
+                            <img src="<?= htmlspecialchars('../assets/img/Partners images/' . $item['PartnerPhoto']) ?>" alt="Profile picture" width="420" height="320">
                             </a>
                         </div>
                         <div class="z-blogs__content">
                             <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
                             <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
-                            <div>Session Date: <?= htmlspecialchars($item['SessionDate']) ?></div>
-                            <div>Session Time: <?= htmlspecialchars($item['SessionTime']) ?></div>
-                            <div>Duration: <?= htmlspecialchars($item['Duration']) ?> min</div>
+                            <div>Session Date: <?= htmlspecialchars($item['PreferredDate'], ENT_QUOTES, 'UTF-8') ?></div>
+                           <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
+                           <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
                             <div>Proficiency Level: <?= htmlspecialchars($item['ProficiencyLevel']) ?></div>
                             <!-- Messages or actions for rejected requests -->
                         </div>
