@@ -69,7 +69,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="View Reviews.php?partnerId=<?php echo $_SESSION['user_id']; ?>">View my ratings</a></li>
+                                                    <li><a class="dropdown-item" href="View Reviews.php">View my ratings</a></li>
                                                     <li><a class="dropdown-item" href="partner_view_requests.php">Manage requests</a></li>
                                                     <li><a class="dropdown-item" href="View sessions - Partner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
