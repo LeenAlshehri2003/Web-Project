@@ -47,7 +47,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
         </div>
     </div>
     <!-- preloader end  -->
- <header>
+    <header>
         <div id="theme-menu-two" class="main-header-area main-head-three pl-100 pr-100 pt-20 pb-15">
             <div class="container-fluid">
                 <div class="row align-items-center">
@@ -78,8 +78,8 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                                     Sign Up
                                                 </a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <li><a class="dropdown-item" href="SignUpLearner.html">Sign Up as Learner</a></li>
-                                                    <li><a class="dropdown-item" href="SignUpPartner.html">Sign Up as Partner</a></li>
+                                                    <li><a class="dropdown-item" href="SignUpLearner.php">Sign Up as Learner</a></li>
+                                                    <li><a class="dropdown-item" href="SignUpPartner.php">Sign Up as Partner</a></li>
                                                 </ul>
                                             </li>
                                             <li class="nav-item dropdown active">
@@ -87,8 +87,8 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                                     Sign In
                                                 </a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <li><a class="dropdown-item" href="SignInLearner.html">Learner's Sign in </a></li>
-                                                    <li><a class="dropdown-item" href="SignInPartner.html">Partner's Sign in </a></li>
+                                                    <li><a class="dropdown-item" href="SignInLearner.php">Learner's Sign in </a></li>
+                                                    <li><a class="dropdown-item" href="SignInPartner.php">Partner's Sign in </a></li>
                                                 </ul>
                                             </li>
                                             <li class="nav-item dropdown">
@@ -109,6 +109,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
             </div>
         </div> 
     </header>
+
 
 
 
@@ -162,7 +163,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
-                                
+
                                 <div class="col-lg-6 mb-30">
                                     <label>Location (Address):<br>
                                         <input type="text" name="location" placeholder="Enter Your Address here" required>
