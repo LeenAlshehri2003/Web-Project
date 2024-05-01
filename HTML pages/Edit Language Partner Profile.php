@@ -219,7 +219,7 @@
                                   </div>
                                   <div>
                                       <input type="checkbox" id="chinese" name="languages[]" value="7"> <!-- Assuming 7 is the ID for Russian -->
-                                      <label for="Chinese">Chinese</label>
+                                      <label for="chinese">Chinese</label>
                                   </div>
                               </div>
                           </div>

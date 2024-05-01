@@ -7,6 +7,43 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
 <!DOCTYPE html>
 <html>
     <head>
+    <style>
+    .custom-checkbox {
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+    }
+    .custom-label {
+        vertical-align: middle;
+        margin-left: 8px;  /* Space between checkbox and label */
+    }
+    .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* This aligns the items vertically center */
+    margin-bottom: 20px; /* Adjust space between rows */
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column; /* Stack the label and input vertically */
+    flex: 1; /* Each column takes equal width */
+    margin-right: 10px; /* Space between columns */
+}
+
+.form-column:last-child {
+    margin-right: 0; /* Removes margin from the last column */
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column; /* Stack checkboxes vertically */
+    padding: 10px; /* Padding around the checkbox area */
+}
+
+</style>
+
+       
         <meta charset="utf-8">
         <title>sign up partner</title>
         <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
@@ -176,7 +213,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                     </label>
                                 </div>
                                 <div class="col-lg-6 mb-30">
-                                    <label>Password:<br>
+                                    <label>Password:*<br>
                                         <input type="password" name="password" placeholder="************" required>
                                         <div class="info" style="color: red;"></div>
                                     </label>
@@ -193,6 +230,47 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
+                               
+                                <span class="tab-content pt-3 form-column checkbox-group">
+              
+                                  <label>Select Languages:*</label>
+                                  <div>
+                                <input type="checkbox" id="english" name="languages[]" value="1" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="english" style="vertical-align: middle;">English</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="arabic" name="languages[]" value="2" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="arabic" style="vertical-align: middle;">Arabic</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="french" name="languages[]" value="3" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="french" style="vertical-align: middle;">French</label>
+                                </div>
+
+                                <div>
+                                <input type="checkbox" id="spanish" name="languages[]" value="4" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="spanish" style="vertical-align: middle;">Spanish</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="Italian" name="languages[]" value="5" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="Italian" style="vertical-align: middle;">Italian</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" id="japanese" name="languages[]" value="6" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="japanese" style="vertical-align: middle;">Japanese</label>
+                                </div>
+
+                                <div>
+                                <input type="checkbox" id="chinese" name="languages[]" value="7" style="width: 20px; height: 20px; vertical-align: middle;">
+                                <label for="chinese" style="vertical-align: middle;">Japanese</label>
+                                </div>
+                                
+</span> 
+                                  
+                              
+
+
+                        
                                 <div class="col-lg-12 mb-30">
                                     <label>Upload Picture (optional):<br>
                                         <input type="file" name="photo">
@@ -261,11 +339,34 @@ $(document).ready(function() {
 
   
 });
+
+
 </script>
  
 
         
-        
+<script>
+$(document).ready(function() {
+    $('#signupForm').submit(function(event) {
+        var isChecked = $('input[type="checkbox"][name="languages[]"]:checked').length > 0;
+        if (!isChecked) {
+            event.preventDefault(); // Prevent form submission
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please select at least one language!'
+            });
+        }
+    });
+
+    // Optional: Reset styling when a checkbox is checked
+    $('input[type="checkbox"][name="languages[]"]').change(function() {
+        if ($('input[type="checkbox"][name="languages[]"]:checked').length > 0) {
+            // Reset any custom styling if needed
+        }
+    });
+});
+</script>
         
 
     
