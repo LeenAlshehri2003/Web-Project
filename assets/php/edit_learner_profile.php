@@ -3,11 +3,7 @@ session_start();
 require 'db.php'; // Ensure this path is correct for your database connection script
 
 // Redirect if not logged in
-if (!isset($_SESSION['user_id'])) {
-      die('User must be logged in '); // Redirect to login page
-    header('Location: ../../HTML pages/SignInLearner.php');
-    exit;
-}
+
 
 $learnerID =$_SESSION['user_id']; // Assuming the user's ID is stored in the session under 'UserID'
 

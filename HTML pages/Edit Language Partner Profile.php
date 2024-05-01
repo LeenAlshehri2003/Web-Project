@@ -1,4 +1,9 @@
-<?php include '../assets/php/edit_partner_profile.php'; ?>
+<?php include '../assets/php/edit_partner_profile.php';
+
+if (!isset($_SESSION['user_id'])) {
+     header('Location:SignInPartner.php');
+     exit;
+ } ?>
 <!DOCTYPE html>
 <html>
   <head>

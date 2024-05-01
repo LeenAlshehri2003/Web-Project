@@ -3,11 +3,7 @@ session_start();
 require 'db.php';  // Ensure this path is correct for your database connection script
 
 // Redirect if not logged in
-if (!isset($_SESSION['user_id'])) {
-   die('User must be logged in '); // Redirect to login page
- header('Location: ../../HTML pages/SignInPartner.php');
-    exit;
-}
+
 
 $partnerID = $_SESSION['user_ID'];
 
@@ -69,30 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Initialize filename variable for cases where the user doesn't upload a new photo
     $filename = '';
     // Handle file upload
- /*if (!empty($_FILES["photo"]["name"])) {
-    $targetDir = "../img/Partners images/";
-    $fileName = basename($_FILES["photo"]["name"]);
-    $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-    // Specify allowed file types
-    $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];   
-    if (in_array(strtolower($fileType), $allowTypes)) {
-        // Upload file to the server
-        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath)) {
-            $filename = $fileName; // Use this filename for updating the DB record
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-            $filename = ''; // Set to empty if the file upload fails
-        }
-    } else {
-        echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
-        $filename = ''; // Set to empty if the file type is not allowed
-    }
-} else {
-    $filename = "DefaultProfilePic.jpg";
-}
-*/
 $userImage = $_FILES['photo'];
 $imageName = $userImage['name'];
 if ($imageName == "")

@@ -3,10 +3,7 @@ require_once 'db.php';  // Ensure this points to your actual database connection
 session_start();
 
 // Ensure the user is logged in
-if (!isset($_SESSION['user_id'])) {
-    exit('User not logged in.');
-    header('Location: ../../HTML pages/SignInLearner.php');  // Proper handling for not logged-in users
-}
+
 
 $userId = $_SESSION['user_id'];
 
