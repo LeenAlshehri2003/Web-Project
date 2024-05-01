@@ -50,30 +50,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 
     // Handle photo upload
-    if (!empty($_FILES['photo']['name'])) {
-        $targetDir = "../img/";
-        $fileName = basename($_FILES['photo']['name']);
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+ 
+    $userImage = $_FILES['photo'];
+$imageName = $userImage['name'];
+if ($imageName == "")
+    $imageName = "DefaultProfilePic.jpg";
 
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-        if (in_array(strtolower($fileType), $allowTypes)) {
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
-                $photo = $fileName; // Successfully uploaded the new photo
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        } else {
-            echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
-        }
-    } else{
+    $fileTmpName = $userImage['tmp_name'];
+    $fileNewName = "../img/".$imageName;
+    $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
 
-        $photo = "DefaultProfilePic.jpg";
-    }
 
     // Update user details
     $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $photo, $learnerID);
+    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $imageName, $learnerID);
     $updateUser->execute();
     $updateUser->close();
 

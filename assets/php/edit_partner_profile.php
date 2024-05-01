@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Initialize filename variable for cases where the user doesn't upload a new photo
     $filename = '';
     // Handle file upload
-if (!empty($_FILES["photo"]["name"])) {
+ /*if (!empty($_FILES["photo"]["name"])) {
     $targetDir = "../img/Partners images/";
     $fileName = basename($_FILES["photo"]["name"]);
     $targetFilePath = $targetDir . $fileName;
@@ -92,6 +92,16 @@ if (!empty($_FILES["photo"]["name"])) {
 } else {
     $filename = "DefaultProfilePic.jpg";
 }
+*/
+$userImage = $_FILES['photo'];
+$imageName = $userImage['name'];
+if ($imageName == "")
+    $imageName = "DefaultProfilePic.jpg";
+
+    $fileTmpName = $userImage['tmp_name'];
+    $fileNewName = "../img/Partners images/".$imageName;
+    $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
+
     // Sanitize and assign new values from form
     $firstName = $conn->real_escape_string($_POST['FirstName']);
     $lastName = $conn->real_escape_string($_POST['LastName']);
@@ -106,7 +116,7 @@ if (!empty($_FILES["photo"]["name"])) {
 
     // Update user details
     $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $filename, $partnerID);
+    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $imageName, $partnerID);
     $updateUser->execute();
     $updateUser->close();
 

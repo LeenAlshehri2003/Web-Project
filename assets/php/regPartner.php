@@ -18,30 +18,15 @@ function registerNewPartner($formData, $conn) {
       // Initialize filename variable for cases where the user doesn't upload a new photo
       $filename = '';
       // Handle file upload
-  if (!empty($_FILES["photo"]["name"])) {
-      $targetDir = "../img/Partners images/";
-      $fileName = basename($_FILES["photo"]["name"]);
-      $targetFilePath = $targetDir . $fileName;
-      $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-  
-      // Specify allowed file types
-      $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];
-      if (in_array(strtolower($fileType), $allowTypes)) {
-          // Upload file to the server
-          if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath)) {
-              $filename = $fileName; // Use this filename for updating the DB record
-          } else {
-              echo "Sorry, there was an error uploading your file.";
-              $filename = ''; // Set to empty if the file upload fails
-          }
-      } else {
-          echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
-          $filename = ''; // Set to empty if the file type is not allowed
-      }
-  } else {
-      // If no file is selected, keep the current profile picture
-      // You can fetch the current profile picture filename from the database if needed
-  }
+      $userImage = $_FILES['photo'];
+      $imageName = $userImage['name'];
+      if ($imageName == "")
+          $imageName = "DefaultProfilePic.jpg";
+      
+          $fileTmpName = $userImage['tmp_name'];
+          $fileNewName = "../img/Partners images/".$imageName;
+          $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
+      
 
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");
@@ -56,7 +41,7 @@ function registerNewPartner($formData, $conn) {
 
     // Insert into Users table
     $stmt = $conn->prepare("INSERT INTO users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $filename);
+    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $imageName);
     if (!$stmt->execute()) {
         return "Error creating user account: " . $stmt->error;
     }
