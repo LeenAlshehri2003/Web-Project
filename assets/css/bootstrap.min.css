@@ -5989,6 +5989,19 @@ fieldset:disabled .btn {
 .d-grid {
     display: grid !important;
 }
+#partners-container {
+    display: flex; /* Use flexbox layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: space-around; /* Distribute items evenly with space around them */
+    align-items: flex-start; /* Align items to the top of the container */
+}
+
+.grid-item {
+    flex-basis: calc(25% - 10px); /* Each item takes up roughly one-fourth of the container width with 10px spacing */
+    margin-bottom: 10px; /* Add a small bottom margin */
+}
+
+
 .d-table {
     display: table !important;
 }
