@@ -9,23 +9,34 @@ function registerNewLearner($formData, $conn) {
     $email = filter_var($formData['email'], FILTER_SANITIZE_EMAIL);
     $password = $formData['password'];  // Password will be hashed
     $city = htmlspecialchars(trim($formData['city']));
+    $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
+    $profilePic = $defaultPic;  // Use default if no picture is uploaded
 
-     // Handle photo upload
-     if (!empty($_FILES['photo']['name'])) {
-        $targetDir = "../img/";
-        $fileName = basename($_FILES['photo']['name']);
-        $targetFilePath = $targetDir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+    // Handle photo upload
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
+        $target_dir = "../assets/img/";  // Ensure this directory exists and has the correct permissions
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+        $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
+        // Validate file type
         $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-        if (in_array(strtolower($fileType), $allowTypes)) {
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
-                $photo = $fileName; // Successfully uploaded the new photo
+        if (in_array($fileType, $allowTypes)) {
+            // Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES["picture"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+                    $profilePic = $target_file;  // Set the actual path of the uploaded file
+                } else {
+                    $error = "Sorry, there was an error uploading your file.";
+                    return $error;
+                }
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                $error = "File is not an image.";
+                return $error;
             }
         } else {
-            echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
+            $error = "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
+            return $error;
         }
     }
 
@@ -42,7 +53,7 @@ function registerNewLearner($formData, $conn) {
 
     // Insert into Users table
     $stmt = $conn->prepare("INSERT INTO Users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $photo);
+    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $profilePic);
     if (!$stmt->execute()) {
         return "Error creating user account: " . $stmt->error;
     }

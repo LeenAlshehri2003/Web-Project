@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 require 'db.php';  // Ensure this path is correct to your database connection file
@@ -15,33 +13,37 @@ function registerNewPartner($formData, $conn) {
     $age = intval($formData['age']);
     $gender = htmlspecialchars($formData['gender']);
     $phone = htmlspecialchars($formData['number']);
-      // Initialize filename variable for cases where the user doesn't upload a new photo
-      $filename = '';
-      // Handle file upload
-  if (!empty($_FILES["photo"]["name"])) {
-      $targetDir = "../img/Partners images/";
-      $fileName = basename($_FILES["photo"]["name"]);
-      $targetFilePath = $targetDir . $fileName;
-      $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-  
-      // Specify allowed file types
-      $allowTypes = ['jpg', 'png', 'jpeg', 'gif'];
-      if (in_array(strtolower($fileType), $allowTypes)) {
-          // Upload file to the server
-          if (move_uploaded_file($_FILES["photo"]["tmp_name"], $targetFilePath)) {
-              $filename = $fileName; // Use this filename for updating the DB record
-          } else {
-              echo "Sorry, there was an error uploading your file.";
-              $filename = ''; // Set to empty if the file upload fails
-          }
-      } else {
-          echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
-          $filename = ''; // Set to empty if the file type is not allowed
-      }
-  } else {
-      // If no file is selected, keep the current profile picture
-      // You can fetch the current profile picture filename from the database if needed
-  }
+    $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
+    $profilePic = $defaultPic;  // Use default if no picture is uploaded
+
+    // Handle photo upload
+    if (isset($_FILES['picture']) && $_FILES['picture']['error'] == 0) {
+        $target_dir = "../assets/img/Partners images/";  // Ensure this directory exists and has the correct permissions
+        $target_file = $target_dir . basename($_FILES["picture"]["name"]);
+        $fileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Validate file type
+        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
+        if (in_array($fileType, $allowTypes)) {
+            // Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES["picture"]["tmp_name"]);
+            if ($check !== false) {
+                if (move_uploaded_file($_FILES["picture"]["tmp_name"], $target_file)) {
+                    $profilePic = $target_file;  // Set the actual path of the uploaded file
+                } else {
+                    $error = "Sorry, there was an error uploading your file.";
+                    return $error;
+                }
+            } else {
+                $error = "File is not an image.";
+                return $error;
+            }
+        } else {
+            $error = "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
+            return $error;
+        }
+    }
+   
 
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");
@@ -54,9 +56,9 @@ function registerNewPartner($formData, $conn) {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert into Users table
+    // Insert into Users table with the profile picture path
     $stmt = $conn->prepare("INSERT INTO users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $filename);
+    $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $profilePic);
     if (!$stmt->execute()) {
         return "Error creating user account: " . $stmt->error;
     }
@@ -93,4 +95,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $conn->close();
 ?>
+
 

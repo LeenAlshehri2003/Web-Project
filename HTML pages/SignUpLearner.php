@@ -190,31 +190,56 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
     </main>
     
     <script>
-    window.onload = function() {
-        // Check for error message
-        if ("<?php echo $errorMessage; ?>") {
+window.onload = function() {
+    // Display server-side error or success messages
+    <?php if ($errorMessage): ?>
+        Swal.fire({
+            title: 'Error!',
+            text: '<?php echo addslashes($errorMessage); ?>',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    <?php elseif ($successMessage): ?>
+        Swal.fire({
+            title: 'Success!',
+            text: '<?php echo addslashes($successMessage); ?>',
+            icon: 'success',
+            confirmButtonText: 'Great!'
+        }).then((result) => {
+            if (result.value) {
+                window.location.href = 'HomeLearner.php';
+            }
+        });
+    <?php endif; ?>
+};
+
+$(document).ready(function() {
+    // Client-side validation for the file type
+    $('input[type="file"]').on('change', function() {
+        var file = this.files[0];
+        var fileType = file.type;
+        var match = ['image/jpeg', 'image/png', 'image/gif'];
+        if (!match.includes(fileType)) {
+            alert('Sorry, only JPG, JPEG, PNG, & GIF files are allowed.');
+            this.value = ''; // Reset the input
+        }
+    });
+
+    // Form submission handler
+    $('#signupForm').on('submit', function(event) {
+        var photoInput = $('input[type="file"]').val();
+        if (photoInput && !['.jpg', '.jpeg', '.png', '.gif'].some(ext => photoInput.toLowerCase().endsWith(ext))) {
+            event.preventDefault(); // Prevent form submission
             Swal.fire({
                 title: 'Error!',
-                text: '<?php echo addslashes($errorMessage); ?>',
+                text: 'Only image files (JPG, JPEG, PNG, GIF) are allowed.',
                 icon: 'error',
                 confirmButtonText: 'OK'
             });
         }
-        // Check for success message
-        if ("<?php echo $successMessage; ?>") {
-            Swal.fire({
-                title: 'Success!',
-                text: '<?php echo addslashes($successMessage); ?>',
-                icon: 'success',
-                confirmButtonText: 'Great!'
-            }).then((result) => {
-                if (result.value) {
-                    window.location.href = 'HomeLearner.php';
-                }
-            });
-        }
-    };
-    </script>
+    });
+});
+</script>
     <script>
 $(document).ready(function () {
     // Validation functions for each type of input
