@@ -1,4 +1,4 @@
-<?php include '../assets/php/fetchReviews.php'; ?>
+<?php include '../assets/php/fetchReviewsL.php'; ?>
 
 <!DOCTYPE html>
 <html class="no-js" lang="en">

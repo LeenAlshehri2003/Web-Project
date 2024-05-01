@@ -1,4 +1,9 @@
-<?php require '../assets/php/load_requests.php'; ?>
+<?php require '../assets/php/load_requests.php';
+ 
+if (!isset($_SESSION['user_id'])) {
+     header('Location:SignInLearner.php');
+    exit;
+ } ?>
 <!DOCTYPE html>
 <html>
   <head>
