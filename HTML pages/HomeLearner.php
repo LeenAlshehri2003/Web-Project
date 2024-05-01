@@ -56,7 +56,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="container-fluid">
                 <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-5">
-                            <div class="logo"><a href="HomeLearner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                            <div class="logo"><a href="HomeLearner.php"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
                         </div>
                         <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                             <nav class="main-menu navbar navbar-expand-lg justify-content-center">
@@ -80,7 +80,7 @@ if (!isset($_SESSION['user_id'])) {
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="Partnerlist English.html">View partners List</a></li>
+                                                    <li><a class="dropdown-item" href="Partnerlist.html">View partners List</a></li>
                                                     <li><a class="dropdown-item" href="View Requests- Learner.php">Manage requests</a></li>
                                                     <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
