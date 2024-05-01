@@ -243,7 +243,12 @@ $(document).ready(function () {
         return /^[a-zA-Z ]+$/.test(value) ? "" : "Only letters and spaces allowed.";
     }
 
-  
+    function validateUsername(value) {
+            if (value === "") return ""; // Allow empty for initial load
+            if (/^\d+$/.test(value)) return "Username cannot be numbers only.";
+            return "";
+        }
+    
 
     function validateEmail(value) {
         if (!value) return "This field cannot be empty.";
@@ -266,10 +271,14 @@ $(document).ready(function () {
             switch(name) {
                 case 'firstname':
                 case 'lastname':
+             
                 case 'city':
                     validationFunction = validateName;
                     break;
-             
+                    case 'username':
+                        validationFunction = validateUsername;
+
+                        break;
                 case 'email':
                     validationFunction = validateEmail;
                     break;

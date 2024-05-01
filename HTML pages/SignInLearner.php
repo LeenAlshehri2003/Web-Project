@@ -177,7 +177,6 @@ unset($_SESSION['login_error']);  // Clear the error message from session
         function validateUsername(value) {
             if (value === "") return ""; // Allow empty for initial load
             if (/^\d+$/.test(value)) return "Username cannot be numbers only.";
-            if (value.length < 8) return "Username must be at least 8 characters.";
             return "";
         }
     
