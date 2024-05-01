@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $user = $result->fetch_assoc();
             if (password_verify($password, $user['Password'])) {
                 $_SESSION['user_id'] = $user['UserID'];
-                header("Location: HomeLearner.php");  // Redirect to home page on successful login
+                header("Location: ../../HTML pages/HomeLearner.php");  // Redirect to home page on successful login
                 exit();
             } else {
                 $_SESSION['login_error'] = "Invalid password. Please try again.";

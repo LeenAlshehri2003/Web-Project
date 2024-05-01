@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (password_verify($password, $user['Password'])) {
                 $_SESSION['user_id'] = $user['UserID'];
                 $_SESSION['partner_id'] = $user['PartnerID'];  
-                header("Location: HomePartner.php");  // Redirect to partner's home page on successful login
+                header("Location: ../../HTML pages/HomePartner.php");  // Redirect to partner's home page on successful login
                 exit();
             } else {
                 $_SESSION['login_error'] = "Invalid password. Please try again.";
