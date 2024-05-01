@@ -49,7 +49,13 @@ fieldsToValidate.forEach(field => {
 // Password length and special character validation
 if (newPassword && (newPassword.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(newPassword))) {
     document.getElementById("NewPass").style.border = '2px solid red';
-    alert('Password must be at least 8 characters long and include at least one special character.');
+    Swal.fire({
+        title: 'LinguaLink',
+        text: 'Password must be at least 8 characters long and include at least one special character.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
     isValid = false;
 }
 
@@ -57,7 +63,13 @@ if (newPassword && (newPassword.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(new
 if (newPassword && confirmPassword && newPassword !== confirmPassword) {
     document.getElementById("NewPass").style.border = '2px solid red';
     document.getElementById("password").style.border = '2px solid red';
-    alert('New Password and Confirm Password do not match. Please enter matching passwords.');
+    Swal.fire({
+        title: 'LinguaLink',
+        text: 'New Password and Confirm Password do not match. Please enter matching passwords.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
     isValid = false;
 }
 

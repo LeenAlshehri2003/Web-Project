@@ -149,17 +149,7 @@ if (!isset($_SESSION['user_id'])) {
                         </ul>
                         <section>
     <ul class="work-progress">
-        <li>
-            <h2>Courses</h2>
-            <hr>
-            <?php foreach ($learnerData['Languages'] as $language): ?>
-                    <div class="progress-content">
-                        <h6><?php echo htmlspecialchars($language['LanguageName']); ?></h6>
-                        <b><?php echo htmlspecialchars($language['ProficiencyLevel']) . '%'; ?></b>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </li>
+        
     </ul>
 </section>
                     </div>
