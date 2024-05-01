@@ -67,7 +67,7 @@ function displayPartners(partners) {
                 partnerDiv.innerHTML = `
                 <div class="z-gallery mb-30">
                     <div class="z-gallery__thumb mb-20">
-                        <a href="#"><img class="img-fluid" src="${partner.Photo}" alt="" width="50" height="50"></a>
+                        <a href="#"><img class="img-fluid" src="<?php echo htmlspecialchars('../assets/img/Partners images/' .${partner.Photo}); ?>" alt="" width="50" height="50"></a>
                         <div class="feedback-tag">${partner.AverageRating}</div>
                         <div class="heart-icon"><i class="fas fa-heart"></i></div>
                     </div>
@@ -76,7 +76,7 @@ function displayPartners(partners) {
                             ${partner.Languages.split(', ').map(function(language) {
                                 return `<span>${language}</span>`;
                             }).join('')}
-                            <a class="f-right" href="#"><img src="${partner.Photo}" width="85" height="85" alt="Partner picture"></a>
+                            <a class="f-right" href="#"></a>
                         </div>
                         <h4 class="sub-title mb-20"><a class="partner-link" data-partner-id="${partner.PartnerID}" href="#">${partner.FullName}</a></h4>
                         <div class="course__meta">
