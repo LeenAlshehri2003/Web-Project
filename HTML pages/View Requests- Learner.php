@@ -1,5 +1,5 @@
 <?php require '../assets/php/load_requests.php';
- 
+ session_start();
 if (!isset($_SESSION['user_id'])) {
      header('Location:SignInLearner.php');
     exit;

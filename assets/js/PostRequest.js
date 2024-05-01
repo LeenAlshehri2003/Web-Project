@@ -3,6 +3,7 @@ document.getElementById("postRequestForm").addEventListener("submit", function(e
     let fields = ["proficiencyLevel", "languagePartner", "sessionDate", "sessionStartTime", "sessionDuration"];
     const currentDate = new Date(); // Get the current date and time
     currentDate.setHours(0, 0, 0, 0); // Reset hours, minutes, seconds, and milliseconds to zero for accurate date comparison
+    
     fields.forEach(function(field) {
         let input = document.getElementById(field);
         if (!input.value) {
@@ -12,7 +13,22 @@ document.getElementById("postRequestForm").addEventListener("submit", function(e
             input.style.borderColor = ""; // Reset on correct input
         }
     });
-    
+
+    // Validate the sessionDate to ensure it is not in the past
+    let sessionDateInput = document.getElementById("sessionDate");
+    let sessionDateValue = new Date(sessionDateInput.value);
+    if (sessionDateValue < currentDate) {
+        sessionDateInput.style.borderColor = "red";
+        Swal.fire({
+            title: 'LinguaLink',
+            text: 'Please choose a future date for the session',
+            icon: 'warning',
+            confirmButtonColor: '#FFA500',
+            confirmButtonText: 'OK'
+        });
+        isValid = false;
+    }
+
     if (!isValid) {
         Swal.fire({
             title: 'LinguaLink',
@@ -20,11 +36,10 @@ document.getElementById("postRequestForm").addEventListener("submit", function(e
             icon: 'info',
             confirmButtonColor: '#FFA500',  
             confirmButtonText: 'OK'
-            
-          });
+        });
         event.preventDefault(); // Prevent form submission
     }
-})
+});
 // Global variable to hold the current price per hour
 var currentPricePerHour = 0;
 
