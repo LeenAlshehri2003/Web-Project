@@ -1,4 +1,9 @@
-<?php include '../assets/php/fetch_request.php'; ?>
+<?php include '../assets/php/fetch_request.php';
+session_start();
+if (!isset($_SESSION['user_id'])) {
+     header('Location:SignInLearner.php');
+     exit;
+ } ?>
 <!DOCTYPE html>
 <html>
   <head>

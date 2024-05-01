@@ -33,58 +33,55 @@ function displayPartnerData(partnerData) {
         // Create a div element for the partner profile
         const partnerProfile = document.createElement('div');
         partnerProfile.classList.add('partner-profile');
-        const filledStars = Math.round(partnerData.AverageRating);
+        const filledStars = Math.round(parseFloat(partnerData.AverageRating));
 
         // Construct the HTML content for the star icons
         let starIconsHTML = '<div class="star-icon mb-20">';
         for (let i = 0; i < filledStars; i++) {
-        
-                starIconsHTML += `<a href="#"><i class="fas fa-star"></i></a>`;
+            starIconsHTML += `<a href="#"><i class="fas fa-star"></i></a>`;
         }
-        starIconsHTML+=' </div>';
+        starIconsHTML += '</div>';
+
         // Construct the HTML content for the partner profile
         partnerProfile.innerHTML = `
         <div class="row">
-        <div class="col-xl-12 col-lg-12">
-            <img class="img-fluid" src="${partnerData.Photo}" alt="Partner profile picture" width="300" height="300">
-        </div>
-        <div class="col-xl-6 col-lg-12">
-            <div class="instructor-profile">
-                <h2>Partner Profile</h2>
-                <ul class="profile-list mb-50">
-                    <li>First Name : <span>${partnerData.FirstName}</span></li>
-                    <li>Last Name : <span>${partnerData.LastName}</span></li>
-                    <li>Age : <span>${partnerData.Age}</span></li>
-                    <li>Gender : <span>${partnerData.Gender}</span></li>
-                    <li>Email : <span>${partnerData.Email}</span></li>
-                    <li>Mobile Num: <span>${partnerData.Phone}</span></li>
-                    <li>City : <span>${partnerData.City}</span></li>
-                    <li>Languages spoken: <span>${partnerData.Languages}</span></li>
-                    <li>Session price: <span>${partnerData.SessionPrice}</span> $/hour</li>
-                    <li>
-                    </li>
-                </ul>
+            <div class="col-xl-12 col-lg-12">
+                <img class="img-fluid" src="../assets/img/Partners images/${partnerData.Photo}" alt="Partner profile picture" width="300" height="300">
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <div class="instructor-profile">
+                    <h2>Partner Profile</h2>
+                    <ul class="profile-list mb-50">
+                        <li>First Name : <span>${partnerData.FirstName}</span></li>
+                        <li>Last Name : <span>${partnerData.LastName}</span></li>
+                        <li>Age : <span>${partnerData.Age}</span></li>
+                        <li>Gender : <span>${partnerData.Gender}</span></li>
+                        <li>Email : <span>${partnerData.Email}</span></li>
+                        <li>Mobile Num: <span>${partnerData.Phone}</span></li>
+                        <li>City : <span>${partnerData.City}</span></li>
+                        <li>Languages spoken: <span>${partnerData.Languages}</span></li>
+                        <li>Session price: <span>${partnerData.SessionPrice}</span> $/hour</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-12">
+                <div class="instructor-profile">
+                    <h2>Instructor Bio</h2>
+                    <div class="star-icon mb-20">
+                        ${starIconsHTML}
+                    </div>
+                    <p class="mb-25">${partnerData.Bio}</p>
+                    <div class="info-container" style="display: flex; align-items: center; justify-content: space-between;">
+                        <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt="icon"> ${partnerData.TotalReviews} Reviews</span></h5>
+                        <ul>
+                            <li><a href="http://localhost/Web-Project/HTML%20pages/View%20Reviews.php?${partnerData.PartnerID}" class="theme_btn free_btn" style="text-align: center;">Rates and Reviews</a></li>
+                            <li><a href="mailto:${partnerData.Email}" class="theme_btn free_btn" style="text-align: center;">Arrange new meeting</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="col-xl-6 col-lg-12">
-        <div class="instructor-profile">
-            <h2>Instructor Bio</h2>
-            <div class="star-icon mb-20">
-                ${starIconsHTML}
-            </div>
-            <p class="mb-25">${partnerData.Bio}</p>
-            <div class="info-container" style="display: flex; align-items: center; justify-content: space-between;">
-                <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt="icon"> ${partnerData.TotalReviews} Reviews</span></h5>
-                <ul>
-                <li><a href="http://localhost/Web-Projecr/HTML pages/View Reviews and Rates - Learner.html?partnerId=${partnerData.PartnerID}" class="theme_btn free_btn" style="text-align: center;">Rates and Reviews</a></li>
-                <li><a href="mailto:${partnerData.Email}" class="theme_btn free_btn" style="text-align: center;">Arrange new meeting</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-`;
-
-
+        `;
 
         // Append the partner profile to the partners container
         partnersContainer.appendChild(partnerProfile);

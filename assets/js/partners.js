@@ -67,9 +67,9 @@ function displayPartners(partners) {
                 partnerDiv.innerHTML = `
                 <div class="z-gallery mb-30">
                     <div class="z-gallery__thumb mb-20">
-                        <a href="#"><img class="img-fluid" src="<?php echo htmlspecialchars('../assets/img/Partners images/' .${partner.Photo}); ?>" alt="" width="50" height="50"></a>
+                        <a href="#"><img class="img-fluid" src="../assets/img/Partners images/${partner.Photo}" alt="" width="500" height="500"></a>
                         <div class="feedback-tag">${partner.AverageRating}</div>
-                        <div class="heart-icon"><i class="fas fa-heart"></i></div>
+                       
                     </div>
                     <div class="z-gallery__content">
                         <div class="course__tag mb-15">

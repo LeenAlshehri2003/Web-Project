@@ -81,8 +81,8 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                                                     Sign Up
                                                 </a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <li><a class="dropdown-item" href="SignUpLearner.html">Sign Up as Learner</a></li>
-                                                    <li><a class="dropdown-item" href="SignUpPartner.html">Sign Up as Partner</a></li>
+                                                    <li><a class="dropdown-item" href="SignUpLearner.php">Sign Up as Learner</a></li>
+                                                    <li><a class="dropdown-item" href="SignUpPartner.php">Sign Up as Partner</a></li>
                                                 </ul>
                                             </li>
                                             <li class="nav-item dropdown active">
@@ -90,8 +90,8 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                                                     Sign In
                                                 </a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <li><a class="dropdown-item" href="SignInLearner.html">Learner's Sign in </a></li>
-                                                    <li><a class="dropdown-item" href="SignInPartner.html">Partner's Sign in </a></li>
+                                                    <li><a class="dropdown-item" href="SignInLearner.php">Learner's Sign in </a></li>
+                                                    <li><a class="dropdown-item" href="SignInPartner.php">Partner's Sign in </a></li>
                                                 </ul>
                                             </li>
                                             <li class="nav-item dropdown">
@@ -147,6 +147,9 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                                     <div id="passwordInfo" class="info" style="color: red;"></div>
                                 </div>
                                 <button type="submit" id="submitButton"  class="theme_btn message_btn mt-20" style="background-color: grey; " disabled>Sign In</button>
+
+                                <a href="SignInPartner.php"  style="background-color: white; color:orange;" class="theme_btn message_btn mt-20">Not a Learner? Click to Sign in as a Partner</a>
+
                             </form>
                         </div>
                     </div>
@@ -177,7 +180,6 @@ unset($_SESSION['login_error']);  // Clear the error message from session
         function validateUsername(value) {
             if (value === "") return ""; // Allow empty for initial load
             if (/^\d+$/.test(value)) return "Username cannot be numbers only.";
-            if (value.length < 8) return "Username must be at least 8 characters.";
             return "";
         }
     
