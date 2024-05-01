@@ -1,7 +1,8 @@
 document.getElementById("postRequestForm").addEventListener("submit", function(event) {
     let isValid = true;
     let fields = ["proficiencyLevel", "languagePartner", "sessionDate", "sessionStartTime", "sessionDuration"];
-    
+    const currentDate = new Date(); // Get the current date and time
+    currentDate.setHours(0, 0, 0, 0); // Reset hours, minutes, seconds, and milliseconds to zero for accurate date comparison
     fields.forEach(function(field) {
         let input = document.getElementById(field);
         if (!input.value) {
