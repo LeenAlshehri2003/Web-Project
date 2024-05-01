@@ -162,6 +162,7 @@ unset($_SESSION['registration_error'], $_SESSION['registration_success']); // Cl
                                         <div class="info" style="color: red;"></div>
                                     </label>
                                 </div>
+                                
                                 <div class="col-lg-6 mb-30">
                                     <label>Location (Address):<br>
                                         <input type="text" name="location" placeholder="Enter Your Address here" required>
