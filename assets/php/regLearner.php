@@ -9,6 +9,8 @@ function registerNewLearner($formData, $conn) {
     $email = filter_var($formData['email'], FILTER_SANITIZE_EMAIL);
     $password = $formData['password'];  // Password will be hashed
     $city = htmlspecialchars(trim($formData['city']));
+    $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
+    $profilePic = $defaultPic;  // Use default if no picture is uploaded
 
      // Handle photo upload
      $userImage = $_FILES['photo'];

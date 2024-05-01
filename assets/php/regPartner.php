@@ -1,5 +1,3 @@
-
-
 <?php
 session_start();
 require 'db.php';  // Ensure this path is correct to your database connection file
@@ -39,7 +37,7 @@ function registerNewPartner($formData, $conn) {
     // Hash the password
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    // Insert into Users table
+    // Insert into Users table with the profile picture path
     $stmt = $conn->prepare("INSERT INTO users (username, FirstName, LastName, Email, Password, City, Photo) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param('sssssss', $username, $firstname, $lastname, $email, $hashedPassword, $city, $imageName);
     if (!$stmt->execute()) {
@@ -78,4 +76,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $conn->close();
 ?>
+
 
