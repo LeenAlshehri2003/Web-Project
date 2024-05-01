@@ -6,13 +6,9 @@ session_start();
 if (!isset($_SESSION['user_id'])) {
     exit('User not logged in.');  // Proper handling for not logged-in users
 }
-$userId = $_SESSION['user_id']; 
-
-
-
-
 if (isset($_GET['partnerId']) && is_numeric($_GET['partnerId'])) {
     $partnerId = (int)$_GET['partnerId']; }
+
 
 
 
