@@ -1,5 +1,6 @@
 <?php
 include 'db.php'; // Ensures the database connection is included
+session_start();
 
 $learnerID = $_SESSION['user_id'];
 

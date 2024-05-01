@@ -1,5 +1,5 @@
 <?php include '../assets/php/load_learner_profile.php'; 
-session_start();
+
 if (!isset($_SESSION['user_id'])) {
     // die('User not logged in.');  // Proper handling for not logged-in users
      header('Location:SignInLearner.php');
