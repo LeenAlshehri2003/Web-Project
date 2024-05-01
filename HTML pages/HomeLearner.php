@@ -84,7 +84,7 @@ if (!isset($_SESSION['user_id'])) {
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
                                                     <li><a class="dropdown-item" href="Partnerlist English.html">View partners List</a></li>
-                                                    <li><a class="dropdown-item" href="View Requests- Learner.html">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="View Requests- Learner.php">Manage requests</a></li>
                                                     <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
                                                 </ul>
@@ -110,7 +110,7 @@ if (!isset($_SESSION['user_id'])) {
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
                                         <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="Profile Page-Language Learner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                        <li><a class="sign-in ml-20" href="Profile Page-Language Learner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
