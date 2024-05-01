@@ -7,11 +7,11 @@ session_start();
 
 require_once 'db.php';  // Ensure this points to your actual database connection script
 
-// Redirect if not logged in
+//
 //if (!isset($_SESSION['user_ID'])) {
- //   die('User must be logged in '); // Redirect to login page
-// header('Location: ../../HTML pages/SignInLearner.php');
- //   exit;
+ // die('User must be logged in '); // Redirect to login page
+//header('Location: ../../HTML pages/SignInLearner.php');
+ // exit;
 //}
 
 // Initialize an array to store partners data
