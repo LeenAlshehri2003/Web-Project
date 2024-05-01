@@ -2,12 +2,12 @@
 require_once 'db.php';  // Ensure this points to your actual database connection script
 session_start();
 
-/*Ensure the user is logged in
+//Ensure the user is logged in
 if (!isset($_SESSION['user_id'])) {
     exit('User not logged in.');  // Proper handling for not logged-in users
-}*/
-$partnerId = $_SESSION['user_id']; 
-
+}
+if (isset($_GET['partnerId']) && is_numeric($_GET['partnerId'])) {
+    $partnerId = (int)$_GET['partnerId']; }
 
 
 
