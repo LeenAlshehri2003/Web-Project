@@ -3,11 +3,13 @@ require_once 'db.php';  // Ensure this points to your actual database connection
 session_start();
 
 // Ensure the user is logged in
-//if (!isset($_SESSION['user_id'])) {
- //   exit('User not logged in.');  // Proper handling for not logged-in users
-//}
+if (!isset($_SESSION['user_id'])) {
+    exit('User not logged in.');  // Proper handling for not logged-in users
+    header('Location: ../../HTML pages/SignInLearner.php');
+    exit;
+}
 
-$userId = 3;
+$userId = $_SESSION['user_id'];
 
 // Fetch personal info along with languages and their proficiency levels
 $stmt = $conn->prepare("
