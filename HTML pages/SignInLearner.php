@@ -147,6 +147,9 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                                     <div id="passwordInfo" class="info" style="color: red;"></div>
                                 </div>
                                 <button type="submit" id="submitButton"  class="theme_btn message_btn mt-20" style="background-color: grey; " disabled>Sign In</button>
+
+                                <a href="SignInPartner.php"  style="background-color: white; color:orange;" class="theme_btn message_btn mt-20">Not a Learner? Click to Sign in as a Partner</a>
+
                             </form>
                         </div>
                     </div>
