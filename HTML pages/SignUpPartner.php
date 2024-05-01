@@ -249,24 +249,17 @@ $(document).ready(function() {
         var fileType = file.type;
         var match = ['image/jpeg', 'image/png', 'image/gif'];
         if (!match.includes(fileType)) {
-            alert('Sorry, only JPG, JPEG, PNG, & GIF files are allowed.');
-            this.value = ''; // Reset the input
-        }
-    });
-
-    // Form submission handler
-    $('#signupForm').on('submit', function(event) {
-        var photoInput = $('input[type="file"]').val();
-        if (photoInput && !['.jpg', '.jpeg', '.png', '.gif'].some(ext => photoInput.toLowerCase().endsWith(ext))) {
             event.preventDefault(); // Prevent form submission
             Swal.fire({
                 title: 'Error!',
                 text: 'Only image files (JPG, JPEG, PNG, GIF) are allowed.',
                 icon: 'error',
                 confirmButtonText: 'OK'
-            });
+            });            this.value = ''; // Reset the input
         }
     });
+
+  
 });
 </script>
  
