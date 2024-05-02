@@ -7,8 +7,8 @@ $(document).ready(function () {
         var partnerID = $(this).data('partner-id');
 
         // Construct the URL for the partner profile page
-        var profileURL = "http://localhost/Web-Project/HTML pages/Partner%20profile%20U.html?partnerId=" + partnerID;
-
+        var profileURL = "http://localhost/Web-Project/HTML pages/Partner profile U.php?partnerId=" + partnerID;
+        console.log(profileURL);
         // Redirect the user to the partner profile page
         window.location.href = profileURL;
     });

@@ -1,3 +1,13 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['user_id'])) {
+        $userID = $_SESSION['user_id'];
+        echo "Session User ID: " . $userID;
+    } else {
+        header("Location: SignInLearner.php"); // Redirect them to the login page if not logged in
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +52,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-5">
-                            <div class="logo"><a href="HomeLearner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                            <div class="logo"><a href="HomeLearner.php"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
                         </div>
                         <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                             <nav class="main-menu navbar navbar-expand-lg justify-content-center">
@@ -54,20 +64,20 @@
                                                 All Languages 
                                                 </a>
                                                 <ul class="dropdown-menu submenu mega-menu__sub-menu-box" aria-labelledby="navbarDropdown">
-                                                    <li><a href="Partnerlist%20English.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
-                                                    <li><a href="Partnerlist%20French.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
-                                                    <li><a href="Partnerlist%20Spanish.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
-                                                    <li><a href="Partnerlist%20Arabic.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
-                                                    <li><a href="Partnerlist%20Italien.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
-                                                    <li><a href="Partnerlist%20Japanese.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
-                                                    <li><a href="Partnerlist%20Chinese.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
+                                                    <li><a href="Partnerlist%20English.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
+                                                    <li><a href="Partnerlist%20French.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
+                                                    <li><a href="Partnerlist%20Spanish.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
+                                                    <li><a href="Partnerlist%20Arabic.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
+                                                    <li><a href="Partnerlist%20Italien.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
+                                                    <li><a href="Partnerlist%20Japanese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
+                                                    <li><a href="Partnerlist%20Chinese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
                                             </ul>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="Partnerlist English.html">View partners List</a></li>
-                                                    <li><a class="dropdown-item" href="View Requests- Learner.html">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="Partnerlist.php">View partners List</a></li>
+                                                    <li><a class="dropdown-item" href="View Requests- Learner.php">Manage requests</a></li>
                                                     <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
                                                 </ul>
@@ -93,7 +103,7 @@
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
                                         <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="Profile Page-Language Learner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguageLearner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
@@ -109,6 +119,7 @@
         </div> <!-- /.theme-main-menu -->
     </header>
 
+
     <main>
      <!--page-title-area start-->
       <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
@@ -120,7 +131,7 @@
                          <div class="breadcrumb-list">
                             <ul class="breadcrumb">
                                 <li><a href="HomeLearner.php">Home - </a></li>
-                                <li><a href="Partnerlist Italien.html#Here">Partner List</a></li>
+                                <li><a href="Partnerlist Italien.php#Here">Partner List</a></li>
                             </ul>
                          </div>
                     </div>
