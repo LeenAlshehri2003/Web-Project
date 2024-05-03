@@ -6,9 +6,9 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-if (isset($_GET['profile_id'], $_GET['profile_type'])) {
-    $profile_id = $_GET['profile_id'];
-    $profile_type = $_GET['profile_type'];
+if (isset($_GET['profileId'], $_GET['profileType'])) {
+    $profile_id = $_GET['profileId'];
+    $profile_type = $_GET['profileType'];
 
     // SQL to delete the user from the 'users' table
     $sql = "DELETE FROM users WHERE UserID = ?";
