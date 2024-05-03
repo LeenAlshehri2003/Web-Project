@@ -1,5 +1,5 @@
 <?php include '../assets/php/load_learner_profile.php'; 
-
+$userId =$_SESSION['user_id'];
 if (!isset($_SESSION['user_id'])) {
     // die('User not logged in.');  // Proper handling for not logged-in users
      header('Location:SignInLearner.php');
@@ -169,7 +169,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="info-container" style = "display: flex;align-items: center; justify-content:left">
             <li><a href="Edit Language Learner Profile.php" class="theme_btn free_btn">Edit </a></li>
             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-            <li><button onclick="confirmDeletion(<?= $userId ?>, 'learner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
+            <li><button onclick="confirmProfileDeletion(<?= $learnerData['userId'] ?>, 'learner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
             </div>
             </div>
         </div>
@@ -241,12 +241,12 @@ if (!isset($_SESSION['user_id'])) {
     
     
     
-    
     <!-- JS here -->
     <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
     <script src="../assets/js/popper.min.js"></script>
     <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/js/DeleteProfile.js"></script>
     <script src="../assets/js/owl.carousel.min.js"></script>
     <script src="../assets/js/isotope.pkgd.min.js"></script>
