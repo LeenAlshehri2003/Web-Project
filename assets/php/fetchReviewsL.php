@@ -15,7 +15,7 @@ if (isset($_GET['partnerId']) && is_numeric($_GET['partnerId'])) {
 // Prepare and execute the database query to fetch the reviews for the given language partner ID
 $stmt = $conn->prepare("SELECT r.Rating, r.Comment, r.CreatedAt, u.FirstName, u.LastName, u.Photo
                       FROM reviews r
-                      INNER JOIN sessions s ON r.SessionID = s.SessionID
+                      INNER JOIN languagerequests s ON r.RequestID = s.RequestID
                       INNER JOIN users u ON s.LearnerID = u.UserID
                       WHERE s.PartnerID = ?");
 $stmt->bind_param("i", $partnerId);

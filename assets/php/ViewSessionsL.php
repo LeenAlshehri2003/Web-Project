@@ -11,37 +11,41 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 // Retrieve sessions from the database
-$stmt = $conn->prepare("SELECT s.Duration, s.SessionDate, s.Status, s.SessionID, u.FirstName AS PartnerFirstName, u.LastName AS PartnerLastName, l.LanguageName
-    FROM sessions s
-    JOIN users u ON s.PartnerID = u.UserID
-    JOIN languages l ON s.LanguageID = l.LanguageID
-    WHERE s.LearnerID = ?");
+$stmt = $conn->prepare("SELECT lr.RequestID, lr.SessionDuration, lr.PreferredSchedule, lr.Status, lr.RequestID, u.FirstName AS PartnerFirstName, u.LastName AS PartnerLastName, l.LanguageName
+    FROM languagerequests lr
+    JOIN users u ON lr.PartnerID = u.UserID
+    JOIN languages l ON lr.LanguageID = l.LanguageID
+    WHERE lr.LearnerID = ?");
 $stmt->bind_param("i", $userId);
 $stmt->execute();
 $result = $stmt->get_result();
+$currentDate = date('Y-m-d H:i:s'); // Get the current date and time
 
 $sessions = array();
 
 while ($row = $result->fetch_assoc()) {
-    $duration = $row['Duration'];
-    $sessionDate = $row['SessionDate'];
-    $status = $row['Status'];
-    $sessionID = $row['SessionID'];
-    $partnerFirstName = $row['PartnerFirstName'];
-    $partnerLastName = $row['PartnerLastName'];
-    $languageName = $row['LanguageName'];
+    if ($row['Status'] == 'Accepted') {
+        $duration = $row['SessionDuration'];
+        $sessionDate = $row['PreferredSchedule'];
+        $sessionID = $row['RequestID'];
+        $partnerFirstName = $row['PartnerFirstName'];
+        $partnerLastName = $row['PartnerLastName'];
+        $languageName = $row['LanguageName'];
+        $status = ($sessionDate > $currentDate) ? 'Scheduled' : 'Completed';
 
-    $session = array(
-        'Duration' => $duration,
-        'SessionDate' => $sessionDate,
-        'Status' => $status,
-        'SessionID' => $sessionID,
-        'PartnerFirstName' => $partnerFirstName,
-        'PartnerLastName' => $partnerLastName,
-        'LanguageName' => $languageName
-    );
+        $session = array(
+            'Duration' => $duration,
+            'SessionDate' => $sessionDate,
+            'Status' => $status,
+            'SessionID' => $sessionID,
+            'PartnerFirstName' => $partnerFirstName,
+            'PartnerLastName' => $partnerLastName,
+            'LanguageName' => $languageName
+        );
 
-    $sessions[] = $session;
+
+        $sessions[] = $session;
+    }
 }
 
 $conn->close();
