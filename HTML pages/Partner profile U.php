@@ -4,7 +4,6 @@
     session_start();
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id'];
-        echo "Session User ID: " . $userID;
     } else {
         header("Location: SignInLearner.php"); // Redirect them to the login page if not logged in
         exit();
@@ -130,7 +129,7 @@
                          <h1 class="page-title mb-25">Partner-profile</h1>
                          <div class="breadcrumb-list">
                             <ul class="breadcrumb">
-                                <li><a href="HomeLearner.html">Home -</a></li>
+                                <li><a href="HomeLearner.php">Home -</a></li>
                                 <li><a href="#">Partner Profile</a></li>
                             </ul>
                          </div>
@@ -165,6 +164,8 @@
             <?php endforeach; ?>
         </ul>
             </li>
+            <li>Bio: <span><?php echo htmlspecialchars($partnerData['Bio']); ?></span></li>
+
                               
                                 <li>
                                     <div class="social-media">
@@ -188,20 +189,11 @@
             </div>
                    <div class="col-xl-6 col-lg-12">
                        <div class="Language Partner-profile">
-                           <h2>Language Partner Bio</h2>
-                           <div class="star-icon mb-20">
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                            </div>
-                        <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
-                        <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
+                          
                         </div>
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
-                            <li><a href="View Reviews - Partner.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
+                            <li><a href="View Reviews - Learner.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                           
                        </div>
