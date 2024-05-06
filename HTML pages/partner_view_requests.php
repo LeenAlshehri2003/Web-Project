@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id'];
-        echo "Session User ID: " . $userID;
+       
     } else {
         header("Location: SignInPartner.php"); // Redirect them to the login page if not logged in
         exit();
@@ -54,9 +54,9 @@
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="View Reviews and Rates - Partner.html">View my ratings</a></li>
-                                                    <li><a class="dropdown-item" href="View Requests - Partner.html">Manage requests</a></li>
-                                                    <li><a class="dropdown-item" href="View sessions - Partner.html">View sessions </a></li>
+                                                    <li><a class="dropdown-item" href="View Reviews and Rates - Partner.php">View my ratings</a></li>
+                                                    <li><a class="dropdown-item" href="View Requests - Partner.php">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="View sessions - Partner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
                                                 </ul>
                                             </li>
