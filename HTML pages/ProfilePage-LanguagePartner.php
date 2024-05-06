@@ -180,7 +180,6 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
-
                             <li><a href="View Reviews - Partner.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
