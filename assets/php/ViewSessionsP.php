@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 // Retrieve sessions from the database
-$stmt = $conn->prepare("SELECT lr.RequestID, lr.PreferredSchedule, lr.SessionDuration, lr.Status,
+$stmt = $conn->prepare("SELECT lr.RequestID, lr.LearnerID, lr.PreferredSchedule, lr.SessionDuration, lr.Status,
                           u.FirstName AS LearnerFirstName, u.LastName AS LearnerLastName,
                           lr.ProficiencyLevel, l.LanguageName
                       FROM languagerequests lr
@@ -27,6 +27,7 @@ $sessions = array();
 
 while ($row = $result->fetch_assoc()) {
     if ($row['Status'] == 'Accepted') {
+        $learnerID = $row['LearnerID'];
         $learnerFirstName = $row['LearnerFirstName'];
         $learnerLastName = $row['LearnerLastName'];
         $duration = $row['SessionDuration'];
@@ -36,6 +37,7 @@ while ($row = $result->fetch_assoc()) {
         $status = ($sessionDate > $currentDate) ? 'Scheduled' : 'Completed';
 
         $session = array(
+            'LearnerID' => $learnerID,
             'LearnerFirstName' => $learnerFirstName,
             'LearnerLastName' => $learnerLastName,
             'Duration' => $duration,

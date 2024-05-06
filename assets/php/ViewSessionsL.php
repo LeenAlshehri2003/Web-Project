@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 
 // Retrieve sessions from the database
-$stmt = $conn->prepare("SELECT lr.RequestID, lr.SessionDuration, lr.PreferredSchedule, lr.Status, lr.RequestID, u.FirstName AS PartnerFirstName, u.LastName AS PartnerLastName, l.LanguageName
+$stmt = $conn->prepare("SELECT lr.RequestID, lr.PartnerID, lr.SessionDuration, lr.PreferredSchedule, lr.Status, lr.RequestID, u.FirstName AS PartnerFirstName, u.LastName AS PartnerLastName, l.LanguageName
     FROM languagerequests lr
     JOIN users u ON lr.PartnerID = u.UserID
     JOIN languages l ON lr.LanguageID = l.LanguageID
@@ -28,6 +28,7 @@ $sessions = array();
 
 while ($row = $result->fetch_assoc()) {
     if ($row['Status'] == 'Accepted') {
+        $partnerID = $row['PartnerID'];
         $duration = $row['SessionDuration'];
         $sessionDate = $row['PreferredSchedule'];
         $sessionID = $row['RequestID'];
@@ -37,6 +38,7 @@ while ($row = $result->fetch_assoc()) {
         $status = ($sessionDate > $currentDate) ? 'Scheduled' : 'Completed';
 
         $session = array(
+            'PartnerID' => $partnerID,
             'Duration' => $duration,
             'SessionDate' => $sessionDate,
             'Status' => $status,
