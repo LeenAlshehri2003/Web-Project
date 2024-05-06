@@ -150,7 +150,7 @@ if (!isset($_SESSION['user_id'])) {
               <div class="row">
                 <div class="col-12 col-sm-auto mb-3">
                
-                  <img alt="User Pic" src="https://d30y9cdsu7xlg0.cloudfront.net/png/138926-200.png" id="profile-image1" style="width: 100px; height: 100px;">
+                  <img alt="User Pic" src="../assets/img/DefaultProfilePic.jpg" id="profile-image1" style="width: 100px; height: 100px;">
                   <input id="profile-image-upload" class="hidden"  name="photo" type="file" onchange="previewFile()" >
                    
                 </div>
@@ -208,15 +208,14 @@ if (!isset($_SESSION['user_id'])) {
                             </div>
                           </div>
                         </div>
-                    <div class="row">
+                        <div class="row">
                       <div class="col-12 col-sm-6 mb-3">
                         <div class="mb-2"><b>Change Password</b></div>
                         <div class="row">
                           <div class="col">
                             <div class="form-group">
                               <label>Current Password</label>
-                              <input class="form-control" id="CurrentPass" name="CurrentPass" type="password">
-                              <span id="passwordHint" style="display:none; color: red;">Minimum 8 characters with 1 special character</span>
+                              <input class="form-control" type="password" id="CurrentPass" name="CurrentPass"  value="<?php echo htmlspecialchars($currentPass); ?>" >
                             </div>
                           </div>
                         </div>
@@ -224,8 +223,8 @@ if (!isset($_SESSION['user_id'])) {
                           <div class="col">
                             <div class="form-group">
                               <label>New Password</label>
-                              <input class="form-control" id="NewPass" name="NewPass" type="password" >
-                              <span id="confirmPasswordHint" style="display:none; color: red;">Repeat the password</span>
+                              <input class="form-control" type="password" id="NewPass" name="NewPass"  value="<?php echo htmlspecialchars($currentPass); ?>">
+                              <span id="passwordHint" style="display:none; color: red;">Minimum 8 characters with 1 special character</span>
                             </div>
                           </div>
                         </div>
@@ -233,11 +232,12 @@ if (!isset($_SESSION['user_id'])) {
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control"name="ConfirmPass" type="password" id="password"></div>
+                              <input class="form-control" type="password" id="password" name="password"  value="<?php echo htmlspecialchars($currentPass); ?>" ></div>
+                              <span id="confirmPasswordHint" style="display:none; color: red;">Repeat the password</span>
                           </div>
                         </div>
                       </div>
-</div>
+                    </div>
                     <div class="row">
                       <div class="col-12 col-md-3 mb-3">
                         <button class="theme_btn free_btn" type="submit" style="background-color: green;" >Save</button>
@@ -341,7 +341,6 @@ if (!isset($_SESSION['user_id'])) {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="../assets/js/EditProfile_Learner.js"></script>
-  <script src="../assets/js/GeolocationFinder.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/popper.min.js"></script>

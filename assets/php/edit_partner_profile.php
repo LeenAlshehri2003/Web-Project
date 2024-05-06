@@ -8,7 +8,7 @@ require 'db.php';  // Ensure this path is correct for your database connection s
 $partnerID = $_SESSION['user_id'];
 
 // Initialize variables to store data
-$firstName = $lastName = $email = $city = $username = "";
+$firstName = $lastName = $email = $city = $currentPass= $username = "";
 $age = 0;
 $gender = $phone = $bio = "";
 $sessionPrice = 0.00;
@@ -23,13 +23,14 @@ $selectedLanguages = [];
 // Retrieve existing user and partner information
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Fetch user details
-    $userQuery = $conn->prepare("SELECT FirstName, LastName,  City FROM users WHERE UserID = ?");
+    $userQuery = $conn->prepare("SELECT FirstName, LastName,  City , Password FROM users WHERE UserID = ?");
     $userQuery->bind_param("i", $partnerID);
     $userQuery->execute();
     $userResult = $userQuery->get_result();
     if ($userRow = $userResult->fetch_assoc()) {
         $firstName = $userRow['FirstName'];
         $lastName = $userRow['LastName'];
+        $currentPass = $userRow['Password'];
         $city = $userRow['City'];
     }
     $userQuery->close();
