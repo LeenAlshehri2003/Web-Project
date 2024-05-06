@@ -8,7 +8,7 @@ require 'db.php';  // Ensure this path is correct for your database connection s
 $partnerID = $_SESSION['user_id'];
 
 // Initialize variables to store data
-$firstName = $lastName = $email = $city = $username = "";
+$firstName = $lastName = $email = $city = $currentPass= $username = "";
 $age = 0;
 $gender = $phone = $bio = "";
 $sessionPrice = 0.00;
@@ -30,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     if ($userRow = $userResult->fetch_assoc()) {
         $firstName = $userRow['FirstName'];
         $lastName = $userRow['LastName'];
+        $currentPass = $userRow['Password'];
         $city = $userRow['City'];
     }
     $userQuery->close();
