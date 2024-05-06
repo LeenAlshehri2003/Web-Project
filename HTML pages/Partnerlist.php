@@ -96,14 +96,14 @@
                 <nav>
                     
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button id="allBtn" onclick="loadPartners('All')" class="nav-link theme_btn active" type="button" role="tab" aria-selected="true">All</button>
-                        <button id="englishBtn" onclick="loadPartners('English')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">English</button>
-                        <button id="arabicBtn" onclick="loadPartners('Arabic')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">Arabic</button>
-                        <button id="frenchBtn" onclick="loadPartners('French')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">French</button>
-                        <button id="spanishBtn" onclick="loadPartners('Spanish')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">Spanish</button>
-                        <button id="italianBtn" onclick="loadPartners('Italian')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">Italian</button>
-                        <button id="japaneseBtn" onclick="loadPartners('Japanese')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">Japanese</button>
-                        <button id="chineseBtn" onclick="loadPartners('Chinese')" class="nav-link theme_btn" type="button" role="tab" aria-selected="false">Chinese</button>
+                    <button id="allBtn" onclick="loadPartners('All')" class="nav-link theme_btn active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">All</button>
+        <button id="englishBtn" onclick="loadPartners('English')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">English</button>
+        <button id="arabicBtn" onclick="loadPartners('Arabic')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Arabic</button>
+        <button id="frenchBtn" onclick="loadPartners('French')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">French</button>
+        <button id="spanishBtn" onclick="loadPartners('Spanish')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Spanish</button>
+        <button id="italianBtn" onclick="loadPartners('Italian')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Italian</button>
+        <button id="japaneseBtn" onclick="loadPartners('Japanese')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Japanese</button>
+        <button id="chineseBtn" onclick="loadPartners('Chinese')" class="nav-link theme_btn" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Chinese</button>
 
                         <!-- Add more buttons for other languages as needed -->
                         <div class="grid-row">
@@ -128,8 +128,9 @@
 </footer>
 
 <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-<script>$(document).ready(function() {
-    // Function to fetch and display partners based on the selected language
+<script>
+    $(document).ready(function() {
+    // Function to fetch and display partners based on their language
     function loadPartners(language) {
         $.get('../assets/php/load_partnerlist.php?language=' + language, function(data) {
             $('#partnersContainer').html(data); // Insert the fetched content into the specified div
@@ -139,7 +140,7 @@
     // Initially load partners for English language
     loadPartners('English');
 
-    // Handle button clicks to load partners for different languages
+    // Handle button clicks to load different languages' partners
     $('#allBtn').click(function() {
         loadPartners('All');
     });
@@ -171,6 +172,8 @@
     $('#chineseBtn').click(function() {
         loadPartners('Chinese');
     });
+
+    // Add click event handlers for other language buttons as needed
 });
 
 </script>
