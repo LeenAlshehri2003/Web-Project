@@ -74,7 +74,7 @@ function displayPartnerData(partnerData) {
                     <div class="info-container" style="display: flex; align-items: center; justify-content: space-between;">
                         <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt="icon"> ${partnerData.TotalReviews} Reviews</span></h5>
                         <ul>
-                            <li><a href="http://localhost/Web-Project/HTML pages/View Reviews - Learner.php"?${partnerData.PartnerID}" class="theme_btn free_btn" style="text-align: center;">Rates and Reviews</a></li>
+                            <li><a href="http://localhost/Web-Project/HTML%20pages/View%20Reviews%20-%20Learner.php"?${partnerData.PartnerID}" class="theme_btn free_btn" style="text-align: center;">Rates and Reviews</a></li>
                             <li><a href="mailto:${partnerData.Email}" class="theme_btn free_btn" style="text-align: center;">Arrange new meeting</a></li>
                         </ul>
                     </div>
