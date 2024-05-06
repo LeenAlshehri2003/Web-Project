@@ -40,11 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['RequestID'])) {
     $preferredSchedule = date('Y-m-d H:i:s', strtotime("$sessionDate $sessionTime"));
     $duration=$conn->real_escape_string($_POST['SessionDuration']);
     // Update request details
-    $updateRequest = $conn->prepare("
-        UPDATE languagerequests 
-        SET ProficiencyLevel=?, PreferredSchedule=? 
-        WHERE RequestID=?");
-    $updateRequest->bind_param("ssii", $proficiencyLevel, $preferredSchedule, $duration, $requestID);
+  
+   $updateRequest = $conn->prepare("
+   UPDATE languagerequests 
+   SET ProficiencyLevel=?, PreferredSchedule=? , SessionDuration=?
+   WHERE RequestID=?");
+    $updateRequest->bind_param("sssi", $proficiencyLevel, $preferredSchedule, $duration, $requestID);
     $updateRequest->execute();
     $updateRequest->close();
 
