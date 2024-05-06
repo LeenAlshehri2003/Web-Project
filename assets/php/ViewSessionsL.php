@@ -23,6 +23,9 @@ $currentDate = date('Y-m-d H:i:s'); // Get the current date and time
 
 $sessions = array();
 
+
+
+
 while ($row = $result->fetch_assoc()) {
     if ($row['Status'] == 'Accepted') {
         $duration = $row['SessionDuration'];
