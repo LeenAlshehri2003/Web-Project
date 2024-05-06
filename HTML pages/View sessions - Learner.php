@@ -219,7 +219,7 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                             <ul class="price-list">
                                                 <li>Partner:
                                                     <a class="profile-link" style="color:white;"
-                                                        href="Partner profile U.php?learnerId=<?php echo htmlspecialchars($session['PartnerID']); ?>">
+                                                        href="Partner profile U.php?partnerId=<?php echo htmlspecialchars($session['PartnerID']); ?>">
                                                         <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
                                                     </a>
                                                 </li>
@@ -260,7 +260,7 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                             <ul class="price-list">
                                                 <li>Partner:
                                                     <a class="profile-link" style="color:white;"
-                                                        href="Partner profile U.php?learnerId=<?php echo htmlspecialchars($session['PartnerID']); ?>">
+                                                        href="Partner profile U.php?partnerId=<?php echo htmlspecialchars($session['PartnerID']); ?>">
                                                         <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
                                                     </a>
                                                 </li>

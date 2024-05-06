@@ -1,4 +1,6 @@
-<?php 
+<?php include '../assets/php/load_partner_profile_Lside.php';
+
+
     session_start();
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id'];
@@ -118,10 +120,8 @@
     </header>
 
 
-
-   
     <main>
-     <!--page-title-area start-->
+      <!--page-title-area start-->
       <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
           <div class="container">
               <div class="row align-items-end">
@@ -139,18 +139,123 @@
               </div>
           </div>
       </section>
+
+
+      
       <!--page-title-area end-->
-       <!--Partner-details-area start-->
+       <!--Native Speaker-details-area start-->
        <section class="instructor-details-area pt-145 pb-110 pt-md-95 pb-md-60 pt-xs-95 pb-xs-60">
-    
-        <div id="partners-container">
-    
+           <div class="container">
+               <div class="row">
+                   <div class="col-xl-6 col-lg-12">
+                       <div class="instructor-profile">
+                           <h2>Partner Profile</h2>
+                           <ul class="profile-list mb-50">
+                           <li>First Name: <span><?php echo htmlspecialchars($partnerData['FirstName']); ?></span></li>
+        <li>Last Name: <span><?php echo htmlspecialchars($partnerData['LastName']); ?></span></li>
+        <li>Age: <span><?php echo htmlspecialchars($partnerData['Age']); ?></span></li>
+        <li>Gender: <span><?php echo htmlspecialchars($partnerData['Gender']); ?></span></li>
+        <li>Email: <span><?php echo htmlspecialchars($partnerData['Email']); ?></span></li>
+        <li>Mobile Num: <span><?php echo htmlspecialchars($partnerData['Phone']); ?></span></li>
+        <li>City: <span><?php echo htmlspecialchars($partnerData['City']); ?></span></li>
+        <li>Languages Spoken:
+        <ul>
+            <?php foreach ($partnerData['Languages'] as $language): ?>
+                <li style='display:block;'><?php echo htmlspecialchars($language); ?></li>
+            <?php endforeach; ?>
+        </ul>
+            </li>
+                              
+                                <li>
+                                    <div class="social-media">
+                                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                                        <a href="https://www.instagram.com/?hl=en"><i class="fab fa-instagram"></i></a>
+                                        <a href="https://www.youtube.com/?app"><i class="fab fa-youtube"></i></a>
+                                    </div>
+                                </li>
+                           </ul>
+                    
+                       </div>
+                   </div>
+                   <div class="col-xl-6 col-lg-12">
+                    <div class="Learner-profile-Pic">
+                        <h2>Profile Picture</h2>
+                        <hr>
+                        <img src="<?php echo htmlspecialchars('../assets/img/Partners images/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 500px; height:400px;" >
+      
+                </div>
+            </div>
+                   <div class="col-xl-6 col-lg-12">
+                       <div class="Language Partner-profile">
+                           <h2>Language Partner Bio</h2>
+                           <div class="star-icon mb-20">
+                                <a href="#"><i class="fas fa-star"></i></a>
+                                <a href="#"><i class="fas fa-star"></i></a>
+                                <a href="#"><i class="fas fa-star"></i></a>
+                                <a href="#"><i class="fas fa-star"></i></a>
+                                <a href="#"><i class="fas fa-star"></i></a>
+                            </div>
+                        <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
+                        <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
+                        </div>
+                        <hr>
+                            <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
+                            <li><a href="View Reviews - Partner.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
+                            &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                          
+                       </div>
+                      
+                    </div>
+               </div>
+           </div>
+           </div>
+       </section>
+       <!--Language Partner-details-area end-->
+       <!--what-looking-for start-->
+       <section class="what-looking-for pos-rel">
+        <div class="what-blur-shape-one"></div>
+        <div class="what-blur-shape-two"></div>
+        <div class="what-look-bg gradient-bg pt-145 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
+             <div class="container">
+                 <div class="row justify-content-center">
+                     <div class="col-lg-8">
+                         <div class="section-title text-center mb-55">
+                             <h5 class="bottom-line mb-25">Partners & Learners</h5>
+                             <h2>What you Looking For?</h2>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="row mb-85">
+                     <div class="col-xl-6 col-lg-6 col-md-6">
+                         <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
+                             <div class="what-box__icon mb-30">
+                                 <img src="../assets/img/icon/phone-operator.svg" alt="">
+                             </div>
+                             <h3>Do you want to teach here?</h3>
+                             <a href="SignUpPartner.php" class="theme_btn border_btn">Register as Partner</a>
+                         </div>
+                     </div>
+                     <div class="col-xl-6 col-lg-6 col-md-6">
+                         <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
+                             <div class="what-box__icon mb-30">
+                                 <img src="../assets/img/icon/graduate.svg" alt="">
+                             </div>
+                             <h3>Do you want to learn here?</h3>
+                             <a href="SignUpLearner.php" class="theme_btn border_btn active">Register as Learner</a>
+                         </div>
+                     </div>
+                 </div>
+               
+             </div>
         </div>   
     </section>
-    
- <!--Partner-details-area end-->
-     
+       <!--what-loking-for end-->
+       <!-- subscribe-area start -->
+       <!-- subscribe-area end -->
     </main>
+
+   
       
     <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
