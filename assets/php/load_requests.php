@@ -2,13 +2,12 @@
 require_once 'db.php';  // Ensure this points to your actual database connection script
 session_start();
 
-// Ensure the user is logged in
 
 
 $userId = $_SESSION['user_id'];
 
 // Assuming $conn is already an established database connection
-$sql = "SELECT lr.*, u.Photo AS PartnerPhoto, l.LanguageName, p.SessionPrice
+$sql = "SELECT lr.*, u.Photo AS PartnerPhoto, u.FirstName AS PartnerFirstName, u.LastName AS PartnerLastName, l.LanguageName, p.SessionPrice
         FROM languagerequests lr
         INNER JOIN users u ON lr.PartnerID = u.UserID
         INNER JOIN languages l ON lr.LanguageID = l.LanguageID
@@ -31,7 +30,7 @@ if ($result->num_rows > 0) {
         $sessionPrice = $row['SessionPrice'] * $row['SessionDuration'];
         $row['SessionPrice'] = $sessionPrice;
 
-        // Now $row includes PreferredDate, PreferredTime, and SessionPrice
+        // Now $row includes PartnerFirstName, PartnerLastName, PreferredDate, PreferredTime, and SessionPrice
         $requests[] = $row;
     }
 }

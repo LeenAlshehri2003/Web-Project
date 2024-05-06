@@ -170,6 +170,7 @@ if (!isset($_SESSION['user_id'])) {
                                         <div class="z-blogs__content">
                                         <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
                                             <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
+                                            <div>Partner:  <?php echo htmlspecialchars( $item['PartnerFirstName'] . " " . $item['PartnerLastName']); ?></div>
                                             <div>Session Date: <?= htmlspecialchars($item['PreferredDate'], ENT_QUOTES, 'UTF-8') ?></div>
                                             <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
                                             <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
@@ -200,6 +201,7 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="z-blogs__content">
                         <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
                             <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
+                            <div>Partner:  <?php echo htmlspecialchars( $item['PartnerFirstName'] . " " . $item['PartnerLastName']); ?></div>
                             <div>Session Date: <?= htmlspecialchars($item['PreferredDate'], ENT_QUOTES, 'UTF-8') ?></div>
                             <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
                             <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
@@ -228,6 +230,7 @@ if (!isset($_SESSION['user_id'])) {
                         <div class="z-blogs__content">
                             <h5 class="mb-25"><?= htmlspecialchars($item['LanguageName']) ?> Course</h5>
                             <h4 class="sub-title mb-15">Status: <?= htmlspecialchars($item['Status']) ?></h4>
+                            <div>Partner:  <?php echo htmlspecialchars( $item['PartnerFirstName'] . " " . $item['PartnerLastName']); ?></div>
                             <div>Session Date: <?= htmlspecialchars($item['PreferredDate'], ENT_QUOTES, 'UTF-8') ?></div>
                            <div>Session Time:  <?= htmlspecialchars($item['PreferredTime'], ENT_QUOTES, 'UTF-8') ?></div>
                            <div>Duration: <?= htmlspecialchars($item['SessionDuration']) ?> hour</div>
