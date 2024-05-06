@@ -177,7 +177,7 @@
                                             <ul class="price-list">
                                                 <li>Learner:
                                                     <a class="profile-link" style="color:white;"
-                                                        href="Learner profile P.php?partnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
+                                                        href="Learner profile P.php?learnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
                                                         <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
                                                     </a>
                                                 </li>
@@ -221,7 +221,7 @@
                                             <ul class="price-list">
                                                 <li>Learner:
                                                 <a class="profile-link" style="color:white;"
-                                                        href="Learner profile P.php?partnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
+                                                        href="Learner profile P.php?learnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
                                                         <?php echo htmlspecialchars($session['LearnerFirstName'] . " " . $session['LearnerLastName']); ?>
                                                     </a>                                                </li>
                                                 <li>Language:

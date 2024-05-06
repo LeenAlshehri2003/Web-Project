@@ -3,17 +3,14 @@ require_once 'db.php';  // Ensure this points to your actual database connection
 session_start();
 
 
+$userId = $_GET['learnerId'];
 
-
-$userId = $_GET['partnerId'];
-
-// SQL query to fetch general partner info and only language names
+// Fetch personal info along with languages and their proficiency levels
 $stmt = $conn->prepare("
     SELECT u.FirstName, u.LastName, u.Email, u.City, u.Photo,
-           p.Age, p.Gender, p.Phone, p.Bio,
-           l.LanguageName
+           l.LanguageName, ul.ProficiencyLevel, Learners.Location
     FROM Users u
-    JOIN Partners p ON u.UserID = p.PartnerID
+    JOIN Learners ON u.UserID = Learners.LearnerID
     LEFT JOIN UserLanguages ul ON u.UserID = ul.UserID
     LEFT JOIN Languages l ON ul.LanguageID = l.LanguageID
     WHERE u.UserID = ?");
@@ -21,25 +18,30 @@ $stmt->bind_param('i', $userId);
 $stmt->execute();
 $result = $stmt->get_result();
 
-$partnerData = [];
-$partnerData['Languages'] = [];
+$learnerData = [];  // Array to store all learner data including languages
+$languages = [];  // Sub-array to store languages and proficiency levels
 
 while ($row = $result->fetch_assoc()) {
-    if (empty($partnerData['FirstName'])) {  // Populate general info if not already done
-        $partnerData['FirstName'] = $row['FirstName'];
-        $partnerData['LastName'] = $row['LastName'];
-        $partnerData['Email'] = $row['Email'];
-        $partnerData['City'] = $row['City'];
-        $partnerData['Photo'] = $row['Photo'];
-        $partnerData['Age'] = $row['Age'];
-        $partnerData['Gender'] = $row['Gender'];
-        $partnerData['Phone'] = $row['Phone'];
-        $partnerData['Bio'] = $row['Bio'];
-    }
-    if (!empty($row['LanguageName'])) {  // Add language names
-        $partnerData['Languages'][] = $row['LanguageName'];
+    $learnerData['FirstName'] = $row['FirstName'];
+    $learnerData['LastName'] = $row['LastName'];
+    $learnerData['Email'] = $row['Email'];
+    $learnerData['City'] = $row['City'];
+    $learnerData['Photo'] = $row['Photo'];
+    $learnerData['Location'] = $row['Location'];
+    $learnerData['userId'] = $userId;
+
+    
+
+
+    if (!empty($row['LanguageName'])) {
+        $languages[] = [
+            'LanguageName' => $row['LanguageName'],
+            'ProficiencyLevel' => $row['ProficiencyLevel']
+        ];
     }
 }
+
+$learnerData['Languages'] = $languages;  // Add languages to the main data array
 
 $conn->close();
 ?>
