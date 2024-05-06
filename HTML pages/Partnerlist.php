@@ -88,7 +88,7 @@
 <main>
 
 
-<section class="feature-course pt-150 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
+<section class="feature-course pt-150 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80" style="margin-top:-150px";>
     <h1 class="ol-lg-12 text-center" style="margin-bottom: 20px;">Language Partners</h1>
     <div class="row">
         <div class="text-center">
