@@ -42,9 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastName = $conn->real_escape_string($_POST['LastName']);
     $city = $conn->real_escape_string($_POST['City']);
     $NewPass = $conn->real_escape_string($_POST['NewPass']); // Assume hashing occurs later
-    $hashedPassword = password_hash($NewPass, PASSWORD_DEFAULT);
-    
 
+ 
     // Handle photo upload
  
     $userImage = $_FILES['photo'];
@@ -58,8 +57,8 @@ if ($imageName == "")
 
 
     // Update user details
-    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $imageName, $learnerID);
+    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, City=?, Photo=? WHERE UserID=?");
+    $updateUser->bind_param("ssssi", $firstName, $lastName,$city, $imageName, $learnerID);
     $updateUser->execute();
     $updateUser->close();
 

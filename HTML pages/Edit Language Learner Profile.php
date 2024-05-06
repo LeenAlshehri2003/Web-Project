@@ -215,7 +215,7 @@ if (!isset($_SESSION['user_id'])) {
                           <div class="col">
                             <div class="form-group">
                               <label>Current Password</label>
-                              <input class="form-control" type="password" id="CurrentPass" name="CurrentPass"  value="<?php echo htmlspecialchars($currentPass); ?>" >
+                              <input class="form-control" type="password" id="CurrentPass" name="CurrentPass"  value="<?php echo ($currentPass); ?>" >
                             </div>
                           </div>
                         </div>
@@ -223,7 +223,7 @@ if (!isset($_SESSION['user_id'])) {
                           <div class="col">
                             <div class="form-group">
                               <label>New Password</label>
-                              <input class="form-control" type="password" id="NewPass" name="NewPass"  value="<?php echo htmlspecialchars($currentPass); ?>">
+                              <input class="form-control" type="password" id="NewPass" name="NewPass"  value="<?php echo ($currentPass); ?>">
                               <span id="passwordHint" style="display:none; color: red;">Minimum 8 characters with 1 special character</span>
                             </div>
                           </div>
@@ -232,7 +232,7 @@ if (!isset($_SESSION['user_id'])) {
                           <div class="col">
                             <div class="form-group">
                               <label>Confirm <span class="d-none d-xl-inline">Password</span></label>
-                              <input class="form-control" type="password" id="password" name="password"  value="<?php echo htmlspecialchars($currentPass); ?>" ></div>
+                              <input class="form-control" type="password" id="password" name="password"  value="<?php echo ($currentPass); ?>" ></div>
                               <span id="confirmPasswordHint" style="display:none; color: red;">Repeat the password</span>
                           </div>
                         </div>

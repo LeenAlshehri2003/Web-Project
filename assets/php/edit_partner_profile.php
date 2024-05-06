@@ -89,8 +89,8 @@ if ($imageName == "")
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
     // Update user details
-    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, Password=?, City=?, Photo=? WHERE UserID=?");
-    $updateUser->bind_param("sssssi", $firstName, $lastName, $hashedPassword, $city, $imageName, $partnerID);
+    $updateUser = $conn->prepare("UPDATE users SET FirstName=?, LastName=?, City=?, Photo=? WHERE UserID=?");
+    $updateUser->bind_param("ssssi", $firstName, $lastName, $city, $imageName, $partnerID);
     $updateUser->execute();
     $updateUser->close();
 
