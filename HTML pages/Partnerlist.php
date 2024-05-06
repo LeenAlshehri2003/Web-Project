@@ -117,7 +117,7 @@
             </div>
         </div>
         <!-- This is where the content will be inserted -->
-        <div id="partnersContainer" class="row"></div>
+        <div id="partners-container" class="row"></div>
     </div>
 </section>
    
@@ -133,7 +133,7 @@
     // Function to fetch and display partners based on their language
     function loadPartners(language) {
         $.get('../assets/php/load_partnerlist.php?language=' + language, function(data) {
-            $('#partnersContainer').html(data); // Insert the fetched content into the specified div
+            $('#partners-container').html(data); // Insert the fetched content into the specified div
         });
     }
 

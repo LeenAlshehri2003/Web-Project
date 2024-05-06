@@ -51,6 +51,7 @@ if ($result->num_rows > 0) {
     // Loop through each partner and display profile details
     while ($row = $result->fetch_assoc()) {
         ?>
+        <div class="grid-item">
         <div class="z-gallery mb-30">
             <div class="z-gallery__thumb mb-20">
                 <a href="#"><img class="img-fluid" src="../assets/img/Partners images/<?php echo $row['ProfilePicture']; ?>" alt="" width="500" height="500"></a>
@@ -74,6 +75,7 @@ if ($result->num_rows > 0) {
                 <br>
                 <h6><?php echo $row['SessionPrice']; ?>$/hour</h6>
             </div>
+                </div>
         </div>
         <?php
     }
