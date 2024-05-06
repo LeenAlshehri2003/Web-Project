@@ -1,5 +1,5 @@
 <?php include '../assets/php/load_partner_profile.php';
- session_start();
+
 if (!isset($_SESSION['user_id'])) {
      header('Location:SignInPartner.php');
      exit;

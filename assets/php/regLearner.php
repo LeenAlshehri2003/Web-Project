@@ -12,15 +12,15 @@ function registerNewLearner($formData, $conn) {
     $location = htmlspecialchars(trim($formData['location']));  // Ensure this input is collected from the form
     $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
 
-    // Handle photo upload
+   
     $userImage = $_FILES['photo'];
-    $imageName = $userImage['name'];
-    if ($imageName == "")
-        $imageName = "DefaultProfilePic.jpg";
-    
-        $fileTmpName = $userImage['tmp_name'];
-        $fileNewName = "../img/Partners images/".$imageName;
-        $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
+$imageName = $userImage['name'];
+if ($imageName == "")
+    $imageName = "DefaultProfilePic.jpg";
+
+    $fileTmpName = $userImage['tmp_name'];
+    $fileNewName = "../img/".$imageName;
+    $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
 
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");

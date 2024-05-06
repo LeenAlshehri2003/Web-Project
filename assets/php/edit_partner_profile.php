@@ -5,7 +5,7 @@ require 'db.php';  // Ensure this path is correct for your database connection s
 // Redirect if not logged in
 
 
-$partnerID = $_SESSION['user_ID'];
+$partnerID = $_SESSION['user_id'];
 
 // Initialize variables to store data
 $firstName = $lastName = $email = $city = $username = "";
