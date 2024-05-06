@@ -218,7 +218,10 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                         <div class="pr__body">
                                             <ul class="price-list">
                                                 <li>Partner:
-                                                    <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                                    <a class="profile-link" style="color:white;"
+                                                        href="Partner profile U.php?partnerId=<?php echo htmlspecialchars($session['PartnerID']); ?>">
+                                                        <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                                    </a>
                                                 </li>
                                                 <li>Language:
                                                     <?php echo htmlspecialchars($session['LanguageName']); ?>
@@ -227,10 +230,10 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                                     <?php echo htmlspecialchars(date('Y-m-d', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Time:
-                                                    <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))) ; ?>
+                                                    <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Duration:
-                                                    <?php echo htmlspecialchars($session['Duration']). " hours"; ?>
+                                                    <?php echo htmlspecialchars($session['Duration']) . " hours"; ?>
                                                 </li>
                                             </ul>
                                         </div>
@@ -256,7 +259,10 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                         <div class="pr__body">
                                             <ul class="price-list">
                                                 <li>Partner:
-                                                    <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                                    <a class="profile-link" style="color:white;"
+                                                        href="Partner profile U.php?partnerId=<?php echo htmlspecialchars($session['PartnerID']); ?>">
+                                                        <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                                    </a>
                                                 </li>
                                                 <li>Language:
                                                     <?php echo htmlspecialchars($session['LanguageName']); ?>
@@ -265,7 +271,7 @@ unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear 
                                                     <?php echo htmlspecialchars(date('Y-m-d', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Time:
-                                                    <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))) ; ?>
+                                                    <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Duration:
                                                     <?php echo htmlspecialchars($session['Duration']) . " hours"; ?>

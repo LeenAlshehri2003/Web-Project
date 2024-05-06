@@ -176,7 +176,10 @@
                                         <div class="pr__body">
                                             <ul class="price-list">
                                                 <li>Learner:
-                                                    <?php echo htmlspecialchars($session['LearnerFirstName'] . " " . $session['LearnerLastName']); ?>
+                                                    <a class="profile-link" style="color:white;"
+                                                        href="Learner profile P.php?partnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
+                                                        <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                                    </a>
                                                 </li>
                                                 <li>Language:
                                                     <?php echo htmlspecialchars($session['LanguageName']); ?>
@@ -191,7 +194,7 @@
                                                     <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Duration:
-                                                    <?php echo htmlspecialchars($session['Duration']). " hours"; ?>
+                                                    <?php echo htmlspecialchars($session['Duration']) . " hours"; ?>
                                                 </li>
                                             </ul>
                                         </div>
@@ -217,8 +220,10 @@
                                         <div class="pr__body">
                                             <ul class="price-list">
                                                 <li>Learner:
-                                                    <?php echo htmlspecialchars($session['LearnerFirstName'] . " " . $session['LearnerLastName']); ?>
-                                                </li>
+                                                <a class="profile-link" style="color:white;"
+                                                        href="Learner profile P.php?partnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
+                                                        <?php echo htmlspecialchars($session['LearnerFirstName'] . " " . $session['LearnerLastName']); ?>
+                                                    </a>                                                </li>
                                                 <li>Language:
                                                     <?php echo htmlspecialchars($session['LanguageName']); ?>
                                                 </li>
@@ -229,10 +234,10 @@
                                                     <?php echo htmlspecialchars(date('Y-m-d', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Time:
-                                                    <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))) ; ?>
+                                                    <?php echo htmlspecialchars(date('H:i', strtotime($session['SessionDate']))); ?>
                                                 </li>
                                                 <li>Duration:
-                                                    <?php echo htmlspecialchars($session['Duration']). " hours"; ?>
+                                                    <?php echo htmlspecialchars($session['Duration']) . " hours"; ?>
                                                 </li>
                                             </ul>
                                         </div>
