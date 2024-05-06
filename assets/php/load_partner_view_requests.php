@@ -24,7 +24,6 @@ if (!in_array($status, $statuses)) {
 }
 
 // Retrieve the user_id from the session
-session_start();
 $user_id = $_SESSION['user_id'] ?? '';
 
 // Prepare SQL query to fetch requests based on status and partner ID
