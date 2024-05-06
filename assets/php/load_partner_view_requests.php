@@ -3,7 +3,6 @@
 session_start();
 if(isset($_SESSION['user_id'])) {
     $userID = $_SESSION['user_id'];
-    echo "Session User ID: " . $userID;
 } else {
     header("Location: ../../HTML pages/SignInPartner.php"); // Redirect them to the login page if not logged in
     exit();
@@ -25,7 +24,6 @@ if (!in_array($status, $statuses)) {
 }
 
 // Retrieve the user_id from the session
-session_start();
 $user_id = $_SESSION['user_id'] ?? '';
 
 // Prepare SQL query to fetch requests based on status and partner ID

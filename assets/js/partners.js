@@ -8,12 +8,12 @@ $(document).ready(function () {
 
         // Construct the URL for the partner profile page
         var profileURL = "http://localhost/Web-Project/HTML pages/Partner profile U.php?partnerId=" + partnerID;
-        console.log(profileURL);
+        
         // Redirect the user to the partner profile page
         window.location.href = profileURL;
     });
 
-    // Make an AJAX request to fetch partner data from the PHP script
+    // Fetch partner data and display
     fetchPartnersData();
 
     // Add event listener to category buttons
@@ -38,38 +38,33 @@ $(document).ready(function () {
 });
 
 function fetchPartnersData() {
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://localhost/Web-Project/assets/php/partners.php", true);
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            if (xhr.status === 200) {
-                var response = JSON.parse(xhr.responseText);
-                var partners = response.partners; // Access the partners array within the response
-                displayPartners(partners);
-            } else {
-                console.error("Failed to fetch partners: " + xhr.status);
-            }
+    $.ajax({
+        url: "http://localhost/Web-Project/assets/php/partners.php",
+        type: "GET",
+        dataType: "json",
+        success: function(response) {
+            var partners = response.partners; // Access the partners array within the response
+            displayPartners(partners);
+        },
+        error: function(xhr, status, error) {
+            console.error("Failed to fetch partners: " + error);
         }
-    };
-    xhr.send();
+    });
 }
 
 function displayPartners(partners) {
-    var partnersContainer = document.getElementById("partners-container");
+    var partnersContainer = $("#partners-container");
 
-    if (partnersContainer) {
-        if (partners.length > 0) {
-            partners.forEach(function(partner) {
-                var partnerDiv = document.createElement("div");
-                var languageIDs = partner.LanguageID.split(","); // Split the comma-separated list of language IDs
-                var languageClasses = getLanguageClasses(languageIDs); // Get language classes based on partner's language IDs
-                partnerDiv.classList.add("col-lg-4", "col-md-6", "grid-item", ...languageClasses); // Add language classes
-                partnerDiv.innerHTML = `
+    if (partners.length > 0) {
+        $.each(partners, function(index, partner) {
+            var partnerDiv = $("<div>").addClass("col-lg-4 col-md-6 grid-item");
+            var languageClasses = getLanguageClasses(partner.LanguageID.split(",")); // Get language classes based on partner's language IDs
+            partnerDiv.addClass(languageClasses.join(" ")); // Add language classes
+            partnerDiv.html(`
                 <div class="z-gallery mb-30">
                     <div class="z-gallery__thumb mb-20">
                         <a href="#"><img class="img-fluid" src="../assets/img/Partners images/${partner.Photo}" alt="" width="500" height="500"></a>
                         <div class="feedback-tag">${partner.AverageRating}</div>
-                  
                     </div>
                     <div class="z-gallery__content">
                         <div class="course__tag mb-15">
@@ -86,20 +81,17 @@ function displayPartners(partners) {
                         <h6>${partner.SessionPrice}$/hour</h6>
                     </div>
                 </div>
-            `;
-                partnersContainer.appendChild(partnerDiv);
-            });
-        } else {
-            partnersContainer.innerHTML = "<p>No partners available.</p>";
-        }
+            `);
+            partnersContainer.append(partnerDiv);
+        });
     } else {
-        console.error("Partners container not found.");
+        partnersContainer.html("<p>No partners available.</p>");
     }
 }
 
 function getLanguageClasses(languageIDs) {
     var languageClasses = [];
-    languageIDs.forEach(function(languageID) {
+    $.each(languageIDs, function(index, languageID) {
         switch (languageID) {
             case "1":
                 languageClasses.push("cat1"); // English

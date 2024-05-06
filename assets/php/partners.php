@@ -1,24 +1,15 @@
 <?php
-// Enable CORS (Cross-Origin Resource Sharing)
-header("Access-Control-Allow-Origin: *"); // Allow requests from any origin
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS"); // Allow GET, POST, and OPTIONS requests
-header("Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization"); // Allow specified headers
+require_once 'db.php'; // Ensure this points to your actual database connection script
 session_start();
 
-require_once 'db.php';  // Ensure this points to your actual database connection script
+// Ensure the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    header("Location: SignInLearner.php"); // Redirect them to the login page if not logged in
+    exit('User not logged in.'); // Proper handling for not logged-in users
+}
 
-//
-//if (!isset($_SESSION['user_ID'])) {
- // die('User must be logged in '); // Redirect to login page
-//header('Location: ../../HTML pages/SignInLearner.php');
- // exit;
-//}
-
-// Initialize an array to store partners data
-$partners = [];
-
-// SQL query to fetch partners data along with the average rating and total reviews count
-$sqlPartners = "SELECT partners.*, 
+// Retrieve partners data from the database
+$sqlPartners =  $conn->prepare("SELECT partners.*, 
                     CONCAT(users.FirstName, ' ', users.LastName) AS FullName,
                     IFNULL(ROUND(AVG(reviews.Rating), 2), 0) AS AverageRating,
                     COUNT(reviews.ReviewID) AS TotalReviews,
@@ -32,22 +23,41 @@ $sqlPartners = "SELECT partners.*,
                 LEFT JOIN reviews ON sessions.SessionID = reviews.SessionID
                 LEFT JOIN userlanguages ON partners.PartnerID = userlanguages.UserID
                 LEFT JOIN languages ON userlanguages.LanguageID = languages.LanguageID
-                GROUP BY partners.PartnerID";
+                GROUP BY partners.PartnerID");
+$sqlPartners->execute();
+$result = $sqlPartners->get_result();
 
-$resultPartners = $conn->query($sqlPartners);
+// Initialize an array to store partner sessions
+$partners = [];
 
-// Check if the query was successful
-if ($resultPartners->num_rows > 0) {
-    // Process the results
-    while($rowPartners = $resultPartners->fetch_assoc()) {
-        // Push partner data into the array
-        $partners[] = $rowPartners;
-    }
+while ($rowPartners = $result->fetch_assoc()) {
+    // Process each partner's data
+    $partnerID = $rowPartners['PartnerID'];
+    $fullName = $rowPartners['FullName'];
+    $averageRating = $rowPartners['AverageRating'];
+    $totalReviews = $rowPartners['TotalReviews'];
+    $photo = $rowPartners['Photo'];
+    $sessionPrice = $rowPartners['SessionPrice'];
+    $languageID = $rowPartners['LanguageID'];
+    $languages = $rowPartners['Languages'];
+
+    // Construct partner session array
+    $partnerSession = array(
+        'PartnerID' => $partnerID,
+        'FullName' => $fullName,
+        'AverageRating' => $averageRating,
+        'TotalReviews' => $totalReviews,
+        'Photo' => $photo,
+        'SessionPrice' => $sessionPrice,
+        'LanguageID' => $languageID,
+        'Languages' => $languages
+    );
+
+    // Add partner session to partners array
+    $partners[] = $partnerSession;
 }
 
-// Close the database connection
+// Close the prepared statement
+$sqlPartners->close();
 $conn->close();
-
-// Output partners data as JSON
-echo json_encode(['partners' => $partners]);
 ?>
