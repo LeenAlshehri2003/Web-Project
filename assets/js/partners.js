@@ -7,8 +7,8 @@ $(document).ready(function () {
         var partnerID = $(this).data('partner-id');
 
         // Construct the URL for the partner profile page
-        var profileURL = "http://localhost/Web-Project/HTML pages/Partner%20profile%20U.html?partnerId=" + partnerID;
-
+        var profileURL = "http://localhost/Web-Project/HTML pages/Partner profile U.php?partnerId=" + partnerID;
+        console.log(profileURL);
         // Redirect the user to the partner profile page
         window.location.href = profileURL;
     });
@@ -69,7 +69,7 @@ function displayPartners(partners) {
                     <div class="z-gallery__thumb mb-20">
                         <a href="#"><img class="img-fluid" src="../assets/img/Partners images/${partner.Photo}" alt="" width="500" height="500"></a>
                         <div class="feedback-tag">${partner.AverageRating}</div>
-                       
+                  
                     </div>
                     <div class="z-gallery__content">
                         <div class="course__tag mb-15">

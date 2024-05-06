@@ -4526,6 +4526,7 @@ input.main-search-input:-ms-input-placeholder {
   transition: all 0.3s ease 0s;
 }
 
+
 .z-gallery__thumb .heart-icon:hover {
   color: #2878EB;
   -webkit-transform: scale(1.2);
@@ -4533,7 +4534,7 @@ input.main-search-input:-ms-input-placeholder {
 }
 
 .z-gallery__content {
-  padding: 0 15px 30px 15px;
+  padding: 0;
 }
 
 .z-gallery__content .sub-title {

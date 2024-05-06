@@ -1,33 +1,40 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['user_id'])) {
+        $userID = $_SESSION['user_id'];
+        echo "Session User ID: " . $userID;
+    } else {
+        header("Location: SignInLearner.php"); // Redirect them to the login page if not logged in
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Language Partner list</title>
-        <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
-        <meta name="description" content="LinguaLink is a e-learning HTML website for language education ">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <link rel="manifest" href="site.webmanifest">
-        <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
-        
+  <head>
+    <meta charset="utf-8">
+    <title>Language Partner Profile Page</title>
+    <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
+    <meta name="description" content="LinguaLink is a e-learning HTML website for language education ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
-        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="../assets/css/animate.css">
-        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="../assets/css/all.min.css">
-        <link rel="stylesheet" href="../assets/css/flaticon.css">
-        <link rel="stylesheet" href="../assets/css/font.css">
-        <link rel="stylesheet" href="../assets/css/metisMenu.css">
-        <link rel="stylesheet" href="../assets/css/nice-select.css">
-        <link rel="stylesheet" href="../assets/css/slick.css">
-        <link rel="stylesheet" href="../assets/css/spacing.css">
-        <link rel="stylesheet" href="../assets/css/main.css">
-        <link rel="stylesheet" href="../assets/css/Filter French.css">
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-        <script src="../assets/js/Filter.js"></script>
-      </head>
     
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
+ 
+
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/flaticon.css">
+    <link rel="stylesheet" href="../assets/css/font.css">
+    <link rel="stylesheet" href="../assets/css/metisMenu.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/spacing.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+  </head>
+
   <body>
 
     <!-- preloader -->
@@ -43,7 +50,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-5">
-                            <div class="logo"><a href="HomeLearner.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                            <div class="logo"><a href="HomeLearner.php"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
                         </div>
                         <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                             <nav class="main-menu navbar navbar-expand-lg justify-content-center">
@@ -55,20 +62,20 @@
                                                 All Languages 
                                                 </a>
                                                 <ul class="dropdown-menu submenu mega-menu__sub-menu-box" aria-labelledby="navbarDropdown">
-                                                    <li><a href="Partnerlist%20English.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
-                                                    <li><a href="Partnerlist%20French.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
-                                                    <li><a href="Partnerlist%20Spanish.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
-                                                    <li><a href="Partnerlist%20Arabic.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
-                                                    <li><a href="Partnerlist%20Italien.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
-                                                    <li><a href="Partnerlist%20Japanese.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
-                                                    <li><a href="Partnerlist%20Chinese.html#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
+                                                    <li><a href="Partnerlist%20English.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
+                                                    <li><a href="Partnerlist%20French.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
+                                                    <li><a href="Partnerlist%20Spanish.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
+                                                    <li><a href="Partnerlist%20Arabic.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
+                                                    <li><a href="Partnerlist%20Italien.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
+                                                    <li><a href="Partnerlist%20Japanese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
+                                                    <li><a href="Partnerlist%20Chinese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
                                             </ul>
                                             </li>
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="Partnerlist English.html">View partners List</a></li>
-                                                    <li><a class="dropdown-item" href="View Requests- Learner.html">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="Partnerlist.php">View partners List</a></li>
+                                                    <li><a class="dropdown-item" href="View Requests- Learner.php">Manage requests</a></li>
                                                     <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
                                                     <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
                                                 </ul>
@@ -94,7 +101,7 @@
                                 <div class="right-btn mr-25 mr-xs-15">
                                     <ul class="d-flex align-items-center">
                                         <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="Profile Page-Language Learner.html"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguageLearner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
@@ -110,6 +117,9 @@
         </div> <!-- /.theme-main-menu -->
     </header>
 
+
+
+   
     <main>
      <!--page-title-area start-->
       <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
@@ -117,11 +127,11 @@
               <div class="row align-items-end">
                   <div class="col-lg-12">
                       <div class="page-title-wrapper mb-50">
-                         <h1 class="page-title mb-25">Partners List</h1>
+                         <h1 class="page-title mb-25">Partner-profile</h1>
                          <div class="breadcrumb-list">
                             <ul class="breadcrumb">
-                                <li><a href="HomeLearner.php">Home - </a></li>
-                                <li><a href="Partnerlist French.html#Here">Partner List</a></li>
+                                <li><a href="HomeLearner.html">Home -</a></li>
+                                <li><a href="#">Partner Profile</a></li>
                             </ul>
                          </div>
                     </div>
@@ -130,35 +140,16 @@
           </div>
       </section>
       <!--page-title-area end-->
-      <section class="feature-course pt-150 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
-        <div class="container">
-            <div class="row">
-               <div class="col-xl-12">
-                    <div class="section-title text-center mb-50">
-                        <h5 id="Here" class="bottom-line mb-25">Partner List</h5>
-                        <h2>Explore our Partners</h2>
-                    </div>
-                </div> 
-            </div>
-            <div class="row justify-content-center">
-                <div class="col-xl-12 text-center">
-                    <div class="portfolio-menu mb-30">
-                        <button class="gf_btn" data-filter='*'>All</button>
-                        <button class="gf_btn" data-filter='.cat1'>English </button>
-                        <button class="gf_btn" data-filter='.cat2'>Arabic</button>
-                        <button class="gf_btn active" data-filter='.cat3'>French</button>
-                        <button class="gf_btn" data-filter='.cat4'>Spanish</button>
-                        <button class="gf_btn" data-filter='.cat5'>Italien</button>
-                        <button class="gf_btn" data-filter='.cat6'>Japanese</button>
-                        <button class="gf_btn" data-filter='.cat7'>Chinese</button> 
-                    </div>
-                </div>
-            </div>
-            <div id="partners-container">
+       <!--Partner-details-area start-->
+       <section class="instructor-details-area pt-145 pb-110 pt-md-95 pb-md-60 pt-xs-95 pb-xs-60">
     
-            </div>
+        <div id="partners-container">
+    
+        </div>   
     </section>
-
+    
+ <!--Partner-details-area end-->
+     
     </main>
       
     <!--footer-area start-->
@@ -224,12 +215,14 @@
 
 
   <!-- JS here -->
-  <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+  <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+  <script src="../assets/js/popper.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
   <script src="../assets/js/owl.carousel.min.js"></script>
   <script src="../assets/js/isotope.pkgd.min.js"></script>
   <script src="../assets/js/slick.min.js"></script>
+
   <script src="../assets/js/jquery.nice-select.js"></script>
   <script src="../assets/js/ajax-form.js"></script>
   <script src="../assets/js/wow.min.js"></script>
@@ -240,11 +233,10 @@
   <script src="../assets/js/jquery.magnific-popup.min.js"></script>
   <script src="../assets/js/jquery.easypiechart.js"></script>
   <script src="../assets/js/plugins.js"></script>
-  <script src="../assets/js/main.js"></script>
   <script src="../assets/js/Heart.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../assets/js/partners.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="../assets/js/Upartner_profile.js"></script>
+  <script src="../assets/js/main.js"></script>
   <script src="../assets/js/metisMenu.min.js"></script>
-
   </body>
 </html>

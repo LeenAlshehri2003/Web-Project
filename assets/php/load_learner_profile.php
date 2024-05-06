@@ -28,6 +28,8 @@ while ($row = $result->fetch_assoc()) {
     $learnerData['City'] = $row['City'];
     $learnerData['Photo'] = $row['Photo'];
     $learnerData['Location'] = $row['Location'];
+    $learnerData['userId'] = $userId;
+
     
 
 

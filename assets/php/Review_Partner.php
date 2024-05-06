@@ -17,7 +17,7 @@ function submitReview($formData, $conn) {
     $sessionID = htmlspecialchars($formData['sessionID']);
 
     // Prepare the SQL statement to insert the review
-    $stmt = $conn->prepare("INSERT INTO reviews (SessionID, Rating, Comment) VALUES (?, ?, ?)");
+    $stmt = $conn->prepare("INSERT INTO reviews (RequestID, Rating, Comment) VALUES (?, ?, ?)");
     $stmt->bind_param("iss", $sessionID, $rating, $comment);
 
     if ($stmt->execute()) {

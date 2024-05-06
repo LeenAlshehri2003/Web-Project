@@ -1,3 +1,13 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['user_id'])) {
+        $userID = $_SESSION['user_id'];
+        echo "Session User ID: " . $userID;
+    } else {
+        header("Location: SignInLearner.php"); // Redirect them to the login page if not logged in
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,13 +33,17 @@
         <link rel="stylesheet" href="../assets/css/slick.css">
         <link rel="stylesheet" href="../assets/css/spacing.css">
         <link rel="stylesheet" href="../assets/css/main.css">
-        <link rel="stylesheet" href="../assets/css/Filter French.css">
+        <link rel="stylesheet" href="../assets/css/Filter English.css">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="../assets/js/Filter.js"></script>
       </head>
     
   <body>
- 
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- Add your site or application content here -->
     <!-- preloader -->
     <div id="preloader">
         <div class="preloader">
@@ -43,7 +57,7 @@
             <div class="container-fluid">
                 <div class="row align-items-center">
                         <div class="col-xl-2 col-lg-2 col-5">
-                            <div class="logo"><a href="LandingPage.html"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink logo"></a></div>
+                            <div class="logo"><a href="HomeLearner.php"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
                         </div>
                         <div class="col-xl-7 col-lg-8 d-none d-lg-block">
                             <nav class="main-menu navbar navbar-expand-lg justify-content-center">
@@ -64,30 +78,24 @@
                                                     <li><a href="Partnerlist%20Chinese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
                                             </ul>
                                             </li>
-                                            <li class="nav-item dropdown active">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Sign Up
-                                                </a>
-                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <li><a class="dropdown-item" href="SignUpLearner.php">Sign Up as Learner</a></li>
-                                                    <li><a class="dropdown-item" href="SignUpPartner.php">Sign Up as Partner</a></li>
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                                    <li><a class="dropdown-item" href="Partnerlist.php">View partners List</a></li>
+                                                    <li><a class="dropdown-item" href="View Requests- Learner.php">Manage requests</a></li>
+                                                    <li><a class="dropdown-item" href="View sessions - Learner.php">View sessions </a></li>
+                                                    <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
                                                 </ul>
                                             </li>
-                                            <li class="nav-item dropdown active">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Sign In
-                                                </a>
-                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                                                    <li><a class="dropdown-item" href="SignInLearner.php">Learner's Sign in </a></li>
-                                                    <li><a class="dropdown-item" href="SignInPartner.php">Partner's Sign in </a></li>
-                                                </ul>
-                                            </li>
+                                           
                                             <li class="nav-item dropdown">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to Know More?</a>
                                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                                           
+                                                    <li><a class="dropdown-item" href="faqHomeLearner.html">FAQ</a></li>
                                                 </ul>
                                             </li>
+                                         
                                             <li class="nav-item">
                                             <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5" role="button"  aria-expanded="false">Contact Us!</a></li>
                                         </ul>
@@ -95,10 +103,25 @@
                                 </div>
                             </nav>
                         </div>
-                      
+                        <div class="col-xl-3 col-lg-2 col-7">
+                            <div class="right-nav d-flex align-items-center justify-content-end">
+                                <div class="right-btn mr-25 mr-xs-15">
+                                    <ul class="d-flex align-items-center">
+                                        <li><a href="../assets/php/Signout.php" id="signout" class="theme_btn free_btn">Sign Out</a></li>
+                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguageLearner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                                    </ul>
+                                </div>
+                                <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
+                                    <a href="javascript:void(0);">
+                                        <i class="far fa-bars"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
             </div>
-        </div> 
+        </div> <!-- /.theme-main-menu -->
     </header>
 
 
@@ -113,8 +136,8 @@
                          <h1 class="page-title mb-25">Partners List</h1>
                          <div class="breadcrumb-list">
                             <ul class="breadcrumb">
-                                <li><a href="LandingPage.html">Home - </a></li>
-                                <li><a href="Partnerlist French.html#Here">Partner List</a></li>
+                                <li><a href="HomeLearner.php">Home - </a></li>
+                                <li><a href="Partnerlist English.php#Here">Partner List</a></li>
                             </ul>
                          </div>
                     </div>
@@ -137,9 +160,9 @@
                 <div class="col-xl-12 text-center">
                     <div class="portfolio-menu mb-30">
                         <button class="gf_btn" data-filter='*'>All</button>
-                        <button class="gf_btn" data-filter='.cat1'>English </button>
+                        <button class="gf_btn active" data-filter='.cat1'>English </button>
                         <button class="gf_btn" data-filter='.cat2'>Arabic</button>
-                        <button class="gf_btn active" data-filter='.cat3'>French</button>
+                        <button class="gf_btn" data-filter='.cat3'>French</button>
                         <button class="gf_btn" data-filter='.cat4'>Spanish</button>
                         <button class="gf_btn" data-filter='.cat5'>Italien</button>
                         <button class="gf_btn" data-filter='.cat6'>Japanese</button>
@@ -147,15 +170,13 @@
                     </div>
                 </div>
             </div>
-          
             <div id="partners-container">
     
             </div>
-    
     </section>
-
-    </main>
       
+    </main>
+     
     <!--footer-area start-->
  <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
     <div class="footer-blur"></div>
@@ -219,6 +240,7 @@
 
 
   <!-- JS here -->
+  <script src="../assets/js/metisMenu.min.js"></script>
   <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
   <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
   <script src="../assets/js/bootstrap.min.js"></script>
@@ -240,7 +262,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../assets/js/partners.js"></script>
   <script src="../assets/js/metisMenu.min.js"></script>
-
 
   </body>
 </html>
