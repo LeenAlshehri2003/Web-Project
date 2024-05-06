@@ -43,39 +43,29 @@ $sqlPartners->execute();
 // Fetch data
 $result = $sqlPartners->get_result();
 
+// Define an associative array to map language IDs to classes
+$languageClassMap = array(
+    "1" => "cat1", // English
+    "2" => "cat2", // Arabic
+    "3" => "cat3", // French
+    "4" => "cat4", // Spanish
+    "5" => "cat5", // Italian
+    "6" => "cat6", // Japanese
+    "7" => "cat7"  // Chinese
+    // Add more cases for other languages as needed
+);
+
 // Check if there are any partners
 if ($result->num_rows > 0) {
     // Loop through each partner and display profile details
     while ($row = $result->fetch_assoc()) {
         $languageClasses = ''; // Initialize variable to store language classes
         $languageIDs = explode(', ', $row['Languages']); // Split languages into an array
+        
         foreach ($languageIDs as $languageID) {
             // Append language class based on language ID
-            switch ($languageID) {
-                case "1":
-                    $languageClasses .= " cat1"; // English
-                    break;
-                case "2":
-                    $languageClasses .= " cat2"; // Arabic
-                    break;
-                case "3":
-                    $languageClasses .= " cat3"; // French
-                    break;
-                case "4":
-                    $languageClasses .= " cat4"; // Spanish
-                    break;
-                case "5":
-                    $languageClasses .= " cat5"; // Italian
-                    break;
-                case "6":
-                    $languageClasses .= " cat6"; // Japanese
-                    break;
-                case "7":
-                    $languageClasses .= " cat7"; // Chinese
-                    break;
-                // Add more cases for other languages as needed
-                default:
-                    break;
+            if (isset($languageClassMap[$languageID])) {
+                $languageClasses .= " " . $languageClassMap[$languageID];
             }
         }
         ?>
@@ -88,7 +78,17 @@ if ($result->num_rows > 0) {
                 </div>
                 <div class="z-gallery__content">
                     <div class="course__tag mb-15">
-                        <?php echo $row['Languages']; ?> <!-- Display languages -->
+                        <span class="languages">
+                            <?php 
+                            foreach ($languageIDs as $languageID) {
+                                // Check if the languageID exists as a key in the languageClassMap array
+                                if (isset($languageClassMap[$languageID])) {
+                                    // Append language class based on language ID
+                                    echo "<span>" . $languageClassMap[$languageID] . "</span>";
+                                }
+                            }
+                            ?>
+                        </span>
                     </div>
                     <h4 class="sub-title mb-20"><a class="partner-link" data-partner-id="<?php echo $row['PartnerID']; ?>" href="#"><?php echo $row['FullName']; ?></a></h4>
                     <div class="course__meta">
@@ -105,3 +105,4 @@ if ($result->num_rows > 0) {
     echo "No partners found.";
 }
 // Close the prepared statement
+?>
