@@ -23,7 +23,7 @@ $selectedLanguages = [];
 // Retrieve existing user and partner information
 if ($_SERVER["REQUEST_METHOD"] == "GET") {
     // Fetch user details
-    $userQuery = $conn->prepare("SELECT FirstName, LastName,  City FROM users WHERE UserID = ?");
+    $userQuery = $conn->prepare("SELECT FirstName, LastName,  City , Password FROM users WHERE UserID = ?");
     $userQuery->bind_param("i", $partnerID);
     $userQuery->execute();
     $userResult = $userQuery->get_result();
