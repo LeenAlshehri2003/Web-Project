@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['RequestID'])) {
         UPDATE languagerequests 
         SET ProficiencyLevel=?, PreferredSchedule=? , SessionDuration=?
         WHERE RequestID=?");
-    $updateRequest->bind_param("ssi", $proficiencyLevel, $preferredSchedule, $requestID);
+    $updateRequest->bind_param("ssi", $proficiencyLevel, $preferredSchedule, $duration, $requestID);
     $updateRequest->execute();
     $updateRequest->close();
 
