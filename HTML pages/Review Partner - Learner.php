@@ -1,7 +1,7 @@
 
 <?php require '../assets/php/Review_Partner.php'?>
 <?php
-session_start();
+
 $errorMessage = isset($_SESSION['submission_error']) ? $_SESSION['submission_error'] : null;
 $successMessage = isset($_SESSION['submission_success']) ? $_SESSION['submission_success'] : null;
 unset($_SESSION['submission_error'], $_SESSION['submission_success']); // Clear the session variables
