@@ -64,15 +64,16 @@ unset($_SESSION['login_error']);  // Clear the error message from session
                                                 All Languages 
                                                 </a>
                                                 <ul class="dropdown-menu submenu mega-menu__sub-menu-box" aria-labelledby="navbarDropdown">
-                                                    <li><a href="Partnerlist%20English.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
-                                                    <li><a href="Partnerlist%20French.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
-                                                    <li><a href="Partnerlist%20Spanish.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
-                                                    <li><a href="Partnerlist%20Arabic.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
-                                                    <li><a href="Partnerlist%20Italien.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
-                                                    <li><a href="Partnerlist%20Japanese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
-                                                    <li><a href="Partnerlist%20Chinese.php#here"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
+                                                    <li><a href="PrePartnerlist English.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> English</a></li>
+                                                    <li><a href="PrePartnerlist French.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> French</a></li>
+                                                    <li><a href="PrePartnerlist Spanish.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Spanish</a></li>
+                                                    <li><a href="PrePartnerlist Arabic.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Arabic</a></li>
+                                                    <li><a href="PrePartnerlist Italien.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span>Italien</a></li>
+                                                    <li><a href="PrePartnerlist Japanese.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Japanese</a></li>
+                                                    <li><a href="PrePartnerlist Chinese.html"><span><img src="../assets/img/icon/icon12.svg" alt="Icon for langauges"></span> Chinese</a></li>
                                             </ul>
                                             </li>
+                                           
                                             <li class="nav-item dropdown active">
                                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     Sign Up
@@ -109,6 +110,7 @@ unset($_SESSION['login_error']);  // Clear the error message from session
             </div>
         </div> 
     </header>
+
 
 
 
