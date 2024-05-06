@@ -216,7 +216,7 @@ if (!isset($_SESSION['user_id'])) {
                             <div class="form-group">
                               <label>Current Password</label>
                               <input class="form-control" id="CurrentPass" name="CurrentPass" type="password">
-                              <span id="passwordHint" style="display:none; color: red;">Minimum 8 characters with 1 special character</span>
+                             
                             </div>
                           </div>
                         </div>
