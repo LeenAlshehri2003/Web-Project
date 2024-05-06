@@ -4,7 +4,7 @@ if(isset($_SESSION['user_id'])) {
     $userID = $_SESSION['user_id'];
     echo "Session User ID: " . $userID;
 } else {
-    header("Location: SignInPartner.php"); // Redirect them to the login page if not logged in
+    header("Location: ../../HTML pages/SignInPartner.php"); // Redirect them to the login page if not logged in
     exit();
 }
 // Include the database connection
