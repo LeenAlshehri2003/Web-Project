@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['RequestID'])) {
     // Update request details
     $updateRequest = $conn->prepare("
         UPDATE languagerequests 
-        SET ProficiencyLevel=?, PreferredSchedule=? , SessionDuration=?
+        SET ProficiencyLevel=?, PreferredSchedule=? 
         WHERE RequestID=?");
     $updateRequest->bind_param("ssii", $proficiencyLevel, $preferredSchedule, $duration, $requestID);
     $updateRequest->execute();
