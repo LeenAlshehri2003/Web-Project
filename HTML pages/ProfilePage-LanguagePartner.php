@@ -168,13 +168,7 @@ if (!isset($_SESSION['user_id'])) {
                    <div class="col-xl-6 col-lg-12">
                        <div class="Language Partner-profile">
                            <h2>Language Partner Bio</h2>
-                           <div class="star-icon mb-20">
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                                <a href="#"><i class="fas fa-star"></i></a>
-                            </div>
+                          <br>
                         <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
                         <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
                         </div>

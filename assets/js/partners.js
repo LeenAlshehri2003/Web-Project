@@ -67,12 +67,12 @@ function displayPartners(partners) {
                         <div class="feedback-tag">${partner.AverageRating}</div>
                     </div>
                     <div class="z-gallery__content">
-                        <div class="course__tag mb-15">
-                            ${partner.Languages.split(', ').map(function(language) {
-                                return `<span>${language}</span>`;
-                            }).join('')}
-                            <a class="f-right" href="#"></a>
-                        </div>
+                    <div class="course__tag mb-15">
+                    ${partner.Languages.split(', ').map(function(language) {
+                        return `<span>${language}</span>`;
+                    }).join('')}
+                    <a class="f-right" href="#"></a>
+                </div>
                         <h4 class="sub-title mb-20"><a class="partner-link" data-partner-id="${partner.PartnerID}" href="#">${partner.FullName}</a></h4>
                         <div class="course__meta">
                             <span>${partner.Bio}</span>
