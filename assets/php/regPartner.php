@@ -13,14 +13,14 @@ function registerNewPartner($formData, $conn) {
     $age = intval($formData['age']);
     $gender = htmlspecialchars($formData['gender']);
     $phone = htmlspecialchars($formData['number']);
-    $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
-    $filename = $defaultPic;  // Use default if no picture is uploaded
+   // $defaultPic = '../assets/img/DefaultProfilePic.jpg';  // Default profile picture if none provided
+   // $filename = $defaultPic;  // Use default if no picture is uploaded
 
 
 
     $userImage = $_FILES['photo'];
-$imageName = $userImage['name'];
-if ($imageName == "")
+    $imageName = $userImage['name'];
+    if ($imageName == "")
     $imageName = "DefaultProfilePic.jpg";
 
     $fileTmpName = $userImage['tmp_name'];
