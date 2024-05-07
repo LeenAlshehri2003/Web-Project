@@ -179,8 +179,7 @@ if (!isset($_SESSION['user_id'])) {
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                            <li><button onclick="confirmDeletion<?= $partnerData['userId'] ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>  
-                       </div>
+                            <li><button onclick="confirmProfileDeletion(<?= $partnerData['userId'] ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
                       
                     </div>
                </div>
@@ -290,7 +289,9 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </footer>
     <!--footer-area end-->
-    
+    <script>
+        
+    </script>
     
       <!-- JS here -->
     
@@ -298,6 +299,7 @@ if (!isset($_SESSION['user_id'])) {
       <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
       <script src="../assets/js/popper.min.js"></script>
       <script src="../assets/js/bootstrap.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script src="../assets/js/DeleteProfile.js"></script>
       <script src="../assets/js/owl.carousel.min.js"></script>
       <script src="../assets/js/isotope.pkgd.min.js"></script>
