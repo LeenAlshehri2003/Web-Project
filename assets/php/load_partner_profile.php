@@ -35,6 +35,7 @@ while ($row = $result->fetch_assoc()) {
         $partnerData['Gender'] = $row['Gender'];
         $partnerData['Phone'] = $row['Phone'];
         $partnerData['Bio'] = $row['Bio'];
+        $partnerData['userId'] = $userId;
     }
     if (!empty($row['LanguageName'])) {  // Add language names
         $partnerData['Languages'][] = $row['LanguageName'];

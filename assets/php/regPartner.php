@@ -26,26 +26,7 @@ if ($imageName == "")
     $fileTmpName = $userImage['tmp_name'];
     $fileNewName = "../img/Partners images/".$imageName;
     $uploaded = move_uploaded_file($fileTmpName,$fileNewName);
-   /* // Handling file upload
-    if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
-        $target_dir = "../img/";  // Adjust the path as necessary
-        $fileName = basename($_FILES['photo']['name']);
-        $targetFilePath = $target_dir . $fileName;
-        $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-        $allowTypes = array('jpg', 'png', 'jpeg', 'gif');
-        
-        if (in_array(strtolower($fileType), $allowTypes)) {
-            if (move_uploaded_file($_FILES['photo']['tmp_name'], $targetFilePath)) {
-                $filename = $targetFilePath; // File path to be stored in the database
-            } else {
-                echo "Sorry, there was an error uploading your file.";
-                return false;
-            }
-        } else {
-            echo "Sorry, only JPG, JPEG, PNG, & GIF files are allowed.";
-            return false;
-        }
-    }*/
+  
 
     // Check if username or email already exists
     $stmt = $conn->prepare("SELECT username, Email FROM Users WHERE username = ? OR Email = ?");

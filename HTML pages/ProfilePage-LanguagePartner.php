@@ -3,6 +3,7 @@
 if (!isset($_SESSION['user_id'])) {
      header('Location:SignInPartner.php');
      exit;
+
  }?> 
 <!DOCTYPE html>
 <html>
@@ -174,11 +175,11 @@ if (!isset($_SESSION['user_id'])) {
                         </div>
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
-                            <li><a href="View Reviews - Partner.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
+                            <li><a href="View Reviews - Partner.php?user_id=<?= $partnerData['userId'] ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
                             <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
                             &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                            <li><button onclick="confirmDeletion(<?= $user_id ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>  
+                            <li><button onclick="confirmDeletion<?= $partnerData['userId'] ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>  
                        </div>
                       
                     </div>
