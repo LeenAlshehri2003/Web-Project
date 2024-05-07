@@ -2,7 +2,7 @@
     session_start();
     if(isset($_SESSION['user_id'])) {
         $userID = $_SESSION['user_id'];
-        echo "Session User ID: " . $userID;
+       
     } else {
         header("Location: SignInLearner.php"); // Redirect them to the login page if not logged in
         exit();
@@ -172,91 +172,143 @@
 
     </main>
        
-    <!--footer-area start-->
- <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
-    <div class="footer-blur"></div>
-    <div class="container">
-        <div class="row mb-15">
-            <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.1s'>
-                <div class="footer__widget mb-30">
-                    <div class="footer-log mb-20">
-                        <a href="LandingPage.html" class="logo">
-                            <img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="logo">
-                        </a>
-                    </div>
-                    <p>With LinguaLink, you can learn and excel in any language you desire. So hop on the ride!</p>
-                    <div class="social-media footer__social mt-30">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                <div class="footer__widget mb-30 pl-40 pl-md-0 pl-xs-0">
-                   
-                    <ul class="fot-list">
-                        
-                        
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.5s'>
-                <div class="footer__widget mb-25 pl-65 pl-md-0 pl-xs-0">
-                    <h6 class="widget-title mb-35">Contact us</h6>
-                    <ul class="fot-list">
-                        <li><a href="mailto:LingualLink@gmail.com">LingualLink@gmail.com</a></li>
-                  
-                        <li><a href="#">+966 533 799 602</a></li>
+    <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
 
-                        
-                    </ul>
+<!-- Footer content -->
+</footer>
+
+<script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function() {
+// Function to fetch and display partners based on their language
+function loadPartners(language) {
+    $.get('../assets/php/load_partnerlist.php?language=' + language, function(data) {
+        $('#partners-container').html(data); // Insert the fetched content into the specified div
+    });
+}
+
+// Initially load partners for English language
+loadPartners('English');
+
+// Handle button clicks to load different languages' partners
+$('#allBtn').click(function() {
+    loadPartners('All');
+});
+
+$('#englishBtn').click(function() {
+    loadPartners('English');
+});
+
+$('#arabicBtn').click(function() {
+    loadPartners('Arabic');
+});
+
+$('#frenchBtn').click(function() {
+    loadPartners('French');
+});
+
+$('#spanishBtn').click(function() {
+    loadPartners('Spanish');
+});
+
+$('#italianBtn').click(function() {
+    loadPartners('Italian');
+});
+
+$('#japaneseBtn').click(function() {
+    loadPartners('Japanese');
+});
+
+$('#chineseBtn').click(function() {
+    loadPartners('Chinese');
+});
+
+// Add click event handlers for other language buttons as needed
+});
+
+</script> 
+<div class="footer-blur"></div>
+<div class="container">
+    <div class="row mb-15">
+        <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.1s'>
+            <div class="footer__widget mb-30">
+                <div class="footer-log mb-20">
+                    <a href="LandingPage.html" class="logo">
+                        <img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="logo">
+                    </a>
+                </div>
+                <p>With LinguaLink, you can learn and excel in any language you desire. So hop on the ride!</p>
+                <div class="social-media footer__social mt-30">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
                 </div>
             </div>
-           
         </div>
+        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
+            <div class="footer__widget mb-30 pl-40 pl-md-0 pl-xs-0">
+               
+                <ul class="fot-list">
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <div class="col-xl-3 col-lg-4 col-md-6  wow fadeInUp2 animated" data-wow-delay='.5s'>
+            <div class="footer__widget mb-25 pl-65 pl-md-0 pl-xs-0">
+                <h6 class="widget-title mb-35">Contact us</h6>
+                <ul class="fot-list">
+                    <li><a href="mailto:LingualLink@gmail.com">LingualLink@gmail.com</a></li>
+              
+                    <li><a href="#">+966 533 799 602</a></li>
+
+                    
+                </ul>
+            </div>
+        </div>
+       
     </div>
+</div>
+
     
-        
-     <div class="copy-right-area border-bot pt-40">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-12">
-                    <div class="copyright">
-                        <h5>Copyright@ 2024 <a href="#">LingualLink</a>. All Rights Reserved</h5>
-                    </div>
+ <div class="copy-right-area border-bot pt-40">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="copyright">
+                    <h5>Copyright@ 2024 <a href="#">LingualLink</a>. All Rights Reserved</h5>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </footer>
 <!--footer-area end-->
 
 
-  <!-- JS here -->
-
-  <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
-  <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-  <script src="../assets/js/bootstrap.min.js"></script>
-  <script src="../assets/js/owl.carousel.min.js"></script>
-  <script src="../assets/js/isotope.pkgd.min.js"></script>
-  <script src="../assets/js/slick.min.js"></script>
-  <script src="../assets/js/jquery.nice-select.js"></script>
-  <script src="../assets/js/ajax-form.js"></script>
-  <script src="../assets/js/wow.min.js"></script>
-  <script src="../assets/js/jquery.counterup.min.js"></script>
-  <script src="../assets/js/waypoints.min.js"></script>
-  <script src="../assets/js/jquery.scrollUp.min.js"></script>
-  <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-  <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="../assets/js/jquery.easypiechart.js"></script>
-  <script src="../assets/js/plugins.js"></script>
-  <script src="../assets/js/main.js"></script>
-  <script src="../assets/js/Heart.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../assets/js/partners.js"></script>
-  <script src="../assets/js/metisMenu.min.js"></script>
-
-  </body>
+<!-- JS here -->
+<script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/owl.carousel.min.js"></script>
+<script src="../assets/js/isotope.pkgd.min.js"></script>
+<script src="../assets/js/slick.min.js"></script>
+<script src="../assets/js/jquery.nice-select.js"></script>
+<script src="../assets/js/ajax-form.js"></script>
+<script src="../assets/js/wow.min.js"></script>
+<script src="../assets/js/jquery.counterup.min.js"></script>
+<script src="../assets/js/waypoints.min.js"></script>
+<script src="../assets/js/jquery.scrollUp.min.js"></script>
+<script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+<script src="../assets/js/jquery.magnific-popup.min.js"></script>
+<script src="../assets/js/jquery.easypiechart.js"></script>
+<script src="../assets/js/plugins.js"></script>
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/Heart.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../assets/js/partners.js"></script>
+<script src="../assets/js/metisMenu.min.js"></script>
+</body>
 </html>
+
