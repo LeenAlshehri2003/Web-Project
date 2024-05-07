@@ -141,111 +141,64 @@
 
 
       
-      <!--page-title-area end-->
-       <!--Native Speaker-details-area start-->
-       <section class="instructor-details-area pt-145 pb-110 pt-md-95 pb-md-60 pt-xs-95 pb-xs-60">
-           <div class="container">
-               <div class="row">
-                   <div class="col-xl-6 col-lg-12">
-                       <div class="instructor-profile">
-                           <h2>Partner Profile</h2>
-                           <ul class="profile-list mb-50">
-                           <li>First Name: <span><?php echo htmlspecialchars($partnerData['FirstName']); ?></span></li>
-        <li>Last Name: <span><?php echo htmlspecialchars($partnerData['LastName']); ?></span></li>
-        <li>Age: <span><?php echo htmlspecialchars($partnerData['Age']); ?></span></li>
-        <li>Gender: <span><?php echo htmlspecialchars($partnerData['Gender']); ?></span></li>
-        <li>Email: <span><?php echo htmlspecialchars($partnerData['Email']); ?></span></li>
-        <li>Mobile Num: <span><?php echo htmlspecialchars($partnerData['Phone']); ?></span></li>
-        <li>City: <span><?php echo htmlspecialchars($partnerData['City']); ?></span></li>
-        <li>Languages Spoken:
-        <ul>
-            <?php foreach ($partnerData['Languages'] as $language): ?>
-                <li style='display:block;'><?php echo htmlspecialchars($language); ?></li>
-            <?php endforeach; ?>
-        </ul>
-            </li>
-            <li>Bio: <span><?php echo htmlspecialchars($partnerData['Bio']); ?></span></li>
-
-                              
-                                <li>
-                                    <div class="social-media">
-                                        <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
-                                        <a href="https://www.instagram.com/?hl=en"><i class="fab fa-instagram"></i></a>
-                                        <a href="https://www.youtube.com/?app"><i class="fab fa-youtube"></i></a>
+    
+    <!-- Partner profile section -->
+    <section class="partner-profile-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="partner-profile">
+                        <div class="row">
+                            <div class="col-xl-12 col-lg-12">
+                                <img class="img-fluid" src="../assets/img/Partners images/<?php echo htmlspecialchars($partnerData['Photo']); ?>" alt="Partner profile picture">
+                            </div>
+                            <div class="col-xl-6 col-lg-12">
+                                <div class="instructor-profile">
+                                    <h2>Partner Profile</h2>
+                                    <ul class="profile-list mb-50">
+                                        <li><span>First Name:</span> <?php echo htmlspecialchars($partnerData['FirstName']); ?></li>
+                                        <li><span>Last Name:</span> <?php echo htmlspecialchars($partnerData['LastName']); ?></li>
+                                        <li><span>Age:</span> <?php echo htmlspecialchars($partnerData['Age']); ?></li>
+                                        <li><span>Gender:</span> <?php echo htmlspecialchars($partnerData['Gender']); ?></li>
+                                        <li><span>Email:</span> <?php echo htmlspecialchars($partnerData['Email']); ?></li>
+                                        <li><span>Mobile Num:</span> <?php echo htmlspecialchars($partnerData['Phone']); ?></li>
+                                        <li><span>City:</span> <?php echo htmlspecialchars($partnerData['City']); ?></li>
+                                        <li><span>Languages spoken:</span> <?php echo htmlspecialchars(implode(', ', $partnerData['Languages'])); ?></li>
+                                        <li><span>Session price:</span> <?php echo htmlspecialchars($partnerData['SessionPrice']); ?> $/hour</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-12">
+                                <div class="instructor-profile">
+                                    <h2>Instructor Bio</h2>
+                                    <div class="star-icon mb-20">
+                                        <?php 
+                                            $filledStars = round($partnerData['AverageRating']);
+                                            for ($i = 0; $i < $filledStars; $i++) {
+                                                echo "<i class='fas fa-star' style='color: #FF723A; font-size: 15px; margin-right: 3px; display: inline-block;'></i>";
+                                            }
+                                        ?>
                                     </div>
-                                </li>
-                           </ul>
-                    
-                       </div>
-                   </div>
-                   <div class="col-xl-6 col-lg-12">
-                    <div class="Learner-profile-Pic">
-                        <h2>Profile Picture</h2>
-                        <hr>
-                        <img src="<?php echo htmlspecialchars('../assets/img/Partners images/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 500px; height:400px;" >
-      
+                                    <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
+                                    <div class="info-container">
+                                        <h5 class="total-stu pt-30"><span><img src="../assets/img/icon/avatar-outline-badged-2.svg" alt="icon"> <?php echo htmlspecialchars($partnerData['TotalReviews']); ?> Reviews</span></h5>
+                                        <ul>
+                                        <?php if(isset($partnerData['partnerid'])): ?>
+   
+    <li><a href="../HTML pages/View Reviews - Learner.php?partnerId=<?php echo $partnerData['partnerid']; ?>" class="theme_btn free_btn" style="text-align: center;">Rates and Reviews</a></li>
+<?php endif; ?>
+                                            <li><a href="mailto:<?php echo htmlspecialchars($partnerData['Email']); ?>" class="theme_btn free_btn">Arrange new meeting</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-                   <div class="col-xl-6 col-lg-12">
-                       <div class="Language Partner-profile">
-                          
-                        </div>
-                        <hr>
-                            <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
-                            <li><a href="View Reviews - Learner.php?user_id=<?php echo $user_id; ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
-                            &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                          
-                       </div>
-                      
-                    </div>
-               </div>
-           </div>
-           </div>
-       </section>
-       <!--Language Partner-details-area end-->
-       <!--what-looking-for start-->
-       <section class="what-looking-for pos-rel">
-        <div class="what-blur-shape-one"></div>
-        <div class="what-blur-shape-two"></div>
-        <div class="what-look-bg gradient-bg pt-145 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
-             <div class="container">
-                 <div class="row justify-content-center">
-                     <div class="col-lg-8">
-                         <div class="section-title text-center mb-55">
-                             <h5 class="bottom-line mb-25">Partners & Learners</h5>
-                             <h2>What you Looking For?</h2>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="row mb-85">
-                     <div class="col-xl-6 col-lg-6 col-md-6">
-                         <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                             <div class="what-box__icon mb-30">
-                                 <img src="../assets/img/icon/phone-operator.svg" alt="">
-                             </div>
-                             <h3>Do you want to teach here?</h3>
-                             <a href="SignUpPartner.php" class="theme_btn border_btn">Register as Partner</a>
-                         </div>
-                     </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6">
-                         <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                             <div class="what-box__icon mb-30">
-                                 <img src="../assets/img/icon/graduate.svg" alt="">
-                             </div>
-                             <h3>Do you want to learn here?</h3>
-                             <a href="SignUpLearner.php" class="theme_btn border_btn active">Register as Learner</a>
-                         </div>
-                     </div>
-                 </div>
-               
-             </div>
-        </div>   
+        </div>
     </section>
-       <!--what-loking-for end-->
-       <!-- subscribe-area start -->
-       <!-- subscribe-area end -->
-    </main>
+</main>
 
    
       

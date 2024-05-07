@@ -1,96 +1,131 @@
 <?php
-session_start();
-if(isset($_SESSION['user_id'])) {
-    $userID = $_SESSION['user_id'];
-} else {
-    header("Location: ../../HTML pages/SignInPartner.php"); // Redirect them to the login page if not logged in
-    exit();
-}
+
 
 // Include your database connection script
 require_once 'db.php';
 
 // Prepare SQL query to fetch partner profiles
 $sqlPartners = $conn->prepare("SELECT 
-    p.PartnerID,
-    CONCAT(u.FirstName, ' ', u.LastName) AS FullName,
-    u.Photo AS ProfilePicture, 
-    p.Age,
-    p.Gender,
-    p.SessionPrice,
-    p.Bio,
-    AVG(r.Rating) AS AverageRating,
-    GROUP_CONCAT(l.LanguageName SEPARATOR ', ') AS Languages
+p.PartnerID,
+CONCAT(u.FirstName, ' ', u.LastName) AS FullName,
+u.Photo AS ProfilePicture, 
+p.Age,
+p.Gender,
+p.SessionPrice,
+p.Bio,
+COALESCE(ROUND(AVG(r.Rating), 2), 0) AS AverageRating,
+GROUP_CONCAT(l.LanguageID) AS LanguageIDs,
+GROUP_CONCAT(l.LanguageName SEPARATOR ', ') AS Languages
 FROM 
-    partners p
+partners p
 INNER JOIN 
-    users u ON p.PartnerID = u.UserID
+users u ON p.PartnerID = u.UserID
 LEFT JOIN 
-    sessions s ON p.PartnerID = s.PartnerID  
+userlanguages ul ON p.PartnerID = ul.UserID
 LEFT JOIN 
-    reviews r ON s.SessionID = r.RequestID  
+languages l ON ul.LanguageID = l.LanguageID
 LEFT JOIN 
-    userlanguages ul ON p.PartnerID = ul.UserID
+languagerequests lr ON p.PartnerID = lr.PartnerID
 LEFT JOIN 
-    languages l ON ul.LanguageID = l.LanguageID
+reviews r ON lr.RequestID = r.RequestID
 GROUP BY 
-    p.PartnerID, u.FirstName, u.LastName, u.Photo, p.Age, p.Gender, p.SessionPrice, p.Bio
+p.PartnerID, u.FirstName, u.LastName, u.Photo, p.Age, p.Gender, p.SessionPrice, p.Bio
 ORDER BY 
-    AverageRating DESC;");
+AverageRating DESC;
 
-$sqlPartners->execute();
 
-// Fetch data
+");
+
+
+if ($sqlPartners === false) {
+    // Handle SQL query preparation error
+    echo "Error preparing SQL query: " . $conn->error;
+    exit();
+}
+
+if (!$sqlPartners->execute()) {
+    // Handle SQL query execution error
+    echo "Error executing SQL query: " . $sqlPartners->error;
+    exit();
+}
+
 $result = $sqlPartners->get_result();
-
-// Define an associative array to map language IDs to classes
-$languageClassMap = array(
-    "1" => "cat1", // English
-    "2" => "cat2", // Arabic
-    "3" => "cat3", // French
-    "4" => "cat4", // Spanish
-    "5" => "cat5", // Italian
-    "6" => "cat6", // Japanese
-    "7" => "cat7"  // Chinese
-    // Add more cases for other languages as needed
-);
 
 // Check if there are any partners
 if ($result->num_rows > 0) {
     // Loop through each partner and display profile details
     while ($row = $result->fetch_assoc()) {
-        $languageClasses = ''; // Initialize variable to store language classes
-        $languageIDs = explode(', ', $row['Languages']); // Split languages into an array
+        // Process partner data
         
+        $languageClasses = ''; // Initialize language classes variable
+        $languageIDs = explode(',', $row['LanguageIDs']); // Get language IDs
+        
+        // Loop through language IDs and add corresponding classes
         foreach ($languageIDs as $languageID) {
-            // Append language class based on language ID
-            if (isset($languageClassMap[$languageID])) {
-                $languageClasses .= " " . $languageClassMap[$languageID];
+            switch ($languageID) {
+                case "1":
+                    $languageClasses .= ' cat1'; // English
+                    break;
+                case "2":
+                    $languageClasses .= ' cat2'; // Arabic
+                    break;
+                case "3":
+                    $languageClasses .= ' cat3'; // French
+                    break;
+                case "4":
+                    $languageClasses .= ' cat4'; // Spanish
+                    break;
+                case "5":
+                    $languageClasses .= ' cat5'; // Italian
+                    break;
+                case "6":
+                    $languageClasses .= ' cat6'; // Japanese
+                    break;
+                case "7":
+                    $languageClasses .= ' cat7'; // Chinese
+                    break;
+                // Add more cases for other languages as needed
+                default:
+                    break;
             }
         }
-        ?>
-        <div class="grid-item<?php echo $languageClasses; ?>"> <!-- Add language classes to grid item -->
+?>
+        <div class="col-lg-4 col-md-6 grid-item<?php echo $languageClasses; ?>">
             <div class="z-gallery mb-30">
                 <div class="z-gallery__thumb mb-20">
+            
+
                     <a href="#"><img class="img-fluid" src="../assets/img/Partners images/<?php echo $row['ProfilePicture']; ?>" alt="" width="500" height="500"></a>
                     <!-- Display AverageRating -->
                     <div class="feedback-tag"><?php echo $row['AverageRating']; ?></div>
                 </div>
                 <div class="z-gallery__content">
                     <div class="course__tag mb-15">
-                        <span class="languages">
-                            <?php 
-                            foreach ($languageIDs as $languageID) {
-                                // Check if the languageID exists as a key in the languageClassMap array
-                                if (isset($languageClassMap[$languageID])) {
-                                    // Append language class based on language ID
-                                    echo "<span>" . $languageClassMap[$languageID] . "</span>";
-                                }
-                            }
-                            ?>
-                        </span>
+                    <?php 
+    $languages = explode(', ', $row['Languages']);
+    foreach ($languages as $language) {
+        echo "<span>{$language}</span>";
+    }
+    ?>
                     </div>
-                    <h4 class="sub-title mb-20"><a class="partner-link" data-partner-id="<?php echo $row['PartnerID']; ?>" href="#"><?php echo $row['FullName']; ?></a></h4>
+                    <?php
+// Inside the loop where you generate the link
+// Ensure that PartnerID is fetched correctly from the database
+$partnerID = $row['PartnerID'];
+
+// Check if PartnerID has a valid value before constructing the URL
+if (!empty($partnerID)) {
+    // Construct the URL with the PartnerID parameter
+    $url = "http://localhost/Web-Project/HTML%20pages/Partner%20profile%20U.php?partnerId=$partnerID";
+} else {
+    // Handle the case where PartnerID is empty or undefined
+    $url = "#"; // Or any other fallback URL
+}
+?>
+
+<h4 class="sub-title mb-20"><a class="partner-link" data-partner-id="<?php echo $partnerID; ?>" href="#"><?php echo $row['FullName']; ?></a></h4>
+
+
                     <div class="course__meta">
                         <span><?php echo $row['Bio']; ?></span>
                     </div>
@@ -99,10 +134,12 @@ if ($result->num_rows > 0) {
                 </div>
             </div>
         </div>
-        <?php
+<?php
     }
 } else {
     echo "No partners found.";
 }
+
 // Close the prepared statement
+$sqlPartners->close();
 ?>

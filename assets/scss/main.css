@@ -6051,8 +6051,13 @@ input.main-search-input:-ms-input-placeholder {
   padding-bottom: 25px;
   margin-bottom: 40px;
 }
-
-.instructor-profile .star-icon a {
+.stars1 {
+  color: #FDC25C;
+  font-size: 15px;
+  margin-right: 3px;
+  display: inline-block;
+}
+.instructor-profile .star-icon {
   color: #FF723A;
   font-size: 25px;
 }
@@ -6557,7 +6562,7 @@ input.main-search-input:-ms-input-placeholder {
   }
 }
 
-.star-icon a {
+.star-icon {
   color: #FDC25C;
   font-size: 15px;
   margin-right: 3px;
