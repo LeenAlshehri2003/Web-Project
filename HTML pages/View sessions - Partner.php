@@ -178,7 +178,7 @@
                                                 <li>Learner:
                                                     <a class="profile-link" style="color:white;"
                                                         href="Learner profile P.php?learnerId=<?php echo htmlspecialchars($session['LearnerID']); ?>">
-                                                        <?php echo htmlspecialchars($session['PartnerFirstName'] . " " . $session['PartnerLastName']); ?>
+                                                        <?php echo htmlspecialchars($session['LearnerFirstName'] . " " . $session['LearnerLastName']); ?>
                                                     </a>
                                                 </li>
                                                 <li>Language:

@@ -95,7 +95,7 @@ if(isset($_GET['request_id'])) {
                     
                                     <div class="request-details-body">
                                         <p><strong>Status:</strong> <span id="status">' . $row['Status'] . '</span></p>
-                                        <a href="../HTML pages/Learner profile P.php?learner_id=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
+                                        <a href="../HTML pages/Learner profile P.php?learnerId=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
                                         <p><strong>Learner Name:</strong> <span id="learnerName">' . $row['FullName'] . '</span></p>
                                         <p><strong>Language Goals:</strong> <span id="languageGoals">Improve Fluency In ' . $row['LanguageName'] . '</span></p>
                                         <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
@@ -127,7 +127,7 @@ if(isset($_GET['request_id'])) {
                 
                                 <div class="request-details-body">
                                     <p><strong>Status:</strong> <span id="status">' . $row['Status'] . '</span></p>
-                                    <a href="../HTML pages/Learner profile P.php?learner_id=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
+                                    <a href="../HTML pages/Learner profile P.php?learnerId=' . $row['LearnerID'] . '" class="profile-link">view learner profile</a>
                                     <p><strong>Learner Name:</strong> <span id="learnerName">' . $row['FullName'] . '</span></p>
                                     <p><strong>Language Goals:</strong> <span id="languageGoals">Improve Fluency In ' . $row['LanguageName'] . '</span></p>
                                     <p><strong>Proficiency Level:</strong> <span id="proficiencyLevel">' . $row['ProficiencyLevel'] . '</span></p>
