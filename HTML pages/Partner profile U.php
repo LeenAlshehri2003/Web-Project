@@ -150,7 +150,7 @@
                     <div class="partner-profile">
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
-                                <img class="img-fluid" src="../assets/img/Partners images/<?php echo htmlspecialchars($partnerData['Photo']); ?>" alt="Partner profile picture">
+                                <img class="img-fluid" src="../assets/img/Partners images/<?php echo htmlspecialchars($partnerData['Photo']); ?>" alt="Partner profile picture"  style="width: 300px; height: 250px;">
                             </div>
                             <div class="col-xl-6 col-lg-12">
                                 <div class="instructor-profile">
