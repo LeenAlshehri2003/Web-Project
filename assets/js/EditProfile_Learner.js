@@ -1,3 +1,23 @@
+$(document).ready(function() {
+    const newPasswordField = document.getElementById('NewPass');
+    const confirmPasswordField = document.getElementById('password');
+    const passwordHint = document.getElementById('passwordHint');
+    const confirmPasswordHint = document.getElementById('confirmPasswordHint');
+
+    // Event listeners for password fields to show and hide hints
+    newPasswordField.addEventListener("focus", function() {
+        passwordHint.style.display = "inline";
+      });
+      newPasswordField.addEventListener("blur", function() {
+        passwordHint.style.display = "none";
+      });
+      confirmPasswordField.addEventListener("focus", function() {
+        confirmPasswordHint.style.display = "inline";
+      });
+      confirmPasswordField.addEventListener("blur", function() {
+        confirmPasswordHint.style.display = "none";
+      });
+})
 document.addEventListener("DOMContentLoaded", function() {
     // Bind the form submission event
     const form = document.querySelector('form');
@@ -28,11 +48,12 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
 function validateForm() {
     let isValid = true; // Assume form is valid initially
 
     // List of all fields to validate
-    const fieldsToValidate = [document.getElementById("FirstName"), document.getElementById("LastName"), document.getElementById("City"), document.getElementById("CurrentPass"), document.getElementById("NewPass"), document.getElementById("password")];
+    const fieldsToValidate = [document.getElementById("FirstName"), document.getElementById("LastName"), document.getElementById("City"),document.getElementById("Location"), document.getElementById("CurrentPass"), document.getElementById("NewPass"), document.getElementById("password")];
     const newPassword = document.getElementById("NewPass").value.trim();
     const confirmPassword = document.getElementById("password").value.trim();
 
