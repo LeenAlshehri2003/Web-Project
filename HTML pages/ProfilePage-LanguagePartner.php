@@ -171,7 +171,7 @@ if (!isset($_SESSION['user_id'])) {
                            <h2>Language Partner Bio</h2>
                           <br>
                         <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
-                        <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
+                        <p class="mb-25"><?php echo ($partnerData['Bio']); ?></p>
                         </div>
                         <hr>
                             <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
