@@ -140,7 +140,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
         </div> <!-- /.theme-main-menu -->
-    </header>
+    </header><!-- this is a test-->
 
 
     <main>
