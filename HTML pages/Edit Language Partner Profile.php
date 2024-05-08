@@ -413,7 +413,14 @@ if (!isset($_SESSION['user_id'])) {
       // Check if all fields are filled
       inputs.forEach(input => {
         if (input.value.trim() === '') {
-          alert('Please fill out all fields.');
+          Swal.fire({
+        title: 'LinguaLink',
+        text: 'Please fill out all fields.',
+        icon: 'error',
+        confirmButtonColor: '#FFA500',  
+        confirmButtonText: 'OK'
+    });
+         
           input.style.border = '2px solid red';
           isValid = false;
         } else {
