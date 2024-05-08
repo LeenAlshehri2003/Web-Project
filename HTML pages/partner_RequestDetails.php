@@ -193,9 +193,8 @@
         var urlParams = new URLSearchParams(window.location.search);
         var requestId = urlParams.get('request_id');
 
-        // Send AJAX request to update status
-// Send AJAX request to update status
-fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
+     // Send request to update status using fetch api
+    fetch('../assets/php/handle_request_partner.php?request_id=' + requestId + '&status=' + newStatus)
     .then(response => response.text())
     .then(data => {
         // Log the server response for debugging

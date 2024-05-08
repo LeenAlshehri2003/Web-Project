@@ -190,6 +190,8 @@
     $(document).ready(function() {
         // Function to fetch and display requests based on their status
         function loadRequests(status) {
+        //JQuery method that uses ajax $.get() is $.get(url, data, success, dataType)  
+        //jQuery internally creates an XMLHttpRequest object and sends an asynchronous HTTP GET request to the specified URL.
             $.get('../assets/php/load_partner_view_requests.php?status=' + status, function(data) {
                 $('#requestsContainer').html(data); // Insert the fetched content into the HTML
             });

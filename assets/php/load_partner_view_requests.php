@@ -24,6 +24,7 @@ if (!in_array($status, $statuses)) {
 }
 
 // Retrieve the user_id from the session
+//if not set null returns empty string
 $user_id = $_SESSION['user_id'] ?? '';
 
 // Prepare SQL query to fetch requests based on status and partner ID
@@ -69,7 +70,7 @@ if ($result->num_rows > 0) {
                             $updateStmt->execute();
                             $updateStmt->close();
                             
-                            echo "<p><strong>Time till request expires:</strong> Expired</p>";
+                            echo "<p>The Request Have Been Expired</p>";
                         } else {
                             // Calculate remaining time until the request expires
                             $timeRemaining = strtotime('+24 hours', $submitDate) - $currentTime;
