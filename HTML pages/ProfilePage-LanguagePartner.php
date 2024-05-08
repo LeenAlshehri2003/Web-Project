@@ -1,22 +1,23 @@
 <?php include '../assets/php/load_partner_profile.php';
 
 if (!isset($_SESSION['user_id'])) {
-     header('Location:SignInPartner.php');
-     exit;
+    header('Location:SignInPartner.php');
+    exit;
 
- }?> 
+} ?>
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>Language Partner Profile Page</title>
     <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
     <meta name="description" content="LinguaLink is a e-learning HTML website for language education ">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/header_logo_LinguaLink.svg">
-    
+
 
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
@@ -33,8 +34,9 @@ if (!isset($_SESSION['user_id'])) {
 
     <link rel="stylesheet" href="../assets/css/info-container.css">
     <link rel="stylesheet" href="../assets/css/style.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <div id="preloader">
         <div class="preloader">
             <span></span>
@@ -46,106 +48,119 @@ if (!isset($_SESSION['user_id'])) {
         <div id="theme-menu-two" class="main-header-area main-head-three pl-100 pr-100 pt-20 pb-15">
             <div class="container-fluid">
                 <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2 col-5">
-                            <div class="logo"><a href="HomePartner.php"><img src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
-                        </div>
-                        <div class="col-xl-7 col-lg-8 d-none d-lg-block">
-                            <nav class="main-menu navbar navbar-expand-lg justify-content-center">
-                                <div class="nav-container">
-                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                        <ul class="navbar-nav">
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
-                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                                    <li><a class="dropdown-item" href="View Reviews.php?user_id=<?php echo $user_id; ?>">View my ratings</a></li>
-                                                    <li><a class="dropdown-item" href="partner_view_requests.php">Manage requests</a></li>
-                                                    <li><a class="dropdown-item" href="View sessions - Partner.php">View sessions </a></li>
-                                                    <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
-                                                </ul>
-                                            </li>
-                                           
-                                            <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to Know More?</a>
-                                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                                           
-                                                    <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
-                                                </ul>
-                                            </li>
-                                         
-                                            <li class="nav-item">
-                                            <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5" role="button"  aria-expanded="false">Contact Us!</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="col-xl-3 col-lg-2 col-7">
-                            <div class="right-nav d-flex align-items-center justify-content-end">
-                                <div class="right-btn mr-25 mr-xs-15">
-                                    <ul class="d-flex align-items-center">
-                                        <li><a href="../assets/php/Signout.php" class="theme_btn free_btn">Sign Out</a></li>
-                                        <li><a class="sign-in ml-20" href="ProfilePage-LanguagePartner.php"><img src="../assets/img/icon/user.svg" alt=""></a></li>
+                    <div class="col-xl-2 col-lg-2 col-5">
+                        <div class="logo"><a href="HomePartner.php"><img
+                                    src="../assets/img/logo/header_logo_LinguaLink.svg" alt="LingualLink"></a></div>
+                    </div>
+                    <div class="col-xl-7 col-lg-8 d-none d-lg-block">
+                        <nav class="main-menu navbar navbar-expand-lg justify-content-center">
+                            <div class="nav-container">
+                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3"
+                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">Pages</a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                                                <li><a class="dropdown-item" href="View Reviews - Partner.php">View my
+                                                        ratings</a></li>
+                                                <li><a class="dropdown-item" href="partner_view_requests.php">Manage
+                                                        requests</a></li>
+                                                <li><a class="dropdown-item" href="View sessions - Partner.php">View
+                                                        sessions </a></li>
+                                                <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3"
+                                                role="button" data-bs-toggle="dropdown" aria-expanded="false">Want to
+                                                Know More?</a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+
+                                                <li><a class="dropdown-item" href="faqHomePartner.html">FAQ</a></li>
+                                            </ul>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="mailto:LingualLink@gmail.com" id="navbarDropdown5"
+                                                role="button" aria-expanded="false">Contact Us!</a>
+                                        </li>
                                     </ul>
                                 </div>
-                                <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
-                                    <a href="javascript:void(0);">
-                                        <i class="far fa-bars"></i>
-                                    </a>
-                                </div>
                             </div>
+                        </nav>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-7">
+                        <div class="right-nav d-flex align-items-center justify-content-end">
+                            <div class="right-btn mr-25 mr-xs-15">
+                                <ul class="d-flex align-items-center">
+                                    <li><a href="../assets/php/Signout.php" class="theme_btn free_btn">Sign Out</a></li>
+                                    <li><a class="sign-in ml-20" href="ProfilePage-LanguagePartner.php"><img
+                                                src="../assets/img/icon/user.svg" alt=""></a></li>
+                                </ul>
+                            </div>
+                            <div class="hamburger-menu d-md-inline-block d-lg-none text-right">
+                                <a href="javascript:void(0);">
+                                    <i class="far fa-bars"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
-         <!-- /.theme-main-menu -->
+        </div>
+        <!-- /.theme-main-menu -->
     </header>
 
-  
+
 
     <main>
-      <!--page-title-area start-->
-       <section class="page-title-area d-flex align-items-end" style="background-image: url(../assets/img/banner\ photo.jpg )">
-          <div class="container">
-              <div class="row align-items-end">
-                  <div class="col-lg-12">
-                      <div class="page-title-wrapper mb-50">
-                         <h1 class="page-title mb-25">Partner-profile</h1>
-                         <div class="breadcrumb-list">
-                            <ul class="breadcrumb">
-                            <li><a href="HomePartner.php">Home - </a></li>
-                            
-                                <li><a href="#">Partner Profile</a></li>
-                            </ul>
-                         </div>
+        <!--page-title-area start-->
+        <section class="page-title-area d-flex align-items-end"
+            style="background-image: url(../assets/img/banner\ photo.jpg )">
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-12">
+                        <div class="page-title-wrapper mb-50">
+                            <h1 class="page-title mb-25">Partner-profile</h1>
+                            <div class="breadcrumb-list">
+                                <ul class="breadcrumb">
+                                    <li><a href="HomePartner.php">Home - </a></li>
+
+                                    <li><a href="#">Partner Profile</a></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-              </div>
-          </div>
-      </section>
-      <!--page-title-area end-->
-       <!--Native Speaker-details-area start-->
-       <section class="instructor-details-area pt-145 pb-110 pt-md-95 pb-md-60 pt-xs-95 pb-xs-60">
-           <div class="container">
-               <div class="row">
-                   <div class="col-xl-6 col-lg-12">
-                       <div class="instructor-profile">
-                           <h2>Partner Profile</h2>
-                           <ul class="profile-list mb-50">
-                           <li>First Name: <span><?php echo htmlspecialchars($partnerData['FirstName']); ?></span></li>
-        <li>Last Name: <span><?php echo htmlspecialchars($partnerData['LastName']); ?></span></li>
-        <li>Age: <span><?php echo htmlspecialchars($partnerData['Age']); ?></span></li>
-        <li>Gender: <span><?php echo htmlspecialchars($partnerData['Gender']); ?></span></li>
-        <li>Email: <span><?php echo htmlspecialchars($partnerData['Email']); ?></span></li>
-        <li>Mobile Num: <span><?php echo htmlspecialchars($partnerData['Phone']); ?></span></li>
-        <li>City: <span><?php echo htmlspecialchars($partnerData['City']); ?></span></li>
-        <li>Languages Spoken:
-        <ul>
-            <?php foreach ($partnerData['Languages'] as $language): ?>
-                <li style='display:block;'><?php echo htmlspecialchars($language); ?></li>
-            <?php endforeach; ?>
-        </ul>
-            </li>
-                              
+                </div>
+            </div>
+        </section>
+        <!--page-title-area end-->
+        <!--Native Speaker-details-area start-->
+        <section class="instructor-details-area pt-145 pb-110 pt-md-95 pb-md-60 pt-xs-95 pb-xs-60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="instructor-profile">
+                            <h2>Partner Profile</h2>
+                            <ul class="profile-list mb-50">
+                                <li>First Name: <span><?php echo htmlspecialchars($partnerData['FirstName']); ?></span>
+                                </li>
+                                <li>Last Name: <span><?php echo htmlspecialchars($partnerData['LastName']); ?></span>
+                                </li>
+                                <li>Age: <span><?php echo htmlspecialchars($partnerData['Age']); ?></span></li>
+                                <li>Gender: <span><?php echo htmlspecialchars($partnerData['Gender']); ?></span></li>
+                                <li>Email: <span><?php echo htmlspecialchars($partnerData['Email']); ?></span></li>
+                                <li>Mobile Num: <span><?php echo htmlspecialchars($partnerData['Phone']); ?></span></li>
+                                <li>City: <span><?php echo htmlspecialchars($partnerData['City']); ?></span></li>
+                                <li>Languages Spoken:
+                                    <ul>
+                                        <?php foreach ($partnerData['Languages'] as $language): ?>
+                                            <li style='display:block;'><?php echo htmlspecialchars($language); ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </li>
+
                                 <li>
                                     <div class="social-media">
                                         <a href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
@@ -154,80 +169,84 @@ if (!isset($_SESSION['user_id'])) {
                                         <a href="https://www.youtube.com/?app"><i class="fab fa-youtube"></i></a>
                                     </div>
                                 </li>
-                           </ul>
-                    
-                       </div>
-                   </div>
-                   <div class="col-xl-6 col-lg-12">
-                    <div class="Learner-profile-Pic">
-                        <h2>Profile Picture</h2>
-                        <hr>
-                        <img src="<?php echo htmlspecialchars('../assets/img/Partners images/' . $partnerData['Photo']); ?>" alt="Profile Picture" style="width: 500px; height:400px;" >
-      
-                </div>
-            </div>
-                   <div class="col-xl-6 col-lg-12">
-                       <div class="Language Partner-profile">
-                           <h2>Language Partner Bio</h2>
-                          <br>
-                        <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
-                        <p class="mb-25"><?php echo ($partnerData['Bio']); ?></p>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="Learner-profile-Pic">
+                            <h2>Profile Picture</h2>
+                            <hr>
+                            <img src="<?php echo htmlspecialchars('../assets/img/Partners images/' . $partnerData['Photo']); ?>"
+                                alt="Profile Picture" style="width: 500px; height:400px;">
+
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-12">
+                        <div class="Language Partner-profile">
+                            <h2>Language Partner Bio</h2>
+                            <br>
+                            <!-- Assuming the bio is stored in $partnerProfile['Bio'] -->
+                            <p class="mb-25"><?php echo htmlspecialchars($partnerData['Bio']); ?></p>
                         </div>
                         <hr>
-                            <div class="info-container" style = "display: flex;align-items: center; justify-content: space-between;">
-                            <li><a href="View Reviews - Partner.php?user_id=<?= $partnerData['userId'] ?>" class="theme_btn free_btn">Rates and Reviews</a></li>
-                            &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
+                        <div class="info-container"
+                            style="display: flex;align-items: center; justify-content: space-between;">
+                            <li><a href="View Reviews - Partner.php?user_id=<?= $partnerData['userId'] ?>"
+                                    class="theme_btn free_btn">Rates and Reviews</a></li>
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                             <li><a href="Edit Language Partner Profile.php" class="theme_btn free_btn">Edit </a></li>
-                            &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;
-                            <li><button onclick="confirmProfileDeletion(<?= $partnerData['userId'] ?>, 'partner');" class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
-                      
+                            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                            <li><button onclick="confirmProfileDeletion(<?= $partnerData['userId'] ?>, 'partner');"
+                                    class="theme_btn free_btn" style="background-color: red;">Delete </button></li>
+
+                        </div>
                     </div>
-               </div>
-           </div>
-           </div>
-       </section>
-       <!--Language Partner-details-area end-->
-       <!--what-looking-for start-->
-       <section class="what-looking-for pos-rel">
-        <div class="what-blur-shape-one"></div>
-        <div class="what-blur-shape-two"></div>
-        <div class="what-look-bg gradient-bg pt-145 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
-             <div class="container">
-                 <div class="row justify-content-center">
-                     <div class="col-lg-8">
-                         <div class="section-title text-center mb-55">
-                             <h5 class="bottom-line mb-25">Partners & Learners</h5>
-                             <h2>What you Looking For?</h2>
-                         </div>
-                     </div>
-                 </div>
-                 <div class="row mb-85">
-                     <div class="col-xl-6 col-lg-6 col-md-6">
-                         <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                             <div class="what-box__icon mb-30">
-                                 <img src="../assets/img/icon/phone-operator.svg" alt="">
-                             </div>
-                             <h3>Do you want to teach here?</h3>
-                             <a href="SignUpPartner.php" class="theme_btn border_btn">Register as Partner</a>
-                         </div>
-                     </div>
-                     <div class="col-xl-6 col-lg-6 col-md-6">
-                         <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
-                             <div class="what-box__icon mb-30">
-                                 <img src="../assets/img/icon/graduate.svg" alt="">
-                             </div>
-                             <h3>Do you want to learn here?</h3>
-                             <a href="SignUpLearner.php" class="theme_btn border_btn active">Register as Learner</a>
-                         </div>
-                     </div>
-                 </div>
-               
-             </div>
-        </div>   
-    </section>
-       <!--what-loking-for end-->
-       <!-- subscribe-area start -->
-       <!-- subscribe-area end -->
+                </div>
+            </div>
+        </section>
+        <!--Language Partner-details-area end-->
+        <!--what-looking-for start-->
+        <section class="what-looking-for pos-rel">
+            <div class="what-blur-shape-one"></div>
+            <div class="what-blur-shape-two"></div>
+            <div class="what-look-bg gradient-bg pt-145 pb-130 pt-md-95 pb-md-80 pt-xs-95 pb-xs-80">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="section-title text-center mb-55">
+                                <h5 class="bottom-line mb-25">Partners & Learners</h5>
+                                <h2>What you Looking For?</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-85">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
+                                <div class="what-box__icon mb-30">
+                                    <img src="../assets/img/icon/phone-operator.svg" alt="">
+                                </div>
+                                <h3>Do you want to teach here?</h3>
+                                <a href="SignUpPartner.php" class="theme_btn border_btn">Register as Partner</a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="what-box text-center mb-35 wow fadeInUp2 animated" data-wow-delay='.3s'>
+                                <div class="what-box__icon mb-30">
+                                    <img src="../assets/img/icon/graduate.svg" alt="">
+                                </div>
+                                <h3>Do you want to learn here?</h3>
+                                <a href="SignUpLearner.php" class="theme_btn border_btn active">Register as Learner</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!--what-loking-for end-->
+        <!-- subscribe-area start -->
+        <!-- subscribe-area end -->
     </main>
     <!--footer-area start-->
     <footer class="footer-area footer-bg pt-220 pb-25 pt-md-100 pt-xs-100">
@@ -252,10 +271,10 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp2 animated" data-wow-delay='.3s'>
                     <div class="footer__widget mb-30 pl-40 pl-md-0 pl-xs-0">
-                       
+
                         <ul class="fot-list">
-                            
-                            
+
+
                         </ul>
                     </div>
                 </div>
@@ -264,19 +283,19 @@ if (!isset($_SESSION['user_id'])) {
                         <h6 class="widget-title mb-35">Contact us</h6>
                         <ul class="fot-list">
                             <li><a href="mailto:LingualLink@gmail.com">LingualLink@gmail.com</a></li>
-                      
+
                             <li><a href="#">+966 533 799 602</a></li>
-    
-                            
+
+
                         </ul>
                     </div>
                 </div>
-               
+
             </div>
         </div>
-        
-            
-         <div class="copy-right-area border-bot pt-40">
+
+
+        <div class="copy-right-area border-bot pt-40">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-lg-12">
@@ -290,33 +309,34 @@ if (!isset($_SESSION['user_id'])) {
     </footer>
     <!--footer-area end-->
     <script>
-        
+
     </script>
-    
-      <!-- JS here -->
-    
-      <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
-      <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
-      <script src="../assets/js/popper.min.js"></script>
-      <script src="../assets/js/bootstrap.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="../assets/js/DeleteProfile.js"></script>
-      <script src="../assets/js/owl.carousel.min.js"></script>
-      <script src="../assets/js/isotope.pkgd.min.js"></script>
-      <script src="../assets/js/slick.min.js"></script>
-      <script src="../assets/js/metisMenu.min.js"></script>
-      <script src="../assets/js/jquery.nice-select.js"></script>
-      <script src="../assets/js/ajax-form.js"></script>
-      <script src="../assets/js/wow.min.js"></script>
-      <script src="../assets/js/jquery.counterup.min.js"></script>
-      <script src="../assets/js/waypoints.min.js"></script>
-      <script src="../assets/js/jquery.scrollUp.min.js"></script>
-      <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
-      <script src="../assets/js/jquery.magnific-popup.min.js"></script>
-      <script src="../assets/js/jquery.easypiechart.js"></script>
-      <script src="../assets/js/plugins.js"></script>
-      <script src="../assets/js/main.js"></script>
-      <script src="../assets/js/Heart.js"></script>
-    
-      </body>
-    </html>
+
+    <!-- JS here -->
+
+    <script src="../assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="../assets/js/vendor/jquery-2.2.4.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/DeleteProfile.js"></script>
+    <script src="../assets/js/owl.carousel.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+    <script src="../assets/js/metisMenu.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.js"></script>
+    <script src="../assets/js/ajax-form.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/jquery.counterup.min.js"></script>
+    <script src="../assets/js/waypoints.min.js"></script>
+    <script src="../assets/js/jquery.scrollUp.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../assets/js/jquery.easypiechart.js"></script>
+    <script src="../assets/js/plugins.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/Heart.js"></script>
+
+</body>
+
+</html>
